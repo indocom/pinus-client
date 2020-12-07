@@ -7,6 +7,7 @@ interface OwnProps {
   name?: string;
   value?: string;
   placeholder?: string;
+  error?: string;
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -25,29 +26,50 @@ const Input: React.FC<OwnProps> = ({
   name,
   value,
   placeholder,
+  error,
   onChange,
   onBlur,
   onFocus,
 }) => {
   return (
-    <input
+    <div
       className={`
-        font-sans text-gray-900
-        w-full p-3
-        border-solid border-2 border-gray-500 rounded-lg
-        focus:outline-none
+        flex flex-col
+        w-full
+        font-sans
+        justify-start items-start
+    `}
+    >
+      <input
+        className={`
+          text-gray-900
+          w-full p-3
+          border-solid border-2
+          border-${error ? "red-600" : "gray-500"} rounded-lg
+          focus:border-${error ? "red-600" : "blue-600"} focus:outline-none
       `}
-      type={type}
-      ref={ref}
-      id={id}
-      name={name}
-      aria-label={`${name}-input`}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-      onBlur={onBlur}
-      onFocus={onFocus}
-    />
+        type={type}
+        ref={ref}
+        id={id}
+        name={name}
+        aria-label={`${name}-input`}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+      />
+      {error && (
+        <p
+          className={`
+            text-red-600 text-sm
+            mt-2
+          `}
+        >
+          {error}
+        </p>
+      )}
+    </div>
   );
 };
 
