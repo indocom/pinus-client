@@ -3,6 +3,7 @@ import "tailwindcss/tailwind.css";
 
 interface OwnProps {
   children: React.ReactNode;
+  name?: string;
   color?: string;
   bgColor?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -10,6 +11,7 @@ interface OwnProps {
 
 const Button: React.FC<OwnProps> = ({
   children,
+  name,
   color = "white",
   bgColor = "gray-900",
   onClick,
@@ -21,6 +23,8 @@ const Button: React.FC<OwnProps> = ({
         bg-${bgColor} rounded-lg py-5 px-7
         focus:outline-none
       `}
+      name={name}
+      aria-label={`${name}-button`}
       onClick={onClick}
     >
       {children}
