@@ -30,26 +30,24 @@ const Input: React.FC<OwnProps> = ({
   onFocus,
 }) => {
   return (
-    <>
-      <input
-        className={`
+    <input
+      className={`
         font-sans text-gray-900
         w-full p-3
         border-solid border-2 border-gray-500 rounded-lg
         focus:outline-none
       `}
-        type={type}
-        ref={ref}
-        id={id}
-        name={name}
-        aria-label={`${name}-input`}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-      />
-    </>
+      type={type}
+      ref={ref}
+      id={id}
+      name={name}
+      aria-label={`${name}-input`}
+      value={value}
+      placeholder={placeholder}
+      onChange={onChange}
+      onBlur={onBlur}
+      onFocus={onFocus}
+    />
   );
 };
 
