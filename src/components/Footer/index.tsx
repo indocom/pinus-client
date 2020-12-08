@@ -1,6 +1,7 @@
 import React from "react";
 import Column from "./Column";
 import { columns } from "./columns";
+import Logo from "../../../assets/pinus.png";
 
 const Footer: React.FC = () => {
   return (
@@ -10,14 +11,10 @@ const Footer: React.FC = () => {
         bg-secondary font-sans h-96 w-screen
       `}
     >
-      <div
-        className={`
-          col-start-2 col-span-3
-          row-start-2 row-span-2
-        `}
-      >
+      <div className={`col-start-2 col-span-3 row-start-2 row-span-2`}>
         <div className={`flex flex-row justify-start items-center`}>
-          <p className={`text-3xl font-bold`}>PINUS</p>
+          <img src={Logo} alt="PINUS Logo" />
+          <p className={`text-3xl font-bold ml-5`}>PINUS</p>
         </div>
       </div>
       <div className={`col-start-2 col-span-3 row-start-4`}>
@@ -28,10 +25,7 @@ const Footer: React.FC = () => {
       {columns.map((column, index) => {
         return (
           <div
-            className={`
-              col-start-${5 + index}
-              row-start-2 row-span-2
-            `}
+            className={`col-start-${5 + index} row-start-2 row-span-2`}
             key={`${column.title}-${index}`}
           >
             <Column title={column.title} pages={column.pages} />
