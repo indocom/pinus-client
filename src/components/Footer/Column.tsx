@@ -15,8 +15,8 @@ const Column: React.FC<OwnProps> = ({ title, pages }) => {
     <div
       className={`
         font-sans text-gray-900
-        flex flex-column justify-start items-start
-        w-full bg-transparent
+        flex flex-col
+        bg-transparent
       `}
     >
       <p className={`text-base font-bold mb-5`}>{title}</p>
