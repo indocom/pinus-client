@@ -12,18 +12,21 @@ const Banner: React.FC<OwnProps> = ({
   description,
 }) => {
   return (
-    <div
-      className={`
+    <div className={`bg-cover bg-no-repeat bg-center bg-${bgImage}`}>
+      <div
+        className={`
         flex flex-col
         font-sans
         justify-center items-center
         w-screen h-screen
-        bg-cover bg-no-repeat bg-center
-        bg-${bgImage}
+        bg-black bg-opacity-50
       `}
-    >
-      <p className={`text-6xl font-bold text-white`}>{title}</p>
-      <p className={`text-lg mt-6 text-white`}>{description}</p>
+      >
+        <p className={`text-6xl font-bold text-white`}>{title}</p>
+        <p className={`text-lg mt-6 text-white text-center max-w-3xl`}>
+          {description}
+        </p>
+      </div>
     </div>
   );
 };

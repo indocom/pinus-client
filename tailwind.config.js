@@ -10,6 +10,9 @@ module.exports = {
       ...theme("colors"),
       secondary: "#EDEDED",
     }),
+    backgroundImage: () => ({
+      home: "url('assets/backgrounds/home.jpg')",
+    }),
     extend: {},
   },
   variants: {
