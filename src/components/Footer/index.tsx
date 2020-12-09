@@ -1,7 +1,6 @@
 import React from "react";
 import Column from "./Column";
 import { columns } from "./columns";
-import Logo from "../../../assets/pinus.png";
 
 const Footer: React.FC = () => {
   return (
@@ -13,19 +12,18 @@ const Footer: React.FC = () => {
     >
       <div className={`col-start-2 col-span-3 row-start-2 row-span-2`}>
         <div className={`flex flex-row justify-start items-center`}>
-          <img src={Logo} alt="PINUS Logo" />
           <p className={`text-3xl font-bold ml-5`}>PINUS</p>
         </div>
       </div>
       <div className={`col-start-2 col-span-3 row-start-4`}>
         <p className={`text-xs`}>
-          © 2020 Perhimpunan Indonesia NUS. All Rights Reserved.
+          ©2021 Perhimpunan Indonesia NUS. All Rights Reserved.
         </p>
       </div>
       {columns.map((column, index) => {
         return (
           <div
-            className={`col-start-${5 + index} row-start-2 row-span-2`}
+            className={`col-start-${5 + index} row-start-2 row-span-2 w-36`}
             key={`${column.title}-${index}`}
           >
             <Column title={column.title} pages={column.pages} />
