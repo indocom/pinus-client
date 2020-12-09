@@ -22,7 +22,7 @@ const Button: React.FC<OwnProps> = ({
     <button
       className={`
         font-sans text-base text-${color}
-        bg-${bgColor} rounded-lg py-5 px-7
+        bg-${bgColor} rounded-lg py-5 px-7 w-max
         focus:outline-none
       `}
       name={name}

@@ -15,14 +15,15 @@ const Banner: React.FC<OwnProps> = ({
     <div className={`bg-cover bg-no-repeat bg-center bg-${bgImage}`}>
       <div
         className={`
-        flex flex-col
-        font-sans
-        justify-center items-center
-        w-screen h-screen
-        bg-black bg-opacity-50
-      `}
+          flex flex-col
+          font-sans
+          justify-center items-center
+          w-screen h-screen
+          bg-black bg-opacity-50
+          lg:p-32
+        `}
       >
-        <p className={`text-6xl font-bold text-white`}>{title}</p>
+        <p className={`text-6xl font-bold text-white text-center`}>{title}</p>
         <p className={`text-lg mt-6 text-white text-center max-w-3xl`}>
           {description}
         </p>
