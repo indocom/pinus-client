@@ -2,7 +2,7 @@ import React from "react";
 import Column from "./Column";
 import { columns } from "./columns";
 
-import Logo from "assets/icons/pinus.svg";
+import Logo from "public/assets/icons/pinus.svg";
 
 const Footer: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
       {columns.map((column, index) => {
         return (
           <div
-            className={`col-start-${5 + index} row-start-2 row-span-2 w-36`}
+            className={`col-start-${4 + index} row-start-2 row-span-2 w-36`}
             key={`${column.title}-${index}`}
           >
             <Column title={column.title} pages={column.pages} />

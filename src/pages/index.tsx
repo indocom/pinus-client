@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "src/components/Button";
+import Carousel from "src/components/Carousel";
 import Page from "src/components/Page";
 
 const Home: React.FC = () => {
@@ -18,13 +19,13 @@ const Home: React.FC = () => {
               className={`mt-16 ml-4 grid grid-cols-8 grid-rows-6 gap-6 h-full w-full`}
             >
               <div
-                className={`col-start-2 col-span-2 row-start-1 row-span-3 bg-secondary`}
+                className={`col-start-2 col-span-2 row-start-1 row-span-3 bg-home-showcase1 bg-cover bg-top bg-no-repeat`}
               />
               <div
-                className={`col-start-4 col-span-2 row-start-2 row-span-3 bg-secondary`}
+                className={`col-start-4 col-span-2 row-start-2 row-span-3 bg-home-showcase2 bg-cover bg-center bg-no-repeat`}
               />
               <div
-                className={`col-start-6 col-span-2 row-start-3 row-span-3 bg-secondary`}
+                className={`col-start-6 col-span-2 row-start-3 row-span-3 bg-home-showcase3 bg-cover bg-center bg-no-repeat`}
               />
             </div>
           </div>
@@ -61,7 +62,11 @@ const Home: React.FC = () => {
               <Button>Find Out More</Button>
             </div>
           </div>
-          <div className={`col-start-6 col-span-6 row-span-5 bg-secondary`} />
+          <div className={`col-start-6 col-span-6 row-span-5`}>
+            <Carousel
+              slides={[{ title: "", image: "./assets/images/nuansa.jpg" }]}
+            />
+          </div>
         </div>
         <div className={`flex flex-col items-center py-12`}>
           <p className={`font-bold text-5xl`}>For Incoming Freshmen</p>
