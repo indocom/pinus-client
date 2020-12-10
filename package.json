@@ -19,7 +19,7 @@
     "react-responsive-carousel": "^3.2.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.12.10",
     "@storybook/addon-knobs": "^6.1.10",
     "@storybook/react": "^6.1.10",
     "@svgr/webpack": "^5.5.0",
