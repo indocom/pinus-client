@@ -36,18 +36,6 @@ module.exports = ({ config, mode }) => {
     ],
   });
 
-  config.module.rules.push({
-    test: /.*\.(gif|png|jpe?g|svg)$/i,
-    use: [
-      {
-        loader: "file-loader",
-        options: {
-          name: "[name].[hash].[ext]",
-        },
-      },
-    ],
-  });
-
   config.resolve.extensions.push('.ts', '.tsx');
 
   // Return the altered config
