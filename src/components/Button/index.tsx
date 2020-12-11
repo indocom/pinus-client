@@ -1,8 +1,16 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
 
+export type ButtonVariant = "primary" | "secondary";
+
+const buttonStyles = {
+  primary: { color: "white", bgColor: "gray-900" },
+  secondary: { color: "white", bgColor: "pinus-red" },
+};
+
 interface OwnProps {
   children: React.ReactNode;
+  variant?: ButtonVariant;
   name?: string;
   type?: "button" | "submit" | "reset";
   color?: string;
@@ -12,12 +20,14 @@ interface OwnProps {
 
 const Button: React.FC<OwnProps> = ({
   children,
+  variant = "primary",
   name,
   type = "button",
-  color = "white",
-  bgColor = "gray-900",
   onClick,
 }) => {
+  const variantStyle = buttonStyles[variant];
+  const { color, bgColor } = variantStyle;
+
   return (
     <button
       className={`
