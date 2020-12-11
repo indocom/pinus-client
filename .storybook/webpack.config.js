@@ -5,7 +5,7 @@ module.exports = ({ config, mode }) => {
 
   /* Support for React Native Web */
   config.resolve = {
-    modules: ['node_modules'],
+    modules: [path.resolve(__dirname, '../'), 'node_modules'],
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx', 'ts', 'tsx'],
   };
 
