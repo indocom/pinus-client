@@ -14,10 +14,10 @@ module.exports = {
       secondary: "#EDEDED",
     }),
     backgroundImage: () => ({
-      home: "url('/public/assets/backgrounds/home.jpg')",
-      "home-showcase1": "url('/public/assets/images/home-1.jpg')",
-      "home-showcase2": "url('/public/assets/images/home-2.jpg')",
-      "home-showcase3": "url('/public/assets/images/home-3.jpg')",
+      home: "url('public/assets/backgrounds/home.jpg')",
+      "home-showcase1": "url('public/assets/images/home-1.jpg')",
+      "home-showcase2": "url('public/assets/images/home-2.jpg')",
+      "home-showcase3": "url('public/assets/images/home-3.jpg')",
     }),
     screens: {
       sm: { max: "640px" },
