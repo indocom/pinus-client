@@ -62,10 +62,17 @@ const Home: React.FC = () => {
               <Button>Find Out More</Button>
             </div>
           </div>
-          <div className={`col-start-6 col-span-6 row-span-5`}>
+          <div className={`col-start-6 col-span-6 row-start-1 row-span-5`}>
             <Carousel
               slides={[{ title: "", image: "./assets/images/nuansa.jpg" }]}
             />
+          </div>
+          <div className={`col-start-6 col-span-7 row-start-1 row-span-6`}>
+            <div
+              className={`mt-6 ml-6 grid grid-cols-7 grid-rows-6 h-full w-full`}
+            >
+              <div className={`col-span-6 row-span-5 bg-pinus-blue`} />
+            </div>
           </div>
         </div>
         <div className={`flex flex-col items-center py-12`}>
@@ -76,7 +83,7 @@ const Home: React.FC = () => {
           </p>
         </div>
         <div
-          className={`flex flex-row justify-between px-72 py-28 mb-48 bg-secondary`}
+          className={`flex flex-row justify-between px-72 py-28 mb-48 bg-pinus-black text-white`}
         >
           <div className={`flex flex-col items-center`}>
             <p className={`font-bold text-2xl mb-8`}>Before Acceptance</p>
@@ -84,7 +91,7 @@ const Home: React.FC = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
               odio dui, laoreet id consequat finibus, iaculis quis risus.
             </p>
-            <Button>Find Out More</Button>
+            <Button variant="secondary">Find Out More</Button>
           </div>
           <div className={`flex flex-col items-center`}>
             <p className={`font-bold text-2xl mb-8`}>After Acceptance</p>
@@ -92,7 +99,7 @@ const Home: React.FC = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
               odio dui, laoreet id consequat finibus, iaculis quis risus.
             </p>
-            <Button>Find Out More</Button>
+            <Button variant="secondary">Find Out More</Button>
           </div>
         </div>
       </div>

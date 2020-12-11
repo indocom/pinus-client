@@ -11,6 +11,7 @@ module.exports = {
       "pinus-red": "#FF3B3A",
       "pinus-blue": "#202F6E",
       "pinus-yellow": "#EFB61F",
+      "pinus-black": "#161616",
       secondary: "#EDEDED",
     }),
     backgroundImage: () => ({
@@ -28,4 +29,8 @@ module.exports = {
     },
     extend: {},
   },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
 };
