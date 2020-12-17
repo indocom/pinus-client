@@ -27,13 +27,12 @@ To run storybook for component development:
 ```bash
 npm run storybook
 ```
+Open [http://localhost:6006](http://localhost:6006) with your browser to see the result.
 
 To build the app for production:
 ```bash
 npm run build
 ```
-
-Open [http://localhost:6006](http://localhost:6006) with your browser to see the result.
 
 To lint relevant files:
 ```bash
