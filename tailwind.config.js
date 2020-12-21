@@ -27,6 +27,12 @@ module.exports = {
       xl: { max: "1280px" },
       "2xl": { max: "1536px" },
     },
+    spacing: {
+      sm: "8px",
+      md: "16px",
+      lg: "24px",
+      xl: "48px",
+    },
     extend: {},
   },
   variants: {
