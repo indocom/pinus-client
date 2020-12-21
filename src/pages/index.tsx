@@ -64,7 +64,7 @@ const Home: React.FC = () => {
           </div>
           <div className={`col-start-6 col-span-6 row-start-1 row-span-5`}>
             <Carousel
-              slides={[{ title: "", image: "./assets/images/nuansa.jpg" }]}
+              slides={[{ title: "", image: "/assets/images/nuansa.jpg" }]}
             />
           </div>
           <div className={`col-start-6 col-span-7 row-start-1 row-span-6`}>
