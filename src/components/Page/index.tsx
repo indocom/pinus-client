@@ -34,13 +34,13 @@ const Page: React.FC<OwnProps> = ({
           content="Perhimpunan Indonesia NUS"
           key="ogsitename"
         />
-        <meta property="og:title" content={title} key="ogtitle" />
+        <meta property="og:title" content={`${title} | PINUS`} key="ogtitle" />
         <meta
           property="og:description"
           content={description}
           key="ogdescription"
         />
-        <title>{title}</title>
+        <title>{`${title} | PINUS`}</title>
       </Head>
       <body>
         <Banner title={title} description={description} bgImage={bgImage} />
