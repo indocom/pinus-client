@@ -24,7 +24,7 @@ const Banner: React.FC<OwnProps> = ({
         `}
       >
         <p className={`text-6xl font-bold text-white text-center`}>{title}</p>
-        <p className={`text-lg mt-6 text-white text-center max-w-3xl`}>
+        <p className={`text-lg mt-6 text-white text-center max-w-4xl`}>
           {description}
         </p>
       </div>

@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     <Page
       bgImage="home"
       title="Perhimpunan Indonesia NUS"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas odio dui, laoreet id consequat finibus, iaculis quis risus. Maecenas quis efficitur eros, a iaculis metus."
+      description="Fostering relationships among Indonesians in NUS, building bridges between Indonesians and NUS."
     >
       <div>
         <div className={`grid grid-cols-12 grid-rows-6 gap-6 h-screen`}>
@@ -42,9 +42,9 @@ const Home: React.FC = () => {
             <div className={`flex flex-col`}>
               <p className={`font-bold text-5xl`}>About PINUS</p>
               <p className={`font-normal text-xl mt-8 mb-14`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas odio dui, laoreet id consequat finibus, iaculis quis
-                risus. Maecenas quis efficitur eros, a iaculis metus.
+                Founded in 1998, Perhimpunan Indonesia NUS (PINUS) serves as an
+                avenue that fosters a tight-knit Indonesian community in NUS.
+                Learn more about us.
               </p>
               <Button>Find Out More</Button>
             </div>
@@ -55,9 +55,10 @@ const Home: React.FC = () => {
             <div className={`flex flex-col`}>
               <p className={`font-bold text-5xl`}>PINUS Events</p>
               <p className={`font-normal text-xl mt-8 mb-14`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas odio dui, laoreet id consequat finibus, iaculis quis
-                risus. Maecenas quis efficitur eros, a iaculis metus.
+                It is at the heart of our events to help Indonesians in NUS feel
+                home away from home, while showcasing Indonesia’s cultural
+                diversity to a wider audience base. Find out more about our
+                events.
               </p>
               <Button>Find Out More</Button>
             </div>
@@ -78,8 +79,8 @@ const Home: React.FC = () => {
         <div className={`flex flex-col items-center py-12`}>
           <p className={`font-bold text-5xl`}>For Incoming Freshmen</p>
           <p className={`text-xl mt-8`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-            odio dui, laoreet id consequat finibus, iaculis quis risus.
+            You are our utmost priority - we have compiled essential information
+            to help ease your NUS journey!
           </p>
         </div>
         <div
@@ -87,17 +88,16 @@ const Home: React.FC = () => {
         >
           <div className={`flex flex-col items-center`}>
             <p className={`font-bold text-2xl mb-8`}>Before Acceptance</p>
-            <p className={`font-normal text-xl text-center mb-24 w-96`}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              odio dui, laoreet id consequat finibus, iaculis quis risus.
+            <p className={`font-normal text-xl text-center mb-24 w-96 h-full`}>
+              Comprises essentials, such as programmes offered and living costs,
+              you have to know before applying to NUS.
             </p>
             <Button variant="secondary">Find Out More</Button>
           </div>
           <div className={`flex flex-col items-center`}>
             <p className={`font-bold text-2xl mb-8`}>After Acceptance</p>
-            <p className={`text-xl text-center mb-24 w-96`}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              odio dui, laoreet id consequat finibus, iaculis quis risus.
+            <p className={`text-xl text-center mb-24 w-96 h-full`}>
+              Comprises the next steps after your acceptance letter.
             </p>
             <Button variant="secondary">Find Out More</Button>
           </div>
