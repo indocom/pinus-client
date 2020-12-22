@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Column from "./Column";
 import { columns } from "./columns";
 
@@ -37,20 +38,32 @@ const Footer: React.FC = () => {
           Feel free to drop us a message. We would love to hear from you!
         </p>
         <div className={`flex flex-row w-14 justify-between`}>
-          <Image
-            className={`cursor-pointer`}
-            alt="Facebook profile"
-            src="/assets/icons/fb.png"
-            height={20}
-            width={20}
-          />
-          <Image
-            className={`cursor-pointer`}
-            alt="Instagram profile"
-            src="/assets/icons/ig.png"
-            height={20}
-            width={20}
-          />
+          <Link
+            href="https://www.facebook.com/PerhimpunanIndonesiaNUS/"
+            key="facebook-icon"
+          >
+            <a target="_blank">
+              <Image
+                alt="Facebook profile"
+                src="/assets/icons/fb.png"
+                height={20}
+                width={20}
+              />
+            </a>
+          </Link>
+          <Link
+            href="https://www.instagram.com/pinusonline"
+            key="instagram-icon"
+          >
+            <a target="_blank">
+              <Image
+                alt="Instagram profile"
+                src="/assets/icons/ig.png"
+                height={20}
+                width={20}
+              />
+            </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,10 +1,13 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Button from "src/components/Button";
 import Carousel from "src/components/Carousel";
 import Text from "src/components/Text";
 import * as S from "./styles";
 
 const HomeContent: React.FC = () => {
+  const router = useRouter();
+
   return (
     <>
       <div className={S.Section}>
@@ -28,7 +31,7 @@ const HomeContent: React.FC = () => {
               avenue that fosters a tight-knit Indonesian community in NUS.
               Learn more about us.
             </Text>
-            <Button>Find Out More</Button>
+            <Button onClick={() => router.push("/about")}>Find Out More</Button>
           </div>
         </div>
       </div>
@@ -42,7 +45,9 @@ const HomeContent: React.FC = () => {
               diversity to a wider audience base. Find out more about our
               events.
             </Text>
-            <Button>Find Out More</Button>
+            <Button onClick={() => router.push("/events")}>
+              Find Out More
+            </Button>
           </div>
         </div>
         <div className={S.Carousel}>
@@ -72,14 +77,24 @@ const HomeContent: React.FC = () => {
             Comprises essentials, such as programmes offered and living costs,
             you have to know before applying to NUS.
           </Text>
-          <Button variant="secondary">Find Out More</Button>
+          <Button
+            variant="secondary"
+            onClick={() => router.push("/admissions")}
+          >
+            Find Out More
+          </Button>
         </div>
         <div className={`flex flex-col items-center`}>
           <Text variant="subheader">After Acceptance</Text>
           <Text styles={`text-center mt-8 mb-24 w-96 h-full`}>
             Comprises the next steps after your acceptance letter.
           </Text>
-          <Button variant="secondary">Find Out More</Button>
+          <Button
+            variant="secondary"
+            onClick={() => router.push("/admissions")}
+          >
+            Find Out More
+          </Button>
         </div>
       </div>
     </>
