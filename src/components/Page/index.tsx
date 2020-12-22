@@ -4,6 +4,7 @@ import { withRouter } from "next/router";
 import type { Router } from "next/router";
 import Banner from "../Banner";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 interface OwnProps {
   title: string;
@@ -42,6 +43,7 @@ const Page: React.FC<OwnProps> = ({
         />
         <title>{`${title} | PINUS`}</title>
       </Head>
+      <Navbar pathname={router.pathname} />
       <Banner title={title} description={description} bgImage={bgImage} />
       <div className={`min-h-screen w-full`}>{children}</div>
       <Footer />
