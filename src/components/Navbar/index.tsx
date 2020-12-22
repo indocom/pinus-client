@@ -20,7 +20,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
         <a
           className={`
             text-base ml-16
-            text-${pathname === slug ? "pinus-red" : "white"}
+            text-${pathname.slice(1) === slug ? "red-600" : "white"}
           `}
         >
           {title}
