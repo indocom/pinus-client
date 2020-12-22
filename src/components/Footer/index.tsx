@@ -6,7 +6,7 @@ import { columns } from "./columns";
 const Footer: React.FC = () => {
   return (
     <div
-      className={`flex flex-row justify-between items-start bg-secondary font-sans w-screen h-96 p-12`}
+      className={`flex flex-row justify-between items-start bg-secondary font-sans w-screen h-96 px-24 py-12`}
     >
       <div className={`flex flex-col justify-between h-full`}>
         <div className={`flex flex-row justify-start items-center`}>
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
           );
         })}
       </div>
-      <div className={`w-64`}>
+      <div className={`w-48`}>
         <p className={`font-bold mb-5`}>Contact Us</p>
         <p className={`text-xs mb-10`}>
           Feel free to drop us a message. We would love to hear from you!
