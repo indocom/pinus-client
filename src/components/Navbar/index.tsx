@@ -30,24 +30,22 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
   };
 
   return (
-    <>
-      <nav className={`absolute bg-transparent text-white w-screen px-24 pt-8`}>
-        <div className={`flex flex-row justify-between items-center`}>
-          <Link href="/">
-            <a className={`flex flex-row items-center`}>
-              <Image
-                src="/assets/icons/pinus.png"
-                alt="PINUS navbar logo"
-                height={48}
-                width={48}
-              />
-              <p className={`font-bold text-2xl ml-4`}>PINUS</p>
-            </a>
-          </Link>
-          <div>{pages.map((page) => renderNavLink({ ...page, pathname }))}</div>
-        </div>
-      </nav>
-    </>
+    <nav className={`absolute bg-transparent text-white w-screen px-24 pt-8`}>
+      <div className={`flex flex-row justify-between items-center`}>
+        <Link href="/">
+          <a className={`flex flex-row items-center`}>
+            <Image
+              src="/assets/icons/pinus.png"
+              alt="PINUS navbar logo"
+              height={48}
+              width={48}
+            />
+            <p className={`font-bold text-2xl ml-4`}>PINUS</p>
+          </a>
+        </Link>
+        <div>{pages.map((page) => renderNavLink({ ...page, pathname }))}</div>
+      </div>
+    </nav>
   );
 };
 
