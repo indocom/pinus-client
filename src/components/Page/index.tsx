@@ -21,7 +21,7 @@ const Page: React.FC<OwnProps> = ({
   router,
 }) => {
   return (
-    <div className={`flex flex-col w-screen`}>
+    <>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,14 +42,10 @@ const Page: React.FC<OwnProps> = ({
         />
         <title>{`${title} | PINUS`}</title>
       </Head>
-      <body>
-        <Banner title={title} description={description} bgImage={bgImage} />
-        <div className={`min-h-screen w-full`}>{children}</div>
-      </body>
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+      <Banner title={title} description={description} bgImage={bgImage} />
+      <div className={`min-h-screen w-full`}>{children}</div>
+      <Footer />
+    </>
   );
 };
 
