@@ -17,9 +17,11 @@ export const columns: Column[] = [
   {
     title: "Events",
     pages: [
+      { title: "PINUS Ori", link: "/" },
+      { title: "Nusantaraku", link: "/" },
+      { title: "POPI", link: "/" },
       { title: "Misi Kami Peduli", link: "/" },
       { title: "NUANSA", link: "/" },
-      { title: "POPI", link: "/" },
     ],
   },
   {
