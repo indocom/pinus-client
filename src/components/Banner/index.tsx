@@ -2,12 +2,14 @@ import React from "react";
 
 interface OwnProps {
   bgImage?: string;
+  subBanner?: boolean;
   title: string;
   description: string;
 }
 
 const Banner: React.FC<OwnProps> = ({
   bgImage = "gradient-to-r from-gray-800 to-gray-400",
+  subBanner = false,
   title,
   description,
 }) => {
@@ -24,9 +26,19 @@ const Banner: React.FC<OwnProps> = ({
         `}
       >
         <p className={`text-6xl font-bold text-white text-center`}>{title}</p>
-        <p className={`text-lg mt-6 text-white text-center max-w-4xl`}>
-          {description}
-        </p>
+        {subBanner ? (
+          <div
+            className={`flex flex-row items-center justify-center absolute bottom-0 w-screen bg-gray-200`}
+          >
+            <p className={`text-lg text-center my-12 text-gray-900 max-w-4xl`}>
+              {description}
+            </p>
+          </div>
+        ) : (
+          <p className={`text-lg mt-6 text-white text-center max-w-4xl`}>
+            {description}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ interface OwnProps {
   title: string;
   description: string;
   bgImage?: string;
+  subBanner?: boolean;
   children: React.ReactNode;
   router: Router;
 }
@@ -18,6 +19,7 @@ const Page: React.FC<OwnProps> = ({
   title,
   description,
   bgImage,
+  subBanner,
   children,
   router,
 }) => {
@@ -44,7 +46,12 @@ const Page: React.FC<OwnProps> = ({
         <title>{`${title} | PINUS`}</title>
       </Head>
       <Navbar pathname={router.pathname} />
-      <Banner title={title} description={description} bgImage={bgImage} />
+      <Banner
+        title={title}
+        description={description}
+        bgImage={bgImage}
+        subBanner={subBanner}
+      />
       <div className={`min-h-screen w-full`}>{children}</div>
       <Footer />
     </>
