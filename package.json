@@ -12,11 +12,15 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
+    "glob": "^7.1.6",
+    "gray-matter": "^4.0.2",
     "next": "^10.0.4",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-feather": "^2.0.9",
-    "react-responsive-carousel": "^3.2.11"
+    "react-markdown": "^5.0.3",
+    "react-responsive-carousel": "^3.2.11",
+    "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

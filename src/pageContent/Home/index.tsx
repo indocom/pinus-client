@@ -72,8 +72,10 @@ const HomeContent: React.FC = () => {
       </div>
       <div className={S.FreshmenSection}>
         <div className={`flex flex-col items-center`}>
-          <Text variant="subheader">Before Acceptance</Text>
-          <Text styles={`text-center mt-8 mb-24 w-96 h-full`}>
+          <Text variant="subheader" color="white">
+            Before Acceptance
+          </Text>
+          <Text color="white" styles={`text-center mt-8 mb-24 w-96 h-full`}>
             Comprises essentials, such as programmes offered and living costs,
             you have to know before applying to NUS.
           </Text>
@@ -85,8 +87,10 @@ const HomeContent: React.FC = () => {
           </Button>
         </div>
         <div className={`flex flex-col items-center`}>
-          <Text variant="subheader">After Acceptance</Text>
-          <Text styles={`text-center mt-8 mb-24 w-96 h-full`}>
+          <Text variant="subheader" color="white">
+            After Acceptance
+          </Text>
+          <Text color="white" styles={`text-center mt-8 mb-24 w-96 h-full`}>
             Comprises the next steps after your acceptance letter.
           </Text>
           <Button

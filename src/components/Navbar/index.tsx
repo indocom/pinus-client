@@ -15,12 +15,13 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
   ];
 
   const renderNavLink = ({ title, slug, pathname }) => {
+    const currentPage = pathname.split("/");
     return (
       <Link href={`/${slug}`}>
         <a
           className={`
             text-base ml-16
-            text-${pathname.slice(1) === slug ? "red-600" : "white"}
+            text-${currentPage[1] === slug ? "red-600" : "white"}
           `}
         >
           {title}
