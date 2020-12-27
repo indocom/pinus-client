@@ -48,7 +48,7 @@ const AboutContent: React.FC = () => {
         <div className={`col-start-6 col-span-2 row-start-1 row-span-5`}>
           <div className={S.StoryRedStrip} />
         </div>
-        <div className={`col-start-9 col-span-2 row-start-1 row-span-5`}>
+        <div className={`col-start-9 col-span-2 row-start-1 row-span-4`}>
           <div className={S.StoryBlueStrip} />
         </div>
         <div className={`col-start-11 col-span-2 row-start-4 row-span-2`}>
