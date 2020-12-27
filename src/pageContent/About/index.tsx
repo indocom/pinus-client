@@ -1,5 +1,6 @@
 import React from "react";
 import Text from "src/components/Text";
+import Image from "next/image";
 
 import AnnouncementOutlinedIcon from "@material-ui/icons/AnnouncementOutlined";
 import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
@@ -34,7 +35,14 @@ const AboutContent: React.FC = () => {
         </div>
 
         <div className={`col-start-7 col-span-5 row-start-2 row-span-4 z-10`}>
-          <div className={S.StoryImage} />
+          <div className={S.StoryImage}>
+            <Image
+              src="/assets/images/exco-group.png"
+              alt="The PINUS Executive Committee"
+              width={950}
+              height={825}
+            />
+          </div>
         </div>
 
         <div className={`col-start-6 col-span-2 row-start-1 row-span-5`}>

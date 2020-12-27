@@ -20,7 +20,6 @@ module.exports = {
       "home-showcase2": "url('/assets/images/home-2.jpg')",
       "home-showcase3": "url('/assets/images/home-3.jpg')",
       about: "url('/assets/backgrounds/about-us.png')",
-      "about-ourstory": "url('/assets/images/exco-group.png')",
     }),
     screens: {
       sm: { max: "640px" },
