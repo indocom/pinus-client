@@ -2,7 +2,7 @@
 title: "Residential College 4 “Systems Thinking”"
 chapter: "After Acceptance"
 subchapter: "Residential Colleges"
-section: "02"
+section: "04"
 ---
 
 # Residential College 4 “Systems Thinking”

@@ -2,7 +2,7 @@
 title: "Tembusu College “Home of Possibilities”"
 chapter: "After Acceptance"
 subchapter: "Residential Colleges"
-section: "04"
+section: "01"
 ---
 
 # Tembusu College “Home of Possibilities”

@@ -2,7 +2,7 @@
 title: "The College of Alice and Peter Tan (CAPT)"
 chapter: "After Acceptance"
 subchapter: "Residential Colleges"
-section: "01"
+section: "03"
 ---
 
 # The College of Alice and Peter Tan (CAPT)

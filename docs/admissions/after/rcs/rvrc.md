@@ -2,7 +2,7 @@
 title: "Ridge View Residential College"
 chapter: "After Acceptance"
 subchapter: "Residential Colleges"
-section: "03"
+section: "05"
 ---
 
 # Ridge View Residential College

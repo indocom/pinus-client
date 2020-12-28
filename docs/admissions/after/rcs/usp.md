@@ -2,7 +2,7 @@
 title: "Cinnamon College - University Scholars’ Programme"
 chapter: "After Acceptance"
 subchapter: "Residential Colleges"
-section: "05"
+section: "02"
 ---
 
 # Cinnamon College - University Scholars’ Programme
