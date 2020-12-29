@@ -4,12 +4,12 @@ import { join, relative } from "path";
 import matter from "gray-matter";
 
 export interface DocMeta {
-  content: string;
   title: string;
   chapter: string;
   subchapter: string;
   section: string;
-  slug?: string;
+  content?: string;
+  slug?: string[];
 }
 
 export const getDocSlugs = (subDir: string): string[] => {
@@ -41,7 +41,6 @@ export const getDocBySlug = (
   const { data, content } = matter(fileContents);
 
   const items: DocMeta = {
-    content: "",
     title: "",
     chapter: "",
     subchapter: "",

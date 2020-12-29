@@ -27,7 +27,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "section",
     "content",
   ]);
-  return { props: { ...doc } };
+
+  const docs = getAllDocs(
+    ["title", "chapter", "subchapter", "section", "slug"],
+    "admissions"
+  );
+
+  return { props: { ...doc, docs } };
 };
 
 const Admissions: NextPage = (props: InferGetStaticPropsType<DocMeta>) => {
@@ -35,7 +41,7 @@ const Admissions: NextPage = (props: InferGetStaticPropsType<DocMeta>) => {
     <Page
       bgImage="admissions"
       title="Admissions"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas odio dui, laoreet id consequat finibus, iaculis quis risus. Maecenas quis efficitur eros, a iaculis metus."
+      description="You are our utmost priority - we have compiled essential information to help ease your NUS journey!"
       subBanner
     >
       <AdmissionsContent {...props} />

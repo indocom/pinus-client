@@ -21,54 +21,51 @@ King Edward VII Hall is known for its cultural CCA, being the only hall in NUS w
 
 ![KEVII 2](/assets/admissions/kevii/2.jpg "KEVII 2")
 
-1. Cultural & Production
-   a. Acapella
-   b. Band
-   c. Chinese Drama
-   d. Choir
-   e. Dance
-   f. Ensemble
-   g. Hallplay
-   h. The Dream Composition
-   i. KE Titans (Cheerleading)
-   j. Xinyao
-2. Sports
-   a. Badminton
-   b. Basketball
-   c. Floorball
-   d. Handball
-   e. Netball
-   f. Road Relay
-   g. Sepak Takraw
-   h. Soccer
-   i. Softball
-   j. Squash
-   k. Swimming
-   l. Table Tennis
-   m. Touch Rugby
-   n. Track and Field
-   o. Ultimate Frisbee
-   p. Volleyball
-3. Committee
-   a. Block Committees
-   b. Cultural Management Board
-   c. Dinner & Dance Committee
-   d. External Relations Committee
-   e. Rag & Flag Committee
-   f. Green Team
-   g. Hall Affairs Board
-   h. Junior Common Room Committee
-   i. KE Angels (Welfare Committee)
-   j. KE Web
-   k. KEWOC (Orientation Committee)
-   l. MAB (Merit Awards Board)
-   m. Motion (Videography)
-   n. Night Cycling Committee
-   o. Overseas Community Involvement Project (Cambodia, Laos)
-   p. Sports Management Committee
-   q. The Socs
-   r. Vision (Photography)
-   s. Yearbook Committee
+1. Acapella
+2. Band
+3. Chinese Drama
+4. Choir
+5. Dance
+6. Ensemble
+7. Hallplay
+8. The Dream Composition
+9. KE Titans (Cheerleading)
+10. Xinyao
+11. Badminton
+12. Basketball
+13. Floorball
+14. Handball
+15. Netball
+16. Road Relay
+17. Sepak Takraw
+18. Soccer
+19. Softball
+20. Squash
+21. Swimming
+22. Table Tennis
+23. Touch Rugby
+24. Track and Field
+25. Ultimate Frisbee
+26. Volleyball
+27. Block Committees
+28. Cultural Management Board
+29. Dinner & Dance Committee
+30. External Relations Committee
+31. Rag & Flag Committee
+32. Green Team
+33. Hall Affairs Board
+34. Junior Common Room Committee
+35. KE Angels (Welfare Committee)
+36. KE Web
+37. KEWOC (Orientation Committee)
+38. MAB (Merit Awards Board)
+39. Motion (Videography)
+40. Night Cycling Committee
+41. Overseas Community Involvement Project (Cambodia, Laos)
+42. Sports Management Committee
+43. The Socs
+44. Vision (Photography)
+45. Yearbook Committee
 
 ![KEVII 3](/assets/admissions/kevii/3.jpg "KEVII 3")
 

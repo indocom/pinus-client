@@ -9,7 +9,11 @@ interface OwnProps {
 }
 
 const Markdown: React.FC<OwnProps> = ({ source }) => {
-  const renderers = { heading: HeadingRenderer, paragraph: ParagraphRenderer };
+  const renderers = {
+    heading: HeadingRenderer,
+    paragraph: ParagraphRenderer,
+    list: ParagraphRenderer,
+  };
 
   return (
     <ReactMarkdown renderers={renderers} plugins={[gfm]}>

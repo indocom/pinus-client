@@ -17,52 +17,51 @@ Students from Temasek Hall are known for their sports and performing arts capabi
 
 ### [CCA/Interest Groups](http://nus.edu.sg/osa/temasekhall/hall-life):
 
-1. Sports
-   a. Frisbee
-   b. Floorball
-   c. Basketball
-   d. Badminton
-   e. Handball
-   f. Netball
-   g. Road relay
-   h. Volleyball
-   i. Touch rugby
-   j. Table tennis
-   k. Swimming
-   l. Softball
-   m. Tennis
-   n. Takraw
-   o. Squash
-   p. Soccer
-2. Cultural
-   a. Dance club
-   b. Dance production
-   c. Theatrette
-   d. Threshold
-   e. VOX Acapella
-   f. VOX Choir
-3. Committees
-   a. Bash
-   b. Biz Committee
-   c. Block Committee
-   d. Cultural Projects Team
-   e. Dinner & Dance
-   f. Flag
-   g. Outdoor Activities Club
-   h. Open House
-   i. Portraiture
-   j. Hall Affairs Board
-   k. Hall Promotion Board
-   l. Marketing
-   m. RAG
-   n. Sports Management Board
-   o. Temasek Green
-   p. TH Pro-Audio
-   q. Video Production Unit
-   r. THearts
-   s. THEC (Engagement Camp)
-   t. THOC (Orientation Camp)
-   u. Web Committee
+Sports
+
+1. Frisbee
+2. Floorball
+3. Basketball
+4. Badminton
+5. Handball
+6. Netball
+7. Road relay
+8. Volleyball
+9. Touch rugby
+10. Table tennis
+11. Swimming
+12. Softball
+13. Tennis
+14. Takraw
+15. Squash
+16. Soccer
+17. Dance club
+18. Dance production
+19. Theatrette
+20. Threshold
+21. VOX Acapella
+22. VOX Choir
+23. Bash
+24. Biz Committee
+25. Block Committee
+26. Cultural Projects Team
+27. Dinner & Dance
+28. Flag
+29. Outdoor Activities Club
+30. Open House
+31. Portraiture
+32. Hall Affairs Board
+33. Hall Promotion Board
+34. Marketing
+35. RAG
+36. Sports Management Board
+37. Temasek Green
+38. TH Pro-Audio
+39. Video Production Unit
+40. THearts
+41. THEC (Engagement Camp)
+42. THOC (Orientation Camp)
+43. Web Committee
 
 ### Events:
 
@@ -89,19 +88,20 @@ As Temasek Hall is known to be one of the top-achieving halls when it comes to s
 ### [Specific Amenities](http://nus.edu.sg/osa/temasekhall/facilities/amenities):
 
 General Amenities
-a. Laundry Room
-b. Kitchenette
-c. Lounge
-d. Rooftop Terrace 2. Communal Areas
-a. Main TV Lounge
-b. Multi-function Room
-c. Student Activity Room
-d. Communal/Dining Hall
-e. Seminar Room 3. Sports Facilities
-a. Gymnasium
-b. Multi-Purpose Court
-c. Squash Court
-d. Indoor Court
+
+1. Laundry Room
+2. Kitchenette
+3. Lounge
+4. Rooftop Terrace 2. Communal Areas
+5. Main TV Lounge
+6. Multi-function Room
+7. Student Activity Room
+8. Communal/Dining Hall
+9. Seminar Room 3. Sports Facilities
+10. Gymnasium
+11. Multi-Purpose Court
+12. Squash Court
+13. Indoor Court
 
 ### Why Temasek, according to Edbert, a Temasek Hall resident:
 

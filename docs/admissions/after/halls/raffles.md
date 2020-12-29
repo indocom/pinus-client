@@ -43,23 +43,17 @@ RH is a culture hall, so it's known for its dance and music groups. CCAs that ar
 
 ### Dining Experience:
 
-1. Breakfast
-   a. Served from 7.00 AM - 9.30 AM, every Mon-Sat
-   b. Meal Options:
-   i. Choose 1 from Stir-fried staple with a side dish
-   ii. Western/Local delight
-   iii. Grab & Go selection (Sandwich or puff)
-   iv. Cereal with milk and fruit
-   v. Dim Sum or Pau
-   c. Free flow: Fresh toast (White and wholemeal bread) with spreads, freshly brewed coffee, tea and soyabean milk/hot chocolate
-2. Dinner
-   a. Served from 5.30 PM - 8.00PM, every Mon-Fri, Sun
-   b. Meal Options:
-   i. Choose 1 out of 4 meat selections, 3 out of 5 side dish and vegetables
-   ii. A special menu
-   iii. Muslim menu
-   iv. Vegetarian menu
-   c. Free flow: Soup, dessert/fruit, cordial drink
+Breakfast
+
+1. Served from 7.00 AM - 9.30 AM, every Mon-Sat
+2. Meal Options: Choose 1 from Stir-fried staple with a side dish, Western/Local delight, Grab & Go selection (Sandwich or puff), Cereal with milk and fruit, Dim Sum or Pau
+3. Free flow: Fresh toast (White and wholemeal bread) with spreads, freshly brewed coffee, tea and soyabean milk/hot chocolate
+
+Dinner
+
+1. Served from 5.30 PM - 8.00PM, every Mon-Fri, Sun
+2. Meal Options: Choose 1 out of 4 meat selections, 3 out of 5 side dish and vegetables, A special menu, Muslim menu, Vegetarian menu
+3. Free flow: Soup, dessert/fruit, cordial drink
 
 ### Tips for Dining at Hall:
 

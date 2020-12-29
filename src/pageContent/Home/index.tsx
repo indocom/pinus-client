@@ -81,7 +81,11 @@ const HomeContent: React.FC = () => {
           </Text>
           <Button
             variant="secondary"
-            onClick={() => router.push("/admissions")}
+            onClick={() =>
+              router.push(
+                "/admissions/before/melanjutkan-studi-di-nus/kenapa-singapura"
+              )
+            }
           >
             Find Out More
           </Button>
@@ -95,7 +99,7 @@ const HomeContent: React.FC = () => {
           </Text>
           <Button
             variant="secondary"
-            onClick={() => router.push("/admissions")}
+            onClick={() => router.push("/admissions/after/overview")}
           >
             Find Out More
           </Button>

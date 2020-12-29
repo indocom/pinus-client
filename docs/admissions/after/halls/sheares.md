@@ -42,16 +42,20 @@ Sheares is more of a cultural hall, which has quite strong cultural CCAs. Block 
 
 ### Dining Experience:
 
-1. Breakfast
-   a. Served from 7.00 AM - 10.00 AM, every Mon-Sat
-   b. Meal Options: Choose 1 from Stir-fried staple with a side dish, Western/Local delight, Grab&Go selection (Sandwich or puff), Cereal with milk and fruit, Dim Sum or Pau
-   c. Free flow: Fresh toast (White and whole meal bread) with spreads, freshly brewed coffee, tea and soyabean milk/hot chocolate
-2. Dinner
-   a. Served from 5.30 PM - 9.00PM, every Mon-Fri, Sun
-   b. Meal Options: Choose 2 out of 4 meat selections, 2 out of 5 side dish and vegetables
-   c. Special menu: A western meal or local delight (ex: Laksa, mala, Japanese curry katsudon, mac and cheese with grilled chicken) served every Tues and Thurs
-   d. Free flow: Soup, dessert/fruit, cordial drink
-3. Muslim and Vegetarian
+Breakfast
+
+1.  Served from 7.00 AM - 10.00 AM, every Mon-Sat
+2.  Meal Options: Choose 1 from Stir-fried staple with a side dish, Western/Local delight, Grab&Go selection (Sandwich or puff), Cereal with milk and fruit, Dim Sum or Pau
+3.  Free flow: Fresh toast (White and whole meal bread) with spreads, freshly brewed coffee, tea and soyabean milk/hot chocolate
+
+Dinner
+
+1.  Served from 5.30 PM - 9.00PM, every Mon-Fri, Sun
+2.  Meal Options: Choose 2 out of 4 meat selections, 2 out of 5 side dish and vegetables
+3.  Special menu: A western meal or local delight (ex: Laksa, mala, Japanese curry katsudon, mac and cheese with grilled chicken) served every Tues and Thurs
+4.  Free flow: Soup, dessert/fruit, cordial drink
+
+Muslim and Vegetarian
 
 ### Tips for Dining at Hall:
 

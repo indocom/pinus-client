@@ -40,16 +40,20 @@ KR is a culture hall, so it's known for its dance and music groups. However, one
 
 ### Dining Experience:
 
-1. Breakfast
-   a. Served from 7.00 AM - 10.00 AM, every Mon-Sat
-   b. Meal Options: Choose 1 from Stir-fried staple with a side dish, Western/Local delight, Grab&Go selection (Sandwich or puff), Cereal with milk and fruit, Dim Sum or Pau
-   c. Free flow: Fresh toast (White and wholemeal bread) with spreads, freshly brewed coffee, tea and soyabean milk/hot chocolate
-2. Dinner
-   a. Served from 5.30 PM - 9.00PM, every Mon-Fri, Sun
-   b. Meal Options: Choose 2 out of 4 meat selections, 2 out of 5 side dish and vegetables
-   c. Special menu: A western meal or local delight (ex: Laksa, mala, Japanese curry katsudon, mac and cheese with grilled chicken) served every Tues and Thurs
-   d. Free flow: Soup, dessert/fruit, cordial drink
-3. Muslim and Vegetarian
+Breakfast
+
+- Served from 7.00 AM - 10.00 AM, every Mon-Sat
+- Meal Options: Choose 1 from Stir-fried staple with a side dish, Western/Local delight, Grab&Go selection (Sandwich or puff), Cereal with milk and fruit, Dim Sum or Pau
+- Free flow: Fresh toast (White and wholemeal bread) with spreads, freshly brewed coffee, tea and soyabean milk/hot chocolate
+
+Dinner
+
+- Served from 5.30 PM - 9.00PM, every Mon-Fri, Sun
+- Meal Options: Choose 2 out of 4 meat selections, 2 out of 5 side dish and vegetables
+- Special menu: A western meal or local delight (ex: Laksa, mala, Japanese curry katsudon, mac and cheese with grilled chicken) served every Tues and Thurs
+- Free flow: Soup, dessert/fruit, cordial drink
+
+Muslim and Vegetarian
 
 ### Tips for Dining at Hall:
 
