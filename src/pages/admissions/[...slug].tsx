@@ -33,7 +33,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "admissions"
   );
 
-  return { props: { ...doc, docs } };
+  const navItems = {};
+  docs.forEach((doc) => {
+    const { title, chapter, subchapter, section, slug } = doc;
+    const newDoc = {
+      title,
+      subchapter,
+      section,
+      slug,
+    };
+    if (!(chapter in navItems)) {
+      navItems[chapter] = [newDoc];
+    } else {
+      navItems[chapter].push(newDoc);
+    }
+  });
+
+  for (const key in navItems) {
+    navItems[key].sort((a, b) => (a.section > b.section ? 1 : -1));
+  }
+
+  return { props: { ...doc, navItems } };
 };
 
 const Admissions: NextPage = (props: InferGetStaticPropsType<DocMeta>) => {

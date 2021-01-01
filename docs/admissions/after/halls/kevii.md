@@ -2,7 +2,7 @@
 title: "King Edward VII (KEVII) Hall"
 chapter: "After Acceptance"
 subchapter: "Halls"
-section: "06"
+section: "07"
 ---
 
 # King Edward VII (KEVII) Hall

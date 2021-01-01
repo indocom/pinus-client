@@ -2,7 +2,7 @@
 title: "Eusoff Hall"
 chapter: "After Acceptance"
 subchapter: "Halls"
-section: "01"
+section: "02"
 ---
 
 # Eusoff Hall

@@ -2,7 +2,7 @@
 title: "University Entrance Examination"
 chapter: "Before Acceptance"
 subchapter: "Mendaftar Kuliah di NUS"
-section: "02"
+section: "07"
 ---
 
 # [University Entrance Examination (UEE)](http://www.nus.edu.sg/oam/university-exams-interviews/university-entrance-examinations)

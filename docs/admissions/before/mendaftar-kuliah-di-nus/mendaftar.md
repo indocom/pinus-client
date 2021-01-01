@@ -2,7 +2,7 @@
 title: "Mendaftar ke NUS"
 chapter: "Before Acceptance"
 subchapter: "Mendaftar Kuliah di NUS"
-section: "01"
+section: "06"
 ---
 
 # Mendaftar ke NUS

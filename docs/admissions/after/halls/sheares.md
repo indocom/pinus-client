@@ -2,7 +2,7 @@
 title: "Sheares Hall"
 chapter: "After Acceptance"
 subchapter: "Halls"
-section: "03"
+section: "04"
 ---
 
 # Sheares Hall

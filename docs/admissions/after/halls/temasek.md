@@ -2,7 +2,7 @@
 title: "Temasek Hall"
 chapter: "After Acceptance"
 subchapter: "Halls"
-section: "02"
+section: "03"
 ---
 
 # Temasek Hall

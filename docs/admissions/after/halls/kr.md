@@ -2,7 +2,7 @@
 title: "Kent Ridge Hall"
 chapter: "After Acceptance"
 subchapter: "Halls"
-section: "04"
+section: "05"
 ---
 
 # Kent Ridge Hall

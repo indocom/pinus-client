@@ -2,7 +2,7 @@
 title: "Biaya Hidup di NUS"
 chapter: "Before Acceptance"
 subchapter: "Biaya Berkuliah di NUS"
-section: "01"
+section: "09"
 ---
 
 # Biaya Hidup di NUS

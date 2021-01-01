@@ -2,7 +2,7 @@
 title: "Biaya Kuliah dan Kehidupan di NUS"
 chapter: "Before Acceptance"
 subchapter: "Biaya Berkuliah di NUS"
-section: "02"
+section: "10"
 ---
 
 # [Biaya Kuliah](http://www.nus.edu.sg/registrar/docs/info/administrative-policies-procedures/ugtuitioncurrent.pdf)

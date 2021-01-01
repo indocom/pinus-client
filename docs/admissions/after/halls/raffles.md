@@ -2,7 +2,7 @@
 title: "Raffles Hall"
 chapter: "After Acceptance"
 subchapter: "Halls"
-section: "05"
+section: "06"
 ---
 
 # Raffles Hall

@@ -5,7 +5,7 @@ import Markdown from "src/components/Markdown";
 import { DocMeta } from "src/lib/ssg";
 
 interface OwnProps extends DocMeta {
-  docs: DocMeta[];
+  navItems: Record<string, Record<string, string>>[];
 }
 
 const AdmissionsContent: React.FC<OwnProps> = ({
@@ -13,19 +13,17 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   chapter,
   subchapter,
   section,
-  docs,
+  navItems,
 }) => {
-  const renderNavItems = (docs, chapter) => {
-    return docs.map((doc) => {
-      if (doc.chapter === chapter) {
-        return (
-          <div>
-            <Link href={`/admissions/${doc.slug.join("/")}`}>
-              <a className={`text-white`}>{doc.title}</a>
-            </Link>
-          </div>
-        );
-      }
+  const renderNavItems = (navItems, chapter) => {
+    return navItems[chapter].map((navItem) => {
+      return (
+        <div>
+          <Link href={`/admissions/${navItem.slug.join("/")}`}>
+            <a className={`text-white`}>{navItem.title}</a>
+          </Link>
+        </div>
+      );
     });
   };
 
@@ -46,13 +44,13 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           <Text variant="subheader" color="white">
             Before Acceptance
           </Text>
-          <div>{renderNavItems(docs, "Before Acceptance")}</div>
+          <div>{renderNavItems(navItems, "Before Acceptance")}</div>
         </div>
         <div className={`mb-5`}>
           <Text variant="subheader" color="white">
             After Acceptance
           </Text>
-          <div>{renderNavItems(docs, "After Acceptance")}</div>
+          <div>{renderNavItems(navItems, "After Acceptance")}</div>
         </div>
       </div>
       <div className={`col-span-4 bg-transparent shadow-inner shadow-4xl`}>
