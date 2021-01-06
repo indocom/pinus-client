@@ -15,9 +15,7 @@ export interface DocMeta {
 export const getDocSlugs = (subDir: string): string[] => {
   const docsDirectory = join(process.cwd(), `docs/${subDir}`);
   const files = sync(join(docsDirectory, "**/*.md"));
-  const fileNames = files.map((file) => {
-    return relative(docsDirectory, file);
-  });
+  const fileNames = files.map((file) => relative(docsDirectory, file));
   return fileNames;
 };
 

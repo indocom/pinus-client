@@ -11,7 +11,7 @@ section: "02"
 
 ### Location:
 
-Across Faculty of Arts and Social Sciences (FASS) and School of Computing (SoC), closer to FASS than SoC (about 5 minutes walk)
+Across Faculty of Arts and Social Sciences (FASS) and School of Computing (SoC), closer to FASS than SoC (about 7 minutes walk)
 
 ### Culture/Focus:
 

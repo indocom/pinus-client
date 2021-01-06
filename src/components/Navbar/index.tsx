@@ -21,7 +21,11 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
         <a
           className={`
             text-base ml-16
-            text-${currentPage[1] === slug ? "red-600" : "white"}
+            text-${
+              currentPage.length > 1 && currentPage[1] === slug
+                ? "red-600"
+                : "white"
+            }
           `}
         >
           {title}
