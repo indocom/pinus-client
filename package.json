@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@storybook/react": "^6.1.11",
     "@storybook/addon-knobs": "^6.1.11",
-    "@storybook/react": "^6.1.10",
     "@svgr/webpack": "^5.5.0",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
