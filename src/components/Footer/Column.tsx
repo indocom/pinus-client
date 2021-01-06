@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export interface Page {
   title: string;
@@ -22,14 +23,11 @@ const Column: React.FC<OwnProps> = ({ title, pages }) => {
       <p className={`text-base font-bold mb-5`}>{title}</p>
       {pages.map((page, index) => {
         return (
-          <a
-            className={`text-xs underline`}
-            key={`${page.title}-${index}`}
-            href={page.link}
-            target="_blank"
-          >
-            {page.title}
-          </a>
+          <Link href={page.link} key={`${page.title}-${index}`}>
+            <a className={`text-xs mb-1`} target="_blank">
+              {page.title}
+            </a>
+          </Link>
         );
       })}
     </div>

@@ -1,40 +1,70 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import Column from "./Column";
 import { columns } from "./columns";
-
-import Logo from "public/assets/icons/pinus.svg";
 
 const Footer: React.FC = () => {
   return (
     <div
-      className={`
-        grid grid-cols-12 gap-8 grid-rows-4
-        bg-secondary font-sans h-96 w-screen
-      `}
+      className={`flex flex-row justify-between items-start bg-secondary font-sans w-screen h-96 px-24 py-12`}
     >
-      <div className={`col-start-2 col-span-3 row-start-2 row-span-2`}>
+      <div className={`flex flex-col justify-between h-full`}>
         <div className={`flex flex-row justify-start items-center`}>
-          <Logo />
+          <Image
+            src="/assets/icons/pinus.png"
+            alt="PINUS footer logo"
+            height={70}
+            width={70}
+          />
           <p className={`text-3xl font-bold ml-5`}>PINUS</p>
         </div>
-      </div>
-      <div className={`col-start-2 col-span-3 row-start-4`}>
-        <p className={`text-xs`}>
+        <p className={`text-sm text-gray-400`}>
           ©2021 Perhimpunan Indonesia NUS. All Rights Reserved.
         </p>
       </div>
-      {columns.map((column, index) => {
-        return (
-          <div
-            className={`col-start-${4 + index} row-start-2 row-span-2 w-36`}
-            key={`${column.title}-${index}`}
+      <div className={`flex flex-row justify-between`}>
+        {columns.map((column, index) => {
+          return (
+            <div className={`w-content mr-16`} key={`${column.title}-${index}`}>
+              <Column title={column.title} pages={column.pages} />
+            </div>
+          );
+        })}
+      </div>
+      <div className={`w-48`}>
+        <p className={`font-bold mb-5`}>Contact Us</p>
+        <p className={`text-xs mb-10`}>
+          Feel free to drop us a message. We would love to hear from you!
+        </p>
+        <div className={`flex flex-row w-14 justify-between`}>
+          <Link
+            href="https://www.facebook.com/PerhimpunanIndonesiaNUS/"
+            key="facebook-icon"
           >
-            <Column title={column.title} pages={column.pages} />
-          </div>
-        );
-      })}
-      <div className={`col-start-10 col-span-2 row-start-2 row-span-2`}>
-        <p className={`font-bold`}>Contact Us</p>
+            <a target="_blank">
+              <Image
+                alt="Facebook profile"
+                src="/assets/icons/fb.png"
+                height={20}
+                width={20}
+              />
+            </a>
+          </Link>
+          <Link
+            href="https://www.instagram.com/pinusonline"
+            key="instagram-icon"
+          >
+            <a target="_blank">
+              <Image
+                alt="Instagram profile"
+                src="/assets/icons/ig.png"
+                height={20}
+                width={20}
+              />
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -4,11 +4,13 @@ import { withRouter } from "next/router";
 import type { Router } from "next/router";
 import Banner from "../Banner";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 interface OwnProps {
   title: string;
   description: string;
   bgImage?: string;
+  subBanner?: boolean;
   children: React.ReactNode;
   router: Router;
 }
@@ -17,11 +19,12 @@ const Page: React.FC<OwnProps> = ({
   title,
   description,
   bgImage,
+  subBanner,
   children,
   router,
 }) => {
   return (
-    <div className={`flex flex-col w-screen`}>
+    <>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,22 +37,24 @@ const Page: React.FC<OwnProps> = ({
           content="Perhimpunan Indonesia NUS"
           key="ogsitename"
         />
-        <meta property="og:title" content={title} key="ogtitle" />
+        <meta property="og:title" content={`${title} | PINUS`} key="ogtitle" />
         <meta
           property="og:description"
           content={description}
           key="ogdescription"
         />
-        <title>{title}</title>
+        <title>{`${title} | PINUS`}</title>
       </Head>
-      <body>
-        <Banner title={title} description={description} bgImage={bgImage} />
-        <div className={`min-h-screen w-full`}>{children}</div>
-      </body>
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+      <Navbar pathname={router.pathname} />
+      <Banner
+        title={title}
+        description={description}
+        bgImage={bgImage}
+        subBanner={subBanner}
+      />
+      <div className={`min-h-screen w-full`}>{children}</div>
+      <Footer />
+    </>
   );
 };
 
