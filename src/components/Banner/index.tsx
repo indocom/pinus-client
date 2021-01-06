@@ -19,14 +19,14 @@ const Banner: React.FC<OwnProps> = ({
           flex flex-col
           justify-center items-center
           w-screen h-screen
-          bg-black bg-opacity-50
+          bg-cover bg-no-repeat bg-center bg-${bgImage} 
           lg:p-32
           font-sans
       `}
     >
       <div
         className={`
-          bg-cover bg-no-repeat bg-center bg-${bgImage} w-screen
+          h-screen w-screen bg-black bg-opacity-50
           flex flex-col flex-grow items-center justify-center
         `}
       >
