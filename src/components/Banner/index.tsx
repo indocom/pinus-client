@@ -20,7 +20,6 @@ const Banner: React.FC<OwnProps> = ({
           justify-center items-center
           w-screen h-screen
           bg-cover bg-no-repeat bg-center bg-${bgImage} 
-          lg:p-32
           font-sans
       `}
     >
