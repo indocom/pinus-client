@@ -1,0 +1,130 @@
+---
+title: "Residential College 4 “Systems Thinking”"
+chapter: "After Acceptance"
+subchapter: "Residential Colleges"
+section: "12"
+---
+
+# Residential College 4 “Systems Thinking”
+
+### Location:
+
+NUS University Town (besides CAPT and Yale-NUS College)
+
+### Duration:
+
+1. 10-15 minutes walk to University Town internal bus stop
+2. 3-5 minutes walk to the nearest external bus stop
+
+### Culture/Focus:
+
+Systems Thinking and Systems Dynamic Modelling. Modules in RC4 teach about designing model using a software called Vensim, which focuses on loop diagrams to predict an event or see the process.
+For more information about RC4 culture, visit https://rc4.nus.edu.sg/about/rc4-experience/
+For more information about the modules, visit https://rc4.nus.edu.sg/academic-programme/
+
+### CCAs/Interest Groups:
+
+1. R4D (Dance)
+2. RC4ME (Band)
+3. RC4Theatre
+4. CASA (Focuses on educating poor children in Clementi)
+5. RC4lunteers (Various target groups)
+6. OrcaBakes
+7. Orc4Plays (Various board and card games)
+8. RC4Coffee
+9. RC4fe
+10. RC4Moda (Fashion)
+11. RC4rtsy (Craft)
+12. RC4tography
+13. Strategic Games (Bridge & Mahjong)
+14. ARC4NA (Online games)
+15. RC4Badminton
+16. RC4Basketball
+17. RC4Captain’sBall
+18. RC4Climbing
+19. RC4Dodgeball
+20. RC4Floorball
+21. RC4occer
+22. RC4Squash
+23. RC4TableTennis
+24. RC4TchoukBall
+25. RC4Tennis
+26. RC4TouchRugby
+27. RC4UltimateFrisbee
+28. RC4Volleyball
+29. WilderNUS (Outdoor adrenaline activities)
+30. RC4Space
+31. RC4Wellness
+    Visit https://rc4.nus.edu.sg/rc4life/interest-groups/ and https://rc4.nus.edu.sg/rc4life/cognitio/ for more info
+
+### Events:
+
+1. Formal Dinner
+2. House Events
+3. Floor Events
+4. Orientation Week
+5. Inter College Games (ICG)
+6. Inter House Games (IHG)
+
+### Houses:
+
+Every student staying at RC4 will be allocated to a house, which will also determine the floor the student will stay at. Houses in RC4 are:
+
+1. Aquila (3rd-5th floor)
+2. Noctua (6th-8th floor)
+3. Ursa (9th-11th floor)
+4. Leo (12th-14th floor)
+5. Draco (15th-17th floor)
+
+### Dining Experience:
+
+1. Dining Hall, shared with CAPT
+2. Subscribed meal credit, additional pay and compulsory
+3. Breakfast provided Monday-Saturday
+4. Dinner provided Monday-Friday and Sunday
+5. Lunch not provided
+6. Maximum three taps for every meal
+
+### Specific Amenities:
+
+1. Seminar rooms (usually for lessons, can be booked)
+2. Reading room (can be booked)
+3. Games room (can be booked)
+4. Music room (can be booked)
+5. Multi-purpose sports hall (can be booked)
+6. Common Lounge (with snack corner, printer + photocopy service, and piano)
+7. Theme rooms (usually for CCAs, can be booked)
+8. Lounge at every level
+9. Pantry at every house (4th, 7th, 10th, 13th, 16th floor)
+10. Laundry at every house (5th, 8th, 11th, 14th, 17th floor)
+11. Study room (6th and 12th floor)
+12. RC4 Management Office
+13. RC4 Staffs Office
+14. Dining Hall (shared with CAPT)
+15. Lift
+16. Air Conditioner in every bedroom
+
+### Why choose RC4?
+
+1. All bedrooms are provided with aircons
+2. Relatively new building
+3. Modern
+4. Easier to get in as compared to other RCs in UTown (CAPT and Tembusu)
+5. Can learn Vensim, which can be very useful for systems learning and thinking
+6. A lot of facilities
+7. Experience residential college life
+8. 2 years of stay guaranteed with no commitments needed
+9. Nearest to external bus stop to Clementi and other locations
+10. Bold: personal review of an RC4 student
+
+### Why NOT choose RC4?
+
+1. Farthest from UTown internal bus stop (located at the opposite end of UTown)
+2. Modules are more scientific based, may not be interesting to some people
+3. More expensive because of the location (UTown)
+4. Air conditioner fee is not included in hostel fee
+5. UTown modules heavily emphasize on writing essays, might be challenging for students who are not used to academic writing
+
+For more information regarding RC4, please visit: https://rc4.nus.edu.sg/
+
+_Special thanks to Kathy Fresilia Ijaya for helping out with the content!_

@@ -41,7 +41,7 @@ const Banner: React.FC<OwnProps> = ({
       </div>
       {subBanner && (
         <div className={`bg-secondary w-screen py-10`}>
-          <p className={`text-lg text-center max-w-3xl mx-auto`}>
+          <p className={`text-lg text-center max-w-4xl mx-auto`}>
             {description}
           </p>
         </div>
