@@ -19,14 +19,13 @@ const Banner: React.FC<OwnProps> = ({
           flex flex-col
           justify-center items-center
           w-screen h-screen
-          bg-black bg-opacity-50
-          lg:p-32
+          bg-cover bg-no-repeat bg-center bg-${bgImage} 
           font-sans
       `}
     >
       <div
         className={`
-          bg-cover bg-no-repeat bg-center bg-${bgImage} w-screen
+          h-screen w-screen bg-black bg-opacity-50
           flex flex-col flex-grow items-center justify-center
         `}
       >
@@ -41,7 +40,7 @@ const Banner: React.FC<OwnProps> = ({
       </div>
       {subBanner && (
         <div className={`bg-secondary w-screen py-10`}>
-          <p className={`text-lg text-center max-w-3xl mx-auto`}>
+          <p className={`text-lg text-center max-w-4xl mx-auto`}>
             {description}
           </p>
         </div>

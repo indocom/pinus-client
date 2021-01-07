@@ -1,0 +1,120 @@
+---
+title: "King Edward VII (KEVII) Hall"
+chapter: "After Acceptance"
+subchapter: "Halls"
+section: "07"
+---
+
+# King Edward VII (KEVII) Hall
+
+![KEVII 1](/assets/admissions/kevii/1.jpg "KEVII 1")
+
+### Location:
+
+Across PGP, near Medicine (about 10 minutes walk)
+
+### Culture/Focus:
+
+King Edward VII Hall is known for its cultural CCA, being the only hall in NUS with 3 productions CCA (KEVII Hallplay, Chinese Drama, The Dream Composition).
+
+### [CCA/Interest Groups](http://nus.edu.sg/osa/keviihall/residential-life/ccas):
+
+![KEVII 2](/assets/admissions/kevii/2.jpg "KEVII 2")
+
+1. Acapella
+2. Band
+3. Chinese Drama
+4. Choir
+5. Dance
+6. Ensemble
+7. Hallplay
+8. The Dream Composition
+9. KE Titans (Cheerleading)
+10. Xinyao
+11. Badminton
+12. Basketball
+13. Floorball
+14. Handball
+15. Netball
+16. Road Relay
+17. Sepak Takraw
+18. Soccer
+19. Softball
+20. Squash
+21. Swimming
+22. Table Tennis
+23. Touch Rugby
+24. Track and Field
+25. Ultimate Frisbee
+26. Volleyball
+27. Block Committees
+28. Cultural Management Board
+29. Dinner & Dance Committee
+30. External Relations Committee
+31. Rag & Flag Committee
+32. Green Team
+33. Hall Affairs Board
+34. Junior Common Room Committee
+35. KE Angels (Welfare Committee)
+36. KE Web
+37. KEWOC (Orientation Committee)
+38. MAB (Merit Awards Board)
+39. Motion (Videography)
+40. Night Cycling Committee
+41. Overseas Community Involvement Project (Cambodia, Laos)
+42. Sports Management Committee
+43. The Socs
+44. Vision (Photography)
+45. Yearbook Committee
+
+![KEVII 3](/assets/admissions/kevii/3.jpg "KEVII 3")
+
+### Events:
+
+1. Block Supper
+2. Bus Supper
+3. Camp & Orientation
+4. Dinner and Dance
+5. Freshmen Welcoming Hall Dinner
+6. Interblock Games
+7. Interhall Games
+8. International Night
+9. Night Cycling
+10. Resident Fellow's Supper
+
+### People/Community:
+
+Around 500 people
+
+### [Specific Amenities](http://nus.edu.sg/osa/keviihall/facilities):
+
+1. Communal Hall
+2. Multi-purpose Court
+3. Dance Room
+4. Learning & Media Room
+5. Dining Hall
+6. Squash Court
+7. Band Room
+8. Meeting Room
+9. Heritage Room
+10. Tennis Court
+11. BBQ Pit
+12. Recreational Room
+13. Gym
+14. Study Room
+
+### Why KEVII, according to an anonymous resident:
+
+_"TIAP HARI NAIK 88 ANAK TANGGA_
+_WOW SERU SEKALI_
+_DI MANA LAGI BISA MENDAPATKAN PENGALAMAN INI KALO BUKAN DI KEVII_
+_TERIMAKASIH KEVII"_
+
+1. Location-wise, KEVII is very near to Medicine and Science (5 mins walk), Kent Ridge MRT (7-8 minutes walk/with shuttle bus). There is also a bus stop outside KEVII (PGP Terminal), so it is convenient to take the shuttle bus to UTown, Kent Ridge, Engineering, etc
+2. In terms of hall life, I think KEVII’s CCAs are more open to newbies, so if you want to try out new things, KEVII’s CCAs provide a very supportive environment.
+3. I also heard from my seniors that KEVII has the largest single rooms!
+
+_Special thanks to Kezia Putri and our awesome anonymous contributor for helping out with the content!_
+_Photos courtesy of Kezia Putri._
+
+For more information regarding King Edward VII Hall, please visit http://nus.edu.sg/osa/keviihall
