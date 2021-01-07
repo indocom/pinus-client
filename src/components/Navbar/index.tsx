@@ -37,7 +37,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
   return (
     <div className={`flex flex-col items-center`}>
       <nav
-        className={`absolute bg-transparent text-white w-full max-w-6xl pt-8`}
+        className={`absolute bg-transparent text-white w-full max-w-7xl pt-8`}
       >
         <div className={`flex flex-row justify-between items-center w-full`}>
           <Link href="/">
