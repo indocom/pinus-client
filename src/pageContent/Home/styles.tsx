@@ -13,4 +13,4 @@ export const YellowBanner = ` lg:col-start-5 col-start-6 col-span-2 row-start-3 
 export const FreshmenHeader = `flex flex-col items-center w-full py-12`;
 export const FreshmenSection = `lg:flex-col lg:p-0 lg:py-12 flex flex-row justify-between px-72 py-28 mb-48 bg-pinus-black text-white`;
 
-export const Carousel = `lg:px-4 lg:col-span-6 lg:row-span-2 col-start-1 col-span-7 row-start-1 row-span-5`;
+export const Carousel = `lg:px-4 lg:col-span-6 lg:row-span-2 col-start-6 col-span-6 row-start-1 row-span-5`;
