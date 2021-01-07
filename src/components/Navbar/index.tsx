@@ -22,7 +22,8 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
       <Link href={`/${slug}`}>
         <a
           className={`
-            lg:my-2
+            lg:my-3
+            lg:text-lg
             text-base
             text-${pathname.slice(1) === slug ? "red-600" : "white"}
           `}
@@ -66,7 +67,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
               absolute w-screen win-h-content mt-6
               flex flex-col items-center
               bg-black bg-opacity-70
-              py-2
+              py-3
           `}
           >
             {pages.map((page) => renderNavLink({ ...page, pathname }))}
