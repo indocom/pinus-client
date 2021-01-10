@@ -5,6 +5,7 @@ export type TextVariant = "header" | "body";
 interface OwnProps {
   variant?: string;
   styles?: string;
+  color?: string;
   children: string;
 }
 
@@ -13,11 +14,13 @@ const textStyles = {
   subheader: { size: "2xl", weight: "bold" },
   body: { size: "xl", weight: "normal" },
   "body-small": { size: "lg", weight: "normal" },
+  subtext: { size: "base", weight: "normal" },
 };
 
 const Text: React.FC<OwnProps> = ({
   variant = "body",
   styles = "",
+  color = "gray-900",
   children,
 }) => {
   const variantStyle = textStyles[variant];
@@ -25,7 +28,7 @@ const Text: React.FC<OwnProps> = ({
 
   return (
     <div className={styles}>
-      <p className={`font-${weight} text-${size}`}>{children}</p>
+      <p className={`font-${weight} text-${size} text-${color}`}>{children}</p>
     </div>
   );
 };
