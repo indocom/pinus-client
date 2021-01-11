@@ -67,7 +67,7 @@ const Input: React.FC<OwnProps> = ({
         />
       ) : (
         <input
-          className={`${inputStyle}`}
+          className={inputStyle}
           type={type}
           ref={ref}
           id={id}
