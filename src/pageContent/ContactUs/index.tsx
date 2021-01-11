@@ -4,8 +4,6 @@ import Button from "src/components/Button";
 import Input from "src/components/Input";
 import Text from "src/components/Text";
 
-import * as S from "./styles";
-
 const ContactUsContent: React.FC = () => {
   const [name, setName] = useState<string | null>(null);
   const [subject, setSubject] = useState<string | null>(null);
