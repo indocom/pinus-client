@@ -8,7 +8,7 @@ const About: React.FC = () => {
       bgImage="about"
       title="About Us"
       subBanner
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas odio dui, laoreet id consequat finibus, iaculis quis risus. Maecenas quis efficitur eros, a iaculis metus."
+      description="Founded in 2006, Perhimpunan Indonesia NUS (PINUS) serves as an avenue that fosters a tight-knit Indonesian community in NUS. Learn more about us."
     >
       <AboutContent />
     </Page>
