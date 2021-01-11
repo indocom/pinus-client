@@ -1,14 +1,13 @@
 import React from "react";
 import { NextPage } from "next";
 import Link from "next/link";
-
 import { Instagram, Facebook } from "react-feather";
 
-import ContactUsContent from "src/pageContent/ContactUs";
 import Page from "src/components/Page";
 import Text from "src/components/Text";
+import ContactUsContent from "src/pageContent/ContactUs";
 
-const Home: NextPage = () => {
+const ContactUs: NextPage = () => {
   return (
     <Page
       bgImage="contact"
@@ -49,4 +48,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default ContactUs;
