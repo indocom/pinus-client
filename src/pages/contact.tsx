@@ -14,7 +14,7 @@ const ContactUs: NextPage = () => {
       title="Contact Us"
       description=""
       subBanner
-      subBannerContent={() => {
+      renderSubcontent={() => {
         return (
           <div className={`flex flex-col justify-center items-center`}>
             <Text variant="header">Social Media</Text>
