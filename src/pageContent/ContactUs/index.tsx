@@ -38,8 +38,9 @@ const ContactUsContent: React.FC = () => {
       `${name}\n`;
 
     location.href =
-      `mailto:ryoarmanda@u.nus.edu` +
-      `?subject=${encodeURIComponent(subject)}` +
+      `mailto:pna.pinusonline@gmail.com` +
+      `?cc=president.pinusonline@gmail.com` +
+      `&subject=${encodeURIComponent(subject)}` +
       `&body=${encodeURIComponent(body)}`;
   };
 
