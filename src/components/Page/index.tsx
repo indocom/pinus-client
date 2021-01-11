@@ -11,6 +11,7 @@ interface OwnProps {
   description: string;
   bgImage?: string;
   subBanner?: boolean;
+  subBannerContent?: () => React.ReactNode;
   children: React.ReactNode;
   router: Router;
 }
@@ -20,6 +21,7 @@ const Page: React.FC<OwnProps> = ({
   description,
   bgImage,
   subBanner,
+  subBannerContent,
   children,
   router,
 }) => {
@@ -51,6 +53,7 @@ const Page: React.FC<OwnProps> = ({
         description={description}
         bgImage={bgImage}
         subBanner={subBanner}
+        subBannerContent={subBannerContent}
       />
       <div className={`min-h-screen w-full`}>{children}</div>
       <Footer />

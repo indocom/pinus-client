@@ -16,6 +16,7 @@ module.exports = {
       "home-showcase2": "url('/assets/images/home-2.jpg')",
       "home-showcase3": "url('/assets/images/home-3.jpg')",
       admissions: "url('/assets/backgrounds/admissions.jpg')",
+      contact: "url('/assets/backgrounds/contact.jpg')",
     }),
     screens: {
       sm: { max: "640px" },
