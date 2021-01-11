@@ -46,49 +46,47 @@ const ContactUsContent: React.FC = () => {
 
   return (
     <>
-      <div className={S.ContactUsSection}>
-        <div className={`col-start-5 col-span-4 row-start-1 row-span-1`}>
-          <div className={S.ContactUsForm}>
-            <Text variant="header">Email Us</Text>
-            <Text variant="body" styles={`mt-6`}>
-              Want to ask us anything? Drop us an email and we will get back to
-              you as soon as we can.
-            </Text>
-            <div className={`w-full`}>
-              <Input
-                type="text"
-                name="name"
-                value={name || ""}
-                placeholder="Your name"
-                error={name === "" && "This is a required field"}
-                onChange={(event) => setName(event.target.value)}
-                onBlur={() => name === null && setName("")}
-                style={`mt-6`}
-              />
-              <Input
-                type="text"
-                name="subject"
-                value={subject || ""}
-                placeholder="Subject"
-                error={subject === "" && "This is a required field"}
-                onChange={(event) => setSubject(event.target.value)}
-                onBlur={() => subject === null && setSubject("")}
-                style={`mt-6`}
-              />
-              <Input
-                type="textarea"
-                name="content"
-                value={content || ""}
-                placeholder="Your message"
-                error={content === "" && "This is a required field"}
-                onChange={(event) => setContent(event.target.value)}
-                onBlur={() => content === null && setContent("")}
-                style={`mt-6`}
-              />
-              <Button onClick={handleSubmit} style={`px-12 mt-6`}>
-                Submit
-              </Button>
-            </div>
+      <div className={`h-screen flex flex-row justify-center items-center`}>
+        <div className={`w-2/3 flex flex-col justify-center items-center`}>
+          <Text variant="header">Email Us</Text>
+          <Text variant="body" styles={`mt-6`}>
+            Want to ask us anything? Drop us an email and we will get back to
+            you as soon as we can.
+          </Text>
+          <div className={`w-full`}>
+            <Input
+              type="text"
+              name="name"
+              value={name || ""}
+              placeholder="Your name"
+              error={name === "" && "This is a required field"}
+              onChange={(event) => setName(event.target.value)}
+              onBlur={() => name === null && setName("")}
+              style={`mt-6`}
+            />
+            <Input
+              type="text"
+              name="subject"
+              value={subject || ""}
+              placeholder="Subject"
+              error={subject === "" && "This is a required field"}
+              onChange={(event) => setSubject(event.target.value)}
+              onBlur={() => subject === null && setSubject("")}
+              style={`mt-6`}
+            />
+            <Input
+              type="textarea"
+              name="content"
+              value={content || ""}
+              placeholder="Your message"
+              error={content === "" && "This is a required field"}
+              onChange={(event) => setContent(event.target.value)}
+              onBlur={() => content === null && setContent("")}
+              style={`mt-6`}
+            />
+            <Button onClick={handleSubmit} style={`px-12 mt-6`}>
+              Submit
+            </Button>
           </div>
         </div>
       </div>
