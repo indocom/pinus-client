@@ -22,10 +22,13 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   const currPageNum = parseInt(slug[slug.length - 1]);
 
   const renderNavItems = (navItems, chapter) => {
-    return navItems[chapter].map((navItem) => {
+    return navItems[chapter].map((navItem, index) => {
       return (
         <div>
-          <Link href={`/admissions/${navItem.slug.join("/")}`}>
+          <Link
+            key={`nav-item-${index}`}
+            href={`/admissions/${navItem.slug.join("/")}`}
+          >
             <a className={`text-white`}>{navItem.title}</a>
           </Link>
         </div>
