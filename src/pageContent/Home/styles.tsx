@@ -1,4 +1,4 @@
-export const Section = `lg:grid-cols-6 lg:gap-4 grid grid-cols-12 grid-rows-6 gap-6 h-screen`;
+export const Section = `lg:px-10 lg:grid-cols-6 lg:gap-4 grid grid-cols-12 grid-rows-6 gap-6 h-screen`;
 export const SectionText = `lg:text-center lg:max-w-md mt-8 mb-14`;
 
 export const ImageBanners = `lg:grid-cols-6 lg:ml-2 lg:gap-2 mt-16 ml-4 grid grid-cols-8 grid-rows-6 gap-6 h-full w-full`;
