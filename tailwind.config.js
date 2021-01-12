@@ -16,6 +16,7 @@ module.exports = {
       "home-showcase1": "url('/assets/images/home-1.jpg')",
       "home-showcase2": "url('/assets/images/home-2.jpg')",
       "home-showcase3": "url('/assets/images/home-3.jpg')",
+      about: "url('/assets/backgrounds/about.jpg')",
       admissions: "url('/assets/backgrounds/admissions.jpg')",
       contact: "url('/assets/backgrounds/contact.jpg')",
     }),
@@ -31,7 +32,11 @@ module.exports = {
       "xl-min": { min: "1281px" },
       "2xl-min": { min: "1537px" },
     },
-    extend: {},
+    extend: {
+      height: () => ({
+        "screen-75": "75vh",
+      }),
+    },
   },
   variants: {
     extend: {},

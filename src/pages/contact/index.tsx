@@ -12,7 +12,7 @@ const ContactUs: NextPage = () => {
     <Page
       bgImage="contact"
       title="Contact Us"
-      description="Want to know more? Find us on our social media."
+      description=""
       subBanner
       renderSubcontent={() => {
         return (

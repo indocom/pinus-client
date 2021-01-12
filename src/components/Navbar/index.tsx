@@ -20,7 +20,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
   const renderNavLink = ({ title, slug, pathname }) => {
     const currentPage = pathname.split("/");
     return (
-      <Link href={`/${slug}`}>
+      <Link href={`/${slug}`} key={`navbar-${slug}`}>
         <a
           className={`
             lg:my-3
@@ -70,7 +70,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
             className={`
               absolute w-screen win-h-content mt-6
               flex flex-col items-center
-              bg-black bg-opacity-70
+              bg-black
               py-3
           `}
           >

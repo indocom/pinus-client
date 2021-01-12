@@ -63,7 +63,7 @@ const Input: React.FC<OwnProps> = ({
           onChange={onChange}
           onBlur={onBlur}
           onFocus={onFocus}
-          rows={5}
+          rows={10}
         />
       ) : (
         <input
