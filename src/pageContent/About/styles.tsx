@@ -7,7 +7,3 @@ export const StoryYellowStrip = `mt-10 h-full w-full bg-pinus-yellow`;
 export const VisionMissionSection = `grid grid-cols-12 gap-6 h-screen-75`;
 
 export const DivisionSection = `grid grid-cols-12 grid-rows-5 gap-6 h-screen bg-pinus-black`;
-export const DivisionIcon = {
-  fontSize: 48,
-  color: `#FF3B3A`,
-};
