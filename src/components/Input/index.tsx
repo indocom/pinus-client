@@ -17,6 +17,7 @@ interface OwnProps {
   onFocus?: (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
+  style?: string;
 }
 
 const Input: React.FC<OwnProps> = ({
@@ -30,7 +31,17 @@ const Input: React.FC<OwnProps> = ({
   onChange,
   onBlur,
   onFocus,
+  style,
 }) => {
+  const inputStyle = `
+    text-gray-900
+    w-full p-3
+    border-solid border-2
+    border-${error ? "red-600" : "gray-500"} rounded-md
+    focus:border-${error ? "red-600" : "blue-600"} focus:outline-none
+    resize-none
+  `;
+
   return (
     <div
       className={`
@@ -38,27 +49,37 @@ const Input: React.FC<OwnProps> = ({
         w-full
         font-sans
         justify-start items-start
+        ${style}
     `}
     >
-      <input
-        className={`
-          text-gray-900
-          w-full p-3
-          border-solid border-2
-          border-${error ? "red-600" : "gray-500"} rounded-lg
-          focus:border-${error ? "red-600" : "blue-600"} focus:outline-none
-      `}
-        type={type}
-        ref={ref}
-        id={id}
-        name={name}
-        aria-label={`${name}-input`}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-      />
+      {type === "textarea" ? (
+        <textarea
+          className={`${inputStyle} resize-none`}
+          id={id}
+          name={name}
+          aria-label={`${name}-input`}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          rows={5}
+        />
+      ) : (
+        <input
+          className={inputStyle}
+          type={type}
+          ref={ref}
+          id={id}
+          name={name}
+          aria-label={`${name}-input`}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+        />
+      )}
       {error && (
         <p
           className={`
