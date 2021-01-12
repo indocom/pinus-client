@@ -99,11 +99,7 @@ const HomeContent: React.FC = () => {
           </Text>
           <Button
             variant="secondary"
-            onClick={() =>
-              router.push(
-                "/admissions/before/melanjutkan-studi-di-nus/kenapa-singapura"
-              )
-            }
+            onClick={() => router.push("/admissions/before/01")}
           >
             Find Out More
           </Button>
@@ -120,7 +116,7 @@ const HomeContent: React.FC = () => {
           </Text>
           <Button
             variant="secondary"
-            onClick={() => router.push("/admissions/after/overview")}
+            onClick={() => router.push("/admissions/after/01")}
           >
             Find Out More
           </Button>
