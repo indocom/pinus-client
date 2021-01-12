@@ -33,7 +33,11 @@ const Page: React.FC<OwnProps> = ({
         <meta name="description" content={description} />
 
         <meta property="og:url" content={router.pathname} key="ogurl" />
-        <meta property="og:image" content={bgImage} key="ogimage" />
+        <meta
+          property="og:image"
+          content={"/assets/icons/pinus.png"}
+          key="ogimage"
+        />
         <meta
           property="og:site_name"
           content="Perhimpunan Indonesia NUS"
