@@ -13,6 +13,7 @@ const textStyles = {
   header: { size: "5xl", weight: "bold" },
   subheader: { size: "2xl", weight: "bold" },
   body: { size: "xl", weight: "normal" },
+  "body-small": { size: "lg", weight: "normal" },
   subtext: { size: "base", weight: "normal" },
 };
 
