@@ -12,8 +12,6 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "next": "^10.0.5",

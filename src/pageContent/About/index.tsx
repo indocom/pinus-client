@@ -2,14 +2,16 @@ import React from "react";
 import Text from "src/components/Text";
 import Image from "next/image";
 
-import AnnouncementOutlinedIcon from "@material-ui/icons/AnnouncementOutlined";
-import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
-import EmojiObjectsOutlinedIcon from "@material-ui/icons/EmojiObjectsOutlined";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
-import SentimentSatisfiedAltIcon from "@material-ui/icons/SentimentSatisfiedAlt";
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
-import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
+import {
+  Camera,
+  Eye,
+  Heart,
+  Key,
+  MessageSquare,
+  Settings,
+  Smile,
+  Users,
+} from "react-feather";
 
 import * as S from "./styles";
 
@@ -18,7 +20,7 @@ const AboutContent: React.FC = () => {
     <>
       <div className={S.StorySection}>
         <div className={`col-start-2 col-span-4 row-start-3`}>
-          <SentimentSatisfiedAltIcon style={{ fontSize: 48 }} />
+          <Smile size={48} />
           <Text variant="header" styles={`mt-8`}>
             Our Story
           </Text>
@@ -54,41 +56,41 @@ const AboutContent: React.FC = () => {
 
       <div className={S.VisionMissionSection}>
         <div className={`col-start-2 col-span-4`}>
-          <VisibilityOutlinedIcon style={{ fontSize: 48 }} />
+          <Eye size={48} />
           <Text variant="header" styles={`mt-4`}>
             Our Vision
           </Text>
-          <Text styles={`mt-4`}>
+          <Text styles={`mt-8`}>
             Building PINUS as a family-based community that embraces every
             Indonesian student in NUS and fosters potential and talent to give
             back to Indonesia and Singapore.
           </Text>
         </div>
         <div className={`col-start-7 col-span-4`}>
-          <EmojiObjectsOutlinedIcon style={{ fontSize: 48 }} />
+          <Key size={48} />
           <Text variant="header" styles={`mt-4`}>
             Our Mission
           </Text>
-          <ul className={`mt-4`}>
+          <ul className={`mt-8 list-disc`}>
             <li>
               <Text>
                 Build a platform for PINUS members to collaborate and exchange
                 ideas with one another.
               </Text>
             </li>
-            <li>
+            <li className={`mt-2`}>
               <Text>
                 To become an ambassador and representative of Indonesian
                 students in NUS and Singapore.
               </Text>
             </li>
-            <li>
+            <li className={`mt-2`}>
               <Text>
                 Create events that would foster a sense of belonging and family
                 within PINUS.
               </Text>
             </li>
-            <li>
+            <li className={`mt-2`}>
               <Text>
                 Ease the adaptation process for new freshmen while maintaining a
                 positive relationship with alumnus to build a wholesome
@@ -109,7 +111,7 @@ const AboutContent: React.FC = () => {
         </div>
         <div className={`col-start-2 col-span-3 row-start-2 row-span-2`}>
           <div className={`flex flex-col`}>
-            <FavoriteBorderIcon style={S.DivisionIcon} />
+            <Heart color={`#FF3B3A`} size={48} />
             <Text variant="subheader" color="white" styles={`mt-2`}>
               Welfare Team
             </Text>
@@ -124,7 +126,7 @@ const AboutContent: React.FC = () => {
 
         <div className={`col-start-5 col-span-4 row-start-2 row-span-2`}>
           <div className={`flex flex-col`}>
-            <PeopleOutlineIcon style={S.DivisionIcon} />
+            <Users color={`#FF3B3A`} size={48} />
             <Text variant="subheader" color="white" styles={`mt-2`}>
               Public & Alumni Team
             </Text>
@@ -140,7 +142,7 @@ const AboutContent: React.FC = () => {
 
         <div className={`col-start-9 col-span-3 row-start-2 row-span-2`}>
           <div className={`flex flex-col`}>
-            <AnnouncementOutlinedIcon style={S.DivisionIcon} />
+            <MessageSquare color={`#FF3B3A`} size={48} />
             <Text variant="subheader" color="white" styles={`mt-2`}>
               Special Projects Team
             </Text>
@@ -154,7 +156,7 @@ const AboutContent: React.FC = () => {
 
         <div className={`col-start-2 col-span-3 row-start-4 row-span-2`}>
           <div className={`flex flex-col`}>
-            <CameraAltOutlinedIcon style={S.DivisionIcon} />
+            <Camera color={`#FF3B3A`} size={48} />
             <Text variant="subheader" color="white" styles={`mt-2`}>
               Publicity Team
             </Text>
@@ -169,7 +171,7 @@ const AboutContent: React.FC = () => {
 
         <div className={`col-start-5 col-span-4 row-start-4 row-span-2`}>
           <div className={`flex flex-col`}>
-            <SettingsOutlinedIcon style={S.DivisionIcon} />
+            <Settings color={`#FF3B3A`} size={48} />
             <Text variant="subheader" color="white" styles={`mt-2`}>
               Technology Team
             </Text>
