@@ -45,7 +45,9 @@ const ContactUsContent: React.FC = () => {
   return (
     <>
       <div className={`h-screen flex flex-row justify-center items-center`}>
-        <div className={`w-2/3 flex flex-col justify-center items-center`}>
+        <div
+          className={`max-w-4xl w-2/3 flex flex-col justify-center items-center`}
+        >
           <Text variant="header">Email Us</Text>
           <Text variant="body" styles={`mt-6`}>
             Want to ask us anything? Drop us an email and we will get back to
