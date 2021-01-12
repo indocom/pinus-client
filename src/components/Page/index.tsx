@@ -11,6 +11,7 @@ interface OwnProps {
   description: string;
   bgImage?: string;
   subBanner?: boolean;
+  renderSubcontent?: () => React.ReactNode;
   children: React.ReactNode;
   router: Router;
 }
@@ -20,6 +21,7 @@ const Page: React.FC<OwnProps> = ({
   description,
   bgImage,
   subBanner,
+  renderSubcontent,
   children,
   router,
 }) => {
@@ -31,7 +33,11 @@ const Page: React.FC<OwnProps> = ({
         <meta name="description" content={description} />
 
         <meta property="og:url" content={router.pathname} key="ogurl" />
-        <meta property="og:image" content={bgImage} key="ogimage" />
+        <meta
+          property="og:image"
+          content={"/assets/icons/pinus.png"}
+          key="ogimage"
+        />
         <meta
           property="og:site_name"
           content="Perhimpunan Indonesia NUS"
@@ -51,6 +57,7 @@ const Page: React.FC<OwnProps> = ({
         description={description}
         bgImage={bgImage}
         subBanner={subBanner}
+        renderSubcontent={renderSubcontent}
       />
       <div className={`min-h-screen w-full`}>{children}</div>
       <Footer />

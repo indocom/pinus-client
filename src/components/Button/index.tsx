@@ -16,6 +16,7 @@ interface OwnProps {
   color?: string;
   bgColor?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  style?: string;
 }
 
 const Button: React.FC<OwnProps> = ({
@@ -24,6 +25,7 @@ const Button: React.FC<OwnProps> = ({
   name,
   type = "button",
   onClick,
+  style,
 }) => {
   const variantStyle = buttonStyles[variant];
   const { color, bgColor } = variantStyle;
@@ -34,6 +36,7 @@ const Button: React.FC<OwnProps> = ({
         font-sans text-base text-${color}
         bg-${bgColor} rounded-lg py-5 px-7 w-max
         focus:outline-none
+        ${style}
       `}
       name={name}
       type={type}

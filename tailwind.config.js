@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   darkMode: false, // or 'media' or 'class'
+  purge: false,
   theme: {
     backgroundColor: (theme) => ({
       ...theme("colors"),
@@ -17,6 +18,7 @@ module.exports = {
       "home-showcase3": "url('/assets/images/home-3.jpg')",
       about: "url('/assets/backgrounds/about-us.png')",
       admissions: "url('/assets/backgrounds/admissions.jpg')",
+      contact: "url('/assets/backgrounds/contact.jpg')",
     }),
     screens: {
       sm: { max: "640px" },

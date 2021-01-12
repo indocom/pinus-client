@@ -5,6 +5,7 @@ interface OwnProps {
   subBanner?: boolean;
   title: string;
   description: string;
+  renderSubcontent?: () => React.ReactNode;
 }
 
 const Banner: React.FC<OwnProps> = ({
@@ -12,6 +13,7 @@ const Banner: React.FC<OwnProps> = ({
   subBanner = false,
   title,
   description,
+  renderSubcontent,
 }) => {
   return (
     <div
@@ -40,9 +42,12 @@ const Banner: React.FC<OwnProps> = ({
       </div>
       {subBanner && (
         <div className={`bg-secondary w-screen py-10`}>
-          <p className={`text-lg text-center max-w-4xl mx-auto`}>
-            {description}
-          </p>
+          {description && (
+            <p className={`text-lg text-center max-w-4xl mx-auto`}>
+              {description}
+            </p>
+          )}
+          {renderSubcontent && renderSubcontent()}
         </div>
       )}
     </div>
