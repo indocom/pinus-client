@@ -35,7 +35,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
 
   return (
     <div className={`grid grid-cols-6 min-h-screen w-screen`}>
-      <div className={`lg:hidden col-start-1 col-span-2 bg-black px-24`}>
+      <div className={`lg:hidden col-start-1 col-span-2 bg-black px-24 pb-40`}>
         <Text variant="header" color="white" styles={`mt-20`}>
           For
         </Text>
