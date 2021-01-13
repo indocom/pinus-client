@@ -24,12 +24,18 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   const renderNavItems = (navItems, chapter) => {
     return navItems[chapter].map((navItem, index) => {
       return (
-        <div>
-          <Link
-            key={`nav-item-${index}`}
-            href={`/admissions/${navItem.slug.join("/")}`}
-          >
-            <a className={`text-white`}>{navItem.title}</a>
+        <div key={`nav-item-${index}`}>
+          <Link href={`/admissions/${navItem.slug.join("/")}`}>
+            <a
+              className={
+                navItem.slug.join("/") ===
+                (typeof slug !== "string" && slug.join("/"))
+                  ? `text-red-600`
+                  : `text-white`
+              }
+            >
+              {navItem.title}
+            </a>
           </Link>
         </div>
       );
