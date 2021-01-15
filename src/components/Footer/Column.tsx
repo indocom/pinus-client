@@ -18,15 +18,14 @@ const Column: React.FC<OwnProps> = ({ title, pages }) => {
         font-sans text-gray-900
         flex flex-col
         bg-transparent
+        lg:space-y-1
       `}
     >
-      <p className={`text-base font-bold mb-5`}>{title}</p>
+      <p className={`text-base font-bold mb-5 lg:mb-0`}>{title}</p>
       {pages.map((page, index) => {
         return (
           <Link href={page.link} key={`${page.title}-${index}`}>
-            <a className={`text-xs mb-1`} target="_blank">
-              {page.title}
-            </a>
+            <a className={`text-xs lg:text-sm mb-1 lg:mb-0`}>{page.title}</a>
           </Link>
         );
       })}

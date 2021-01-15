@@ -18,7 +18,7 @@ import * as S from "./styles";
 const AboutContent: React.FC = () => {
   return (
     <>
-      <div className={S.StorySection}>
+      <div className={S.StorySection} id="our-story">
         <div className={`col-start-2 col-span-4 row-start-3`}>
           <Smile size={48} />
           <Text variant="header" styles={`mt-8`}>
@@ -54,7 +54,7 @@ const AboutContent: React.FC = () => {
         </div>
       </div>
 
-      <div className={S.VisionMissionSection}>
+      <div className={S.VisionMissionSection} id="vision-mission">
         <div className={`col-start-2 col-span-4`}>
           <Eye size={48} />
           <Text variant="header" styles={`mt-4`}>
@@ -101,7 +101,7 @@ const AboutContent: React.FC = () => {
         </div>
       </div>
 
-      <div className={S.DivisionSection}>
+      <div className={S.DivisionSection} id="our-divisions">
         <div className={`col-start-2 col-span-3 row-start-1 row-span-1`}>
           <div className={`h-full w-full flex flex-row items-center`}>
             <Text variant="header" color="white">

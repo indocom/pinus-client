@@ -9,26 +9,26 @@ export const columns: Column[] = [
   {
     title: "About",
     pages: [
-      { title: "Our Story", link: "/" },
-      { title: "Vision and Mission", link: "/" },
-      { title: "PINUS Committee", link: "/" },
+      { title: "Our Story", link: "/about/#our-story" },
+      { title: "Vision and Mission", link: "/about/#vision-mission" },
+      { title: "Our Divisions", link: "/about/#our-divisions" },
     ],
   },
   {
     title: "Events",
     pages: [
-      { title: "PINUS Ori", link: "/" },
-      { title: "Nusantaraku", link: "/" },
-      { title: "POPI", link: "/" },
-      { title: "Misi Kami Peduli", link: "/" },
-      { title: "NUANSA", link: "/" },
+      { title: "PINUS Ori", link: "/events/#pinus-ori" },
+      { title: "Nusantaraku", link: "/events/#nusantaraku" },
+      { title: "POPI", link: "/events/#popi" },
+      { title: "Misi Kami Peduli", link: "/events/#mkp" },
+      { title: "NUANSA", link: "/events/#nuansa" },
     ],
   },
   {
     title: "Admissions",
     pages: [
-      { title: "Before Acceptance", link: "/" },
-      { title: "After Acceptance", link: "/" },
+      { title: "Before Acceptance", link: "/admissions/before/01" },
+      { title: "After Acceptance", link: "/admissions/after/01" },
     ],
   },
   {
