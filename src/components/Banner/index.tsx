@@ -15,6 +15,9 @@ const Banner: React.FC<OwnProps> = ({
   description,
   renderSubcontent,
 }) => {
+  const bannerHeight = subBanner ? `h-screen` : `h-screen-80 lg:h-screen-75`;
+  const subBannerHeight = `h-screen-20 lg:h-screen-25`;
+
   return (
     <div
       className={`
@@ -27,23 +30,30 @@ const Banner: React.FC<OwnProps> = ({
     >
       <div
         className={`
-          h-screen w-screen bg-black bg-opacity-50
+          ${bannerHeight} w-screen bg-black bg-opacity-50
           flex flex-col flex-grow items-center justify-center
+          px-2
         `}
       >
-        <p className={`text-6xl font-bold text-white text-center mx-auto`}>
+        <p
+          className={`text-6xl lg:text-4xl font-bold text-white text-center mx-auto`}
+        >
           {title}
         </p>
         {!subBanner && (
-          <p className={`text-lg mt-6 text-white text-center max-w-4xl`}>
+          <p
+            className={`text-lg lg:text-md mt-6 text-white text-center max-w-4xl`}
+          >
             {description}
           </p>
         )}
       </div>
       {subBanner && (
-        <div className={`bg-secondary w-screen py-10`}>
+        <div className={`${subBannerHeight} w-screen bg-secondary py-8`}>
           {description && (
-            <p className={`text-lg text-center max-w-4xl mx-auto`}>
+            <p
+              className={`text-lg lg:text-md text-center max-w-4xl mx-auto px-3`}
+            >
               {description}
             </p>
           )}
