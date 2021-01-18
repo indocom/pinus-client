@@ -49,7 +49,7 @@ const Banner: React.FC<OwnProps> = ({
         )}
       </div>
       {subBanner && (
-        <div className={`${subBannerHeight} w-screen bg-secondary py-8`}>
+        <div className={`${subBannerHeight} w-screen bg-secondary py-8 px-3`}>
           {description && (
             <p
               className={`text-lg lg:text-md text-center max-w-4xl mx-auto px-3`}

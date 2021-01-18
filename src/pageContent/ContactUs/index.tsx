@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import Button from "src/components/Button";
 import Input from "src/components/Input";
-import Text from "src/components/Text";
+
+import * as S from "./styles";
 
 const ContactUsContent: React.FC = () => {
   const [name, setName] = useState<string | null>(null);
@@ -44,16 +45,14 @@ const ContactUsContent: React.FC = () => {
 
   return (
     <>
-      <div className={`h-screen flex flex-row justify-center items-center`}>
-        <div
-          className={`max-w-4xl w-2/3 flex flex-col justify-center items-center`}
-        >
-          <Text variant="header">Email Us</Text>
-          <Text variant="body" styles={`mt-6`}>
+      <div className={S.EmailUsSection}>
+        <div className={`max-w-4xl w-2/3 lg:w-4/5 flex flex-col space-y-5`}>
+          <p className={S.HeaderText}>Email Us</p>
+          <p className={S.BodyText}>
             Want to ask us anything? Drop us an email and we will get back to
             you as soon as we can.
-          </Text>
-          <div className={`w-full`}>
+          </p>
+          <div className={`w-full space-y-3`}>
             <Input
               type="text"
               name="name"
@@ -62,7 +61,6 @@ const ContactUsContent: React.FC = () => {
               error={name === "" && "This is a required field"}
               onChange={(event) => setName(event.target.value)}
               onBlur={() => name === null && setName("")}
-              style={`mt-6`}
             />
             <Input
               type="text"
@@ -72,7 +70,6 @@ const ContactUsContent: React.FC = () => {
               error={subject === "" && "This is a required field"}
               onChange={(event) => setSubject(event.target.value)}
               onBlur={() => subject === null && setSubject("")}
-              style={`mt-6`}
             />
             <Input
               type="textarea"
@@ -82,9 +79,8 @@ const ContactUsContent: React.FC = () => {
               error={content === "" && "This is a required field"}
               onChange={(event) => setContent(event.target.value)}
               onBlur={() => content === null && setContent("")}
-              style={`mt-6`}
             />
-            <Button onClick={handleSubmit} style={`px-12 mt-6`}>
+            <Button onClick={handleSubmit} style={`px-12`}>
               Submit
             </Button>
           </div>
