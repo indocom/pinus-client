@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Instagram, Facebook } from "react-feather";
 
 import Page from "src/components/Page";
-import Text from "src/components/Text";
 import ContactUsContent from "src/pageContent/ContactUs";
 
 const ContactUs: NextPage = () => {
@@ -16,12 +15,20 @@ const ContactUs: NextPage = () => {
       subBanner
       renderSubcontent={() => {
         return (
-          <div className={`flex flex-col justify-center items-center`}>
-            <Text variant="header">Social Media</Text>
-            <Text variant="body" styles={`mt-4`}>
+          <div
+            className={`flex flex-col justify-center items-center space-y-5`}
+          >
+            <p
+              className={`font-bold text-4xl lg:text-3xl text-gray-900 text-center`}
+            >
+              Social Media
+            </p>
+            <p className={`text-xl lg:text-md text-gray-900 text-center`}>
               Want to know more? Find us on our social media.
-            </Text>
-            <div className={`flex flex-row justify-around items-center mt-6`}>
+            </p>
+            <div
+              className={`flex flex-row justify-center items-center space-x-5`}
+            >
               <Link
                 href="https://www.facebook.com/PerhimpunanIndonesiaNUS/"
                 key="facebook-icon"
@@ -34,7 +41,7 @@ const ContactUs: NextPage = () => {
                 href="https://www.instagram.com/pinusonline"
                 key="instagram-icon"
               >
-                <a target="_blank" className={`ml-4`}>
+                <a target="_blank">
                   <Instagram size={40} />
                 </a>
               </Link>
