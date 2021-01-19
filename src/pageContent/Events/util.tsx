@@ -27,11 +27,11 @@ export const renderEventSection = (e: EventInfo): React.ReactFragment => {
       </div>
       <div className={`flex`}>
         <div className={S.ImageWrapper}>
-          <Image src={e.imageSrc} width={640} height={540} />
+          <Image src={e.imageSrc} width={630} height={450} />
         </div>
-        <div className={S.StripWrapper}>
+        {/* <div className={S.StripWrapper}>
           {e.options.strips.map(renderStrip)}
-        </div>
+        </div> */}
       </div>
     </div>
   );

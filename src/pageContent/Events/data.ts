@@ -27,13 +27,11 @@ export const events: Array<EventInfo> = [
     description:
       "Our very own annual freshman orientation programme that welcomes Indonesian \
       freshmen while providing a platform to foster friendship amongst PINUSians.",
-    imageSrc: "/assets/images/blank.jpg",
+    imageSrc: "/assets/images/pinus-ori.jpg",
     url: "/events/pinus-ori",
     options: {
       reverse: false,
-      strips: [
-        { color: "red", colStart: 1, colSpan: 12, rowStart: 1, rowSpan: 6 },
-      ],
+      strips: [],
     },
   },
   {
@@ -42,13 +40,11 @@ export const events: Array<EventInfo> = [
     description:
       "A closing to PINUS Orientation, a freshmen-led initiative to plan a day's \
       worth of events that coincides with Indonesia’s Independence Day.",
-    imageSrc: "/assets/images/blank.jpg",
+    imageSrc: "/assets/images/nusantaraku.jpg",
     url: "/events/nusantaraku",
     options: {
       reverse: true,
-      strips: [
-        { color: "red", colStart: 3, colSpan: 8, rowStart: 2, rowSpan: 2 },
-      ],
+      strips: [],
     },
   },
   {
@@ -58,13 +54,11 @@ export const events: Array<EventInfo> = [
       "Pekan Olahraga Pelajar Indonesia (POPI) is an annual student-led sporting \
       event aiming to bring together Indonesian students in Singapore. Hosted by \
       PINUS, for Indonesian students in Singapore",
-    imageSrc: "/assets/images/blank.jpg",
+    imageSrc: "/assets/images/popi.jpg",
     url: "/events/popi",
     options: {
       reverse: false,
-      strips: [
-        { color: "red", colStart: 3, colSpan: 8, rowStart: 2, rowSpan: 2 },
-      ],
+      strips: [],
     },
   },
   {
@@ -75,13 +69,11 @@ export const events: Array<EventInfo> = [
       underprivileged Indonesian communities. MKP's projects focus on three key \
       pillars: Education, Community Empowerment and Technology to alleviate the \
       socio-economic challenges in the local communities.",
-    imageSrc: "/assets/images/blank.jpg",
+    imageSrc: "/assets/images/mkp.jpg",
     url: "/events/mkp",
     options: {
       reverse: false,
-      strips: [
-        { color: "red", colStart: 3, colSpan: 8, rowStart: 2, rowSpan: 2 },
-      ],
+      strips: [],
     },
   },
   {
@@ -92,13 +84,11 @@ export const events: Array<EventInfo> = [
       showcase the beauty and diversity of Indonesian cultures. It consistently \
       endeavors to bring the audience through an immersive journey by ensuring the \
       cultural authenticity and artistic integrity of its shows and events.",
-    imageSrc: "/assets/images/blank.jpg",
+    imageSrc: "/assets/images/nuansa-2.jpg",
     url: "/events/nuansa",
     options: {
       reverse: true,
-      strips: [
-        { color: "red", colStart: 3, colSpan: 8, rowStart: 2, rowSpan: 2 },
-      ],
+      strips: [],
     },
   },
 ];
