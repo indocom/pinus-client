@@ -20,7 +20,7 @@ const EventDetail: NextPage = () => {
       <div
         className={`h-screen w-screen flex justify-center items-center py-8 px-3`}
       >
-        <p className={`textlg:text-2xl text-pinus-red text-center`}>
+        <p className={`text-4xl lg:text-2xl text-pinus-red text-center`}>
           This page is under construction. Sit tight and stay tuned!
         </p>
       </div>
