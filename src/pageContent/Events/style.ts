@@ -11,5 +11,5 @@ export const EventName = `font-bold text-5xl lg:text-3xl text-gray-900 lg:text-c
 export const EventDesc = `text-2xl lg:text-lg text-gray-900`;
 
 export const ImageStripWrapper = `grid grid-cols-12 grid-rows-6`;
-export const StripWrapper = `col-start-1 col-span-12 row-start-1 row-span-6 w-full h-full grid grid-cols-12 grid-rows-6`;
+export const StripWrapper = `col-start-1 col-span-12 row-start-1 row-span-6 grid grid-cols-12 grid-rows-6`;
 export const ImageWrapper = `col-start-1 col-span-12 row-start-2 row-span-4 z-10 flex justify-center items-center`;
