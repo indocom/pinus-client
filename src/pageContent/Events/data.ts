@@ -14,10 +14,9 @@ interface EventOptions {
 
 export interface StripOptions {
   color: "red" | "blue" | "yellow";
-  rowStart: number;
-  rowSpan: number;
-  colStart: number;
-  colSpan: number;
+  col: [number, number];
+  row: [number, number];
+  style?: string;
 }
 
 export const events: Array<EventInfo> = [
