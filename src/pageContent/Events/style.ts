@@ -1,4 +1,4 @@
-export const EventsWrapper = `flex flex-col py-8 px-12 lg:px-6 space-y-5`;
+export const EventsWrapper = `flex flex-col py-8 lg:py-12 px-12 lg:px-6 space-y-5`;
 
 export const EventSection = (reverse: boolean): string => {
   const flexDirection = reverse ? `flex-row-reverse` : `flex-row`;
