@@ -85,13 +85,14 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           <div className={`flex flex-row justify-between mt-20`}>
             {currPageNum > 1 && (
               <Button
-                onClick={() =>
-                  router.push(
+                onClick={async () => {
+                  await router.push(
                     `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
                       currPageNum - 1
                     }`
-                  )
-                }
+                  );
+                  await contentRef.current.scrollIntoView();
+                }}
                 style={`mr-auto`}
               >
                 Prev
