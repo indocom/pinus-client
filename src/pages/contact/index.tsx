@@ -24,7 +24,7 @@ const ContactUs: NextPage = () => {
               Social Media
             </p>
             <p className={`text-xl lg:text-md text-gray-900 text-center`}>
-              Want to know more? Find us on our social media.
+              Want to know more? Find us on our social media accounts.
             </p>
             <div
               className={`flex flex-row justify-center items-center space-x-5`}
