@@ -34,8 +34,11 @@ export const columns: Column[] = [
   {
     title: "Resources",
     pages: [
-      { title: "Aksara", link: "/" },
-      { title: "Humans of PINUS", link: "/" },
+      { title: "Aksara", link: "https://aksarapinus.wordpress.com/" },
+      {
+        title: "Humans of PINUS",
+        link: "https://www.instagram.com/humansof.pinus/",
+      },
     ],
   },
 ];
