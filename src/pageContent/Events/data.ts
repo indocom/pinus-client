@@ -77,7 +77,15 @@ export const sections: Array<SectionInfo> = [
     data: eventData["pinus-ori"],
     options: {
       flip: false,
-      strips: [],
+      strips: [
+        { color: "yellow", col: [1, 4], row: [1, 4] },
+        {
+          color: "red",
+          col: [1, 12],
+          row: [2, 4],
+          style: `mt-10 lg:mt-5 ml-10 lg:ml-3`,
+        },
+      ],
     },
   },
   {
@@ -85,7 +93,20 @@ export const sections: Array<SectionInfo> = [
     data: eventData["nusantaraku"],
     options: {
       flip: true,
-      strips: [],
+      strips: [
+        {
+          color: "red",
+          col: [1, 12],
+          row: [3, 4],
+          style: `-ml-20 lg:-ml-3`,
+        },
+        {
+          color: "blue",
+          col: [1, 12],
+          row: [2, 4],
+          style: `mt-10 -ml-20 lg:-ml-3`,
+        },
+      ],
     },
   },
   {
@@ -93,7 +114,14 @@ export const sections: Array<SectionInfo> = [
     data: eventData["popi"],
     options: {
       flip: false,
-      strips: [],
+      strips: [
+        {
+          color: "yellow",
+          col: [1, 12],
+          row: [2, 5],
+          style: `mt-5 lg:mt-0 ml-20 lg:ml-3`,
+        },
+      ],
     },
   },
   {
@@ -101,7 +129,14 @@ export const sections: Array<SectionInfo> = [
     data: eventData["mkp"],
     options: {
       flip: false,
-      strips: [],
+      strips: [
+        {
+          color: "red",
+          col: [1, 12],
+          row: [2, 4],
+          style: `mt-10 lg:mt-5 -ml-10 lg:-ml-3`,
+        },
+      ],
     },
   },
   {
@@ -109,7 +144,14 @@ export const sections: Array<SectionInfo> = [
     data: eventData["nuansa"],
     options: {
       flip: true,
-      strips: [],
+      strips: [
+        {
+          color: "blue",
+          col: [1, 12],
+          row: [2, 4],
+          style: `mt-10 lg:mt-5 -ml-20 lg:-ml-5`,
+        },
+      ],
     },
   },
 ];
