@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Button from "src/components/Button";
@@ -20,6 +20,8 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   const router = useRouter();
   const { slug } = router.query;
   const currPageNum = parseInt(slug[slug.length - 1]);
+
+  const contentRef = useRef(null);
 
   const renderNavItems = (navItems, chapter) => {
     return navItems[chapter].map((navItem, index) => {
@@ -71,7 +73,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
       <div
         className={`lg:col-span-6 col-span-4 bg-transparent shadow-inner shadow-4xl`}
       >
-        <div className={`lg:py-20 lg:px-10 p-20`}>
+        <div ref={contentRef} className={`lg:py-20 lg:px-10 p-20`}>
           <Text
             styles={`mb-10`}
             color="gray-300"
@@ -97,13 +99,14 @@ const AdmissionsContent: React.FC<OwnProps> = ({
             )}
             {currPageNum < Object.keys(navItems[chapter]).length && (
               <Button
-                onClick={() =>
-                  router.push(
+                onClick={async () => {
+                  await router.push(
                     `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
                       currPageNum + 1
                     }`
-                  )
-                }
+                  );
+                  await contentRef.current.scrollIntoView();
+                }}
                 style={`ml-auto`}
               >
                 Next
