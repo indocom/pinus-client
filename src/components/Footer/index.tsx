@@ -7,7 +7,7 @@ import { columns } from "./columns";
 const Footer: React.FC = () => {
   return (
     <div
-      className={`flex flex-row lg:flex-wrap justify-between items-start bg-secondary font-sans w-screen h-96 lg:h-full px-24 lg:px-3 py-12 lg:space-y-3`}
+      className={`flex flex-row lg:flex-wrap justify-between items-start bg-secondary font-sans w-screen h-96 lg:h-full px-24 lg:px-6 py-12 lg:space-y-3`}
     >
       {/* Logo and copyright */}
       <div className={`flex flex-col justify-between h-full lg:space-y-3`}>
@@ -15,8 +15,8 @@ const Footer: React.FC = () => {
           <Image
             src="/assets/icons/pinus.png"
             alt="PINUS footer logo"
-            height={70}
-            width={70}
+            height={50}
+            width={50}
           />
           <p className={`text-3xl lg:text-2xl font-bold ml-5`}>PINUS</p>
         </div>
