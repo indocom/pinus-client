@@ -38,7 +38,7 @@ const renderSection = (s: SectionInfo): React.ReactFragment => {
         <p className={S.EventDesc}>{data.description}</p>
       </div>
       <div className={S.ImageStripWrapper}>
-        <div className={`${S.ImageWrapper} ${options.imageStyle}`}>
+        <div className={`${S.ImageWrapper}`}>
           <Image src={data.imageSrc} width={630} height={450} />
         </div>
         <div className={S.StripWrapper}>{options.strips.map(renderStrip)}</div>
