@@ -70,7 +70,7 @@ const HomeContent: React.FC = () => {
           className={`lg:hidden col-start-6 col-span-7 row-start-1 row-span-6`}
         >
           <div
-            className={`mt-6 ml-6 grid grid-cols-7 grid-rows-6 h-full w-full`}
+            className={`pt-6 pl-6 grid grid-cols-7 grid-rows-6 h-full w-full`}
           >
             <div className={`col-span-6 row-span-5 bg-pinus-blue`} />
           </div>

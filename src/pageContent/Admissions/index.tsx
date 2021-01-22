@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Button from "src/components/Button";
@@ -22,6 +22,15 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   const currPageNum = parseInt(slug[slug.length - 1]);
 
   const contentRef = useRef(null);
+  const firstUpdate = useRef(true);
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
+    contentRef.current.scrollIntoView();
+  });
 
   const renderNavItems = (navItems, chapter) => {
     return navItems[chapter].map((navItem, index) => {
@@ -85,13 +94,12 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           <div className={`flex flex-row justify-between mt-20`}>
             {currPageNum > 1 && (
               <Button
-                onClick={async () => {
-                  await router.push(
+                onClick={() => {
+                  router.push(
                     `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
                       currPageNum - 1
                     }`
                   );
-                  await contentRef.current.scrollIntoView();
                 }}
                 style={`mr-auto`}
               >
@@ -100,13 +108,12 @@ const AdmissionsContent: React.FC<OwnProps> = ({
             )}
             {currPageNum < Object.keys(navItems[chapter]).length && (
               <Button
-                onClick={async () => {
-                  await router.push(
+                onClick={() => {
+                  router.push(
                     `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
                       currPageNum + 1
                     }`
                   );
-                  await contentRef.current.scrollIntoView();
                 }}
                 style={`ml-auto`}
               >
