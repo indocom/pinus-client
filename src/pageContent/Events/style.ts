@@ -3,7 +3,7 @@ export const EventsWrapper = `flex flex-col py-8 lg:py-12 px-12 lg:px-6 space-y-
 export const EventSection = (reverse: boolean): string => {
   const flexDirection = reverse ? `flex-row-reverse` : `flex-row`;
 
-  return `h-full w-full flex ${flexDirection} lg:flex-col-reverse justify-around`;
+  return `h-full w-full flex ${flexDirection} lg:flex-col-reverse justify-around items-center`;
 };
 
 export const TextWrapper = `max-w-xl lg:w-full flex flex-col justify-center space-y-5`;

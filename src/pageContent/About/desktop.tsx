@@ -26,7 +26,7 @@ const AboutContent: React.FC = () => {
           </Text>
           <Text styles={`mt-8`}>
             Perhimpunan Indonesia NUS (PINUS) is the NUS Indonesian Students’
-            Association. Founded in 2006, it is of our utmost priority to serve
+            Association. Founded in 1998, it is of our utmost priority to serve
             the Indonesian community in NUS while simultaneously being a bridge
             that connects Indonesia and NUS.
           </Text>
