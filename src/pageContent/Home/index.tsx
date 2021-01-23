@@ -85,7 +85,7 @@ const HomeContent: React.FC = () => {
           to help ease your NUS journey!
         </Text>
       </div>
-      <div className={`flex justify-center bg-pinus-black w-full`}>
+      <div className={`flex justify-center bg-pinus-black w-full mb-48`}>
         <div className={S.FreshmenSection}>
           <div className={`lg:mb-16 flex flex-col items-center`}>
             <Text variant="subheader" color="white">
