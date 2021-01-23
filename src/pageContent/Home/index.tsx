@@ -85,41 +85,43 @@ const HomeContent: React.FC = () => {
           to help ease your NUS journey!
         </Text>
       </div>
-      <div className={S.FreshmenSection}>
-        <div className={`lg:mb-16 flex flex-col items-center`}>
-          <Text variant="subheader" color="white">
-            Before Acceptance
-          </Text>
-          <Text
-            color="white"
-            styles={`lg:mb-12 text-center mt-8 mb-24 max-w-sm h-full`}
-          >
-            Comprises essentials, such as programmes offered and living costs,
-            you have to know before applying to NUS.
-          </Text>
-          <Button
-            variant="secondary"
-            onClick={() => router.push("/admissions/before/01")}
-          >
-            Find Out More
-          </Button>
-        </div>
-        <div className={`flex flex-col items-center`}>
-          <Text variant="subheader" color="white">
-            After Acceptance
-          </Text>
-          <Text
-            color="white"
-            styles={`lg:mb-12 text-center mt-8 mb-24 max-w-sm h-full`}
-          >
-            Comprises the next steps after your acceptance letter.
-          </Text>
-          <Button
-            variant="secondary"
-            onClick={() => router.push("/admissions/after/01")}
-          >
-            Find Out More
-          </Button>
+      <div className={`flex justify-center bg-pinus-black w-full`}>
+        <div className={S.FreshmenSection}>
+          <div className={`lg:mb-16 flex flex-col items-center`}>
+            <Text variant="subheader" color="white">
+              Before Acceptance
+            </Text>
+            <Text
+              color="white"
+              styles={`lg:mb-12 text-center mt-8 mb-24 max-w-sm h-full`}
+            >
+              Comprises essentials, such as programmes offered and living costs,
+              you have to know before applying to NUS.
+            </Text>
+            <Button
+              variant="secondary"
+              onClick={() => router.push("/admissions/before/01")}
+            >
+              Find Out More
+            </Button>
+          </div>
+          <div className={`flex flex-col items-center`}>
+            <Text variant="subheader" color="white">
+              After Acceptance
+            </Text>
+            <Text
+              color="white"
+              styles={`lg:mb-12 text-center mt-8 mb-24 max-w-sm h-full`}
+            >
+              Comprises the next steps after your acceptance letter.
+            </Text>
+            <Button
+              variant="secondary"
+              onClick={() => router.push("/admissions/after/01")}
+            >
+              Find Out More
+            </Button>
+          </div>
         </div>
       </div>
     </>
