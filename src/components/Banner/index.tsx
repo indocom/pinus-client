@@ -23,14 +23,14 @@ const Banner: React.FC<OwnProps> = ({
       className={`
           flex flex-col
           justify-center items-center
-          w-screen h-screen
+          w-full h-screen
           bg-cover bg-no-repeat bg-center bg-${bgImage} 
           font-sans
       `}
     >
       <div
         className={`
-          ${bannerHeight} w-screen bg-black bg-opacity-50
+          ${bannerHeight} w-full bg-black bg-opacity-50
           flex flex-col flex-grow items-center justify-center
           px-2
         `}
@@ -49,7 +49,7 @@ const Banner: React.FC<OwnProps> = ({
         )}
       </div>
       {subBanner && (
-        <div className={`${subBannerHeight} w-screen bg-secondary py-8 px-3`}>
+        <div className={`${subBannerHeight} w-full bg-secondary py-8 px-3`}>
           {description && (
             <p
               className={`text-lg lg:text-md text-center max-w-4xl mx-auto px-3`}
