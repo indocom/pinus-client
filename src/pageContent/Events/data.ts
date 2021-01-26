@@ -28,7 +28,7 @@ const eventData = {
     name: "PINUS Orientation",
     description:
       "Our very own annual freshman orientation programme that welcomes Indonesian \
-      freshmen while providing a platform to foster friendship amongst PINUSians.",
+      freshmen while providing a platform to foster friendships amongst PINUSians.",
     imageSrc: "/assets/images/pinus-ori.jpg",
     url: "/events/pinus-ori",
   },
@@ -36,7 +36,7 @@ const eventData = {
     name: "Nusantaraku",
     description:
       "A closing to PINUS Orientation, a freshmen-led initiative to plan a day's \
-      worth of events that coincides with Indonesia’s Independence Day.",
+      worth of events that coincide with Indonesia’s Independence Day.",
     imageSrc: "/assets/images/nusantaraku.jpg",
     url: "/events/nusantaraku",
   },
@@ -45,7 +45,7 @@ const eventData = {
     description:
       "Pekan Olahraga Pelajar Indonesia (POPI) is an annual student-led sporting \
       event aiming to bring together Indonesian students in Singapore. Hosted by \
-      PINUS, for Indonesian students in Singapore",
+      PINUS, for Indonesian students in Singapore.",
     imageSrc: "/assets/images/popi.jpg",
     url: "/events/popi",
   },
@@ -63,7 +63,7 @@ const eventData = {
     name: "NUANSA",
     description:
       "Through contemporary musical theatre, NUANSA Cultural Productions attempt to \
-      showcase the beauty and diversity of Indonesian cultures. It consistently \
+      showcase the beauty and diversity of Indonesia's cultural heritage. It consistently \
       endeavors to bring the audience through an immersive journey by ensuring the \
       cultural authenticity and artistic integrity of its shows and events.",
     imageSrc: "/assets/images/nuansa-2.jpg",
