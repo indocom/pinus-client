@@ -1,8 +1,9 @@
 import React from "react";
+import { NextPage } from "next";
 import AboutContent from "src/pageContent/About";
 import Page from "src/components/Page";
 
-const About: React.FC = () => {
+const About: NextPage = () => {
   return (
     <Page
       bgImage="about"
