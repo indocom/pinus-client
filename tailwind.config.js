@@ -18,6 +18,7 @@ module.exports = {
       "home-showcase3": "url('/assets/images/home-3.jpg')",
       about: "url('/assets/backgrounds/about.jpg')",
       admissions: "url('/assets/backgrounds/admissions.jpg')",
+      events: "url('/assets/backgrounds/events.jpg')",
       contact: "url('/assets/backgrounds/contact.jpg')",
     }),
     screens: {

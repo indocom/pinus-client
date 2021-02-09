@@ -43,9 +43,11 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
       <nav
         className={`absolute bg-transparent text-white w-full max-w-7xl pt-8`}
       >
-        <div className={`flex flex-row justify-between items-center w-full`}>
+        <div
+          className={`flex flex-row justify-between items-center w-full lg:px-6`}
+        >
           <Link href="/">
-            <a className={`lg:ml-12 flex flex-row items-center`}>
+            <a className={`flex flex-row items-center`}>
               <Image
                 src="/assets/icons/pinus.png"
                 alt="PINUS navbar logo"
@@ -60,7 +62,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
           </div>
           <button
             onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-            className={`lg:mr-12 lg-min:hidden focus:outline-none border-none p-0`}
+            className={`lg-min:hidden focus:outline-none border-none p-0`}
           >
             <Menu size={32} />
           </button>

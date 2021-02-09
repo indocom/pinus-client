@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Button from "src/components/Button";
@@ -20,6 +20,17 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   const router = useRouter();
   const { slug } = router.query;
   const currPageNum = parseInt(slug[slug.length - 1]);
+
+  const contentRef = useRef(null);
+  const firstUpdate = useRef(true);
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
+    contentRef.current.scrollIntoView();
+  });
 
   const renderNavItems = (navItems, chapter) => {
     return navItems[chapter].map((navItem, index) => {
@@ -71,7 +82,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
       <div
         className={`lg:col-span-6 col-span-4 bg-transparent shadow-inner shadow-4xl`}
       >
-        <div className={`lg:py-20 lg:px-10 p-20`}>
+        <div ref={contentRef} className={`lg:py-20 lg:px-10 p-20`}>
           <Text
             styles={`mb-10`}
             color="gray-300"
@@ -83,13 +94,13 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           <div className={`flex flex-row justify-between mt-20`}>
             {currPageNum > 1 && (
               <Button
-                onClick={() =>
+                onClick={() => {
                   router.push(
                     `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
                       currPageNum - 1
                     }`
-                  )
-                }
+                  );
+                }}
                 style={`mr-auto`}
               >
                 Prev
@@ -97,13 +108,13 @@ const AdmissionsContent: React.FC<OwnProps> = ({
             )}
             {currPageNum < Object.keys(navItems[chapter]).length && (
               <Button
-                onClick={() =>
+                onClick={() => {
                   router.push(
                     `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
                       currPageNum + 1
                     }`
-                  )
-                }
+                  );
+                }}
                 style={`ml-auto`}
               >
                 Next
