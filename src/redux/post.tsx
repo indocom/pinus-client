@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { post } from "../api/postType";
+import { Post } from "../api/postType";
 import { State, StatePost } from "./type";
 import {
   createPost,
@@ -24,12 +25,11 @@ const getPostsTime = createAsyncThunk(
         offset: offset,
       },
     };
-
-    const response = await fetchPostsByTime(payload);
-    if (response.status < 300) {
+    try {
+      const response = await fetchPostsByTime(payload);
       return response.data.posts;
-    } else {
-      throw new Error(response.problem);
+    } catch (error) {
+      console.log(error);
     }
   }
 );
@@ -42,45 +42,45 @@ const getPostsById = createAsyncThunk(
         postId: postId,
       },
     };
-    const response = await fetchPostById(payload);
-    if (response.status < 300) {
-      return response.data.posts;
-    } else {
-      throw new Error(response.problem);
+    try {
+      const response = await fetchPostById(payload);
+      return response.data.post;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
 
 const updatePostById = createAsyncThunk(
   "posts/updatePostById",
-  async (post: post) => {
+  async (post: Post) => {
     const payload = {
       payload: {
         post: post,
       },
     };
-    const response = await updatePost(payload);
-    if (response.status < 300) {
-      return response.data.posts;
-    } else {
-      throw new Error(response.problem);
+    try {
+      const response = await updatePost(payload);
+      return response.data.post;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
 
 const createPostSpecific = createAsyncThunk(
   "posts/createPost",
-  async (post: post) => {
+  async (post: Post) => {
     const payload = {
       payload: {
         post: post,
       },
     };
-    const response = await createPost(payload);
-    if (response.status < 300) {
-      return response.data.posts;
-    } else {
-      throw new Error(response.problem);
+    try {
+      const response = await createPost(payload);
+      return response.data.post;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
@@ -93,11 +93,11 @@ const deletePostSpecific = createAsyncThunk(
         postId: postId,
       },
     };
-    const response = await deletePost(payload);
-    if (response.ok) {
-      return response.data.posts;
-    } else {
-      throw new Error(response.problem);
+    try {
+      const response = await deletePost(payload);
+      return response.data.post;
+    } catch (error) {
+      console.log(error);
     }
   }
 );

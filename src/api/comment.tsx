@@ -1,40 +1,27 @@
-import { ApiResponse } from "apisauce";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import api from "./base";
 import {
-  fetchPostCommentsApiPayload,
-  fetchPostCommentsApiResponse,
-  createPostCommentApiResponse,
-  createPostCommentApiPayload,
-  updatePostCommentApiResponse,
-  updatePostCommentApiPayload,
-  deletePostCommentApiResponse,
-  deletePostCommentApiPayload,
+  FetchPostCommentsApiPayload,
+  FetchPostCommentsApiResponse,
+  CreatePostCommentApiResponse,
+  CreatePostCommentApiPayload,
+  UpdatePostCommentApiResponse,
+  UpdatePostCommentApiPayload,
+  DeletePostCommentApiResponse,
+  DeletePostCommentApiPayload,
 } from "./commentType";
 
-/**
- * Fetch all comments based on postId
- */
 const fetchPostComments = ({
   payload,
-}: fetchPostCommentsApiPayload): Promise<
-  ApiResponse<fetchPostCommentsApiResponse>
-> => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}: FetchPostCommentsApiPayload): Promise<FetchPostCommentsApiResponse> => {
   const { postId } = payload;
   return api.get("/api/v1/posts/${postId}/comments?limit=9999");
 };
 
-/**
- * Create a comment for a specific post
- */
 const createPostComment = ({
   payload,
-}: createPostCommentApiPayload): Promise<
-  ApiResponse<createPostCommentApiResponse>
-> => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}: CreatePostCommentApiPayload): Promise<CreatePostCommentApiResponse> => {
   const {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     postId,
     userId,
     description,
@@ -49,15 +36,9 @@ const createPostComment = ({
   });
 };
 
-/**
- * Update a specific comment for a specific post
- */
 const updatePostComment = ({
   payload,
-}: updatePostCommentApiPayload): Promise<
-  ApiResponse<updatePostCommentApiResponse>
-> => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}: UpdatePostCommentApiPayload): Promise<UpdatePostCommentApiResponse> => {
   const { commentId, userId, description, lastUpdatedAt } = payload.comment;
   return api.put("/api/v1/posts/${postId}/comments/${commentId}", {
     userId: userId,
@@ -66,18 +47,13 @@ const updatePostComment = ({
   });
 };
 
-/**
- * Delete a specific comment for a specific post
- */
 const deletePostComment = ({
   payload,
-}: deletePostCommentApiPayload): Promise<
-  ApiResponse<deletePostCommentApiResponse>
-> => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}: DeletePostCommentApiPayload): Promise<DeletePostCommentApiResponse> => {
   const { commentId } = payload;
   return api.delete("/api/v1/posts/${postId}/comments/${commentId}");
 };
+
 export {
   fetchPostComments,
   createPostComment,

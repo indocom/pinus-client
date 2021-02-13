@@ -3,9 +3,8 @@ import { create } from "apisauce";
 const api = create({
   baseURL: "https://",
   headers: {
-    // eslint-disable-next-line prettier/prettier
-    Connection: "keep-alive",
-    "Accept-Language": "en-US,en;q=0.8",
+    Accept: "application/json",
+    "Content-Type": "application/json",
   },
   // 10 seconds timeout
   timeout: 10000,

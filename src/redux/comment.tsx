@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { comment } from "../api/commentType";
+import { Comment } from "../api/commentType";
 import { State, StateComment } from "./type";
 import {
   fetchPostComments,
@@ -23,47 +24,46 @@ const getPostsComments = createAsyncThunk(
       },
     };
 
-    const response = await fetchPostComments(payload);
-    if (response.status < 300) {
+    try {
+      const response = await fetchPostComments(payload);
       return response.data.comments;
-    } else {
-      throw new Error(response.problem);
+    } catch (error) {
+      console.log(error); // may be would better to log them once there is logger
     }
   }
 );
 
 const createPostsComment = createAsyncThunk(
   "comments/createCommentByPostId",
-  async (comment: comment) => {
+  async (comment: Comment) => {
     const payload = {
       payload: {
         comment: comment,
       },
     };
 
-    const response = await createPostComment(payload);
-    if (response.status < 300) {
-      return response.data.comments;
-    } else {
-      throw new Error(response.problem);
+    try {
+      const response = await createPostComment(payload);
+      return response.data.comment;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
 
 const updatePostsComment = createAsyncThunk(
   "comments/updateCommentByPostId",
-  async (comment: comment) => {
+  async (comment: Comment) => {
     const payload = {
       payload: {
         comment: comment,
       },
     };
-
-    const response = await updatePostComment(payload);
-    if (response.status < 300) {
-      return response.data.comments;
-    } else {
-      throw new Error(response.problem);
+    try {
+      const response = await updatePostComment(payload);
+      return response.data.comment;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
@@ -76,12 +76,11 @@ const deletePostsComment = createAsyncThunk(
         commentId: commentId,
       },
     };
-
-    const response = await deletePostComment(payload);
-    if (response.status < 300) {
-      return response.data.comments;
-    } else {
-      throw new Error(response.problem);
+    try {
+      const response = await deletePostComment(payload);
+      return response.data.comment;
+    } catch (error) {
+      console.log(error);
     }
   }
 );

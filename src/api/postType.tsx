@@ -1,5 +1,7 @@
 // can expand using categories
-interface post {
+import { Payload } from "./type";
+import { ApiResponse } from "apisauce";
+export interface Post {
   postId?: number;
   content: string;
   imageURL: string | null;
@@ -8,71 +10,37 @@ interface post {
   lastUpdatedAt: number;
 }
 
-interface fetchPostsApiPayload {
-  payload: {
-    offset: number;
-  };
+interface PostObject {
+  post: Post;
 }
 
-interface fetchPostsApiResponse {
-  posts: post[];
-  message: string;
+interface FetchPosts {
+  offset: number;
 }
 
-interface fetchSpecificPostApiPayload {
-  payload: {
-    postId: number;
-  };
+interface FetchPostsResponse {
+  posts: Post[];
 }
 
-interface fetchSpecificPostApiResponse {
-  posts: post;
-  message: string;
+export type FetchPostsApiPayload = Payload<FetchPosts>;
+export type FetchPostsApiResponse = ApiResponse<FetchPostsResponse>;
+
+interface FetchSpecificPost {
+  postId: number;
 }
 
-interface createPostApiPayload {
-  payload: {
-    post: post;
-  };
+export type FetchSpecificPostApiPayload = Payload<FetchSpecificPost>;
+export type FetchSpecificPostApiResponse = ApiResponse<PostObject>;
+
+export type CreatePostApiPayload = Payload<PostObject>;
+export type CreatePostApiResponse = ApiResponse<PostObject>;
+
+export type UpdatePostApiPayload = Payload<PostObject>;
+export type UpdatePostApiResponse = ApiResponse<PostObject>;
+
+interface DeletePost {
+  postId: number;
 }
 
-interface createPostApiResponse {
-  posts: post;
-  message: string;
-}
-
-interface updatePostApiPayload {
-  payload: {
-    post: post;
-  };
-}
-
-interface updatePostApiResponse {
-  posts: post;
-  message: string;
-}
-
-interface deletePostApiPayload {
-  payload: {
-    postId: number;
-  };
-}
-
-interface deletePostApiResponse {
-  posts?: post;
-  message: string;
-}
-
-export type {
-  fetchPostsApiPayload,
-  fetchPostsApiResponse,
-  fetchSpecificPostApiPayload,
-  fetchSpecificPostApiResponse,
-  createPostApiResponse,
-  createPostApiPayload,
-  updatePostApiResponse,
-  updatePostApiPayload,
-  deletePostApiResponse,
-  deletePostApiPayload,
-  post,
-};
+export type DeletePostApiPayload = Payload<DeletePost>;
+export type DeletePostApiResponse = ApiResponse<PostObject>;

@@ -1,4 +1,6 @@
-interface comment {
+import { Payload } from "./type";
+import { ApiResponse } from "apisauce";
+export interface Comment {
   commentId?: number;
   postId: number;
   userId: string;
@@ -7,58 +9,31 @@ interface comment {
   lastUpdatedAt: number;
 }
 
-interface fetchPostCommentsApiPayload {
-  payload: {
-    postId: number;
-  };
+interface CommentObject {
+  comment: Comment;
 }
 
-interface fetchPostCommentsApiResponse {
-  message: string;
-  comments: comment[];
+interface FetchPostComments {
+  postId: number;
 }
 
-interface createPostCommentApiPayload {
-  payload: {
-    comment: comment;
-  };
+export type FetchPostCommentsApiPayload = Payload<FetchPostComments>;
+
+interface FetchPostCommentsResponse {
+  comments: Comment[];
 }
 
-interface createPostCommentApiResponse {
-  message: string;
-  comments: comment;
+export type FetchPostCommentsApiResponse = ApiResponse<FetchPostCommentsResponse>;
+
+export type CreatePostCommentApiPayload = Payload<CommentObject>;
+export type CreatePostCommentApiResponse = ApiResponse<CommentObject>;
+
+export type UpdatePostCommentApiPayload = Payload<CommentObject>;
+export type UpdatePostCommentApiResponse = ApiResponse<CommentObject>;
+
+interface DeletePostComment {
+  commentId: number;
 }
 
-interface updatePostCommentApiPayload {
-  payload: {
-    comment: comment;
-  };
-}
-
-interface updatePostCommentApiResponse {
-  message: string;
-  comments: comment;
-}
-
-interface deletePostCommentApiPayload {
-  payload: {
-    commentId: number;
-  };
-}
-
-interface deletePostCommentApiResponse {
-  message: string;
-  comments?: comment;
-}
-
-export type {
-  fetchPostCommentsApiPayload,
-  fetchPostCommentsApiResponse,
-  createPostCommentApiResponse,
-  createPostCommentApiPayload,
-  updatePostCommentApiResponse,
-  updatePostCommentApiPayload,
-  deletePostCommentApiResponse,
-  deletePostCommentApiPayload,
-  comment,
-};
+export type DeletePostCommentApiPayload = Payload<DeletePostComment>;
+export type DeletePostCommentApiResponse = ApiResponse<CommentObject>;

@@ -1,45 +1,35 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
-  fetchSpecificPostApiPayload,
-  fetchSpecificPostApiResponse,
-  fetchPostsApiPayload,
-  fetchPostsApiResponse,
-  createPostApiResponse,
-  createPostApiPayload,
-  updatePostApiResponse,
-  updatePostApiPayload,
-  deletePostApiResponse,
-  deletePostApiPayload,
+  FetchSpecificPostApiPayload,
+  FetchSpecificPostApiResponse,
+  FetchPostsApiPayload,
+  FetchPostsApiResponse,
+  CreatePostApiResponse,
+  CreatePostApiPayload,
+  UpdatePostApiResponse,
+  UpdatePostApiPayload,
+  DeletePostApiResponse,
+  DeletePostApiPayload,
 } from "./postType";
-import { ApiResponse } from "apisauce";
 import api from "./base";
 
-/**
- * Fetch posts 10 posts each time based on updated at
- */
 const fetchPostsByTime = ({
   payload,
-}: fetchPostsApiPayload): Promise<ApiResponse<fetchPostsApiResponse>> => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}: FetchPostsApiPayload): Promise<FetchPostsApiResponse> => {
   const { offset } = payload;
   return api.get("api/v1/posts?offset=${offset*10}&limit=10");
 };
 
 const fetchPostById = ({
   payload,
-}: fetchSpecificPostApiPayload): Promise<
-  ApiResponse<fetchSpecificPostApiResponse>
-> => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}: FetchSpecificPostApiPayload): Promise<FetchSpecificPostApiResponse> => {
   const { postId } = payload;
   return api.get("/api/v1/posts/${postId}");
 };
 
-/**
- * Create one individual post
- */
 const createPost = ({
   payload,
-}: createPostApiPayload): Promise<ApiResponse<createPostApiResponse>> => {
+}: CreatePostApiPayload): Promise<CreatePostApiResponse> => {
   const { userId, content, imageURL, postedAt, lastUpdatedAt } = payload.post;
   return api.post("/api/v1/posts", {
     userId: userId,
@@ -50,13 +40,9 @@ const createPost = ({
   });
 };
 
-/**
- * Update one individual post
- */
 const updatePost = ({
   payload,
-}: updatePostApiPayload): Promise<ApiResponse<updatePostApiResponse>> => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}: UpdatePostApiPayload): Promise<UpdatePostApiResponse> => {
   const { userId, postId, content, imageURL, lastUpdatedAt } = payload.post;
   return api.put("/api/v1/posts/${postId}", {
     userId: userId,
@@ -66,13 +52,9 @@ const updatePost = ({
   });
 };
 
-/**
- * Delete one individual post
- */
 const deletePost = ({
   payload,
-}: deletePostApiPayload): Promise<ApiResponse<deletePostApiResponse>> => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+}: DeletePostApiPayload): Promise<DeletePostApiResponse> => {
   const { postId } = payload;
   return api.delete("/api/v1/posts/${postId}");
 };
