@@ -1,5 +1,5 @@
-import { post } from "../api/postType";
-import { comment } from "../api/commentType";
+import { Post } from "../api/postType";
+import { Comment } from "../api/commentType";
 
 interface State {
   posts: StatePost;
@@ -9,13 +9,13 @@ interface State {
 interface StatePost {
   loading: boolean;
   hasErrors: boolean;
-  posts: post[];
+  posts: Post[];
 }
 
 interface StateComment {
   loading: boolean;
   hasErrors: boolean;
-  comments: comment[];
+  comments: Comment[];
 }
 
 export type { State, StatePost, StateComment };

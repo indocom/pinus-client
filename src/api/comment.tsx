@@ -15,7 +15,7 @@ const fetchPostComments = ({
   payload,
 }: FetchPostCommentsApiPayload): Promise<FetchPostCommentsApiResponse> => {
   const { postId } = payload;
-  return api.get("/api/v1/posts/${postId}/comments?limit=9999");
+  return api.get(`/api/v1/posts/${postId}/comments?limit=9999`);
 };
 
 const createPostComment = ({
@@ -28,7 +28,7 @@ const createPostComment = ({
     postedAt,
     lastUpdatedAt,
   } = payload.comment;
-  return api.post("/api/v1/posts/${postId}/comments", {
+  return api.post(`/api/v1/posts/${postId}/comments`, {
     userId: userId,
     description: description,
     postedAt: postedAt,
@@ -40,7 +40,7 @@ const updatePostComment = ({
   payload,
 }: UpdatePostCommentApiPayload): Promise<UpdatePostCommentApiResponse> => {
   const { commentId, userId, description, lastUpdatedAt } = payload.comment;
-  return api.put("/api/v1/posts/${postId}/comments/${commentId}", {
+  return api.put(`/api/v1/posts/${postId}/comments/${commentId}`, {
     userId: userId,
     description: description,
     lastUpdatedAt: lastUpdatedAt,
@@ -51,7 +51,7 @@ const deletePostComment = ({
   payload,
 }: DeletePostCommentApiPayload): Promise<DeletePostCommentApiResponse> => {
   const { commentId } = payload;
-  return api.delete("/api/v1/posts/${postId}/comments/${commentId}");
+  return api.delete(`/api/v1/posts/${postId}/comments/${commentId}`);
 };
 
 export {
