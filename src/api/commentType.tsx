@@ -28,11 +28,11 @@ export type FetchPostCommentsApiResponse = ApiResponse<FetchPostCommentsResponse
 export type CreatePostCommentApiPayload = Payload<CommentObject>;
 export type CreatePostCommentApiResponse = ApiResponse<CommentObject>;
 
-interface UpdatePostComment extends Payload<CommentObject> {
+interface UpdatePostComment extends CommentObject {
   postId: number;
 }
 
-export type UpdatePostCommentApiPayload = UpdatePostComment;
+export type UpdatePostCommentApiPayload = Payload<UpdatePostComment>;
 export type UpdatePostCommentApiResponse = ApiResponse<CommentObject>;
 
 interface DeletePostComment {

@@ -35,11 +35,9 @@ const getPostsComments = createAsyncThunk(
 
 const createPostsComment = createAsyncThunk(
   "comments/createCommentByPostId",
-  async (comment: Comment) => {
+  async (data: { comment: Comment; postId: number }) => {
     const payload = {
-      payload: {
-        comment: comment,
-      },
+      payload: data,
     };
 
     try {
@@ -53,11 +51,9 @@ const createPostsComment = createAsyncThunk(
 
 const updatePostsComment = createAsyncThunk(
   "comments/updateCommentByPostId",
-  async (comment: Comment) => {
+  async (data: { comment: Comment; postId: number }) => {
     const payload = {
-      payload: {
-        comment: comment,
-      },
+      payload: data,
     };
     try {
       const response = await updatePostComment(payload);
@@ -70,11 +66,9 @@ const updatePostsComment = createAsyncThunk(
 
 const deletePostsComment = createAsyncThunk(
   "comments/createCommentByPostId",
-  async (commentId: number) => {
+  async (data: { commentId: number; postId: number }) => {
     const payload = {
-      payload: {
-        commentId: commentId,
-      },
+      payload: data,
     };
     try {
       const response = await deletePostComment(payload);
