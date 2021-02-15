@@ -6,8 +6,8 @@ export interface Post {
   content: string;
   imageURL: string | null;
   userId: string;
-  postedAt: number;
-  lastUpdatedAt: number;
+  postedAt?: number;
+  lastUpdatedAt?: number;
 }
 
 interface PostObject {

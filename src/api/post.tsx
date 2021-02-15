@@ -30,25 +30,22 @@ const fetchPostById = ({
 const createPost = ({
   payload,
 }: CreatePostApiPayload): Promise<CreatePostApiResponse> => {
-  const { userId, content, imageURL, postedAt, lastUpdatedAt } = payload.post;
+  const { userId, content, imageURL } = payload.post;
   return api.post(`/api/v1/posts`, {
     userId: userId,
     content: content,
     imageURL: imageURL,
-    postedAt: postedAt,
-    lastUpdatedAt: lastUpdatedAt,
   });
 };
 
 const updatePost = ({
   payload,
 }: UpdatePostApiPayload): Promise<UpdatePostApiResponse> => {
-  const { userId, postId, content, imageURL, lastUpdatedAt } = payload.post;
+  const { userId, postId, content, imageURL } = payload.post;
   return api.put(`/api/v1/posts/${postId}`, {
     userId: userId,
     content: content,
     imageURL: imageURL,
-    lastUpdatedAt: lastUpdatedAt,
   });
 };
 

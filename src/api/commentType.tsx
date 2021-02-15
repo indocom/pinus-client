@@ -5,8 +5,8 @@ export interface Comment {
   postId: number;
   userId: string;
   description: string;
-  postedAt: number;
-  lastUpdatedAt: number;
+  postedAt?: number;
+  lastUpdatedAt?: number;
 }
 
 interface CommentObject {
@@ -28,11 +28,16 @@ export type FetchPostCommentsApiResponse = ApiResponse<FetchPostCommentsResponse
 export type CreatePostCommentApiPayload = Payload<CommentObject>;
 export type CreatePostCommentApiResponse = ApiResponse<CommentObject>;
 
-export type UpdatePostCommentApiPayload = Payload<CommentObject>;
-export type UpdatePostCommentApiResponse = ApiResponse<CommentObject>;
+interface UpdatePostComment extends Payload<CommentObject> {
+  postId: number;
+}
+
+export type UpdatePostCommentApiPayload = UpdatePostComment;
+export type UpdatePostCommentApiResponse = ApiResponse<UpdatePostComment>;
 
 interface DeletePostComment {
   commentId: number;
+  postId: number;
 }
 
 export type DeletePostCommentApiPayload = Payload<DeletePostComment>;

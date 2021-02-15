@@ -21,36 +21,27 @@ const fetchPostComments = ({
 const createPostComment = ({
   payload,
 }: CreatePostCommentApiPayload): Promise<CreatePostCommentApiResponse> => {
-  const {
-    postId,
-    userId,
-    description,
-    postedAt,
-    lastUpdatedAt,
-  } = payload.comment;
+  const { postId, userId, description } = payload.comment;
   return api.post(`/api/v1/posts/${postId}/comments`, {
     userId: userId,
     description: description,
-    postedAt: postedAt,
-    lastUpdatedAt: lastUpdatedAt,
   });
 };
 
 const updatePostComment = ({
   payload,
 }: UpdatePostCommentApiPayload): Promise<UpdatePostCommentApiResponse> => {
-  const { commentId, userId, description, lastUpdatedAt } = payload.comment;
+  const { postId, commentId, userId, description } = payload.comment;
   return api.put(`/api/v1/posts/${postId}/comments/${commentId}`, {
     userId: userId,
     description: description,
-    lastUpdatedAt: lastUpdatedAt,
   });
 };
 
 const deletePostComment = ({
   payload,
 }: DeletePostCommentApiPayload): Promise<DeletePostCommentApiResponse> => {
-  const { commentId } = payload;
+  const { postId, commentId } = payload;
   return api.delete(`/api/v1/posts/${postId}/comments/${commentId}`);
 };
 
