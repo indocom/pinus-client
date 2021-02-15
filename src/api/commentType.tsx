@@ -5,7 +5,7 @@ export interface Comment {
   postId: number;
   userId: string;
   description: string;
-  postedAt: number;
+  postedAt?: number;
   lastUpdatedAt?: number;
 }
 
