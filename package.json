@@ -35,7 +35,7 @@
     "@storybook/react": "^6.1.17",
     "@storybook/addon-knobs": "^6.1.17",
     "@svgr/webpack": "^5.5.0",
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.15.0",
     "autoprefixer": "^9.8.6",
     "awesome-typescript-loader": "^5.2.1",
