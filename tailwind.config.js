@@ -3,14 +3,6 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   purge: false,
   theme: {
-    backgroundColor: (theme) => ({
-      ...theme("colors"),
-      "pinus-red": "#FF3B3A",
-      "pinus-blue": "#202F6E",
-      "pinus-yellow": "#EFB61F",
-      "pinus-black": "#161616",
-      secondary: "#EDEDED",
-    }),
     backgroundImage: () => ({
       home: "url('/assets/backgrounds/home.jpg')",
       "home-showcase1": "url('/assets/images/home-1.jpg')",
@@ -34,13 +26,25 @@ module.exports = {
       "2xl-min": { min: "1537px" },
     },
     extend: {
+      colors: {
+        "pinus-red": "#FF3B3A",
+        "pinus-blue": "#202F6E",
+        "pinus-yellow": "#EFB61F",
+        "pinus-black": "#161616",
+        "grey-primary": "#EDEDED",
+        "grey-secondary": "#E1E4E8",
+        "grey-tertiary": "#F6F8FA",
+      },
       height: () => ({
         "screen-75": "75vh",
       }),
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ["disabled"],
+      cursor: ["disabled"],
+    },
   },
   plugins: [],
 };

@@ -1,10 +1,21 @@
 import App from "next/app";
-import React from "react";
 import "tailwindcss/tailwind.css";
-import { Provider } from "react-redux";
 
+import { Provider } from "react-redux";
 import store from "../redux/configureStore";
 import { createWrapper } from "next-redux-wrapper";
+
+import { initFirebase } from "src/firebase";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+import EnsureAuthLoaded from "src/components/Auth/EnsureAuthLoaded";
+
+const onProduction = process.env.NODE_ENV === "production";
+
+const rrfProps = {
+  firebase: initFirebase(onProduction),
+  config: {},
+  dispatch: store.dispatch,
+};
 
 interface AppProps {
   Component;
@@ -12,12 +23,17 @@ interface AppProps {
 }
 
 // default component from Next JS
-class MyApp extends App {
+class ClientApp extends App {
   render() {
     const { Component, pageProps }: AppProps = this.props;
+
     return (
       <Provider store={store}>
-        <Component {...pageProps} />
+        <ReactReduxFirebaseProvider {...rrfProps}>
+          <EnsureAuthLoaded>
+            <Component {...pageProps} />
+          </EnsureAuthLoaded>
+        </ReactReduxFirebaseProvider>
       </Provider>
     );
   }
@@ -26,4 +42,4 @@ class MyApp extends App {
 const makeStore = () => store;
 const wrapper = createWrapper(makeStore);
 
-export default wrapper.withRedux(MyApp);
+export default wrapper.withRedux(ClientApp);

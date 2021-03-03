@@ -7,7 +7,7 @@ import { columns } from "./columns";
 const Footer: React.FC = () => {
   return (
     <div
-      className={`flex flex-row lg:flex-wrap justify-between items-start bg-secondary font-sans w-full h-96 lg:h-full px-24 lg:px-6 py-12 lg:space-y-3`}
+      className={`flex flex-row lg:flex-wrap justify-between items-start bg-grey-primary font-sans w-full h-96 lg:h-full px-24 lg:px-6 py-12 lg:space-y-3`}
     >
       {/* Logo and copyright */}
       <div className={`flex flex-col justify-between h-full lg:space-y-3`}>
