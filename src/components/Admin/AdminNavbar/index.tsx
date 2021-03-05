@@ -18,6 +18,10 @@ const AdminNavbar: React.FC<Props> = ({ auth }) => {
     router.push("/");
   };
 
+  const name = auth.displayName
+    ? `${auth.displayName} (${auth.email})`
+    : auth.email;
+
   return (
     <div className={`bg-grey-primary py-4 border-b-2 border-gray-300`}>
       <nav className={`px-4 flex justify-between`}>
@@ -36,7 +40,7 @@ const AdminNavbar: React.FC<Props> = ({ auth }) => {
             </a>
           </Link>
           <div className={`h-full w-0 border-l-2 border-gray-600`}></div>
-          <p>Logged in as {auth.displayName}</p>
+          <p>Logged in as {name}</p>
         </div>
         <div>
           <button
