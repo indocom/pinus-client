@@ -33,7 +33,7 @@
     "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.13",
+    "@babel/core": "^7.13.10",
     "@storybook/react": "^6.1.17",
     "@storybook/addon-knobs": "^6.1.17",
     "@svgr/webpack": "^5.5.0",
