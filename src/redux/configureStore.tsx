@@ -1,8 +1,18 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import { actionTypes } from "react-redux-firebase";
 import rootReducer from "./rootReducer";
 
-const middleware = [...getDefaultMiddleware(), logger];
+const defaultMiddlewareOptions = {
+  serializableCheck: {
+    ignoredActions: [
+      ...Object.keys(actionTypes).map((type) => `@@reactReduxFirebase/${type}`),
+    ],
+    ignoredPaths: ["firebase"],
+  },
+};
+
+const middleware = [...getDefaultMiddleware(defaultMiddlewareOptions), logger];
 
 const store = configureStore({
   reducer: rootReducer,
