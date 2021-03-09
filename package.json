@@ -15,16 +15,18 @@
     "@reduxjs/toolkit": "^1.5.0",
     "apisauce": "^2.0.1",
     "axios": "^0.21.1",
+    "firebase": "^8.2.9",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "logger": "0.0.1",
-    "next": "^10.0.6",
+    "next": "^10.0.8",
     "next-redux-wrapper": "^6.0.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-feather": "^2.0.9",
     "react-markdown": "^5.0.3",
     "react-redux": "^7.2.2",
+    "react-redux-firebase": "^3.10.0",
     "react-responsive-carousel": "^3.2.11",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
@@ -35,8 +37,8 @@
     "@storybook/react": "^6.1.21",
     "@storybook/addon-knobs": "^6.1.17",
     "@svgr/webpack": "^5.5.0",
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/parser": "^4.15.0",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
     "autoprefixer": "^9.8.6",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.2.2",
@@ -51,6 +53,6 @@
     "react-is": "^17.0.1",
     "storybook-addon-jsx": "^7.3.6",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
-    "typescript": "^4.1.4"
+    "typescript": "^4.2.3"
   }
 }
