@@ -40,15 +40,17 @@ npm install -g firebase-tools
 ```
 
 Then, on another terminal (aside from the one that runs `npm run dev`),
-run this command from the root directory:
+navigate to the project folder again and run this command:
 
 ```bash
-firebase emulators:start
+npm run firebase:dev
 ```
 
-Open the Authentication hub at [http://localhost:4000/auth](http://localhost:4000/auth)
-and create users as you wish. The minimum fields that you need to fill in are the "Display Name",
-"Email", and "Password".
+This runs the Firebase Emulator and seeds it with three accounts: admin, creator, and member.
+
+You can check the credentials for each at [http://localhost:4000/auth](http://localhost:4000/auth).
+That page can also create new users if you want to test with custom accounts.
+The minimum fields that you need to fill in are the "Display Name", "Email", and "Password".
 
 ## Available Scripts
 
