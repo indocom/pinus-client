@@ -20,6 +20,7 @@ module.exports = {
       admissions: "url('/assets/backgrounds/admissions.jpg')",
       events: "url('/assets/backgrounds/events.jpg')",
       contact: "url('/assets/backgrounds/contact.jpg')",
+      aksaraBox: "url('/assets/backgrounds/aksaraBox.png')",
     }),
     screens: {
       sm: { max: "640px" },
@@ -37,6 +38,20 @@ module.exports = {
       height: () => ({
         "screen-75": "75vh",
       }),
+      width: {
+        "1/7": "14.2857143%",
+        "2/7": "28.5714286%",
+        "3/7": "42.8571429%",
+        "4/7": "57.1428571%",
+        "5/7": "71.4285714%",
+        "6/7": "85.7142857%",
+        "7/8": "87.5%",
+        "8/9": "88.89%",
+        "9/10": "90.0%",
+        "10/11": "90.91%",
+        "11/12": "91.7%",
+        ab: "80.0%",
+      },
     },
   },
   variants: {

@@ -15,6 +15,9 @@ const textStyles = {
   body: { size: "xl", weight: "normal" },
   "body-small": { size: "lg", weight: "normal" },
   subtext: { size: "base", weight: "normal" },
+  aksaraHeader: { size: "3xl", weight: "normal" },
+  aksaraSubheader: { size: "m", weight: "normal" },
+  aksaraText: { size: "base", weight: "normal"},
 };
 
 const Text: React.FC<OwnProps> = ({

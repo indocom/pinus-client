@@ -11,6 +11,7 @@ interface OwnProps {
   description: string;
   bgImage?: string;
   subBanner?: boolean;
+  aksara?: boolean;
   renderSubcontent?: () => React.ReactNode;
   children: React.ReactNode;
   router: Router;
@@ -21,6 +22,7 @@ const Page: React.FC<OwnProps> = ({
   description,
   bgImage,
   subBanner,
+  aksara = false,
   renderSubcontent,
   children,
   router,
@@ -51,14 +53,16 @@ const Page: React.FC<OwnProps> = ({
         />
         <title>{`${title} | PINUS`}</title>
       </Head>
-      <Navbar pathname={router.pathname} />
-      <Banner
-        title={title}
-        description={description}
-        bgImage={bgImage}
-        subBanner={subBanner}
-        renderSubcontent={renderSubcontent}
-      />
+      <Navbar pathname={router.pathname} aksara={aksara} />
+      {!aksara ? (
+        <Banner
+          title={title}
+          description={description}
+          bgImage={bgImage}
+          subBanner={subBanner}
+          renderSubcontent={renderSubcontent}
+        />
+      ) : null}
       <div className={`min-h-screen w-full`}>{children}</div>
       <Footer />
     </>

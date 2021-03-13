@@ -5,14 +5,16 @@ import { Menu } from "react-feather";
 
 interface OwnProps {
   pathname: string;
+  aksara?: boolean;
 }
 
-const Navbar: React.FC<OwnProps> = ({ pathname }) => {
+const Navbar: React.FC<OwnProps> = ({ pathname, aksara = false }) => {
   const pages = [
     { title: "About", slug: "about" },
     { title: "Admissions", slug: "admissions" },
     { title: "Events", slug: "events" },
     { title: "Contact Us", slug: "contact" },
+    { title: "Aksara", slug: "aksara" },
   ];
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -28,8 +30,11 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
             text-${
               currentPage.length > 1 && currentPage[1] === slug
                 ? "red-600"
+                : aksara
+                ? "black"
                 : "white"
             }
+            z-10
           `}
         >
           {title}
@@ -41,7 +46,9 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
   return (
     <div className={`flex flex-col items-center`}>
       <nav
-        className={`absolute bg-transparent text-white w-full max-w-7xl pt-8`}
+        className={`absolute bg-transparent text-${
+          aksara ? "black" : "white"
+        } w-full max-w-7xl pt-8`}
       >
         <div
           className={`flex flex-row justify-between items-center w-full lg:px-6`}
