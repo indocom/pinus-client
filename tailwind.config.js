@@ -4,12 +4,12 @@ module.exports = {
   purge: false,
   theme: {
     minWidth: {
-      '0': '0',
-      '1/4': '25%',
-      '1/2': '50%',
-      '3/4': '75%',
-      'full': '100%',
-     },
+      0: "0",
+      "1/4": "25%",
+      "1/2": "50%",
+      "3/4": "75%",
+      full: "100%",
+    },
     backgroundColor: (theme) => ({
       ...theme("colors"),
       "pinus-red": "#FF3B3A",
@@ -69,7 +69,7 @@ module.exports = {
         ab: "80.0%",
       },
       zIndex: {
-        '-10' : '-10',
+        "-10": "-10",
       },
     },
   },
