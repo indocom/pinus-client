@@ -3,69 +3,61 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "react-feather";
 
+import { NavLink, navLinks } from "./links";
+
 interface OwnProps {
 	pathname: string;
 }
 
+export function renderNavLink(
+	link: NavLink,
+	pathname: string
+): React.ReactFragment {
+	const { title, slug } = link;
+	const pagePaths = pathname.split("/");
+	const isAksara = pagePaths[1] === "aksara";
+	const isHere = pagePaths.length > 1 && pagePaths[1] === slug;
+
+	const hlColor = "red-600";
+	const textColor = isHere ? hlColor : isAksara ? "black" : "white";
+
+	const mobileStyle = `lg:my-3 lg:text-lg`;
+	const linkStyle = `text-center transition-colors text-${textColor} hover:text-${hlColor} ${mobileStyle}`;
+
+	return (
+		<Link href={`/${slug}`} key={`navbar-${slug}`}>
+			<a className={linkStyle}>{title}</a>
+		</Link>
+	);
+}
+
 const Navbar: React.FC<OwnProps> = ({ pathname }) => {
-	const pages = [
-		{ title: "About", slug: "about" },
-		{ title: "Admissions", slug: "admissions" },
-		{ title: "Events", slug: "events" },
-		{ title: "Contact Us", slug: "contact" },
-		{ title: "Aksara", slug: "aksara" },
-	];
-
-	const isAksara = pathname === "/aksara" ? true : false;
-
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-	const renderNavLink = ({ title, slug, pathname }) => {
-		const currentPage = pathname.split("/");
-		return (
-			<Link href={`/${slug}`} key={`navbar-${slug}`}>
-				<a
-					className={`
-            lg:my-3
-            lg:text-lg
-            text-${
-							currentPage.length > 1 && currentPage[1] === slug
-								? "red-600"
-								: isAksara
-								? "black"
-								: "white"
-						}
-          `}
-				>
-					{title}
-				</a>
-			</Link>
-		);
-	};
+	const isAksara = pathname === "/aksara";
 
 	return (
 		<div className={`flex flex-col items-center`}>
 			<nav
-				className={`absolute bg-transparent text-${
+				className={`absolute w-full max-w-7xl bg-transparent text-${
 					isAksara ? "black" : "white"
-				} w-full max-w-7xl pt-8`}
+				} p-6`}
 			>
-				<div
-					className={`flex flex-row justify-between items-center w-full lg:px-6`}
-				>
+				<div className={`w-full flex flex-row justify-between items-center`}>
 					<Link href="/">
-						<a className={`flex flex-row items-center`}>
+						<a className={`flex flex-row items-center space-x-4`}>
 							<Image
 								src="/assets/icons/pinus.png"
 								alt="PINUS navbar logo"
 								height={48}
 								width={48}
 							/>
-							<p className={`lg:hidden font-bold text-2xl ml-4`}>PINUS</p>
+							<p className={`font-bold text-2xl lg:hidden`}>PINUS</p>
 						</a>
 					</Link>
-					<div className={`lg:hidden flex flex-row justify-between w-2/5`}>
-						{pages.map((page) => renderNavLink({ ...page, pathname }))}
+					<div
+						className={`lg:hidden flex flex-row items-center justify-between space-x-5 w-2/5`}
+					>
+						{navLinks.map((link) => renderNavLink(link, pathname))}
 					</div>
 					<button
 						onClick={() => setIsDrawerOpen(!isDrawerOpen)}
@@ -76,14 +68,9 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
 				</div>
 				{isDrawerOpen && (
 					<div
-						className={`
-              absolute w-screen win-h-content mt-6
-              flex flex-col items-center
-              bg-${isAksara ? "white" : "black"}
-              py-3
-          `}
+						className={`absolute w-screen min-h-content py-3 mt-6 flex flex-col items-center bg-black`}
 					>
-						{pages.map((page) => renderNavLink({ ...page, pathname }))}
+						{navLinks.map((link) => renderNavLink(link, pathname))}
 					</div>
 				)}
 			</nav>

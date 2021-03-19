@@ -42,6 +42,15 @@ module.exports = {
       "2xl-min": { min: "1537px" },
     },
     extend: {
+      colors: {
+        "pinus-red": "#FF3B3A",
+        "pinus-blue": "#202F6E",
+        "pinus-yellow": "#EFB61F",
+        "pinus-black": "#161616",
+        "grey-primary": "#EDEDED",
+        "grey-secondary": "#E1E4E8",
+        "grey-tertiary": "#F6F8FA",
+      },
       height: () => ({
         "screen-75": "75vh",
       }),
@@ -65,7 +74,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ["disabled"],
+      cursor: ["disabled"],
+    },
   },
   plugins: [],
 };
