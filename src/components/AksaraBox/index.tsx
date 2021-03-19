@@ -10,7 +10,7 @@ interface OwnProps {
 }
 
 const AksaraBox: React.FC<OwnProps> = ({
-	bgImage = "gradient-to-r from-gray-800 to-gray-400",
+	bgImage = "/assets/aksaraImages/aksara-newspaper.png",
 	title,
 	description,
 	hyperlink = "https://aksarapinus.wordpress.com/",
@@ -23,7 +23,7 @@ const AksaraBox: React.FC<OwnProps> = ({
 				<div className={`max-w-sm lg-min:max-w-lg`}>
 					<Image
 						alt="Some Image"
-						src="/assets/aksaraImages/aksara-newspaper.png"
+						src={bgImage}
 						layout="responsive"
 						width="25"
 						height="15"
