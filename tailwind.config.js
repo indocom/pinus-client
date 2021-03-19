@@ -3,6 +3,13 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   purge: false,
   theme: {
+    minWidth: {
+      '0': '0',
+      '1/4': '25%',
+      '1/2': '50%',
+      '3/4': '75%',
+      'full': '100%',
+     },
     backgroundColor: (theme) => ({
       ...theme("colors"),
       "pinus-red": "#FF3B3A",
@@ -51,6 +58,9 @@ module.exports = {
         "10/11": "90.91%",
         "11/12": "91.7%",
         ab: "80.0%",
+      },
+      zIndex: {
+        '-10' : '-10',
       },
     },
   },
