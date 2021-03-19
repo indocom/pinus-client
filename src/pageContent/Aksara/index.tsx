@@ -108,7 +108,7 @@ const AksaraContent: React.FC = () => {
 								<div className={`text-xl lg-min:text-3xl`}>&nbsp;to</div>
 							</div>
 							<div
-								className={`border-b-2 border-black lg-min:ml-24 lg-min:text-6xl font-extrabold`}
+								className={`border-b-2 border-black text-4xl lg-min:ml-24 lg-min:text-6xl font-extrabold`}
 							>
 								[ak.sa.ra]
 							</div>
