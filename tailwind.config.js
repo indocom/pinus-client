@@ -17,6 +17,7 @@ module.exports = {
       "pinus-yellow": "#EFB61F",
       "pinus-black": "#161616",
       secondary: "#EDEDED",
+      "aksara-comment": "#DFD2C0",
     }),
     backgroundImage: () => ({
       home: "url('/assets/backgrounds/home.jpg')",
@@ -28,6 +29,7 @@ module.exports = {
       events: "url('/assets/backgrounds/events.jpg')",
       contact: "url('/assets/backgrounds/contact.jpg')",
       aksaraBox: "url('/assets/backgrounds/aksaraBox.png')",
+      aksaraServe: "url('/assets/backgrounds/aksaraServe.png')"
     }),
     screens: {
       sm: { max: "640px" },
