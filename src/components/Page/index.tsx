@@ -28,10 +28,7 @@ const Page: React.FC<OwnProps> = ({
   renderSubcontent,
   children,
   router,
-<<<<<<< HEAD
   unrenderBanner,
-=======
->>>>>>> a230c3e3ce2f64718e8dad1d3e580c4e3de08ba8
 }) => {
   return (
     <>
