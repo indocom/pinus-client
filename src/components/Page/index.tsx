@@ -14,7 +14,7 @@ interface OwnProps {
   renderSubcontent?: () => React.ReactNode;
   children: React.ReactNode;
   router: Router;
-  unrenderBanner?: boolean;
+  renderBanner?: boolean;
 }
 
 const Page: React.FC<OwnProps> = ({
@@ -25,7 +25,7 @@ const Page: React.FC<OwnProps> = ({
   renderSubcontent,
   children,
   router,
-  unrenderBanner,
+  renderBanner = true,
 }) => {
   return (
     <>
@@ -54,7 +54,7 @@ const Page: React.FC<OwnProps> = ({
         <title>{`${title} | PINUS`}</title>
       </Head>
       <Navbar pathname={router.pathname} />
-      {unrenderBanner ? null : (
+      {renderBanner ? (
         <Banner
           title={title}
           description={description}
@@ -62,7 +62,7 @@ const Page: React.FC<OwnProps> = ({
           subBanner={subBanner}
           renderSubcontent={renderSubcontent}
         />
-      )}
+      ) : null}
       <div className={`min-h-screen w-full`}>{children}</div>
       <Footer />
     </>

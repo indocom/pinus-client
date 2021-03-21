@@ -19,32 +19,38 @@ const AksaraContent: React.FC = () => {
   });
 
   const titles = ["Manusia", "Opini", "Modulus"];
-  const headerContent = {
-    Manusia:
+  const headerContent = [
+    [
+      "Manusia",
       "A collection of stories from Indonesian students in NUS of how life in Singapore can transform the ideas of identity, community, and nationality among Indonesians.",
-    Opini:
+    ],
+    [
+      "Opini",
       "A constructive platform where one’s interests, concerns, and perceptions of the ever-evolving world could be conveyed and shared freely through writings.",
-    Modulus:
+    ],
+    [
+      "Modulus",
       "A module review platform which allows fellow Indonesians to share and obtain more personal and candid module reviews.",
-  };
+    ],
+  ];
 
-  const renderHeader = (title) => {
+  const renderHeader = () => {
     return (
       <div
-        className={`bg-aksaraBox bg-no-repeat flex flex-col justify-center p-5 mt-4 break-words lg-min:h-96 lg-min:max-w-lg xl-min:max-w-lg lg-min:w-72 xl-min:w-full`}
-        key={`header-${title}`}
+        className={`flex flex-col lg-min:flex-row lg-min:justify-between lg-min:max-w-screen-lg`}
       >
-        <div className={`m-2 text-xl lg-min:text-4xl`}>
-          <div className={`flex justify-center lg-min:hidden`}>
-            <Text variant="subtext-alt">{title}</Text>
-          </div>
-          <div className={`hidden lg-min:flex`}>
-            <Text variant="header-alt">{title}</Text>
-          </div>
-        </div>
-        <div className={`m-2 max-w-lg xl-min:w-96`}>
-          <div className={`w-full lg-min:w-9/10`}>{headerContent[title]}</div>
-        </div>
+        {headerContent.map((item) => {
+          return (
+            <div className={`mt-10 lg-min:m-8 `} key={`header-${item[0]}`}>
+              <ContentPreview
+                title={item[0]}
+                description={item[1]}
+                hyperlink="https://aksarapinus.wordpress.com/"
+                variant="secondary"
+              ></ContentPreview>
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -75,7 +81,7 @@ const AksaraContent: React.FC = () => {
           </div>
         </div>
         <div
-          className={`flex flex-col justify-evenly flex-wrap lg-min:flex-row lg-min:justify-between lg-min:max-w-screen-lg`}
+          className={`flex flex-col lg-min:flex-row lg-min:justify-between lg-min:max-w-screen-lg`}
         >
           {array.map((item) => {
             return (
@@ -222,11 +228,15 @@ const AksaraContent: React.FC = () => {
             height="50"
           ></Image>
         </div>
-        <div className={S.FixedHeader}>
-          {titles.map((title) => renderHeader(title))}
-        </div>
-        <div className={S.HeaderSection + "-mb-24"}>
-          {titles.map((title) => renderSection(title))}
+        <div
+          className={`flex flex-col justify-center align-center mt-12 mb-12`}
+        >
+          <div className={`flex flex-col justify-center 2xl-min:flex-row`}>
+            {renderHeader()}
+          </div>
+          <div className={`flex flex-col`}>
+            {titles.map((title) => renderSection(title))}
+          </div>
         </div>
       </div>
     </>

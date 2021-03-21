@@ -18,6 +18,10 @@ const postsInitialState = {
   OpiniPosts: Posts,
   ManusiaPosts: Posts,
   ModulusPosts: Posts,
+  posts: [],
+  //TODO: should combine all the posts into one
+  // each post should have a label !
+  // then can use filter afterwards
 };
 
 // error handling can be done in dispatch
@@ -114,6 +118,7 @@ const postsSlice = createSlice({
     loadPosts: (state, { payload }: PayloadAction<{ section: string }>) => {
       state.loading = true;
       try {
+        //TODO : should use filter instead
         switch (payload.section) {
           case "Manusia":
             Addition.forEach((item) => state.ManusiaPosts.push(item));
@@ -140,7 +145,7 @@ const postsSlice = createSlice({
       state.loading = true;
     },
     [getPostsTime.fulfilled.type]: (state, action) => {
-      // state.posts = action.payload;
+      state.posts = action.payload;
       state.loading = false;
       state.hasErrors = false;
     },
@@ -153,10 +158,13 @@ const postsSlice = createSlice({
     },
     [getPostsById.fulfilled.type]: (state, action) => {
       const newPost = action.payload;
-      // const index = state.posts.findIndex((post) => post.id === newPost.id);
-      // if (index === -1) {
-      //   state.posts.push(newPost);
-      // }
+      // TODO, actually separated the post into three different section
+      const index = state.ManusiaPosts.findIndex(
+        (post) => post.id === newPost.id
+      );
+      if (index === -1) {
+        state.posts.push(newPost);
+      }
 
       state.loading = false;
       state.hasErrors = true;
@@ -170,9 +178,9 @@ const postsSlice = createSlice({
     },
     [updatePostById.fulfilled.type]: (state, action) => {
       const newPost = action.payload;
-      // const index = state.posts.findIndex((post) => post.id === newPost.id);
+      const index = state.posts.findIndex((post) => post.id === newPost.id);
 
-      // state.posts[index] = newPost;
+      state.posts[index] = newPost;
       state.loading = false;
       state.hasErrors = false;
     },
@@ -184,7 +192,7 @@ const postsSlice = createSlice({
       state.loading = true;
     },
     [createPostSpecific.fulfilled.type]: (state, action) => {
-      // state.posts.push(action.payload);
+      state.posts.push(action.payload);
       state.loading = true;
       state.hasErrors = false;
     },
@@ -196,10 +204,10 @@ const postsSlice = createSlice({
       state.loading = true;
     },
     [deletePostSpecific.fulfilled.type]: (state, action) => {
-      // const index = state.posts.findIndex(
-      //   (post) => post.id === action.payload.postId
-      // );
-      // state.posts.splice(index, 0);
+      const index = state.posts.findIndex(
+        (post) => post.id === action.payload.postId
+      );
+      state.posts.splice(index, 0);
       state.loading = false;
       state.hasErrors = false;
     },
