@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Button from "src/components/Button";
 import Text from "src/components/Text";
-import AksaraBox from "src/components/AksaraBox";
+import ContentPreview from "src/components/ContentPreview";
 import * as S from "./styles";
-import { textArray } from "./stubs";
+import { useSelector, useDispatch } from "react-redux";
+import { loadPostsActionCreator } from "../../redux/post";
+import { State } from "../../redux/type";
 
 const AksaraContent: React.FC = () => {
   const router = useRouter();
+  const posts = useSelector((state: State) => state.posts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(loadPostsActionCreator({ section: "Manusia" }));
+  });
 
   const titles = ["Manusia", "Opini", "Modulus"];
   const headerContent = {
@@ -23,45 +31,71 @@ const AksaraContent: React.FC = () => {
   const renderHeader = (title) => {
     return (
       <div
-        className={`bg-aksaraBox bg-no-repeat flex flex-col justify-center lg-min:p-5 mt-4 break-words lg-min:h-96  lg-min:max-w-lg xl-min:max-w-lg lg-min:w-72 xl-min:w-full`}
+        className={`bg-aksaraBox bg-no-repeat flex flex-col justify-center p-5 mt-4 break-words lg-min:h-96 lg-min:max-w-lg xl-min:max-w-lg lg-min:w-72 xl-min:w-full`}
+        key={`header-${title}`}
       >
         <div className={`m-2 text-xl lg-min:text-4xl`}>
-          <Text variant="aksaraTextheader">{title}</Text>
+          <div className={`flex justify-center lg-min:hidden`}>
+            <Text variant="subtext-alt">{title}</Text>
+          </div>
+          <div className={`hidden lg-min:flex`}>
+            <Text variant="header-alt">{title}</Text>
+          </div>
         </div>
         <div className={`m-2 max-w-lg xl-min:w-96`}>
-          <div className={`w-9/10`}>{headerContent[title]}</div>
+          <div className={`w-full lg-min:w-9/10`}>{headerContent[title]}</div>
         </div>
       </div>
     );
   };
 
   const renderSection = (title) => {
+    let array;
+    switch (title) {
+      case "Manusia":
+        array = posts.ManusiaPosts;
+        break;
+      case "Opini":
+        array = posts.OpiniPosts;
+        break;
+      case "Modulus":
+        array = posts.ModulusPosts;
+        break;
+    }
     return (
-      <div className={`flex flex-col items-center mt-10`}>
+      <div
+        className={`flex flex-col items-center mt-10`}
+        key={`section-${title}`}
+      >
         <div>
           <div
             className={`border-b-2 border-black font-mono text-2xl lg-min:text-4xl`}
           >
-            <Text variant="aksaraTextheader">{title}</Text>
+            <Text variant="header-alt">{title}</Text>
           </div>
         </div>
         <div
           className={`flex flex-col justify-evenly flex-wrap lg-min:flex-row lg-min:justify-between lg-min:max-w-screen-lg`}
         >
-          {textArray.map((item) => {
+          {array.map((item) => {
             return (
-              <div className={`mt-10 lg-min:m-8`}>
-                <AksaraBox
+              <div className={`mt-10 lg-min:m-8`} key={`Content-${item.id}`}>
+                <ContentPreview
                   title={item.title}
-                  description={item.description}
+                  description={item.content}
                   hyperlink="https://aksarapinus.wordpress.com/"
-                ></AksaraBox>
+                ></ContentPreview>
               </div>
             );
           })}
         </div>
         <div className={`mt-2 lg-min:mt-0 lg-min:mb-10`}>
-          <Button variant="secondary" onClick={() => router.push("/about")}>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              dispatch(loadPostsActionCreator({ section: title }));
+            }}
+          >
             Load More!
           </Button>
         </div>
@@ -75,7 +109,9 @@ const AksaraContent: React.FC = () => {
         <div
           className={`max-w-screen flex flex-row justify-between w-full h-screen-75 items-start`}
         >
-          <div className={`ml-4 flex flex-col w-11/12 justify-around h-full`}>
+          <div
+            className={`ml-8 lg-min:ml-16 flex flex-col w-10/12 justify-around h-full`}
+          >
             <div className={`relative`}>
               <div className={`absolute z-0 top-0`}>
                 <Image
@@ -115,7 +151,7 @@ const AksaraContent: React.FC = () => {
             </div>
             <div className={`flex flex-col content-evenly z-10`}>
               <Text
-                variant="aksaraTextheader"
+                variant="subtext-alt"
                 styles={`font-extrabold lg-min:text-xl`}
               >
                 /ak·sa·ra/ n Ling
@@ -166,12 +202,23 @@ const AksaraContent: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className={`flex flex-row justify-start w-screen`}>
+        <div className={`flex flex-row justify-start w-screen lg-min:hidden`}>
           <Image
             alt="BlackBar"
             src="/assets/aksaraImages/aksaraOvalBlackSmall.png"
             layout="fixed"
-            width="400"
+            width="350"
+            height="50"
+          ></Image>
+        </div>
+        <div
+          className={`hidden lg-min:flex lg-min:flex-row lg-min:justify-start lg-min:w-screen`}
+        >
+          <Image
+            alt="BlackBar"
+            src="/assets/aksaraImages/aksaraOvalBlackSmall.png"
+            layout="fixed"
+            width="500"
             height="50"
           ></Image>
         </div>

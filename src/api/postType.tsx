@@ -2,9 +2,10 @@
 import { Payload } from "./type";
 import { ApiResponse } from "apisauce";
 export interface Post {
-  postId?: number;
+  id?: number;
+  title: string;
   content: string;
-  imageURL: string | null;
+  imageURL?: string;
   userId: string;
   postedAt?: number;
   lastUpdatedAt?: number;

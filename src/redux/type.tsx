@@ -4,6 +4,7 @@ import { Comment } from "../api/commentType";
 interface State {
   posts: StatePost;
   comments: StateComment;
+  firebase: any;
 }
 
 interface StatePost {

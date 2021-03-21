@@ -4,7 +4,7 @@ import Page from "src/components/Page";
 import AksaraContent from "src/pageContent/Aksara";
 const Aksara: NextPage = () => {
   return (
-    <Page title="Aksara" description="Aksara">
+    <Page title="Aksara" description="Aksara" unrenderBanner>
       <AksaraContent />
     </Page>
   );
