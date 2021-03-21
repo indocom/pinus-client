@@ -81,7 +81,7 @@ const AksaraContent: React.FC = () => {
           </div>
         </div>
         <div
-          className={`flex flex-col lg-min:flex-row lg-min:justify-between lg-min:max-w-screen-lg`}
+          className={`flex flex-col flex-wrap lg-min:flex-row lg-min :flex-wrap lg-min:justify-center lg-min:max-w-screen-lg`}
         >
           {array.map((item) => {
             return (
