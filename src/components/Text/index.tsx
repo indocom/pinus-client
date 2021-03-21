@@ -15,6 +15,10 @@ const textStyles = {
   body: { size: "xl", weight: "normal" },
   "body-small": { size: "lg", weight: "normal" },
   subtext: { size: "base", weight: "normal" },
+  "header-alt": { size: "4xl", weight: "extrabold" },
+  "subheader-alt": { size: "xl", weight: "normal" },
+  "body-alt": { size: "base", weight: "normal" },
+  "subtext-alt": { size: "xl", weight: "bold" },
 };
 
 const Text: React.FC<OwnProps> = ({

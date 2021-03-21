@@ -41,8 +41,8 @@ const createPost = ({
 const updatePost = ({
   payload,
 }: UpdatePostApiPayload): Promise<UpdatePostApiResponse> => {
-  const { userId, postId, content, imageURL } = payload.post;
-  return api.put(`/api/v1/posts/${postId}`, {
+  const { userId, id, content, imageURL } = payload.post;
+  return api.put(`/api/v1/posts/${id}`, {
     userId: userId,
     content: content,
     imageURL: imageURL,

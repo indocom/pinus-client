@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Post } from "../api/postType";
 import { State, StatePost } from "./type";
 import {
@@ -10,10 +10,18 @@ import {
   fetchPostById,
 } from "../api/post";
 
+// using stub
+import { Posts, Addition } from "./postStub";
 const postsInitialState = {
   loading: false,
   hasErrors: false,
+  OpiniPosts: Posts,
+  ManusiaPosts: Posts,
+  ModulusPosts: Posts,
   posts: [],
+  //TODO: should combine all the posts into one
+  // each post should have a label !
+  // then can use filter afterwards
 };
 
 // error handling can be done in dispatch
@@ -105,7 +113,33 @@ const deletePostSpecific = createAsyncThunk(
 const postsSlice = createSlice({
   name: "posts",
   initialState: postsInitialState,
-  reducers: {},
+  reducers: {
+    // for load more stubs usage only
+    loadPosts: (state, { payload }: PayloadAction<{ section: string }>) => {
+      state.loading = true;
+      try {
+        //TODO : should use filter instead
+        switch (payload.section) {
+          case "Manusia":
+            Addition.forEach((item) => state.ManusiaPosts.push(item));
+            break;
+          case "Opini":
+            Addition.forEach((item) => state.OpiniPosts.push(item));
+            break;
+          case "Modulus":
+            Addition.forEach((item) => state.ModulusPosts.push(item));
+            break;
+        }
+      } catch (e) {
+        console.log(e);
+        state.hasErrors = true;
+      } finally {
+        state.loading = false;
+      }
+
+      state.loading = false;
+    },
+  },
   extraReducers: {
     [getPostsTime.pending.type]: (state, action) => {
       state.loading = true;
@@ -124,7 +158,10 @@ const postsSlice = createSlice({
     },
     [getPostsById.fulfilled.type]: (state, action) => {
       const newPost = action.payload;
-      const index = state.posts.findIndex((post) => post.id === newPost.id);
+      // TODO, actually separated the post into three different section
+      const index = state.ManusiaPosts.findIndex(
+        (post) => post.id === newPost.id
+      );
       if (index === -1) {
         state.posts.push(newPost);
       }
@@ -183,6 +220,9 @@ const postsSlice = createSlice({
 
 // export selectors
 export const postsSelector = (state: State): StatePost => state.posts;
+
+// export stub action
+export const { loadPosts: loadPostsActionCreator } = postsSlice.actions;
 
 export {
   getPostsById,
