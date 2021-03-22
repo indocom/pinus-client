@@ -6,7 +6,7 @@ import { postInformation } from "src/pageContent/AksaraServe/stubs";
 
 const Aksara: NextPage = () => {
   return (
-    <Page title="Aksara" description="Aksara">
+    <Page title="Aksara" description="Aksara" renderBanner={false}>
       <AksaraServe {...postInformation} />
     </Page>
   );

@@ -1,11 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-<<<<<<< HEAD
 import ContentPreview from "src/components/ContentPreview";
-=======
-import AksaraBox from "src/components/AksaraBox";
->>>>>>> ca11191c5c5333461e41a845ad77f4fd1e32a79a
 import CommentBox from "src/components/CommentBox";
 import ReplyBox from "src/components/ReplyBox";
 import { textArray, commentArray } from "./stubs";
@@ -55,7 +51,7 @@ const AksaraServe: React.FC<OwnProps> = ({
         <div className={`min-h-screen w-4/5 flex flex-col justify-start items-center border-black border-b-2`}>
           <div className={`border-b-2 border-black text-2xl lg-min:text-4xl font-extrabold`}>
             [ak.sa.ra]
-                    </div>
+          </div>
           <div className={`mt-16 border-black text-4xl lg-min:text-6xl font-extrabold`}>
             {title}
           </div>
