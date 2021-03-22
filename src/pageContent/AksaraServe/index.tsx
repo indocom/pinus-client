@@ -1,7 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+<<<<<<< HEAD
 import ContentPreview from "src/components/ContentPreview";
+=======
+import AksaraBox from "src/components/AksaraBox";
+>>>>>>> ca11191c5c5333461e41a845ad77f4fd1e32a79a
 import CommentBox from "src/components/CommentBox";
 import ReplyBox from "src/components/ReplyBox";
 import { textArray, commentArray } from "./stubs";
