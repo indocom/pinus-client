@@ -17,6 +17,7 @@ module.exports = {
       "pinus-yellow": "#EFB61F",
       "pinus-black": "#161616",
       secondary: "#EDEDED",
+      "aksara-comment": "#DFD2C0",
     }),
     backgroundImage: () => ({
       home: "url('/assets/backgrounds/home.jpg')",
