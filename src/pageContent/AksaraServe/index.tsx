@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import AksaraBox from "src/components/AksaraBox";
+import ContentPreview from "src/components/ContentPreview";
 import CommentBox from "src/components/CommentBox";
 import ReplyBox from "src/components/ReplyBox";
 import { textArray, commentArray } from "./stubs";
@@ -33,11 +33,11 @@ const AksaraServe: React.FC<OwnProps> = ({
         {textArray.map((item) => {
           return (
             <div className={`mt-10 lg-min:m-8`}>
-              <AksaraBox
+              <ContentPreview
                 title={item.title}
                 description={item.description}
                 hyperlink="https://aksarapinus.wordpress.com/"
-              ></AksaraBox>
+              ></ContentPreview>
             </div>
           );
         })}
