@@ -37,7 +37,7 @@ const AksaraContent: React.FC = () => {
   const renderHeader = () => {
     return (
       <div
-        className={`flex flex-col lg-min:flex-row lg-min:justify-between lg-min:max-w-screen-lg`}
+        className={`flex flex-col lg-min:flex-wrap lg-min:flex-row lg-min:justify-center lg-min:max-w-screen-lg`}
       >
         {headerContent.map((item) => {
           return (
@@ -81,7 +81,7 @@ const AksaraContent: React.FC = () => {
           </div>
         </div>
         <div
-          className={`flex flex-col flex-wrap lg-min:flex-row lg-min :flex-wrap lg-min:justify-center lg-min:max-w-screen-lg`}
+          className={`flex flex-col flex-wrap lg-min:flex-row lg-min:justify-center `}
         >
           {array.map((item) => {
             return (
@@ -231,7 +231,9 @@ const AksaraContent: React.FC = () => {
         <div
           className={`flex flex-col justify-center align-center mt-12 mb-12`}
         >
-          <div className={`flex flex-col justify-center 2xl-min:flex-row`}>
+          <div
+            className={`flex flex-col flex-wrap lg-min:flex-row lg-min:justify-center `}
+          >
             {renderHeader()}
           </div>
           <div className={`flex flex-col`}>
