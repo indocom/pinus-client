@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from "src/components/Input";
 import Button from "src/components/Button";
 
-const replyBox = () => {
+const ReplyBox = () => {
     const [comment, setComment] = useState<string | null>(null);
     const handleSubmit = (event: React.MouseEvent) => {
         event.preventDefault();
@@ -46,4 +46,4 @@ const replyBox = () => {
     );
 }
 
-export default replyBox;
+export default ReplyBox;
