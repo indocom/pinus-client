@@ -33,7 +33,7 @@ export function renderNavLink(
 
 const Navbar: React.FC<OwnProps> = ({ pathname }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const alt = altPages.includes(pathname);
+  const alt = altPages.includes("/" + pathname.split("/")[1]);
 
   return (
     <div className={`flex flex-col items-center`}>
