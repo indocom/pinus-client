@@ -38,7 +38,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
   return (
     <div className={`flex flex-col items-center`}>
       <nav
-        className={`absolute w-full max-w-7xl bg-transparent text-${
+        className={`absolute w-full flex flex-col items-center max-w-7xl bg-transparent text-${
           alt ? "black" : "white"
         } p-6`}
       >
@@ -68,7 +68,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
         </div>
         {isDrawerOpen && (
           <div
-            className={`absolute w-screen min-h-content py-3 mt-6 flex flex-col items-center bg-black`}
+            className={`absolute w-10/12 min-h-content py-3 mt-6 flex flex-col items-center bg-black`}
           >
             {navLinks.map((link) => renderNavLink(link, pathname, alt))}
           </div>
