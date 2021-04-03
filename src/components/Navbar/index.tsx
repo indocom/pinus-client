@@ -68,7 +68,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
         </div>
         {isDrawerOpen && (
           <div
-            className={`absolute w-screen min-h-content py-3 mt-6 flex flex-col items-center bg-black`}
+            className={`absolute w-screen min-h-content py-3 mt-6 z-30 flex flex-col items-center bg-${alt ? "aksara-comment" : "black"}`}
           >
             {navLinks.map((link) => renderNavLink(link, pathname, alt))}
           </div>
