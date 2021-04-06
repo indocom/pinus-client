@@ -44,7 +44,7 @@ const ContactUsContent: React.FC = () => {
   };
 
   return (
-    <>
+    <div className={`flex flex-col items-center overflow-hidden`}>
       <div className={S.EmailUsSection}>
         <div className={`max-w-4xl w-2/3 lg:w-4/5 flex flex-col space-y-5`}>
           <p className={S.HeaderText}>Email Us</p>
@@ -86,7 +86,7 @@ const ContactUsContent: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
