@@ -32,7 +32,7 @@ const CreatePost: React.FC = () => {
     setCategory(event.target.value);
   };
 
-  const onChangeImage = (event) => {
+  const onChangeImage = () => {
     // TODO : convert the image into dataURI of base64
     // setCoverImage(URL.createObjectURL(event.target.value));
   };
@@ -79,6 +79,8 @@ const CreatePost: React.FC = () => {
       desc: desc,
       body: body,
     };
+
+    console.log(payload);
 
     // TODO : integrate with backend
   };
