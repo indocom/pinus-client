@@ -131,7 +131,7 @@ const AdminArticles: React.FC = () => {
             variant="secondary"
             onClick={() => {
               // TODO
-              dispatch(loadPostsActionCreator({ section: "Manusia" }));
+              dispatch(loadPostsActionCreator({ category: posts.category }));
             }}
           >
             Load More!

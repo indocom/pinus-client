@@ -14,7 +14,20 @@ const AksaraContent: React.FC = () => {
   const posts = useSelector((state: State) => state.posts);
   const dispatch = useDispatch();
 
-  const titles = ["Manusia", "Opini", "Modulus"];
+  const titles = [
+    {
+      title: "Manusia",
+      id: 1,
+    },
+    {
+      title: "Opini",
+      id: 2,
+    },
+    {
+      title: "Modulus",
+      id: 3,
+    },
+  ];
   const headerContent = [
     [
       "Manusia",
@@ -63,7 +76,7 @@ const AksaraContent: React.FC = () => {
           <div
             className={`border-b-2 border-black font-mono text-2xl lg-min:text-4xl`}
           >
-            <Text variant="header-alt">{title}</Text>
+            <Text variant="header-alt">{title.title}</Text>
           </div>
         </div>
         <div
@@ -85,7 +98,7 @@ const AksaraContent: React.FC = () => {
           <Button
             variant="secondary"
             onClick={() => {
-              dispatch(loadPostsActionCreator({ section: title }));
+              dispatch(loadPostsActionCreator({ category: title.id }));
             }}
           >
             Load More!

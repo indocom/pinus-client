@@ -117,18 +117,18 @@ const postsSlice = createSlice({
   initialState: postsInitialState,
   reducers: {
     // for load more stubs usage only
-    loadPosts: (state, { payload }: PayloadAction<{ section: string }>) => {
+    loadPosts: (state, { payload }: PayloadAction<{ category: number }>) => {
       state.loading = true;
       //TODO : integrate this into real API by moving this into extra reducer
       try {
-        switch (payload.section) {
-          case "Manusia":
+        switch (payload.category) {
+          case 1:
             ManusiaAddition.forEach((item) => state.posts.push(item));
             break;
-          case "Opini":
+          case 2:
             OpiniAddition.forEach((item) => state.posts.push(item));
             break;
-          case "Modulus":
+          case 3:
             ModulusAddition.forEach((item) => state.posts.push(item));
             break;
         }

@@ -30,7 +30,7 @@ const Page: React.FC<OwnProps> = ({
   renderNavbar = true,
 }) => {
   return (
-    <>
+    <div className={`flex flex-col items-center overflow-hidden`}>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -67,7 +67,7 @@ const Page: React.FC<OwnProps> = ({
       ) : null}
       <div className={`min-h-screen w-full`}>{children}</div>
       <Footer />
-    </>
+    </div>
   );
 };
 
