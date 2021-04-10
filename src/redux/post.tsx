@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Post } from "../api/postType";
+import { Post } from "src/api/postType";
 import { State, StatePost } from "./type";
 import {
   createPost,
@@ -11,17 +11,19 @@ import {
 } from "../api/post";
 
 // using stub
-import { Posts, Addition } from "./postStub";
+import {
+  Posts,
+  ManusiaAddition,
+  ModulusAddition,
+  OpiniAddition,
+} from "./postStub";
+
 const postsInitialState = {
   loading: false,
   hasErrors: false,
-  OpiniPosts: Posts,
-  ManusiaPosts: Posts,
-  ModulusPosts: Posts,
-  posts: [],
-  //TODO: should combine all the posts into one
-  // each post should have a label !
-  // then can use filter afterwards
+  posts: Posts,
+  filter: null,
+  category: null,
 };
 
 // error handling can be done in dispatch
@@ -117,21 +119,48 @@ const postsSlice = createSlice({
     // for load more stubs usage only
     loadPosts: (state, { payload }: PayloadAction<{ section: string }>) => {
       state.loading = true;
+      //TODO : integrate this into real API by moving this into extra reducer
       try {
-        //TODO : should use filter instead
         switch (payload.section) {
           case "Manusia":
-            Addition.forEach((item) => state.ManusiaPosts.push(item));
+            ManusiaAddition.forEach((item) => state.posts.push(item));
             break;
           case "Opini":
-            Addition.forEach((item) => state.OpiniPosts.push(item));
+            OpiniAddition.forEach((item) => state.posts.push(item));
             break;
           case "Modulus":
-            Addition.forEach((item) => state.ModulusPosts.push(item));
+            ModulusAddition.forEach((item) => state.posts.push(item));
             break;
         }
       } catch (e) {
         console.log(e);
+        state.hasErrors = true;
+      } finally {
+        state.loading = false;
+      }
+
+      state.loading = false;
+    },
+    setFilter: (state, { payload }: PayloadAction<{ filter: string }>) => {
+      state.loading = true;
+      //TODO : integrate this into real API by moving this into extra reducer
+      try {
+        state.filter = payload.filter;
+      } catch (e) {
+        console.log(e);
+        state.hasErrors = true;
+      } finally {
+        state.loading = false;
+      }
+
+      state.loading = false;
+    },
+    setCategory: (state, { payload }: PayloadAction<{ category: number }>) => {
+      state.loading = true;
+      //TODO : integrate this into real API by moving this into extra reducer
+      try {
+        state.category = payload.category;
+      } catch (e) {
         state.hasErrors = true;
       } finally {
         state.loading = false;
@@ -159,9 +188,7 @@ const postsSlice = createSlice({
     [getPostsById.fulfilled.type]: (state, action) => {
       const newPost = action.payload;
       // TODO, actually separated the post into three different section
-      const index = state.ManusiaPosts.findIndex(
-        (post) => post.id === newPost.id
-      );
+      const index = state.posts.findIndex((post) => post.id === newPost.id);
       if (index === -1) {
         state.posts.push(newPost);
       }
@@ -219,10 +246,42 @@ const postsSlice = createSlice({
 });
 
 // export selectors
-export const postsSelector = (state: State): StatePost => state.posts;
+export const postsSelector = (state: State): StatePost => {
+  const filter = state.posts.filter;
+  const category = state.posts.category;
+  let post = state.posts.posts.slice();
+
+  if (category !== null) {
+    post = post.filter((p) => p.categoryId === category);
+  }
+
+  switch (filter) {
+    case "createdAt":
+      post = post.sort((a, b) => a.createdAt - b.createdAt);
+      break;
+    case "author":
+      post = post.sort((a, b) => a.authorName.localeCompare(b.authorName));
+      break;
+    case "title":
+      post = post.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+  }
+
+  return {
+    loading: state.posts.loading,
+    hasErrors: state.posts.hasErrors,
+    posts: post,
+    filter: state.posts.filter,
+    category: state.posts.category,
+  };
+};
 
 // export stub action
-export const { loadPosts: loadPostsActionCreator } = postsSlice.actions;
+export const {
+  loadPosts: loadPostsActionCreator,
+  setFilter: setFilter,
+  setCategory: setCategory,
+} = postsSlice.actions;
 
 export {
   getPostsById,

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Button from "src/components/Button";
@@ -13,10 +13,6 @@ const AksaraContent: React.FC = () => {
   const router = useRouter();
   const posts = useSelector((state: State) => state.posts);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // dispatch(loadPostsActionCreator({ section: "Manusia" }));
-  });
 
   const titles = ["Manusia", "Opini", "Modulus"];
   const headerContent = [
@@ -55,19 +51,9 @@ const AksaraContent: React.FC = () => {
     );
   };
 
-  const renderSection = (title) => {
-    let array;
-    switch (title) {
-      case "Manusia":
-        array = posts.ManusiaPosts;
-        break;
-      case "Opini":
-        array = posts.OpiniPosts;
-        break;
-      case "Modulus":
-        array = posts.ModulusPosts;
-        break;
-    }
+  const renderSection = (title, id) => {
+    const array = posts.posts.filter((p) => p.categoryId === id);
+
     return (
       <div
         className={`flex flex-col items-center mt-10`}
@@ -88,7 +74,7 @@ const AksaraContent: React.FC = () => {
               <div className={`mt-10 lg-min:m-8`} key={`Content-${item.id}`}>
                 <ContentPreview
                   title={item.title}
-                  description={item.content}
+                  description={item.description}
                   hyperlink="https://aksarapinus.wordpress.com/"
                 ></ContentPreview>
               </div>
@@ -237,7 +223,7 @@ const AksaraContent: React.FC = () => {
             {renderHeader()}
           </div>
           <div className={`flex flex-col`}>
-            {titles.map((title) => renderSection(title))}
+            {titles.map((title, idx) => renderSection(title, idx + 1))}
           </div>
         </div>
       </div>

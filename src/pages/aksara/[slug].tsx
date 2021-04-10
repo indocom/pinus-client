@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { NextPage } from "next";
 import Page from "src/components/Page";
 import AksaraServe from "src/pageContent/AksaraServe";
@@ -11,6 +11,5 @@ const Aksara: NextPage = () => {
     </Page>
   );
 };
-  
+
 export default Aksara;
-  

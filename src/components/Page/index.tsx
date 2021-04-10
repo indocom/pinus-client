@@ -15,6 +15,7 @@ interface OwnProps {
   children: React.ReactNode;
   router: Router;
   renderBanner?: boolean;
+  renderNavbar?: boolean;
 }
 
 const Page: React.FC<OwnProps> = ({
@@ -26,6 +27,7 @@ const Page: React.FC<OwnProps> = ({
   children,
   router,
   renderBanner = true,
+  renderNavbar = true,
 }) => {
   return (
     <>
@@ -53,7 +55,7 @@ const Page: React.FC<OwnProps> = ({
         />
         <title>{`${title} | PINUS`}</title>
       </Head>
-      <Navbar pathname={router.pathname} />
+      {renderNavbar ? <Navbar pathname={router.pathname} /> : null}
       {renderBanner ? (
         <Banner
           title={title}
