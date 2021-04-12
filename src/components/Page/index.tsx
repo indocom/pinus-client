@@ -55,7 +55,7 @@ const Page: React.FC<OwnProps> = ({
         />
         <title>{`${title} | PINUS`}</title>
       </Head>
-      {renderNavbar ? <Navbar pathname={router.pathname} /> : null}
+      {renderNavbar && <Navbar pathname={router.pathname} />}
       {renderBanner ? (
         <Banner
           title={title}

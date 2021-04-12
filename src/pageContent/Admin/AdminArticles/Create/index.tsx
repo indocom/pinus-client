@@ -80,8 +80,6 @@ const CreatePost: React.FC = () => {
       body: body,
     };
 
-    console.log(payload);
-
     // TODO : integrate with backend
   };
 

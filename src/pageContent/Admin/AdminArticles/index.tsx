@@ -28,7 +28,6 @@ const filter = [
 
 const AdminArticles: React.FC = () => {
   const posts = useSelector(postsSelector);
-  console.log(posts);
   // TODO, create action creater for each option
 
   const dispatch = useDispatch();
@@ -43,7 +42,6 @@ const AdminArticles: React.FC = () => {
             handleChange={(selectedOption) => {
               if (selectedOption === null) {
                 dispatch(setCategory({ category: null }));
-                return;
               } else {
                 switch (selectedOption.value) {
                   case "manusia":
@@ -67,7 +65,6 @@ const AdminArticles: React.FC = () => {
             handleChange={(selectedOption) => {
               if (selectedOption === null) {
                 dispatch(setFilter({ filter: null }));
-                return;
               } else {
                 switch (selectedOption.value) {
                   case "postedAt":
