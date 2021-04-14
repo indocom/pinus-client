@@ -1,14 +1,19 @@
 // can expand using categories
 import { Payload } from "./type";
 import { ApiResponse } from "apisauce";
+
 export interface Post {
   id?: number;
+  authorId: number;
+  authorName: string;
   title: string;
-  content: string;
+  description: string;
+  body: string;
   imageURL?: string;
-  userId: string;
-  postedAt?: number;
-  lastUpdatedAt?: number;
+  categoryId: number;
+  // for now, 1 is Manusia, 2 is Opini, 3 is Modulus
+  createdAt?: number;
+  updatedAt?: number;
 }
 
 interface PostObject {

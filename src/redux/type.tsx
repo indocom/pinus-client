@@ -8,6 +8,8 @@ interface State {
 }
 
 interface StatePost {
+  filter: string | null;
+  category: number | null;
   loading: boolean;
   hasErrors: boolean;
   posts: Post[];

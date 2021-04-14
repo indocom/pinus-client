@@ -15,7 +15,7 @@ const AdminDashboard: React.FC = () => {
     return (
       <button
         key={`${name}-menu`}
-        className={`rounded-sm py-4 text-xl border-2 border-blue-500 text-blue-500 transition-colors hover:text-white hover:bg-blue-500`}
+        className={`p-28 w-80 rounded-sm py-4 text-xl border-2 border-blue-500 text-blue-500 transition-colors hover:text-white hover:bg-blue-500`}
         onClick={() => router.push(path)}
       >
         {name}
@@ -25,12 +25,10 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <AdminLayout>
-      <div className={`h-full flex flex-col items-center justify-center`}>
-        <div className={`w-full grid grid-cols-5 md:grid-cols-1 gap-6`}>
-          <div className={`md:hidden`}></div>
-          {menus.map(renderMenu)}
-          <div className={`md:hidden`}></div>
-        </div>
+      <div
+        className={`min-h-screen align-center flex flex-col items-center self-center flex flex-col md-min:flex-row w-full justify-around`}
+      >
+        {menus.map(renderMenu)}
       </div>
     </AdminLayout>
   );

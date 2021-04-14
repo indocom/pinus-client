@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Button from "src/components/Button";
@@ -14,11 +14,20 @@ const AksaraContent: React.FC = () => {
   const posts = useSelector((state: State) => state.posts);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch(loadPostsActionCreator({ section: "Manusia" }));
-  });
-
-  const titles = ["Manusia", "Opini", "Modulus"];
+  const titles = [
+    {
+      title: "Manusia",
+      id: 1,
+    },
+    {
+      title: "Opini",
+      id: 2,
+    },
+    {
+      title: "Modulus",
+      id: 3,
+    },
+  ];
   const headerContent = [
     [
       "Manusia",
@@ -55,19 +64,9 @@ const AksaraContent: React.FC = () => {
     );
   };
 
-  const renderSection = (title) => {
-    let array;
-    switch (title) {
-      case "Manusia":
-        array = posts.ManusiaPosts;
-        break;
-      case "Opini":
-        array = posts.OpiniPosts;
-        break;
-      case "Modulus":
-        array = posts.ModulusPosts;
-        break;
-    }
+  const renderSection = (title, id) => {
+    const array = posts.posts.filter((p) => p.categoryId === id);
+
     return (
       <div
         className={`flex flex-col items-center mt-10`}
@@ -77,7 +76,7 @@ const AksaraContent: React.FC = () => {
           <div
             className={`border-b-2 border-black font-mono text-2xl lg-min:text-4xl`}
           >
-            <Text variant="header-alt">{title}</Text>
+            <Text variant="header-alt">{title.title}</Text>
           </div>
         </div>
         <div
@@ -88,7 +87,7 @@ const AksaraContent: React.FC = () => {
               <div className={`mt-10 lg-min:m-8`} key={`Content-${item.id}`}>
                 <ContentPreview
                   title={item.title}
-                  description={item.content}
+                  description={item.description}
                   hyperlink="https://aksarapinus.wordpress.com/"
                 ></ContentPreview>
               </div>
@@ -99,7 +98,7 @@ const AksaraContent: React.FC = () => {
           <Button
             variant="secondary"
             onClick={() => {
-              dispatch(loadPostsActionCreator({ section: title }));
+              dispatch(loadPostsActionCreator({ category: title.id }));
             }}
           >
             Load More!
@@ -237,7 +236,7 @@ const AksaraContent: React.FC = () => {
             {renderHeader()}
           </div>
           <div className={`flex flex-col`}>
-            {titles.map((title) => renderSection(title))}
+            {titles.map((title, idx) => renderSection(title, idx + 1))}
           </div>
         </div>
       </div>
