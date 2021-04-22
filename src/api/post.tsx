@@ -30,10 +30,10 @@ const fetchPostById = ({
 const createPost = ({
   payload,
 }: CreatePostApiPayload): Promise<CreatePostApiResponse> => {
-  const { userId, content, imageURL } = payload.post;
+  const { authorId, body, imageURL } = payload.post;
   return api.post(`/api/v1/posts`, {
-    userId: userId,
-    content: content,
+    userId: authorId,
+    content: body,
     imageURL: imageURL,
   });
 };
@@ -41,10 +41,10 @@ const createPost = ({
 const updatePost = ({
   payload,
 }: UpdatePostApiPayload): Promise<UpdatePostApiResponse> => {
-  const { userId, id, content, imageURL } = payload.post;
+  const { authorId, id, body, imageURL } = payload.post;
   return api.put(`/api/v1/posts/${id}`, {
-    userId: userId,
-    content: content,
+    userId: authorId,
+    content: body,
     imageURL: imageURL,
   });
 };
