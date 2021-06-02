@@ -109,7 +109,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
               <Button
                 onClick={() => {
                   router.push(
-                    `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${currPageNum + 1
+                    `/admissions/${slug[0]}/${currPageNum < 9 ? "0" : ""}${currPageNum + 1
                     }`
                   );
                 }}
