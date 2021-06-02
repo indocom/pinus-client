@@ -40,12 +40,12 @@ const AdmissionsContent: React.FC<OwnProps> = ({
             <a
               className={
                 navItem.slug.join("/") ===
-                (typeof slug !== "string" && slug.join("/"))
+                  (typeof slug !== "string" && slug.join("/"))
                   ? `text-red-600`
                   : `text-white`
               }
             >
-              {navItem.title}
+              {`${navItem.section} ${navItem.title}`}
             </a>
           </Link>
         </div>
@@ -96,8 +96,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
               <Button
                 onClick={() => {
                   router.push(
-                    `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
-                      currPageNum - 1
+                    `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${currPageNum - 1
                     }`
                   );
                 }}
@@ -110,8 +109,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
               <Button
                 onClick={() => {
                   router.push(
-                    `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
-                      currPageNum + 1
+                    `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${currPageNum + 1
                     }`
                   );
                 }}
