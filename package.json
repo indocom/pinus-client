@@ -23,7 +23,7 @@
     "gray-matter": "^4.0.2",
     "logger": "0.0.1",
     "next": "^10.2.3",
-    "next-redux-wrapper": "^6.0.2",
+    "next-redux-wrapper": "^7.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-draft-wysiwyg": "^1.14.6",
