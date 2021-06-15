@@ -19,7 +19,7 @@
     "babel-polyfill": "^6.26.0",
     "draft-js": "^0.11.7",
     "firebase": "^8.4.1",
-    "glob": "^7.1.6",
+    "glob": "^7.1.7",
     "gray-matter": "^4.0.2",
     "logger": "0.0.1",
     "next": "^10.2.3",
