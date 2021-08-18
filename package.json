@@ -38,7 +38,7 @@
     "react-twitter-share-link": "^1.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
-    "remark-gfm": "^1.0.0"
+    "remark-gfm": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
