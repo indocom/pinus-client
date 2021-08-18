@@ -57,7 +57,7 @@
     "lint-staged": "^11.1.2",
     "postcss": "^8.3.3",
     "postcss-loader": "^4.2.0",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.2",
     "react-is": "^17.0.2",
     "storybook-addon-jsx": "^7.3.10",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
