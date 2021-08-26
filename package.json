@@ -48,7 +48,7 @@
     "@svgr/webpack": "^5.5.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.29.2",
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.3.2",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.2.2",
     "eslint": "^7.24.0",
