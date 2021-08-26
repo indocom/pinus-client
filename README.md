@@ -8,11 +8,16 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Development Setup
 
-You should have the latest `npm` and `node` versions installed on your local machine before running.
+You should have the latest `npm` and `node` versions installed on your local machine before running. Install `yarn` running
+
+```bash
+npm install yarn
+```
 
 Install all dependencies using:
+
 ```bash
-npm install
+yarn install
 ```
 
 Duplicate the `.env.local.sample` file and rename the copy to `.env.local`. In the file,
@@ -23,7 +28,7 @@ fill in the API key with the information provided by the Tech Directors
 Then run the development server:
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the result.
@@ -36,14 +41,14 @@ on your local machine to be able to do local login and user management.
 To do that, you need to install the Firebase CLI with
 
 ```bash
-npm install -g firebase-tools
+yarn global add firebase-tools
 ```
 
 Then, on another terminal (aside from the one that runs `npm run dev`),
 navigate to the project folder again and run this command:
 
 ```bash
-npm run firebase:dev
+yarn run firebase:dev
 ```
 
 This runs the Firebase Emulator and seeds it with three accounts: admin, creator, and member.
@@ -57,19 +62,21 @@ The minimum fields that you need to fill in are the "Display Name", "Email", and
 For easier component development, you can run Storybook:
 
 ```bash
-npm run storybook
+yarn run storybook // currently broken
 ```
 
 Open [http://localhost:6006](http://localhost:6006) for the Storybook hub.
 
 To lint relevant files:
+
 ```bash
-npm run lint
+yarn run lint
 ```
 
 To build the app for production:
+
 ```bash
-npm run build
+yarn run build
 ```
 
 ## Learn More
