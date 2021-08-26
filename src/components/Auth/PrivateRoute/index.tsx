@@ -5,7 +5,9 @@ import { isEmpty } from "react-redux-firebase";
 
 const PrivateRoute: React.FC = ({ children }) => {
   const router = useRouter();
-  const auth = useSelector((state) => state.firebase.auth);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const auth = useSelector((state: any) => state.firebase.auth);
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
