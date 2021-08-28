@@ -36,7 +36,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
   const alt = altPages.includes("/" + pathname.split("/")[1]);
 
   return (
-    <div className={`flex flex-col items-center`}>
+    <div className={`flex flex-col items-center z-50`}>
       <nav
         className={`absolute w-full flex flex-col items-center max-w-7xl bg-transparent text-${
           alt ? "black" : "white"
@@ -55,7 +55,7 @@ const Navbar: React.FC<OwnProps> = ({ pathname }) => {
             </a>
           </Link>
           <div
-            className={`lg:hidden flex flex-row items-center justify-between space-x-5 w-2/5`}
+            className={`lg:hidden flex flex-row items-center justify-between space-x-5 w-3/6`}
           >
             {navLinks.map((link) => renderNavLink(link, pathname, alt))}
           </div>

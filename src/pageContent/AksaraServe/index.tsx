@@ -30,7 +30,7 @@ const AksaraServe: React.FC<OwnProps> = ({
   const renderRelatedPost = () => {
     return (
       <div
-        className={`flex flex-col flex-wrap items-center lg-min:flex-row lg-min :flex-wrap lg-min:justify-around lg-min:max-w-screen-lg`}
+        className={`flex flex-col flex-wrap items-center lg-min:flex-row lg-min:flex-wrap lg-min:justify-around lg-min:max-w-screen-lg`}
       >
         {textArray.map((item) => {
           return (
