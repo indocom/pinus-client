@@ -48,7 +48,7 @@ const ContactUsContent: React.FC = () => {
   return (
     <div className={`flex flex-col items-center overflow-hidden`}>
       <div className = {S.MyDescription}>
-        <div className = {'col-start-2 col-span-1 row-start-1'}>
+        <div className = {'col-start-2 col-span-2 row-start-1'}>
           <div className = {`mt-10 h-full w-full flex-auto items-end`}>
           <Image
               src="/assets/images/bernard.jpg"
@@ -58,7 +58,7 @@ const ContactUsContent: React.FC = () => {
             />
           </div>
         </div>
-        <div className = {'col-start-3 col-span-1 row-start-1'}>
+        <div className = {'col-start-4 col-span-4 row-start-1'}>
         <Text styles={`mt-8`}>
             Yeboi I'm Bernard. I legit am not sure of what I am doing now I'm 
             just trying to make things work. Wish me luck and @Simon don't kill me please.

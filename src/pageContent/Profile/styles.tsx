@@ -5,4 +5,4 @@ export const BodyText = `text-xl lg:text-md text-gray-900 text-center`;
 
 export const MyPicture = `mt-10 h-full w-full flex items-end`;
 
-export const MyDescription = `grid grid-cols-4 grid-rows-1 gap-6 h-screen-3/4`;
+export const MyDescription = `grid grid-cols-8 grid-rows-1 gap-6 h-screen-3/4`;
