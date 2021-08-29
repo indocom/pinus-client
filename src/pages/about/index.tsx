@@ -9,7 +9,7 @@ const About: NextPage = () => {
       bgImage="about"
       title="About Us"
       subBanner
-      description="Founded in 1998, Perhimpunan Indonesia NUS (PINUS) serves as an avenue that fosters a tight-knit Indonesian community in NUS. Learn more about us."
+      description="Founded in 1998, Perhimpunan Indonesia NUS (PINUS) serves as an avenue that fosters a tight-knit Indonesian community in NUS. Learn more about us. AHHAHAHA"
     >
       <AboutContent />
     </Page>
