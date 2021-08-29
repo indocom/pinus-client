@@ -6,10 +6,10 @@ import ProfileContent from "src/pageContent/Profile";
 const Profile: NextPage = () => {
   return (
     <Page
-      bgImage="about"
+      bgImage="profile"
       title="Profile Page"
       subBanner
-      description="My Profile Page"
+      description="My Profile Page (Amadeus)"
     >
       <ProfileContent />
     </Page>
