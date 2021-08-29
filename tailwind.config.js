@@ -28,6 +28,7 @@ module.exports = {
       admissions: "url('/assets/backgrounds/admissions.jpg')",
       events: "url('/assets/backgrounds/events.jpg')",
       contact: "url('/assets/backgrounds/contact.jpg')",
+      profile: "url('/assets/backgrounds/alissaProfile.jpg')",
       aksaraBox: "url('/assets/backgrounds/aksaraBox.png')",
     }),
     screens: {
