@@ -1,4 +1,5 @@
 import Text from "src/components/Text";
+import Image from "next/image";
 import Button from "src/components/Button";
 import Input from "src/components/Input";
 import { useState } from "react";
@@ -37,8 +38,17 @@ const ProfileContent: React.FC<Record<string, never>> = () => {
       `&body=${encodeURIComponent(body)}`;
   };
 
+  // Agak ngestuck ngecenter image nya biar g ngeffect hello, world nya
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col sm:items-center">
+      <div className="items-center">
+        <Image
+          src="/assets/backgrounds/profileAmadeus.jpeg"
+          alt="Sup"
+          width={250}
+          height={300}
+        />
+      </div>
       {/* Default spans 1 only */}
       <div className="p-2 text-left px-5 sm:text-center">
         <div className="text-left sm:text-center md:text-center lg:text-center">
@@ -58,8 +68,8 @@ const ProfileContent: React.FC<Record<string, never>> = () => {
           <Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit dolorum omnis, modi error eos commodi, quae
-            perspiciatis numquam tempora eligendi alias inventore nesciunt
-            totam ex asperiores temporibus sint! Numquam, quia!
+            perspiciatis numquam tempora eligendi alias inventore nesciunt totam
+            ex asperiores temporibus sint! Numquam, quia!
           </Text>
         </div>
       </div>
