@@ -4,7 +4,7 @@ import Input from "src/components/Input";
 import { useState } from "react";
 
 const ProfileContent: React.FC<Record<string, never>> = () => {
-  const [name, setName] = useState<string>(undefined);
+  const [name, setName] = useState<string | undefined>(undefined);
   const [subject, setSubject] = useState<string>(undefined);
   const [content, setContent] = useState<string>(undefined);
 
@@ -31,9 +31,6 @@ const ProfileContent: React.FC<Record<string, never>> = () => {
       `Best regards,\n\n` +
       `${name}\n`;
 
-    // Not too sure why the below needs encodeURIComponent. Think because its a URL? 
-    // Oh it doesn't actually send the email just to open the email App, if any. 
-    // What happens if don't have (?)
     location.href =
       `mailto:amadeusw6@gmail.com.com` +
       `&subject=${encodeURIComponent(subject)}` +
@@ -41,34 +38,37 @@ const ProfileContent: React.FC<Record<string, never>> = () => {
   };
 
   return (
-    <>
-      <div className="grid grid-cols-12 grid-rows-8">
-        {/* Default spans 1 only */}
-        <div className="col-start-2 row-start-1 col-span-4 pt-2">
+    <div className="flex flex-col">
+      {/* Default spans 1 only */}
+      <div className="p-2 text-left px-5 sm:text-center">
+        <div className="text-left sm:text-center md:text-center lg:text-center">
           <Text variant="header">Hello, World</Text>
+        </div>
+        <div>
           <Text>Idk what to put here so sup. See you.</Text>
         </div>
+      </div>
 
-        {/* Default spans 1 only */}
-        <div className="col-start-8 row-start-2 col-span-5">
-          <div>
-            <Text variant="header">Compulsory Lorem Ipsum</Text>
-          </div>
-          <div>
-            <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit dolorum omnis, modi error eos commodi, quae
-              perspiciatis numquam tempora eligendi alias inventore nesciunt
-              totam ex asperiores temporibus sint! Numquam, quia!
-            </Text>
-          </div>
+      {/* Default spans 1 only */}
+      <div className="p-2 text-right sm:text-center">
+        <div className="text-right sm:text-center">
+          <Text variant="header">Compulsory Lorem Ipsum</Text>
         </div>
+        <div>
+          <Text>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Reprehenderit dolorum omnis, modi error eos commodi, quae
+            perspiciatis numquam tempora eligendi alias inventore nesciunt
+            totam ex asperiores temporibus sint! Numquam, quia!
+          </Text>
+        </div>
+      </div>
 
-        {/* Form Validation */}
-        {/* TODO: Make this auto centered + figure out why row-start doesn't work */}
-        <div className="col-start-4 row-start-4 col-span-6 pt-5 text-center">
+      {/* Form Validation */}
+      <div className="min-h-screen max-h-full w-screen flex flex-row justify-center items-center py-8 px-3">
+        <div className="max-w-4xl w-2/3 lg:w-4/5 flex flex-col space-y-5 text-center">
           <Text variant="header">Mail me, Maybe?</Text>
-          <div className="space-y-3">
+          <div className="w-full space-y-3">
             <Input
               type="text"
               name="name"
@@ -97,7 +97,7 @@ const ProfileContent: React.FC<Record<string, never>> = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
