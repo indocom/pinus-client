@@ -2,7 +2,6 @@ import React from "react";
 import { NextPage } from "next";
 import Page from "src/components/Page";
 import ProfileContent from "src/pageContent/Profile";
-import SimonProfile from "src/pageContent/Profile";
 
 const Profile: NextPage = () => {
   return (
@@ -16,6 +15,5 @@ const Profile: NextPage = () => {
     </Page>
   );
 };
-
 
 export default Profile;
