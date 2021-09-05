@@ -23,29 +23,6 @@ const ContactUs: NextPage = () => {
             >
               Bernardus Krishna, Y2 CS & Biz
             </p>
-            {/* <p className={`text-xl lg:text-md text-gray-900 text-center`}>
-              Want to know more? Find us on our social media accounts.
-            </p>
-            <div
-              className={`flex flex-row justify-center items-center space-x-5`}
-            >
-              <Link
-                href="https://www.facebook.com/PerhimpunanIndonesiaNUS/"
-                key="facebook-icon"
-              >
-                <a target="_blank">
-                  <Facebook size={40} />
-                </a>
-              </Link>
-              <Link
-                href="https://www.instagram.com/pinusonline"
-                key="instagram-icon"
-              >
-                <a target="_blank">
-                  <Instagram size={40} />
-                </a>
-              </Link>
-            </div> */}
           </div>
         );
       }}

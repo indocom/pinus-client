@@ -17,6 +17,7 @@ export function renderNavLink(
   const { title, slug } = link;
   const pagePaths = pathname.split("/");
   const isHere = pagePaths.length > 1 && pagePaths[1] === slug;
+  // const isHere = false;
 
   const hlColor = "red-600";
   const textColor = isHere ? hlColor : alt ? "black" : "white";

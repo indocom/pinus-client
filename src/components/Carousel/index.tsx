@@ -17,15 +17,13 @@ interface OwnProps {
 const Carousel: React.FC<OwnProps> = ({ slides, width }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const renderArrow = (type: "prev" | "next") => (
-    onClickHandler,
-    toRender,
-    label
-  ): React.ReactElement => {
-    return (
-      toRender && (
-        <div
-          className={`
+  const renderArrow =
+    (type: "prev" | "next") =>
+    (onClickHandler, toRender, label): React.ReactElement => {
+      return (
+        toRender && (
+          <div
+            className={`
             absolute z-10
             w-5 h-5 rounded-full
             bg-white
@@ -35,25 +33,25 @@ const Carousel: React.FC<OwnProps> = ({ slides, width }) => {
 
             stroke-2
           `}
-          style={{
-            top: "calc(50% - 20px)",
-            [type === "prev" ? "left" : "right"]: 10,
-          }}
-          title={label}
-          onClick={(event: React.MouseEvent<HTMLDivElement>): void => {
-            onClickHandler(event);
-            if (type === "prev") {
-              setCurrentSlide(currentSlide - 1);
-            } else {
-              setCurrentSlide(currentSlide + 1);
-            }
-          }}
-        >
-          {type === "prev" ? <ChevronLeft /> : <ChevronRight />}
-        </div>
-      )
-    );
-  };
+            style={{
+              top: "calc(50% - 20px)",
+              [type === "prev" ? "left" : "right"]: 10,
+            }}
+            title={label}
+            onClick={(event: React.MouseEvent<HTMLDivElement>): void => {
+              onClickHandler(event);
+              if (type === "prev") {
+                setCurrentSlide(currentSlide - 1);
+              } else {
+                setCurrentSlide(currentSlide + 1);
+              }
+            }}
+          >
+            {type === "prev" ? <ChevronLeft /> : <ChevronRight />}
+          </div>
+        )
+      );
+    };
 
   return (
     <BaseCarousel
