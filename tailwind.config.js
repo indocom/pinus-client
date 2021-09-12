@@ -29,6 +29,7 @@ module.exports = {
       events: "url('/assets/backgrounds/events.jpg')",
       contact: "url('/assets/backgrounds/contact.jpg')",
       aksaraBox: "url('/assets/backgrounds/aksaraBox.png')",
+      profile: "url('/assets/backgrounds/profile-background.jpg')"
     }),
     screens: {
       sm: { max: "640px" },
