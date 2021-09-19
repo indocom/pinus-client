@@ -10,6 +10,7 @@ export const navLinks: NavLink[] = [
   { title: "Events", slug: "events" },
   { title: "Visit Us", slug: "visit" },
   { title: "Contact Us", slug: "contact" },
+  {title: "Profile", slug: "profile"},
   // { title: "Aksara", slug: "aksara", alt: true },
 ];
 
