@@ -8,7 +8,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Development Setup
 
-You should have the latest `npm` and `node` versions installed on your local machine before running. Install `yarn` running
+You should have the latest `npm` and `node` versions installed on your local machine before running. At least the tested `node` version is 16.x, which for those Ubuntu user, [this guide](https://joshtronic.com/2021/05/09/how-to-install-nodejs-16-on-ubuntu-2004-lts/) might be helpful. Install `yarn` running
 
 ```bash
 npm install yarn
