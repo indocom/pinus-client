@@ -2,18 +2,23 @@ import React from "react";
 import { useRouter } from "next/router";
 import Button from "src/components/Button";
 import Carousel from "src/components/Carousel";
-import Text from "src/components/Text";
+// import Text from "src/components/Text";
+import { Text } from "pinus-ui-library";
 import * as S from "./styles";
 
 const HomeContent: React.FC = () => {
   const router = useRouter();
 
+  {
+    /* TODO: Why TF are all other non-Text texts redddd */
+  }
+
   const renderAbout = () => (
     <div className={`lg:items-center flex flex-col`}>
-      <Text styles={`lg:text-center`} variant="header">
+      <Text fontSize="5xl" fontWeight="bold">
         About PINUS
       </Text>
-      <Text styles={S.SectionText}>
+      <Text fontSize="xl">
         Founded in 1998, Perhimpunan Indonesia NUS (PINUS) serves as an avenue
         that fosters a tight-knit Indonesian community in NUS. Learn more about
         us.
@@ -47,10 +52,12 @@ const HomeContent: React.FC = () => {
           className={`lg:col-start-1 lg:col-span-6 lg:row-start-4 col-start-2 col-span-4 row-start-2`}
         >
           <div className={`lg:items-center flex flex-col`}>
-            <Text styles={`lg:text-center`} variant="header">
+            {/* TODO: Text padding */}
+            <Text fontSize="5xl" fontWeight="bold">
               PINUS Events
             </Text>
-            <Text styles={S.SectionText}>
+            {/* TODO: Text padding */}
+            <Text fontSize="xl">
               It is at the heart of our events to help Indonesians in NUS feel
               home away from home, while showcasing Indonesia’s cultural
               diversity to a wider audience base. Find out more about our
@@ -77,10 +84,12 @@ const HomeContent: React.FC = () => {
         </div>
       </div>
       <div className={S.FreshmenHeader}>
-        <Text styles={`text-center`} variant="header">
+        {/* TODO: Text padding */}
+        <Text fontSize="5xl" fontWeight="bold">
           For Incoming Freshmen
         </Text>
-        <Text styles={`text-center mt-8 lg:max-w-md`}>
+        {/* TODO: Text padding */}
+        <Text fontSize="xl">
           You are our utmost priority - we have compiled essential information
           to help ease your NUS journey!
         </Text>
@@ -88,16 +97,16 @@ const HomeContent: React.FC = () => {
       <div className={`flex justify-center bg-pinus-black w-full mb-48`}>
         <div className={S.FreshmenSection}>
           <div className={`lg:mb-16 flex flex-col items-center`}>
-            <Text variant="subheader" color="white">
+            <Text fontSize="2xl" fontWeight="bold" color="white">
               Before Acceptance
             </Text>
-            <Text
-              color="white"
-              styles={`lg:mb-12 text-center mt-8 mb-24 max-w-sm h-full`}
-            >
-              Comprises essentials, such as programmes offered and living costs,
-              you have to know before applying to NUS.
-            </Text>
+            <div className={`max-w-sm h-full`}>
+              {/* TODO: Text center */}
+              <Text color="white" fontSize="xl">
+                Comprises essentials, such as programmes offered and living
+                costs, you have to know before applying to NUS.
+              </Text>
+            </div>
             <Button
               variant="secondary"
               onClick={() => router.push("/admissions/before/01")}
@@ -106,15 +115,15 @@ const HomeContent: React.FC = () => {
             </Button>
           </div>
           <div className={`flex flex-col items-center`}>
-            <Text variant="subheader" color="white">
+            <Text fontSize="2xl" fontWeight="bold" color="white">
               After Acceptance
             </Text>
-            <Text
-              color="white"
-              styles={`lg:mb-12 text-center mt-8 mb-24 max-w-sm h-full`}
-            >
-              Comprises the next steps after your acceptance letter.
-            </Text>
+            <div className={`max-w-sm h-full`}>
+              {/* TODO: Text center */}
+              <Text color="white" fontSize="xl">
+                Comprises the next steps after your acceptance letter.
+              </Text>
+            </div>
             <Button
               variant="secondary"
               onClick={() => router.push("/admissions/after/01")}
