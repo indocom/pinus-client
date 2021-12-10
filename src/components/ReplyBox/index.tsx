@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Input from "src/components/Input";
-import Button from "src/components/Button";
+import { Button } from "pinus-ui-library";
 
 const ReplyBox = () => {
   const [comment, setComment] = useState<string | null>(null);
-  const handleSubmit = (event: React.MouseEvent) => {
-    event.preventDefault();
-
+  const handleSubmit = () => {
     if (comment === null) {
       setComment("");
     }
@@ -37,9 +35,7 @@ const ReplyBox = () => {
         />
       </div>
       <div className={`mt-4 flex flex-row justify-end`}>
-        <Button variant="secondary" onClick={handleSubmit}>
-          Post
-        </Button>
+        <Button variant="secondary" onClick={handleSubmit} label="Post" />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Button from "src/components/Button";
+import { Button } from "pinus-ui-library";
 import Input from "src/components/Input";
 
 import * as S from "./styles";
@@ -10,9 +10,7 @@ const ContactUsContent: React.FC = () => {
   const [subject, setSubject] = useState<string | null>(null);
   const [content, setContent] = useState<string | null>(null);
 
-  const handleSubmit = (event: React.MouseEvent) => {
-    event.preventDefault();
-
+  const handleSubmit = () => {
     if (name === null) {
       setName("");
     }
@@ -80,9 +78,7 @@ const ContactUsContent: React.FC = () => {
               onChange={(event) => setContent(event.target.value)}
               onBlur={() => content === null && setContent("")}
             />
-            <Button onClick={handleSubmit} style={`px-12`}>
-              Submit
-            </Button>
+            <Button onClick={handleSubmit} label="Submit" variant="secondary" />
           </div>
         </div>
       </div>

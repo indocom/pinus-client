@@ -1,8 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Button from "src/components/Button";
 import Carousel from "src/components/Carousel";
-import { Text } from "pinus-ui-library";
+import { Text, Button } from "pinus-ui-library";
 import * as S from "./styles";
 
 const HomeContent: React.FC = () => {
@@ -22,7 +21,13 @@ const HomeContent: React.FC = () => {
         that fosters a tight-knit Indonesian community in NUS. Learn more about
         us.
       </Text>
-      <Button onClick={() => router.push("/about")}>Find Out More</Button>
+      <div>
+        <Button
+          onClick={() => router.push("/about")}
+          label="Find Out More"
+          variant="secondary"
+        />
+      </div>
     </div>
   );
 
@@ -60,9 +65,13 @@ const HomeContent: React.FC = () => {
               diversity to a wider audience base. Find out more about our
               events.
             </Text>
-            <Button onClick={() => router.push("/events")}>
-              Find Out More
-            </Button>
+            <div>
+              <Button
+                onClick={() => router.push("/events")}
+                label="Find Out More"
+                variant="secondary"
+              />
+            </div>
           </div>
         </div>
         <div className={S.Carousel}>
@@ -102,12 +111,13 @@ const HomeContent: React.FC = () => {
                 costs, you have to know before applying to NUS.
               </Text>
             </div>
-            <Button
-              variant="secondary"
-              onClick={() => router.push("/admissions/before/01")}
-            >
-              Find Out More
-            </Button>
+            <div>
+              <Button
+                onClick={() => router.push("/admissions/before/01")}
+                label="Find Out More"
+                variant="primary"
+              />
+            </div>
           </div>
           <div className={`flex flex-col items-center text-center`}>
             <Text fontSize="2xl" fontWeight="bold" color="white">
@@ -118,12 +128,13 @@ const HomeContent: React.FC = () => {
                 Comprises the next steps after your acceptance letter.
               </Text>
             </div>
-            <Button
-              variant="secondary"
-              onClick={() => router.push("/admissions/after/01")}
-            >
-              Find Out More
-            </Button>
+            <div>
+              <Button
+                onClick={() => router.push("/admissions/after/01")}
+                label="Find Out More"
+                variant="primary"
+              />
+            </div>
           </div>
         </div>
       </div>

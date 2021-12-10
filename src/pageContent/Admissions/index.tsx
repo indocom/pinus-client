@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Button from "src/components/Button";
-// import Text from "src/components/Text";
-import { Text } from "pinus-ui-library";
+import { Text, Button } from "pinus-ui-library";
 import Markdown from "src/components/Markdown";
 import { DocMeta } from "src/lib/ssg";
 
@@ -96,32 +94,34 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           <Markdown source={content} />
           <div className={`flex flex-row justify-between mt-20`}>
             {currPageNum > 1 && (
-              <Button
-                onClick={() => {
-                  router.push(
-                    `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
-                      currPageNum - 1
-                    }`
-                  );
-                }}
-                style={`mr-auto`}
-              >
-                Prev
-              </Button>
+              <div className="mr-auto">
+                <Button
+                  onClick={() => {
+                    router.push(
+                      `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
+                        currPageNum - 1
+                      }`
+                    );
+                  }}
+                  label="Prev"
+                  variant="secondary"
+                />
+              </div>
             )}
             {currPageNum < Object.keys(navItems[chapter]).length && (
-              <Button
-                onClick={() => {
-                  router.push(
-                    `/admissions/${slug[0]}/${currPageNum < 9 ? "0" : ""}${
-                      currPageNum + 1
-                    }`
-                  );
-                }}
-                style={`ml-auto`}
-              >
-                Next
-              </Button>
+              <div className="ml-auto">
+                <Button
+                  onClick={() => {
+                    router.push(
+                      `/admissions/${slug[0]}/${currPageNum < 9 ? "0" : ""}${
+                        currPageNum + 1
+                      }`
+                    );
+                  }}
+                  label="Next"
+                  variant="secondary"
+                />
+              </div>
             )}
           </div>
         </div>
