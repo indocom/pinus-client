@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Carousel from "src/components/Carousel";
-import { Text, Button } from "pinus-ui-library";
+// import Carousel from "src/components/Carousel";
+import { Text, Button, Carousel } from "pinus-ui-library";
 import * as S from "./styles";
 
 const HomeContent: React.FC = () => {
@@ -74,11 +74,7 @@ const HomeContent: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className={S.Carousel}>
-          <Carousel
-            slides={[{ title: "", image: "/assets/images/nuansa.jpg" }]}
-          />
-        </div>
+        <div className={S.Nuansa} />
         <div
           className={`lg:hidden col-start-6 col-span-7 row-start-1 row-span-6`}
         >

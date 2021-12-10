@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "src/components/Input";
 import { Button } from "pinus-ui-library";
 
-const ReplyBox = () => {
+const ReplyBox: React.FC = () => {
   const [comment, setComment] = useState<string | null>(null);
   const handleSubmit = () => {
     if (comment === null) {
