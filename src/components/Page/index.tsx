@@ -4,7 +4,6 @@ import { withRouter } from "next/router";
 import type { Router } from "next/router";
 import Banner from "../Banner";
 import Footer from "../Footer";
-import Navbar from "../Navbar";
 import { Header } from "pinus-ui-library";
 import { navLinks } from "./links";
 
@@ -64,10 +63,14 @@ const Page: React.FC<OwnProps> = ({
         />
         <title>{`${title} | PINUS`}</title>
       </Head>
-      {/* {renderNavbar && <Navbar pathname={router.pathname} />} */}
       <div className="absolute w-full flex flex-col items-center max-w-7xl bg-transparent">
         {renderNavbar && (
-          <Header headerTitle="PINUS" headers={headers} homeLink={homeLink} />
+          <Header
+            headerTitle="PINUS"
+            headers={headers}
+            homeLink={homeLink}
+            isLoginSupported={false}
+          />
         )}
       </div>
       {renderBanner ? (
