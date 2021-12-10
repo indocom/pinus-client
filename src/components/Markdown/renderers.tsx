@@ -1,5 +1,5 @@
 import React from "react";
-import Text from "../Text";
+import { Text } from "pinus-ui-library";
 
 interface BaseProps {
   children: string;
@@ -15,19 +15,29 @@ export const HeadingRenderer: React.FC<HeadingProps> = ({
 }) => {
   if (level === 1) {
     return (
-      <Text styles={`mb-10`} variant={"header"}>
-        {children}
-      </Text>
+      <div>
+        <Text fontSize="5xl" fontWeight="bold">
+          {children}
+        </Text>
+        <span>&nbsp;</span>
+      </div>
     );
   }
 
-  return <Text variant={"subheader"}>{children}</Text>;
+  return (
+    <div>
+      <Text fontSize="2xl" fontWeight="bold">
+        {children}
+      </Text>
+    </div>
+  );
 };
 
 export const ParagraphRenderer: React.FC<BaseProps> = ({ children }) => {
   return (
-    <Text styles={`mb-6`} variant={"subtext"}>
-      {children}
-    </Text>
+    <div>
+      <Text>{children}</Text>
+      <span>&nbsp;</span>
+    </div>
   );
 };

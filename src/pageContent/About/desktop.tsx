@@ -115,7 +115,7 @@ const AboutContent: React.FC = () => {
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Welfare Team
             </Text>
-            <Text fontSize="xl" color="white">
+            <Text fontSize="lg" color="white">
               A home away from home for the PINUSians to bond as one family
               through different welfare initiatives which aim to give a holistic
               support to boost their wellness, while instilling a sense of
@@ -130,7 +130,7 @@ const AboutContent: React.FC = () => {
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Public & Alumni Team
             </Text>
-            <Text fontSize="xl" color="white">
+            <Text fontSize="lg" color="white">
               A platform for external parties to engage with, and learn more
               about, the NUS community through initiatives such as PINUS
               Inspire, while fostering a safe and inclusive collaboration and
@@ -146,7 +146,7 @@ const AboutContent: React.FC = () => {
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Special Projects Team
             </Text>
-            <Text fontSize="xl" color="white">
+            <Text fontSize="lg" color="white">
               A group dedicated to provide Indonesian students in NUS with
               various opportunities for self-expression, talent development, as
               well as skill sharing within the community.
@@ -160,7 +160,7 @@ const AboutContent: React.FC = () => {
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Publicity Team
             </Text>
-            <Text fontSize="xl" color="white">
+            <Text fontSize="lg" color="white">
               A vessel of communal ideas and creativity that aims to promote a
               strong, high, and positive profile of PINUS while raising
               awareness of internal and external events happening around
@@ -175,7 +175,7 @@ const AboutContent: React.FC = () => {
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Technology Team
             </Text>
-            <Text fontSize="xl" color="white">
+            <Text fontSize="lg" color="white">
               A group of creators that build and maintain the PINUS website
               which serves as an avenue of expression & inquiry, a showcase of
               life in PINUS, and a bridge between PINUS and the world.
