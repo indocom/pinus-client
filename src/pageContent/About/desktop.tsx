@@ -1,5 +1,4 @@
 import React from "react";
-// import Text from "src/components/Text";
 import { Text } from "pinus-ui-library";
 import Image from "next/image";
 
@@ -20,7 +19,7 @@ const AboutContent: React.FC = () => {
   return (
     <>
       <div className={S.StorySection} id="our-story">
-        <div className={`col-start-2 col-span-4 row-start-3`}>
+        <div className={`col-start-2 col-span-4 row-start-3 space-y-4`}>
           <Smile size={48} />
           <Text fontSize="5xl" fontWeight="bold">
             Our Story
@@ -56,7 +55,7 @@ const AboutContent: React.FC = () => {
       </div>
 
       <div className={S.VisionMissionSection} id="vision-mission">
-        <div className={`col-start-2 col-span-4`}>
+        <div className={`col-start-2 col-span-4 space-y-4`}>
           <Eye size={48} />
           <Text fontSize="5xl" fontWeight="bold">
             Our Vision
@@ -67,12 +66,12 @@ const AboutContent: React.FC = () => {
             back to Indonesia and Singapore.
           </Text>
         </div>
-        <div className={`col-start-7 col-span-4`}>
+        <div className={`col-start-7 col-span-4 space-y-4`}>
           <Key size={48} />
           <Text fontSize="5xl" fontWeight="bold">
             Our Mission
           </Text>
-          <ul className={`mt-8 list-disc`}>
+          <ul className={`list-disc`}>
             <li>
               <Text fontSize="xl">
                 Build a platform for PINUS members to collaborate and exchange
@@ -111,7 +110,7 @@ const AboutContent: React.FC = () => {
           </div>
         </div>
         <div className={`col-start-2 col-span-3 row-start-2 row-span-2`}>
-          <div className={`flex flex-col`}>
+          <div className={`flex flex-col space-y-2`}>
             <Heart color={`#FF3B3A`} size={48} />
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Welfare Team
@@ -126,7 +125,7 @@ const AboutContent: React.FC = () => {
         </div>
 
         <div className={`col-start-5 col-span-4 row-start-2 row-span-2`}>
-          <div className={`flex flex-col`}>
+          <div className={`flex flex-col space-y-2`}>
             <Users color={`#FF3B3A`} size={48} />
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Public & Alumni Team
@@ -142,7 +141,7 @@ const AboutContent: React.FC = () => {
         </div>
 
         <div className={`col-start-9 col-span-3 row-start-2 row-span-2`}>
-          <div className={`flex flex-col`}>
+          <div className={`flex flex-col space-y-2`}>
             <MessageSquare color={`#FF3B3A`} size={48} />
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Special Projects Team
@@ -156,7 +155,7 @@ const AboutContent: React.FC = () => {
         </div>
 
         <div className={`col-start-2 col-span-3 row-start-4 row-span-2`}>
-          <div className={`flex flex-col`}>
+          <div className={`flex flex-col space-y-2`}>
             <Camera color={`#FF3B3A`} size={48} />
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Publicity Team
@@ -171,7 +170,7 @@ const AboutContent: React.FC = () => {
         </div>
 
         <div className={`col-start-5 col-span-4 row-start-4 row-span-2`}>
-          <div className={`flex flex-col`}>
+          <div className={`flex flex-col space-y-2`}>
             <Settings color={`#FF3B3A`} size={48} />
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Technology Team

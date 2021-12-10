@@ -1,5 +1,4 @@
 import React from "react";
-// import Text from "src/components/Text";
 import { Text } from "pinus-ui-library";
 
 import {
@@ -17,7 +16,7 @@ const AboutMobile: React.FC = () => {
   return (
     <>
       <div className={`px-10 py-20 space-y-20`}>
-        <div>
+        <div className={`space-y-4`}>
           <Smile size={48} />
           <Text fontSize="5xl" fontWeight="bold">
             Our Story
@@ -29,7 +28,7 @@ const AboutMobile: React.FC = () => {
             that connects Indonesia and NUS.
           </Text>
         </div>
-        <div>
+        <div className={`space-y-4`}>
           <Eye size={48} />
           <Text fontSize="5xl" fontWeight="bold">
             Our Vision
@@ -40,7 +39,7 @@ const AboutMobile: React.FC = () => {
             back to Indonesia and Singapore.
           </Text>
         </div>
-        <div>
+        <div className={`space-y-4`}>
           <Key size={48} />
           <Text fontSize="5xl" fontWeight="bold">
             Our Mission
@@ -78,7 +77,7 @@ const AboutMobile: React.FC = () => {
         <Text fontSize="5xl" fontWeight="bold" color="white">
           Our Divisions
         </Text>
-        <div className={`flex flex-col`}>
+        <div className={`flex flex-col space-y-4`}>
           <Heart color={`#FF3B3A`} size={48} />
           <Text fontSize="2xl" fontWeight="bold" color="white">
             Welfare Team
@@ -90,7 +89,7 @@ const AboutMobile: React.FC = () => {
             belonging to the PINUS community.
           </Text>
         </div>
-        <div className={`flex flex-col`}>
+        <div className={`flex flex-col space-y-4`}>
           <Users color={`#FF3B3A`} size={48} />
           <Text fontSize="2xl" fontWeight="bold" color="white">
             Public & Alumni Team
@@ -102,7 +101,7 @@ const AboutMobile: React.FC = () => {
             space between PINUS, alumni and other Indonesian communities.
           </Text>
         </div>
-        <div className={`flex flex-col`}>
+        <div className={`flex flex-col space-y-4`}>
           <MessageSquare color={`#FF3B3A`} size={48} />
           <Text fontSize="2xl" fontWeight="bold" color="white">
             Special Projects Team
@@ -113,7 +112,7 @@ const AboutMobile: React.FC = () => {
             skill sharing within the community.
           </Text>
         </div>
-        <div className={`flex flex-col`}>
+        <div className={`flex flex-col space-y-4`}>
           <Camera color={`#FF3B3A`} size={48} />
           <Text fontSize="2xl" fontWeight="bold" color="white">
             Publicity Team
@@ -125,7 +124,7 @@ const AboutMobile: React.FC = () => {
             Indonesia.
           </Text>
         </div>
-        <div className={`flex flex-col`}>
+        <div className={`flex flex-col space-y-4`}>
           <Settings color={`#FF3B3A`} size={48} />
           <Text fontSize="2xl" fontWeight="bold" color="white">
             Technology Team

@@ -2,7 +2,6 @@ import React from "react";
 import { useRouter } from "next/router";
 import Button from "src/components/Button";
 import Carousel from "src/components/Carousel";
-// import Text from "src/components/Text";
 import { Text } from "pinus-ui-library";
 import * as S from "./styles";
 
@@ -14,7 +13,7 @@ const HomeContent: React.FC = () => {
   }
 
   const renderAbout = () => (
-    <div className={`lg:items-center flex flex-col`}>
+    <div className={`lg:items-center flex flex-col space-y-4`}>
       <Text fontSize="5xl" fontWeight="bold">
         About PINUS
       </Text>
@@ -51,12 +50,10 @@ const HomeContent: React.FC = () => {
         <div
           className={`lg:col-start-1 lg:col-span-6 lg:row-start-4 col-start-2 col-span-4 row-start-2`}
         >
-          <div className={`lg:items-center flex flex-col`}>
-            {/* TODO: Text padding */}
+          <div className={`lg:items-center flex flex-col space-y-4`}>
             <Text fontSize="5xl" fontWeight="bold">
               PINUS Events
             </Text>
-            {/* TODO: Text padding */}
             <Text fontSize="xl">
               It is at the heart of our events to help Indonesians in NUS feel
               home away from home, while showcasing Indonesia’s cultural
@@ -84,11 +81,10 @@ const HomeContent: React.FC = () => {
         </div>
       </div>
       <div className={S.FreshmenHeader}>
-        {/* TODO: Text padding */}
         <Text fontSize="5xl" fontWeight="bold">
           For Incoming Freshmen
         </Text>
-        {/* TODO: Text padding */}
+        <span>&nbsp;</span>
         <Text fontSize="xl">
           You are our utmost priority - we have compiled essential information
           to help ease your NUS journey!
@@ -100,8 +96,7 @@ const HomeContent: React.FC = () => {
             <Text fontSize="2xl" fontWeight="bold" color="white">
               Before Acceptance
             </Text>
-            <div className={`max-w-sm h-full`}>
-              {/* TODO: Text center */}
+            <div className={`max-w-sm h-full text-center m-8`}>
               <Text color="white" fontSize="xl">
                 Comprises essentials, such as programmes offered and living
                 costs, you have to know before applying to NUS.
@@ -114,12 +109,11 @@ const HomeContent: React.FC = () => {
               Find Out More
             </Button>
           </div>
-          <div className={`flex flex-col items-center`}>
+          <div className={`flex flex-col items-center text-center`}>
             <Text fontSize="2xl" fontWeight="bold" color="white">
               After Acceptance
             </Text>
-            <div className={`max-w-sm h-full`}>
-              {/* TODO: Text center */}
+            <div className={`max-w-sm h-full m-8`}>
               <Text color="white" fontSize="xl">
                 Comprises the next steps after your acceptance letter.
               </Text>
