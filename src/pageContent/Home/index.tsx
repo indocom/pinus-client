@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-// import Carousel from "src/components/Carousel";
-import { Text, Button, Carousel } from "pinus-ui-library";
+import { Text, Button } from "pinus-ui-library";
 import * as S from "./styles";
 
 const HomeContent: React.FC = () => {
