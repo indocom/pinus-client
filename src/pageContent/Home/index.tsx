@@ -5,11 +5,6 @@ import * as S from "./styles";
 
 const HomeContent: React.FC = () => {
   const router = useRouter();
-
-  {
-    /* TODO: Why TF are all other non-Text texts redddd */
-  }
-
   const renderAbout = () => (
     <div className={`lg:items-center flex flex-col space-y-4`}>
       <Text fontSize="5xl" fontWeight="bold">
