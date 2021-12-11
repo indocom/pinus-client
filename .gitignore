@@ -35,3 +35,4 @@ ui-debug.log*
 
 # vercel
 .vercel
+.vscode/settings.json
