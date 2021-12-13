@@ -23,7 +23,8 @@ interface FetchPostCommentsResponse {
   comments: Comment[];
 }
 
-export type FetchPostCommentsApiResponse = ApiResponse<FetchPostCommentsResponse>;
+export type FetchPostCommentsApiResponse =
+  ApiResponse<FetchPostCommentsResponse>;
 
 export type CreatePostCommentApiPayload = Payload<CommentObject>;
 export type CreatePostCommentApiResponse = ApiResponse<CommentObject>;

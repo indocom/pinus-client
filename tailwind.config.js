@@ -24,6 +24,7 @@ module.exports = {
       "home-showcase1": "url('/assets/images/home-1.jpg')",
       "home-showcase2": "url('/assets/images/home-2.jpg')",
       "home-showcase3": "url('/assets/images/home-3.jpg')",
+      "home-nuansa": "url('/assets/images/nuansa.jpg')",
       about: "url('/assets/backgrounds/about.jpg')",
       admissions: "url('/assets/backgrounds/admissions.jpg')",
       events: "url('/assets/backgrounds/events.jpg')",

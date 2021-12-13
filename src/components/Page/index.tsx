@@ -4,7 +4,8 @@ import { withRouter } from "next/router";
 import type { Router } from "next/router";
 import Banner from "../Banner";
 import Footer from "../Footer";
-import Navbar from "../Navbar";
+import { Header, Text } from "pinus-ui-library";
+import { navLinks } from "./links";
 
 interface OwnProps {
   title: string;
@@ -29,6 +30,13 @@ const Page: React.FC<OwnProps> = ({
   renderBanner = true,
   renderNavbar = true,
 }) => {
+  const headers = navLinks.map((entry) => {
+    return {
+      label: <Text color="white"> {entry.title} </Text>,
+      url: "/" + entry.slug,
+    };
+  });
+  const homeLink = "./";
   return (
     <div className={`flex flex-col items-center overflow-hidden`}>
       <Head>
@@ -55,7 +63,20 @@ const Page: React.FC<OwnProps> = ({
         />
         <title>{`${title} | PINUS`}</title>
       </Head>
-      {renderNavbar && <Navbar pathname={router.pathname} />}
+      <div className="absolute w-full flex flex-col items-center max-w-7xl bg-transparent">
+        {renderNavbar && (
+          <Header
+            headerTitle={
+              <Text fontSize="2xl" fontWeight="bold" color="black">
+                PINUS
+              </Text>
+            }
+            headers={headers}
+            homeLink={homeLink}
+            isLoginSupported={false}
+          />
+        )}
+      </div>
       {renderBanner ? (
         <Banner
           title={title}

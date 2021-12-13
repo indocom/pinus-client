@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import Button from "src/components/Button";
-import Input from "src/components/Input";
+import { Text, Button, Input, TextArea } from "pinus-ui-library";
 
 import * as S from "./styles";
 
@@ -10,9 +9,7 @@ const ContactUsContent: React.FC = () => {
   const [subject, setSubject] = useState<string | null>(null);
   const [content, setContent] = useState<string | null>(null);
 
-  const handleSubmit = (event: React.MouseEvent) => {
-    event.preventDefault();
-
+  const handleSubmit = () => {
     if (name === null) {
       setName("");
     }
@@ -58,31 +55,36 @@ const ContactUsContent: React.FC = () => {
               name="name"
               value={name || ""}
               placeholder="Your name"
-              error={name === "" && "This is a required field"}
               onChange={(event) => setName(event.target.value)}
               onBlur={() => name === null && setName("")}
+              isRequired={true}
             />
+            {name === "" && <Text color="red"> This is a required field </Text>}
             <Input
               type="text"
               name="subject"
               value={subject || ""}
               placeholder="Subject"
-              error={subject === "" && "This is a required field"}
               onChange={(event) => setSubject(event.target.value)}
               onBlur={() => subject === null && setSubject("")}
+              isRequired={true}
             />
-            <Input
-              type="textarea"
+            {subject === "" && (
+              <Text color="red"> This is a required field </Text>
+            )}
+            <TextArea
               name="content"
               value={content || ""}
               placeholder="Your message"
-              error={content === "" && "This is a required field"}
               onChange={(event) => setContent(event.target.value)}
               onBlur={() => content === null && setContent("")}
+              numRows={7}
+              isRequired={true}
             />
-            <Button onClick={handleSubmit} style={`px-12`}>
-              Submit
-            </Button>
+            {content === "" && (
+              <Text color="red"> This is a required field </Text>
+            )}
+            <Button onClick={handleSubmit} label="Submit" variant="secondary" />
           </div>
         </div>
       </div>

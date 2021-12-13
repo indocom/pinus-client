@@ -1,24 +1,27 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Button from "src/components/Button";
-import Carousel from "src/components/Carousel";
-import Text from "src/components/Text";
+import { Text, Button } from "pinus-ui-library";
 import * as S from "./styles";
 
 const HomeContent: React.FC = () => {
   const router = useRouter();
-
   const renderAbout = () => (
-    <div className={`lg:items-center flex flex-col`}>
-      <Text styles={`lg:text-center`} variant="header">
+    <div className={`lg:items-center flex flex-col space-y-4`}>
+      <Text fontSize="5xl" fontWeight="bold">
         About PINUS
       </Text>
-      <Text styles={S.SectionText}>
+      <Text fontSize="xl">
         Founded in 1998, Perhimpunan Indonesia NUS (PINUS) serves as an avenue
         that fosters a tight-knit Indonesian community in NUS. Learn more about
         us.
       </Text>
-      <Button onClick={() => router.push("/about")}>Find Out More</Button>
+      <div>
+        <Button
+          onClick={() => router.push("/about")}
+          label="Find Out More"
+          variant="secondary"
+        />
+      </div>
     </div>
   );
 
@@ -46,26 +49,26 @@ const HomeContent: React.FC = () => {
         <div
           className={`lg:col-start-1 lg:col-span-6 lg:row-start-4 col-start-2 col-span-4 row-start-2`}
         >
-          <div className={`lg:items-center flex flex-col`}>
-            <Text styles={`lg:text-center`} variant="header">
+          <div className={`lg:items-center flex flex-col space-y-4`}>
+            <Text fontSize="5xl" fontWeight="bold">
               PINUS Events
             </Text>
-            <Text styles={S.SectionText}>
+            <Text fontSize="xl">
               It is at the heart of our events to help Indonesians in NUS feel
               home away from home, while showcasing Indonesia’s cultural
               diversity to a wider audience base. Find out more about our
               events.
             </Text>
-            <Button onClick={() => router.push("/events")}>
-              Find Out More
-            </Button>
+            <div>
+              <Button
+                onClick={() => router.push("/events")}
+                label="Find Out More"
+                variant="secondary"
+              />
+            </div>
           </div>
         </div>
-        <div className={S.Carousel}>
-          <Carousel
-            slides={[{ title: "", image: "/assets/images/nuansa.jpg" }]}
-          />
-        </div>
+        <div className={S.Nuansa} />
         <div
           className={`lg:hidden col-start-6 col-span-7 row-start-1 row-span-6`}
         >
@@ -77,10 +80,11 @@ const HomeContent: React.FC = () => {
         </div>
       </div>
       <div className={S.FreshmenHeader}>
-        <Text styles={`text-center`} variant="header">
+        <Text fontSize="5xl" fontWeight="bold">
           For Incoming Freshmen
         </Text>
-        <Text styles={`text-center mt-8 lg:max-w-md`}>
+        <span>&nbsp;</span>
+        <Text fontSize="xl">
           You are our utmost priority - we have compiled essential information
           to help ease your NUS journey!
         </Text>
@@ -88,39 +92,39 @@ const HomeContent: React.FC = () => {
       <div className={`flex justify-center bg-pinus-black w-full mb-48`}>
         <div className={S.FreshmenSection}>
           <div className={`lg:mb-16 flex flex-col items-center`}>
-            <Text variant="subheader" color="white">
+            <Text fontSize="2xl" fontWeight="bold" color="white">
               Before Acceptance
             </Text>
-            <Text
-              color="white"
-              styles={`lg:mb-12 text-center mt-8 mb-24 max-w-sm h-full`}
-            >
-              Comprises essentials, such as programmes offered and living costs,
-              you have to know before applying to NUS.
-            </Text>
-            <Button
-              variant="secondary"
-              onClick={() => router.push("/admissions/before/01")}
-            >
-              Find Out More
-            </Button>
+            <div className={`max-w-sm h-full text-center m-8`}>
+              <Text color="white" fontSize="xl">
+                Comprises essentials, such as programmes offered and living
+                costs, you have to know before applying to NUS.
+              </Text>
+            </div>
+            <div>
+              <Button
+                onClick={() => router.push("/admissions/before/01")}
+                label="Find Out More"
+                variant="primary"
+              />
+            </div>
           </div>
-          <div className={`flex flex-col items-center`}>
-            <Text variant="subheader" color="white">
+          <div className={`flex flex-col items-center text-center`}>
+            <Text fontSize="2xl" fontWeight="bold" color="white">
               After Acceptance
             </Text>
-            <Text
-              color="white"
-              styles={`lg:mb-12 text-center mt-8 mb-24 max-w-sm h-full`}
-            >
-              Comprises the next steps after your acceptance letter.
-            </Text>
-            <Button
-              variant="secondary"
-              onClick={() => router.push("/admissions/after/01")}
-            >
-              Find Out More
-            </Button>
+            <div className={`max-w-sm h-full m-8`}>
+              <Text color="white" fontSize="xl">
+                Comprises the next steps after your acceptance letter.
+              </Text>
+            </div>
+            <div>
+              <Button
+                onClick={() => router.push("/admissions/after/01")}
+                label="Find Out More"
+                variant="primary"
+              />
+            </div>
           </div>
         </div>
       </div>

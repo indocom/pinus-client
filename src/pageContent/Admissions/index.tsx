@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Button from "src/components/Button";
-import Text from "src/components/Text";
+import { Text, Button } from "pinus-ui-library";
 import Markdown from "src/components/Markdown";
 import { DocMeta } from "src/lib/ssg";
 
@@ -40,7 +39,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
             <a
               className={
                 navItem.slug.join("/") ===
-                  (typeof slug !== "string" && slug.join("/"))
+                (typeof slug !== "string" && slug.join("/"))
                   ? `text-red-600`
                   : `text-white`
               }
@@ -55,25 +54,25 @@ const AdmissionsContent: React.FC<OwnProps> = ({
 
   return (
     <div className={`grid grid-cols-6 min-h-screen w-screen overflow-hidden`}>
-      <div className={`lg:hidden col-start-1 col-span-2 bg-black px-24 pb-40`}>
-        <Text variant="header" color="white" styles={`mt-20`}>
-          For
+      <div
+        className={`lg:hidden col-start-1 col-span-2 bg-black px-24 pb-40 space-y-4`}
+      >
+        <span>&nbsp;</span>
+        <Text fontSize="5xl" fontWeight="bold" color="white">
+          For Incoming Freshmen
         </Text>
-        <Text variant="header" color="white">
-          Incoming Freshmen
-        </Text>
-        <Text variant="subtext" color="white" styles={`mt-5 mb-8`}>
+        <Text color="white">
           All you need to know about NUS, applying to NUS, fees and funding, and
           accommodation options offered.
         </Text>
         <div className={`mb-5`}>
-          <Text variant="subheader" color="white">
+          <Text fontSize="2xl" fontWeight="bold" color="white">
             Before Acceptance
           </Text>
           <div>{renderNavItems(navItems, "Before Acceptance")}</div>
         </div>
         <div className={`mb-5`}>
-          <Text variant="subheader" color="white">
+          <Text fontSize="2xl" fontWeight="bold" color="white">
             After Acceptance
           </Text>
           <div>{renderNavItems(navItems, "After Acceptance")}</div>
@@ -84,39 +83,45 @@ const AdmissionsContent: React.FC<OwnProps> = ({
       >
         <div ref={contentRef} className={`lg:py-20 lg:px-10 p-20`}>
           <Text
-            styles={`mb-10`}
-            color="gray-300"
+            fontSize="xl"
+            fontWeight="normal"
+            color="rgba(87, 87, 87, 0.48)"
           >{`${chapter} | ${subchapter}`}</Text>
-          <Text styles={`mb-2`} variant="header">
+          <span>&nbsp;</span>
+          <Text fontSize="5xl" fontWeight="bold">
             {section}
           </Text>
           <Markdown source={content} />
           <div className={`flex flex-row justify-between mt-20`}>
             {currPageNum > 1 && (
-              <Button
-                onClick={() => {
-                  router.push(
-                    `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${currPageNum - 1
-                    }`
-                  );
-                }}
-                style={`mr-auto`}
-              >
-                Prev
-              </Button>
+              <div className="mr-auto">
+                <Button
+                  onClick={() => {
+                    router.push(
+                      `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
+                        currPageNum - 1
+                      }`
+                    );
+                  }}
+                  label="Prev"
+                  variant="secondary"
+                />
+              </div>
             )}
             {currPageNum < Object.keys(navItems[chapter]).length && (
-              <Button
-                onClick={() => {
-                  router.push(
-                    `/admissions/${slug[0]}/${currPageNum < 9 ? "0" : ""}${currPageNum + 1
-                    }`
-                  );
-                }}
-                style={`ml-auto`}
-              >
-                Next
-              </Button>
+              <div className="ml-auto">
+                <Button
+                  onClick={() => {
+                    router.push(
+                      `/admissions/${slug[0]}/${currPageNum < 9 ? "0" : ""}${
+                        currPageNum + 1
+                      }`
+                    );
+                  }}
+                  label="Next"
+                  variant="secondary"
+                />
+              </div>
             )}
           </div>
         </div>
