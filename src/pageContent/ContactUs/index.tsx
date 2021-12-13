@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import { Button } from "pinus-ui-library";
-import Input from "src/components/Input";
+import { Text, Button, Input, TextArea } from "pinus-ui-library";
 
 import * as S from "./styles";
 
@@ -56,28 +55,35 @@ const ContactUsContent: React.FC = () => {
               name="name"
               value={name || ""}
               placeholder="Your name"
-              error={name === "" && "This is a required field"}
               onChange={(event) => setName(event.target.value)}
               onBlur={() => name === null && setName("")}
+              showSecondaryColor={name === ""}
             />
+            {name === "" && <Text color="red"> This is a required field </Text>}
             <Input
               type="text"
               name="subject"
               value={subject || ""}
               placeholder="Subject"
-              error={subject === "" && "This is a required field"}
               onChange={(event) => setSubject(event.target.value)}
               onBlur={() => subject === null && setSubject("")}
+              showSecondaryColor={subject === ""}
             />
-            <Input
-              type="textarea"
+            {subject === "" && (
+              <Text color="red"> This is a required field </Text>
+            )}
+            <TextArea
               name="content"
               value={content || ""}
               placeholder="Your message"
-              error={content === "" && "This is a required field"}
               onChange={(event) => setContent(event.target.value)}
               onBlur={() => content === null && setContent("")}
+              numRows={7}
+              showSecondaryColor={content === ""}
             />
+            {content === "" && (
+              <Text color="red"> This is a required field </Text>
+            )}
             <Button onClick={handleSubmit} label="Submit" variant="secondary" />
           </div>
         </div>

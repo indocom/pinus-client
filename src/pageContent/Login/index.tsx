@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useFirebase } from "react-redux-firebase";
 import { useRouter } from "next/router";
 
-import Input from "src/components/Input";
+// import Input from "src/components/Input";
+import { Input } from "pinus-ui-library";
 import { FirebaseError, handleFirebasePromise } from "src/firebase";
 import { isString } from "src/utils";
 
@@ -82,7 +83,6 @@ const LoginContent: React.FC = () => {
               value={email}
               placeholder="Email address"
               onChange={(event) => setEmail(event.target.value)}
-              border="grey-secondary"
             />
             <Input
               type="password"
@@ -90,7 +90,6 @@ const LoginContent: React.FC = () => {
               value={password}
               placeholder="Password"
               onChange={(event) => setPassword(event.target.value)}
-              border="grey-secondary"
             />
             <button
               className={S.Submit}
