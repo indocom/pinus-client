@@ -57,7 +57,7 @@ const ContactUsContent: React.FC = () => {
               placeholder="Your name"
               onChange={(event) => setName(event.target.value)}
               onBlur={() => name === null && setName("")}
-              showSecondaryColor={name === ""}
+              isRequired={true}
             />
             {name === "" && <Text color="red"> This is a required field </Text>}
             <Input
@@ -67,7 +67,7 @@ const ContactUsContent: React.FC = () => {
               placeholder="Subject"
               onChange={(event) => setSubject(event.target.value)}
               onBlur={() => subject === null && setSubject("")}
-              showSecondaryColor={subject === ""}
+              isRequired={true}
             />
             {subject === "" && (
               <Text color="red"> This is a required field </Text>
@@ -79,7 +79,7 @@ const ContactUsContent: React.FC = () => {
               onChange={(event) => setContent(event.target.value)}
               onBlur={() => content === null && setContent("")}
               numRows={7}
-              showSecondaryColor={content === ""}
+              isRequired={true}
             />
             {content === "" && (
               <Text color="red"> This is a required field </Text>
