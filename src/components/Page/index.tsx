@@ -2,9 +2,9 @@ import React from "react";
 import Head from "next/head";
 import { withRouter } from "next/router";
 import type { Router } from "next/router";
-import Banner from "../Banner";
+// import Banner from "../Banner";
 import Footer from "../Footer";
-import { Header, Text } from "pinus-ui-library";
+import { Header, Text, Banner } from "pinus-ui-library";
 import { navLinks } from "./links";
 
 interface OwnProps {
@@ -30,6 +30,19 @@ const Page: React.FC<OwnProps> = ({
   renderBanner = true,
   renderNavbar = true,
 }) => {
+  const bgImageMapping = {
+    home: "/assets/backgrounds/home.jpg",
+    about: "/assets/backgrounds/about.jpg",
+    admissions: "/assets/backgrounds/admissions.jpg",
+    events: "/assets/backgrounds/events.jpg",
+    contact: "/assets/backgrounds/contact.jpg",
+    aksaraBox: "/assets/backgrounds/aksaraBox.png",
+  };
+
+  bgImage = bgImageMapping[bgImage];
+
+  console.log(bgImage);
+
   const headers = navLinks.map((entry) => {
     return {
       label: <Text color="white"> {entry.title} </Text>,
@@ -37,6 +50,7 @@ const Page: React.FC<OwnProps> = ({
     };
   });
   const homeLink = "./";
+  console.log(bgImage);
   return (
     <div className={`flex flex-col items-center overflow-hidden`}>
       <Head>
@@ -67,7 +81,7 @@ const Page: React.FC<OwnProps> = ({
         {renderNavbar && (
           <Header
             headerTitle={
-              <Text fontSize="2xl" fontWeight="bold" color="black">
+              <Text fontSize="2xl" fontWeight="bold" color="white">
                 PINUS
               </Text>
             }
@@ -79,11 +93,22 @@ const Page: React.FC<OwnProps> = ({
       </div>
       {renderBanner ? (
         <Banner
-          title={title}
-          description={description}
+          title={
+            <Text fontSize="5xl" fontWeight="bold" color="white">
+              {title}
+            </Text>
+          }
+          // bgImage="/assets/backgrounds/contact.jpg"
           bgImage={bgImage}
-          subBanner={subBanner}
-          renderSubcontent={renderSubcontent}
+          subHeader={
+            renderSubcontent ? (
+              renderSubcontent()
+            ) : description ? (
+              <Text fontSize="xl">{description}</Text>
+            ) : (
+              <div />
+            )
+          }
         />
       ) : null}
       <div className={`min-h-screen w-full`}>{children}</div>
