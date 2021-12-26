@@ -2,10 +2,11 @@ import React from "react";
 import Head from "next/head";
 import { withRouter } from "next/router";
 import type { Router } from "next/router";
-// import Banner from "../Banner";
-import Footer from "../Footer";
-import { Header, Text, Banner } from "pinus-ui-library";
+import { Header, Text, Banner, Footer } from "pinus-ui-library";
 import { navLinks } from "./links";
+import { columns } from "./columns";
+import Image from "next/image";
+import Link from "next/link";
 
 interface OwnProps {
   title: string;
@@ -30,6 +31,40 @@ const Page: React.FC<OwnProps> = ({
   renderBanner = true,
   renderNavbar = true,
 }) => {
+  const contactFooter = (
+    <div className={`w-48 lg:w-content`}>
+      <p className={`font-bold lg:text-base mb-5`}>Contact Us</p>
+      <p className={`text-xs lg:text-sm mb-10 lg:mb-5`}>
+        Feel free to drop us a message. We would love to hear from you!
+      </p>
+      <div className={`flex flex-row w-14 justify-between`}>
+        <Link
+          href="https://www.facebook.com/PerhimpunanIndonesiaNUS/"
+          key="facebook-icon"
+        >
+          <a target="_blank">
+            <Image
+              alt="Facebook profile"
+              src="/assets/icons/fb.png"
+              height={20}
+              width={20}
+            />
+          </a>
+        </Link>
+        <Link href="https://www.instagram.com/pinusonline" key="instagram-icon">
+          <a target="_blank">
+            <Image
+              alt="Instagram profile"
+              src="/assets/icons/ig.png"
+              height={20}
+              width={20}
+            />
+          </a>
+        </Link>
+      </div>
+    </div>
+  );
+
   const bgImageMapping = {
     home: "/assets/backgrounds/home.jpg",
     about: "/assets/backgrounds/about.jpg",
@@ -112,7 +147,7 @@ const Page: React.FC<OwnProps> = ({
         />
       ) : null}
       <div className={`min-h-screen w-full`}>{children}</div>
-      <Footer />
+      <Footer links={columns} rightSide={contactFooter} />
     </div>
   );
 };
