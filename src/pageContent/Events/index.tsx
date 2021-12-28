@@ -62,7 +62,7 @@ const EventsContent: NextPage =  () => {
   if (!data) {
     return <div></div>;
   }
-  console.log(data);
+  
   const newData:Array<EventData> = data.map(data => {
     return {
     name: data.fields.name,
@@ -71,7 +71,7 @@ const EventsContent: NextPage =  () => {
     imageSrc: "http:" + data.fields.eventPicture.fields.file.url}
     
   });
-  console.log(newData);
+ 
   const sections: Array<SectionInfo> = newData.map(data => {
     return {
       id: data.name,
