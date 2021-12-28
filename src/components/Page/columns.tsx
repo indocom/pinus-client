@@ -1,9 +1,12 @@
-import { Page } from "./Column";
+type Page = {
+  title: string;
+  link: string;
+};
 
-interface Column {
+type Column = {
   title: string;
   pages: Page[];
-}
+};
 
 export const columns: Column[] = [
   {

@@ -1,93 +1,45 @@
-import { createClient, Entry } from "contentful";
+import { createClient } from "contentful";
 import React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { Document } from '@contentful/rich-text-types';
-import { getAllDocsFromCMS } from "src/lib/ssg";
 
-// interface DocMeta {
-//   title: string,
-//   section: string,
-//   chapter: string, 
-//   subchapter: string, 
-//   post: Document, 
-//   slug: string
-// }
-
-interface DocMeta {
-  title: string;
-  chapter: string;
-  subchapter: string;
-  section: string;
-  content?: string;
-  slug?: string | string[];
-  post?: Document
-}
-
-interface slugRetrieved {
-  slug: string
-}
-
-async function getDocSlugs(): Promise<string[]> {
+async function getItems() {
   const client = createClient({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
   });
 
-  const res = await client.getEntries<slugRetrieved>({
-    content_type: "admissions", 
-    select: "fields.slug"
-  })
+  const res = await client.getEntries({ content_type: "trial1" });
 
-  return res.items.map((x: Entry<slugRetrieved>) => x.fields.slug);
-};
+  return res.items;
+}
 
-async function getDocBySlug(slug: string): Promise<DocMeta> {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-  });
-
-  const res = await client.getEntries<DocMeta>({
-    content_type: "admissions", 
-    'fields.slug[match]': slug
-  })
-
-  // Obviously wrong + potentially buggy implementation since match may return more than one doc
-  // To be dealt with some other time
-  return res.items[0].fields;
+interface Entry {
+  // eslint-disable-next-line
+  [key: string]: any;
 }
 
 const Cms: React.FC = () => {
   React.useEffect(() => {
     async function getData() {
-      const res = await getDocSlugs();
-      let docs = await Promise.all(res.map(async slug => await getDocBySlug(slug)));
-
-      docs = await getAllDocsFromCMS();
-
-      setData(docs);
+      const res = await getItems();
+      setData(res);
     }
     getData();
   }, []);
 
-  const [posts, setData] = React.useState<Array<DocMeta>>();
-  if (!posts) {
-    return <div>No posts found!</div>;
+  const [data, setData] = React.useState<Array<Entry>>();
+  if (!data) {
+    return <div></div>;
   }
-  console.log(posts);
+  console.log(data);
   return (
     <div>
-      {posts.map((post: DocMeta, index) => 
-        (
-          <div>
-            <div key={index}>{post.slug}</div>
-            <div key={index}>{post.section}</div>
-            <div key={index}>{post.chapter}</div>
-            <div key={index}>{post.subchapter}</div>
-            <div> {documentToReactComponents(post.post)}</div>
-          </div>
-        )
-      )}
+      {data.map((post: Entry) => (
+        <div>
+          <div key={post.sys.id}>{post.fields.title}</div>
+          <div> {documentToReactComponents(post.fields.trialRichText)}</div>
+        </div>
+      ))}
     </div>
   );
 };
