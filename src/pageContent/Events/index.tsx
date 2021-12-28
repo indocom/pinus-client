@@ -5,7 +5,7 @@ import Image from "next/image";
 import { SectionInfo, StripData, getItems, EventData} from "./data";
 
 import * as S from "./style";
-import { iteratorSymbol } from "immer/dist/internal";
+
 const renderStrip = (s: StripData): React.ReactFragment => {
   const [colStart, colSpan] = s.col;
   const [rowStart, rowSpan] = s.row;
