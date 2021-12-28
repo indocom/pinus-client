@@ -7,10 +7,14 @@ import {
 } from "next";
 import AdmissionsContent from "src/pageContent/Admissions";
 import Page from "src/components/Page";
-import { DocMeta, getDocBySlug, getAllDocs } from "src/lib/ssg";
+import { DocMeta, getAllDocs, getAllDocsFromCMS, getDocBySlugFromCMS } from "src/lib/ssg";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const docs = getAllDocs(["slug"], "admissions");
+
+  // TODO: WHY THIS NO WORK???
+  // const docs = await getAllDocsFromCMS();
+
   return {
     paths: docs.map(({ slug }) => {
       return { params: { slug } };
@@ -20,18 +24,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const doc: DocMeta = getDocBySlug(params.slug, "admissions", [
-    "title",
-    "chapter",
-    "subchapter",
-    "section",
-    "content",
-  ]);
-
-  const docs = getAllDocs(
-    ["title", "chapter", "subchapter", "section", "slug"],
-    "admissions"
-  );
+  const doc = await getDocBySlugFromCMS(params.slug);
+  const docs = await getAllDocsFromCMS();
 
   const navItems = {};
   docs.forEach((doc) => {
@@ -49,8 +43,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   });
 
-  for (const key in navItems) {
-    navItems[key].sort((a, b) => (a.section > b.section ? 1 : -1));
+  for (const chapter in navItems) {
+    navItems[chapter].sort((a, b) => (a.section > b.section ? 1 : -1));
   }
 
   return { props: { ...doc, navItems } };
