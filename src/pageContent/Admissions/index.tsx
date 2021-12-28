@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Text, Button } from "pinus-ui-library";
-import Markdown from "src/components/Markdown";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { DocMeta } from "src/lib/ssg";
 
 interface OwnProps extends DocMeta {
@@ -10,14 +10,16 @@ interface OwnProps extends DocMeta {
 }
 
 const AdmissionsContent: React.FC<OwnProps> = ({
-  content,
   chapter,
   subchapter,
   section,
   navItems,
+  post,
 }) => {
   const router = useRouter();
   const { slug } = router.query;
+  console.log("Slug is", slug);
+
   const currPageNum = parseInt(slug[slug.length - 1]);
 
   const contentRef = useRef(null);
@@ -33,12 +35,19 @@ const AdmissionsContent: React.FC<OwnProps> = ({
 
   const renderNavItems = (navItems, chapter) => {
     return navItems[chapter].map((navItem, index) => {
+      let newSlug: string; 
+      if (Array.isArray(navItem.slug)) {
+        newSlug = navItem.slug.join("/"); // TODO: Yet more hacks to be removed..
+      } else {
+        newSlug = navItem.slug;
+      }
+
       return (
         <div key={`nav-item-${index}`}>
-          <Link href={`/admissions/${navItem.slug.join("/")}`}>
+          <Link href={`/admissions/${newSlug}`}>
             <a
               className={
-                navItem.slug.join("/") ===
+                newSlug ===
                 (typeof slug !== "string" && slug.join("/"))
                   ? `text-red-600`
                   : `text-white`
@@ -51,6 +60,8 @@ const AdmissionsContent: React.FC<OwnProps> = ({
       );
     });
   };
+
+  console.log("Post is: ", post);
 
   return (
     <div className={`grid grid-cols-6 min-h-screen w-screen overflow-hidden`}>
@@ -71,12 +82,13 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           </Text>
           <div>{renderNavItems(navItems, "Before Acceptance")}</div>
         </div>
-        <div className={`mb-5`}>
+        {/* This Chapter does not exist yet so will cause error */}
+        {/* <div className={`mb-5`}>
           <Text fontSize="2xl" fontWeight="bold" color="white">
             After Acceptance
           </Text>
           <div>{renderNavItems(navItems, "After Acceptance")}</div>
-        </div>
+        </div> */}
       </div>
       <div
         className={`lg:col-span-6 col-span-4 bg-transparent shadow-inner shadow-4xl`}
@@ -91,7 +103,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           <Text fontSize="5xl" fontWeight="bold">
             {section}
           </Text>
-          <Markdown source={content} />
+          <div> {documentToReactComponents(post)}</div>
           <div className={`flex flex-row justify-between mt-20`}>
             {currPageNum > 1 && (
               <div className="mr-auto">
