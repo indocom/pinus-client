@@ -2,10 +2,10 @@ import React from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 
-import { sections, SectionInfo, StripData } from "./data";
+import { SectionInfo, StripData, getItems, EventData} from "./data";
 
 import * as S from "./style";
-
+import { iteratorSymbol } from "immer/dist/internal";
 const renderStrip = (s: StripData): React.ReactFragment => {
   const [colStart, colSpan] = s.col;
   const [rowStart, rowSpan] = s.row;
@@ -46,8 +46,50 @@ const renderSection = (s: SectionInfo): React.ReactFragment => {
     </div>
   );
 };
-
-const EventsContent: NextPage = () => {
+interface Entry {
+  // eslint-disable-next-line
+  [key: string]: any;
+}
+const EventsContent: NextPage =  () => {
+  React.useEffect(() => {
+    async function getData() {
+      const res = await getItems();
+      setData(res);
+    }
+    getData();
+  }, []);
+  const [data, setData] = React.useState<Array<Entry>>();
+  if (!data) {
+    return <div></div>;
+  }
+  console.log(data);
+  const newData:Array<EventData> = data.map(data => {
+    return {
+    name: data.fields.name,
+    description: data.fields.eventDescription,
+    url: data.fields.url,
+    imageSrc: "http:" + data.fields.eventPicture.fields.file.url}
+    
+  });
+  console.log(newData);
+  const sections: Array<SectionInfo> = newData.map(data => {
+    return {
+      id: data.name,
+      data: data,
+      options: {
+        flip: false,
+        strips: [
+          { color: "yellow", col: [1, 4], row: [1, 4] },
+          {
+            color: "red",
+            col: [1, 12],
+            row: [2, 4],
+            style: `mt-10 lg:mt-5 ml-10 lg:ml-3`,
+          },
+        ],
+      }
+    }
+  })
   return <div className={S.EventsWrapper}>{sections.map(renderSection)}</div>;
 };
 
