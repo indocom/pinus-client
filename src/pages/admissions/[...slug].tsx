@@ -7,6 +7,7 @@ import {
 } from "next";
 import AdmissionsContent from "src/pageContent/Admissions";
 import Page from "src/components/Page";
+import { Content } from "pinus-ui-library";
 import { DocMeta, getAllDocs, getAllDocsFromCMS, getDocBySlugFromCMS } from "src/lib/ssg";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -27,26 +28,57 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const doc = await getDocBySlugFromCMS(params.slug);
   const docs = await getAllDocsFromCMS();
 
-  const navItems = {};
-  docs.forEach((doc) => {
-    const { title, chapter, subchapter, section, slug } = doc;
-    const newDoc = {
-      title,
-      subchapter,
-      section,
-      slug,
-    };
-    if (!(chapter in navItems)) {
-      navItems[chapter] = [newDoc];
-    } else {
-      navItems[chapter].push(newDoc);
+  const navItems: Content[] = [];
+  docs.forEach(doc => {
+    const { title, chapter, subchapter, section} = doc;
+
+    let {slug} = doc;
+    if (Array.isArray(slug)) {
+      slug = slug.join('/');
     }
-  });
 
-  for (const chapter in navItems) {
-    navItems[chapter].sort((a, b) => (a.section > b.section ? 1 : -1));
-  }
+    // Add missing chapter
+    if (navItems.filter(content => content.title == chapter).length == 0) {
+      const newChapter: Content = {
+        title: chapter,
+        path: "",
+        children: []
+      }
 
+      navItems.push(newChapter);
+    }
+
+    // TODO: Not safe 
+    const currChapter = navItems.filter(currChapter => currChapter.title == chapter)[0];
+    const subchapterList = currChapter.children;
+
+    // Add missing subchapter
+    if (subchapterList.filter(content => content.title == subchapter).length == 0) {
+      const newSubchapter: Content = {
+        title: subchapter,
+        path: "",
+        children: []
+      }
+
+      subchapterList.push(newSubchapter);
+    }
+
+    // TODO: Not safe
+    const currSubchapter = subchapterList.filter(currSubchapter => currSubchapter.title == subchapter)[0];
+    const contentList = currSubchapter.children;
+    if (contentList.filter(content => content.title == title).length == 0) {
+      const newContent: Content = {
+        title: title, 
+        path: section, 
+        children: []
+      }
+
+      contentList.push(newContent);
+    }
+  })
+
+  // TODO: this form of casting seems bad also...
+  navItems.forEach(chapter => chapter.children.map(subchapter => subchapter.children.sort((a, b) => +a.path - +b.path)))
   return { props: { ...doc, navItems } };
 };
 

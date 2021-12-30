@@ -1,14 +1,14 @@
-import React, { Children, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Text, Button } from "pinus-ui-library";
+import { Text, Button, Navbar, Content } from "pinus-ui-library";
 
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { DocMeta } from "src/lib/ssg";
 
 interface OwnProps extends DocMeta {
-  navItems: Record<string, Record<string, string>>[];
+  navItems: Content[];
 }
 
 const options = {
@@ -60,34 +60,6 @@ const AdmissionsContent: React.FC<OwnProps> = ({
     contentRef.current.scrollIntoView();
   });
 
-  const renderNavItems = (navItems, chapter) => {
-    return navItems[chapter].map((navItem, index) => {
-      let newSlug: string; 
-      if (Array.isArray(navItem.slug)) {
-        newSlug = navItem.slug.join("/"); // TODO: Yet more hacks to be removed..
-      } else {
-        newSlug = navItem.slug.replace('-', '/'); // TODO: YET MORE HACKS
-      }
-
-      return (
-        <div key={`nav-item-${index}`}>
-          <Link href={`/admissions/${newSlug}`}>
-            <a
-              className={
-                newSlug ===
-                (typeof slug !== "string" && slug.join("/"))
-                  ? `text-red-600`
-                  : `text-white`
-              }
-            >
-              {`${navItem.section} ${navItem.title}`}
-            </a>
-          </Link>
-        </div>
-      );
-    });
-  };
-
   return (
     <div className={`grid grid-cols-6 min-h-screen w-screen overflow-hidden`}>
       <div
@@ -102,18 +74,8 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           accommodation options offered.
         </Text>
         <div className={`mb-5`}>
-          <Text fontSize="2xl" fontWeight="bold" color="white">
-            Before Acceptance
-          </Text>
-          <div>{renderNavItems(navItems, "Before Acceptance")}</div>
+          <Navbar contents={navItems} color="white"/>
         </div>
-        {/* This Chapter does not exist yet so will cause error */}
-        {/* <div className={`mb-5`}>
-          <Text fontSize="2xl" fontWeight="bold" color="white">
-            After Acceptance
-          </Text>
-          <div>{renderNavItems(navItems, "After Acceptance")}</div>
-        </div> */}
       </div>
       <div
         className={`lg:col-span-6 col-span-4 bg-transparent shadow-inner shadow-4xl`}
@@ -145,7 +107,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                 />
               </div>
             )}
-            {currPageNum < Object.keys(navItems[chapter]).length && (
+            {currPageNum < navItems[navItems.map(x => x.title).indexOf(chapter)].children.reduce((sum, subchapter) => subchapter.children.length + sum, 0) && (
               <div className="ml-auto">
                 <Button
                   onClick={() => {
