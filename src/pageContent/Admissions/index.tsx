@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { Children, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Text, Button } from "pinus-ui-library";
+
+import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { DocMeta } from "src/lib/ssg";
 
@@ -9,6 +11,32 @@ interface OwnProps extends DocMeta {
   navItems: Record<string, Record<string, string>>[];
 }
 
+const options = {
+  renderNode: {
+    [BLOCKS.HEADING_1]: (_node, children) => (
+      <div>
+        <Text fontSize="6xl" fontWeight="bold" color="black">{children}</Text>
+        <br/>
+      </div>
+    ),
+    [BLOCKS.HEADING_2]: (_node, children) => (
+      <div>
+        <Text fontSize="4xl" fontWeight="bold" color="black">{children}</Text>
+      </div>
+    ),
+    [BLOCKS.HEADING_3]: (_node, children) => (
+      <div>
+        <Text fontSize="3xl" fontWeight="bold" color="black">{children}</Text>
+      </div>
+    ),
+    [BLOCKS.PARAGRAPH]: (_node, children) => (
+      <div>
+        <Text>{children}</Text>
+        <br/>
+      </div>
+    ),
+  }
+}
 const AdmissionsContent: React.FC<OwnProps> = ({
   chapter,
   subchapter,
@@ -18,7 +46,6 @@ const AdmissionsContent: React.FC<OwnProps> = ({
 }) => {
   const router = useRouter();
   const { slug } = router.query;
-  console.log("Slug is", slug);
 
   const currPageNum = parseInt(slug[slug.length - 1]);
 
@@ -39,7 +66,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
       if (Array.isArray(navItem.slug)) {
         newSlug = navItem.slug.join("/"); // TODO: Yet more hacks to be removed..
       } else {
-        newSlug = navItem.slug;
+        newSlug = navItem.slug.replace('-', '/'); // TODO: YET MORE HACKS
       }
 
       return (
@@ -60,8 +87,6 @@ const AdmissionsContent: React.FC<OwnProps> = ({
       );
     });
   };
-
-  console.log("Post is: ", post);
 
   return (
     <div className={`grid grid-cols-6 min-h-screen w-screen overflow-hidden`}>
@@ -103,7 +128,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           <Text fontSize="5xl" fontWeight="bold">
             {section}
           </Text>
-          <div> {documentToReactComponents(post)}</div>
+          <div> {documentToReactComponents(post, options)}</div>
           <div className={`flex flex-row justify-between mt-20`}>
             {currPageNum > 1 && (
               <div className="mr-auto">
