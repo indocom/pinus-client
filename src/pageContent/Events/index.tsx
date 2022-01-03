@@ -71,12 +71,13 @@ const EventsContent: NextPage =  () => {
     imageSrc: "http:" + data.fields.eventPicture.fields.file.url}
     
   });
- 
+  let index = -1
   const sections: Array<SectionInfo> = newData.map(data => {
+    index++
     return {
       id: data.name,
       data: data,
-      options: optionsArray[Math.random() * optionsArray.length]
+      options: optionsArray[index]
     }
   })
   return <div className={S.EventsWrapper}>{sections.map(renderSection)}</div>;
