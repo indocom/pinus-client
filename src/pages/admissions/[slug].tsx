@@ -7,25 +7,34 @@ import {
 } from "next";
 import AdmissionsContent from "src/pageContent/Admissions";
 import Page from "src/components/Page";
+import { DocMeta, getAllDocsFromCMS, getDocBySlugFromCMS } from "src/lib/ssg";
 import { Content } from "pinus-ui-library";
-import { DocMeta, getAllDocs, getAllDocsFromCMS, getDocBySlugFromCMS } from "src/lib/ssg";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const docs = getAllDocs(["slug"], "admissions");
+  const docs = await getAllDocsFromCMS();
 
-  // TODO: WHY THIS NO WORK???
-  // const docs = await getAllDocsFromCMS();
+  const paths = docs.map(({ slug }) => {
+    return { params: { slug } };
+  });
+
+  console.debug(`Generated static paths: ${JSON.stringify(paths)}`);
 
   return {
-    paths: docs.map(({ slug }) => {
-      return { params: { slug } };
-    }),
+    paths,
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const doc = await getDocBySlugFromCMS(params.slug);
+  let slug: string; 
+  if (Array.isArray(params.slug)) {
+    slug = params.slug.join('-'); // Should not occur
+    throw TypeError(`Received the following array: [${params.slug.join(',')}]`);
+  } else {
+    slug = params.slug;
+  }
+
+  const doc = await getDocBySlugFromCMS(slug);
   const docs = await getAllDocsFromCMS();
 
   const navItems: Content[] = [];
@@ -33,9 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { title, chapter, subchapter, section} = doc;
 
     let {slug} = doc;
-    if (Array.isArray(slug)) {
-      slug = slug.join('/');
-    }
+    console.warn("Slug is: ", slug);
 
     // Add missing chapter
     if (navItems.filter(content => content.title == chapter).length == 0) {

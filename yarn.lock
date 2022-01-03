@@ -10820,10 +10820,10 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
-pinus-ui-library@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/pinus-ui-library/-/pinus-ui-library-0.1.1.tgz#dd61bb7e778e10ed1b1d24c15675f4a2a972fdb3"
-  integrity sha512-nJxQnMvauZLpQP6vNrwztbf+PVkTV6b2jrLuv4sp+DkzNyD5vim45eGr+Jr1/Ew6EyMhTusreBTlir8shJDKdQ==
+pinus-ui-library@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/pinus-ui-library/-/pinus-ui-library-0.2.0.tgz#a1cc9e4edf545f18e7bfff66ac5b6c79ca71c22d"
+  integrity sha512-a+1JscNWCb+7m8LGJi7MJ+AwbOTDChch8XzKZrRtncP2ocUP+e6rukL0zVd9Su4dRIgnwUwdDCDORpIrqJHbRw==
   dependencies:
     react-responsive-carousel "^3.2.21"
     react-select "^4.3.1"

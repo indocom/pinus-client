@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { Text, Button, Navbar, Content } from "pinus-ui-library";
 
