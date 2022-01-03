@@ -11,24 +11,26 @@ export interface DocMeta {
   post?: Document;
 }
 
-interface slugRetrieved {
-  slug: string;
-}
-
 export async function getDocSlugsFromCMS(): Promise<string[]> {
   const client = createClient({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
   });
 
-  const res = await client.getEntries<slugRetrieved>({
+  interface Retrieved {
+    slug: string;
+  }
+  
+  // function makeSlug(doc: Retrieved): string {
+  //   return `${doc.chapter.split(' ')[0].toLocaleLowerCase()}-${doc.section}`; // Define how the slug should be made
+  // }
+
+  const res = await client.getEntries<Retrieved>({
     content_type: "admissions",
     select: "fields.slug",
   });
 
-  return res.items.map((x: Entry<slugRetrieved>) => {
-    return x.fields.slug;
-  });
+  return res.items.map((x: Entry<Retrieved>) => x.fields.slug);
 }
 
 export async function getDocsBySlugsFromCMS(

@@ -44,9 +44,17 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   post,
 }) => {
   const router = useRouter();
-  const { slug } = router.query;
+  const paramsSlug = router.query.slug;
 
-  const currPageNum = parseInt(slug[slug.length - 1]);
+  let slug: string; 
+  if (Array.isArray(paramsSlug)) {
+    slug = paramsSlug.join('-'); // Should not occur
+    throw TypeError(`Received the following array: [${paramsSlug.join(',')}]`);
+  } else {
+    slug = paramsSlug;
+  }
+
+  const currPageNum = parseInt(slug.split('-')[1]);
 
   const contentRef = useRef(null);
   const firstUpdate = useRef(true);
@@ -96,7 +104,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                 <Button
                   onClick={() => {
                     router.push(
-                      `/admissions/${slug[0]}/${currPageNum < 10 ? "0" : ""}${
+                      `/admissions/${slug.split('-')[0].toLocaleLowerCase()}-${currPageNum < 10 ? "0" : ""}${
                         currPageNum - 1
                       }`
                     );
@@ -111,7 +119,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                 <Button
                   onClick={() => {
                     router.push(
-                      `/admissions/${slug[0]}/${currPageNum < 9 ? "0" : ""}${
+                      `/admissions/${slug.split('-')[0].toLocaleLowerCase()}-${currPageNum < 9 ? "0" : ""}${
                         currPageNum + 1
                       }`
                     );

@@ -39,14 +39,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const navItems: Content[] = [];
   docs.forEach(doc => {
-    const { title, chapter, subchapter, section} = doc;
+    const { title, chapter, subchapter} = doc;
 
-    let {slug} = doc;
-    console.warn("Slug is: ", slug);
+    const { slug } = doc;
 
     // Add missing chapter
     if (navItems.filter(content => content.title == chapter).length == 0) {
-      const newChapter: Content = {
+      let newChapter: Content = {
         title: chapter,
         path: "",
         children: []
@@ -61,7 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     // Add missing subchapter
     if (subchapterList.filter(content => content.title == subchapter).length == 0) {
-      const newSubchapter: Content = {
+      let newSubchapter: Content = {
         title: subchapter,
         path: "",
         children: []
@@ -73,19 +72,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // TODO: Not safe
     const currSubchapter = subchapterList.filter(currSubchapter => currSubchapter.title == subchapter)[0];
     const contentList = currSubchapter.children;
+
     if (contentList.filter(content => content.title == title).length == 0) {
       const newContent: Content = {
         title: title, 
-        path: section, 
+        path: slug, 
         children: []
       }
 
       contentList.push(newContent);
     }
+
+    currChapter.path = subchapterList.map(x => x.path).sort((a, b) => a.localeCompare(b))[0];
+    currSubchapter.path = contentList.map(x => x.path).sort((a, b) => a.localeCompare(b))[0];
   })
 
   // TODO: this form of casting seems bad also...
-  navItems.forEach(chapter => chapter.children.map(subchapter => subchapter.children.sort((a, b) => +a.path - +b.path)))
+  navItems.forEach(chapter => chapter.children.map(subchapter => subchapter.children.sort((a, b) => a.path.localeCompare(b.path))))
   return { props: { ...doc, navItems } };
 };
 
