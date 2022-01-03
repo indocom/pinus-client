@@ -35,7 +35,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
 
   const renderNavItems = (navItems, chapter) => {
     return navItems[chapter].map((navItem, index) => {
-      let newSlug: string; 
+      let newSlug: string;
       if (Array.isArray(navItem.slug)) {
         newSlug = navItem.slug.join("/"); // TODO: Yet more hacks to be removed..
       } else {
@@ -47,8 +47,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           <Link href={`/admissions/${newSlug}`}>
             <a
               className={
-                newSlug ===
-                (typeof slug !== "string" && slug.join("/"))
+                newSlug === (typeof slug !== "string" && slug.join("/"))
                   ? `text-red-600`
                   : `text-white`
               }

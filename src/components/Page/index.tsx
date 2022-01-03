@@ -24,7 +24,6 @@ const Page: React.FC<OwnProps> = ({
   title,
   description,
   bgImage,
-  subBanner,
   renderSubcontent,
   children,
   router,

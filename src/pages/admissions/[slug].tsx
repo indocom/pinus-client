@@ -7,24 +7,24 @@ import {
 } from "next";
 import AdmissionsContent from "src/pageContent/Admissions";
 import Page from "src/components/Page";
-import { DocMeta, getAllDocs, getAllDocsFromCMS, getDocBySlugFromCMS } from "src/lib/ssg";
+import { DocMeta, getAllDocsFromCMS, getDocBySlugFromCMS } from "src/lib/ssg";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const docs = getAllDocs(["slug"], "admissions");
+  const docs = await getAllDocsFromCMS();
 
-  // TODO: WHY THIS NO WORK???
-  // const docs = await getAllDocsFromCMS();
+  const paths = docs.map(({ slug }) => {
+    return { params: { slug } };
+  });
+
+  console.debug(`Generated static paths: ${JSON.stringify(paths)}`);
 
   return {
-    paths: docs.map(({ slug }) => {
-      return { params: { slug } };
-    }),
+    paths,
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const doc = await getDocBySlugFromCMS(params.slug);
   const docs = await getAllDocsFromCMS();
 
   const navItems = {};
@@ -47,6 +47,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     navItems[chapter].sort((a, b) => (a.section > b.section ? 1 : -1));
   }
 
+  const doc = await getDocBySlugFromCMS(params.slug as string);
   return { props: { ...doc, navItems } };
 };
 
