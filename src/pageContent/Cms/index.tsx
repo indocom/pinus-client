@@ -4,13 +4,16 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 async function getItems() {
   const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
+    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
   });
 
-  const res = await client.getEntries({ content_type: "trial1" });
+  // TODO: Change the Trial 1 to some legit entry
+  const content_type = "trial1";
+  const res = await client.getEntries({ content_type: content_type });
 
-  return res.items;
+  if (res.items) return res.items;
+  console.log(`Error getting entries for ${content_type}`);
 }
 
 interface Entry {
@@ -18,7 +21,7 @@ interface Entry {
   [key: string]: any;
 }
 
-const Cms: React.FC = () => {
+const CmsContent: React.FC = () => {
   React.useEffect(() => {
     async function getData() {
       const res = await getItems();
@@ -31,7 +34,7 @@ const Cms: React.FC = () => {
   if (!data) {
     return <div></div>;
   }
-  console.log(data);
+
   return (
     <div>
       {data.map((post: Entry) => (
@@ -44,4 +47,4 @@ const Cms: React.FC = () => {
   );
 };
 
-export default Cms;
+export default CmsContent;

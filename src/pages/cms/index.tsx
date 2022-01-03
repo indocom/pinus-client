@@ -1,6 +1,6 @@
 import React from "react";
 import { NextPage } from "next";
-import CmsContent from "src/pageContent/cms";
+import CmsContent from "src/pageContent/Cms";
 import Page from "src/components/Page";
 
 const Cms: NextPage = () => {
