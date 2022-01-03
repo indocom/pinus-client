@@ -83,7 +83,7 @@ const Page: React.FC<OwnProps> = ({
       url: "/" + entry.slug,
     };
   });
-  const homeLink = "./";
+  const homeLink = "/";
   console.log(bgImage);
   return (
     <div className={`flex flex-col items-center overflow-hidden`}>
