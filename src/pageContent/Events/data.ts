@@ -83,11 +83,8 @@ const eventData = {
   },
 };
 
-export const sections: Array<SectionInfo> = [
-  {
-    id: "pinus-ori",
-    data: eventData["pinus-ori"],
-    options: {
+export const optionsArray: Array<EventOptions> = [
+    {
       flip: false,
       strips: [
         { color: "yellow", col: [1, 4], row: [1, 4] },
@@ -99,11 +96,7 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
-  {
-    id: "nusantaraku",
-    data: eventData["nusantaraku"],
-    options: {
+   {
       flip: true,
       strips: [
         {
@@ -120,11 +113,7 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
-  {
-    id: "popi",
-    data: eventData["popi"],
-    options: {
+     {
       flip: false,
       strips: [
         {
@@ -135,11 +124,7 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
   {
-    id: "mkp",
-    data: eventData["mkp"],
-    options: {
       flip: false,
       strips: [
         {
@@ -150,11 +135,7 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
   {
-    id: "nuansa",
-    data: eventData["nuansa"],
-    options: {
       flip: true,
       strips: [
         {
@@ -165,5 +146,4 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
 ];

@@ -2,7 +2,7 @@ import React from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 
-import { SectionInfo, StripData, getItems, EventData} from "./data";
+import { SectionInfo, StripData, getItems, EventData, optionsArray} from "./data";
 
 import * as S from "./style";
 
@@ -76,18 +76,7 @@ const EventsContent: NextPage =  () => {
     return {
       id: data.name,
       data: data,
-      options: {
-        flip: false,
-        strips: [
-          { color: "yellow", col: [1, 4], row: [1, 4] },
-          {
-            color: "red",
-            col: [1, 12],
-            row: [2, 4],
-            style: `mt-10 lg:mt-5 ml-10 lg:ml-3`,
-          },
-        ],
-      }
+      options: optionsArray[Math.random() * optionsArray.length]
     }
   })
   return <div className={S.EventsWrapper}>{sections.map(renderSection)}</div>;
