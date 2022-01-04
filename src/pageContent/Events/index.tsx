@@ -2,7 +2,13 @@ import React from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 
-import { SectionInfo, StripData, getItems, EventData, optionsArray} from "./data";
+import {
+  SectionInfo,
+  StripData,
+  getItems,
+  EventData,
+  optionsArray,
+} from "./data";
 
 import * as S from "./style";
 
@@ -50,7 +56,7 @@ interface Entry {
   // eslint-disable-next-line
   [key: string]: any;
 }
-const EventsContent: NextPage =  () => {
+const EventsContent: NextPage = () => {
   React.useEffect(() => {
     async function getData() {
       const res = await getItems();
@@ -62,24 +68,24 @@ const EventsContent: NextPage =  () => {
   if (!data) {
     return <div></div>;
   }
-  
-  const newData:Array<EventData> = data.map(data => {
+
+  const newData: Array<EventData> = data.map((data) => {
     return {
-    name: data.fields.name,
-    description: data.fields.eventDescription,
-    url: data.fields.url,
-    imageSrc: "http:" + data.fields.eventPicture.fields.file.url}
-    
+      name: data.fields.name,
+      description: data.fields.eventDescription,
+      url: data.fields.url,
+      imageSrc: "http:" + data.fields.eventPicture.fields.file.url,
+    };
   });
-  let index = -1
-  const sections: Array<SectionInfo> = newData.map(data => {
-    index++
+  let index = -1;
+  const sections: Array<SectionInfo> = newData.map((data) => {
+    index++;
     return {
       id: data.name,
       data: data,
-      options: optionsArray[index]
-    }
-  })
+      options: optionsArray[index],
+    };
+  });
   return <div className={S.EventsWrapper}>{sections.map(renderSection)}</div>;
 };
 
