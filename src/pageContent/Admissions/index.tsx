@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Text, Button, Navbar, Content } from "pinus-ui-library";
 
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { DocMeta } from "src/lib/ssg";
 
@@ -14,28 +14,34 @@ const options = {
   renderNode: {
     [BLOCKS.HEADING_1]: (_node, children) => (
       <div>
-        <Text fontSize="6xl" fontWeight="bold" color="black">{children}</Text>
-        <br/>
+        <Text fontSize="6xl" fontWeight="bold" color="black">
+          {children}
+        </Text>
+        <br />
       </div>
     ),
     [BLOCKS.HEADING_2]: (_node, children) => (
       <div>
-        <Text fontSize="4xl" fontWeight="bold" color="black">{children}</Text>
+        <Text fontSize="4xl" fontWeight="bold" color="black">
+          {children}
+        </Text>
       </div>
     ),
     [BLOCKS.HEADING_3]: (_node, children) => (
       <div>
-        <Text fontSize="3xl" fontWeight="bold" color="black">{children}</Text>
+        <Text fontSize="3xl" fontWeight="bold" color="black">
+          {children}
+        </Text>
       </div>
     ),
     [BLOCKS.PARAGRAPH]: (_node, children) => (
       <div>
         <Text>{children}</Text>
-        <br/>
+        <br />
       </div>
     ),
-  }
-}
+  },
+};
 const AdmissionsContent: React.FC<OwnProps> = ({
   chapter,
   subchapter,
@@ -46,15 +52,15 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   const router = useRouter();
   const paramsSlug = router.query.slug;
 
-  let slug: string; 
+  let slug: string;
   if (Array.isArray(paramsSlug)) {
-    slug = paramsSlug.join('-'); // Should not occur
-    throw TypeError(`Received the following array: [${paramsSlug.join(',')}]`);
+    slug = paramsSlug.join("-"); // Should not occur
+    throw TypeError(`Received the following array: [${paramsSlug.join(",")}]`);
   } else {
     slug = paramsSlug;
   }
 
-  const currPageNum = parseInt(slug.split('-')[1]);
+  const currPageNum = parseInt(slug.split("-")[1]);
 
   const contentRef = useRef(null);
   const firstUpdate = useRef(true);
@@ -81,7 +87,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           accommodation options offered.
         </Text>
         <div className={`mb-5`}>
-          <Navbar contents={navItems} color="white"/>
+          <Navbar contents={navItems} color="white" />
         </div>
       </div>
       <div
@@ -104,9 +110,9 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                 <Button
                   onClick={() => {
                     router.push(
-                      `/admissions/${slug.split('-')[0].toLocaleLowerCase()}-${currPageNum < 10 ? "0" : ""}${
-                        currPageNum - 1
-                      }`
+                      `/admissions/${slug.split("-")[0].toLocaleLowerCase()}-${
+                        currPageNum < 10 ? "0" : ""
+                      }${currPageNum - 1}`
                     );
                   }}
                   label="Prev"
@@ -114,13 +120,19 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                 />
               </div>
             )}
-            {currPageNum < navItems[navItems.map(x => x.title).indexOf(chapter)].children.reduce((sum, subchapter) => subchapter.children.length + sum, 0) && (
+            {currPageNum <
+              navItems[
+                navItems.map((x) => x.title).indexOf(chapter)
+              ].children.reduce(
+                (sum, subchapter) => subchapter.children.length + sum,
+                0
+              ) && (
               <div className="ml-auto">
                 <Button
                   onClick={() => {
                     router.push(
-                      `/admissions/${slug.split('-')[0].toLocaleLowerCase()}-${currPageNum < 9 ? "0" : ""}${
-                        currPageNum + 1
+                      `/admissions/${slug.split("-")[0].toLocaleLowerCase()}-${
+                        currPageNum < 9 ? "0" : ""
                       }`
                     );
                   }}
