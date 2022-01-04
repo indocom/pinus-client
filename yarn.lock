@@ -11236,10 +11236,11 @@ pify@^4.0.1:
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
 pinus-ui-library@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/pinus-ui-library/-/pinus-ui-library-0.2.0.tgz#a1cc9e4edf545f18e7bfff66ac5b6c79ca71c22d"
-  integrity sha512-a+1JscNWCb+7m8LGJi7MJ+AwbOTDChch8XzKZrRtncP2ocUP+e6rukL0zVd9Su4dRIgnwUwdDCDORpIrqJHbRw==
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/pinus-ui-library/-/pinus-ui-library-0.2.1.tgz#584e6f4ef10f9fa78a6f556723d1f4eca9327dcb"
+  integrity sha512-JzKIGIESqNWOAeokeA1BnUdU9AL9U0Nw/DzcI+4woQqJU92kxzRCN36FUFBiAIpv4Cb9u/MNpqOD4a9pEO0HXg==
   dependencies:
+    react-feather "^2.0.9"
     react-responsive-carousel "^3.2.21"
     react-select "^4.3.1"
     rollup-plugin-img "^1.1.0"
