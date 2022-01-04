@@ -20,10 +20,6 @@ export async function getDocSlugsFromCMS(): Promise<string[]> {
   interface Retrieved {
     slug: string;
   }
-  
-  // function makeSlug(doc: Retrieved): string {
-  //   return `${doc.chapter.split(' ')[0].toLocaleLowerCase()}-${doc.section}`; // Define how the slug should be made
-  // }
 
   const res = await client.getEntries<Retrieved>({
     content_type: "admissions",
