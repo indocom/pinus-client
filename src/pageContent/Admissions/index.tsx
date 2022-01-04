@@ -6,6 +6,9 @@ import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { DocMeta } from "src/lib/ssg";
 
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+
 interface OwnProps extends DocMeta {
   navItems: Content[];
 }
@@ -40,6 +43,44 @@ const options = {
         <br />
       </div>
     ),
+    [BLOCKS.EMBEDDED_ASSET]: (node, _) => {
+      const { contentType } = node.data.target.fields.file;
+      if (contentType.includes("image")) {
+        return (
+          <div>
+            <img
+              src={`https://${node.data.target.fields.file.url}`}
+              height={node.data.target.fields.file.details.image.height}
+              width={node.data.target.fields.file.details.image.width}
+              alt={node.data.target.fields.description}
+            />
+          </div>
+        );
+      } else {
+        // TODO: Support other contentTypes in the future, if necessary
+        throw TypeError(
+          `The following contentType has not been implemented: ${contentType}`
+        );
+      }
+    },
+    [BLOCKS.EMBEDDED_ENTRY]: (node, _) => {
+      return (
+        <div>
+          <ReactMarkdown
+            children={node.data.target.fields.table}
+            remarkPlugins={[gfm]}
+            components={{
+              table: ({ node, ...props }) => (
+                <table style={{ border: "1px solid #555" }} {...props} />
+              ),
+              tr: ({ node, ...props }) => (
+                <tr style={{ border: "1px solid #555" }} {...props} />
+              ),
+            }}
+          />
+        </div>
+      );
+    },
   },
 };
 const AdmissionsContent: React.FC<OwnProps> = ({
@@ -133,7 +174,11 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                     router.push(
                       `/admissions/${slug.split("-")[0].toLocaleLowerCase()}-${
                         currPageNum < 9 ? "0" : ""
+<<<<<<< HEAD
                       }`
+=======
+                      }${currPageNum + 1}`
+>>>>>>> e3ffd8657ab903f1e2970447c875db7b4e34ec18
                     );
                   }}
                   label="Next"

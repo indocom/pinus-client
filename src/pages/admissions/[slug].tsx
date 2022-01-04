@@ -26,8 +26,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+<<<<<<< HEAD
   if (Array.isArray(params.slug)) {
     throw TypeError(`Received the following array: [${params.slug.join(",")}]`);
+=======
+  let slug: string;
+  if (Array.isArray(params.slug)) {
+    slug = params.slug.join("-"); // Should not occur
+    throw TypeError(`Received the following array: [${params.slug.join(",")}]`);
+  } else {
+    slug = params.slug;
+>>>>>>> e3ffd8657ab903f1e2970447c875db7b4e34ec18
   }
 
   const slug = params.slug;
@@ -35,7 +44,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const doc = await getDocBySlugFromCMS(slug);
   const docs = await getAllDocsFromCMS();
 
+<<<<<<< HEAD
   const navItems: Content[] = [];
+=======
+  let navItems: Content[] = [];
+>>>>>>> e3ffd8657ab903f1e2970447c875db7b4e34ec18
   docs.forEach((doc) => {
     const { title, chapter, subchapter } = doc;
 
@@ -88,6 +101,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       contentList.push(newContent);
     }
 
+<<<<<<< HEAD
     currChapter.path = subchapterList
       .map((x) => x.path)
       .sort((a, b) => a.localeCompare(b))[0];
@@ -102,6 +116,22 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       subchapter.children.sort((a, b) => a.path.localeCompare(b.path))
     )
   );
+=======
+    currChapter.children = subchapterList.sort((a, b) =>
+      a.path.localeCompare(b.path)
+    );
+    currSubchapter.children = contentList.sort((a, b) =>
+      a.path.localeCompare(b.path)
+    );
+
+    currChapter.path = currChapter.children[0].path;
+    currSubchapter.path = currSubchapter.children[0].path;
+  });
+
+  // Sorts chapter
+  navItems = navItems.sort((a, b) => a.path.localeCompare(b.path));
+
+>>>>>>> e3ffd8657ab903f1e2970447c875db7b4e34ec18
   return { props: { ...doc, navItems } };
 };
 
