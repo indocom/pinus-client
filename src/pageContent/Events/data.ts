@@ -1,3 +1,15 @@
+import { createClient } from "contentful";
+export async function getItems() {
+  const client = createClient({
+    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
+  });
+
+  const res = await client.getEntries({ content_type: "events" });
+
+  return res.items;
+}
+
 export interface SectionInfo {
   id: string;
   data: EventData;
@@ -71,11 +83,8 @@ const eventData = {
   },
 };
 
-export const sections: Array<SectionInfo> = [
-  {
-    id: "pinus-ori",
-    data: eventData["pinus-ori"],
-    options: {
+export const optionsArray: Array<EventOptions> = [
+    {
       flip: false,
       strips: [
         { color: "yellow", col: [1, 4], row: [1, 4] },
@@ -87,11 +96,7 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
-  {
-    id: "nusantaraku",
-    data: eventData["nusantaraku"],
-    options: {
+   {
       flip: true,
       strips: [
         {
@@ -108,11 +113,7 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
-  {
-    id: "popi",
-    data: eventData["popi"],
-    options: {
+     {
       flip: false,
       strips: [
         {
@@ -123,11 +124,7 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
   {
-    id: "mkp",
-    data: eventData["mkp"],
-    options: {
       flip: false,
       strips: [
         {
@@ -138,11 +135,7 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
   {
-    id: "nuansa",
-    data: eventData["nuansa"],
-    options: {
       flip: true,
       strips: [
         {
@@ -153,5 +146,4 @@ export const sections: Array<SectionInfo> = [
         },
       ],
     },
-  },
 ];
