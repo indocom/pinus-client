@@ -174,11 +174,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                     router.push(
                       `/admissions/${slug.split("-")[0].toLocaleLowerCase()}-${
                         currPageNum < 9 ? "0" : ""
-<<<<<<< HEAD
-                      }`
-=======
                       }${currPageNum + 1}`
->>>>>>> e3ffd8657ab903f1e2970447c875db7b4e34ec18
                     );
                   }}
                   label="Next"
