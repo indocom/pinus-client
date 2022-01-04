@@ -2,9 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Text, Button, Navbar, Content } from "pinus-ui-library";
 
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { DocMeta } from "src/lib/ssg";
+
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
 interface OwnProps extends DocMeta {
   navItems: Content[];
@@ -14,28 +17,72 @@ const options = {
   renderNode: {
     [BLOCKS.HEADING_1]: (_node, children) => (
       <div>
-        <Text fontSize="6xl" fontWeight="bold" color="black">{children}</Text>
-        <br/>
+        <Text fontSize="6xl" fontWeight="bold" color="black">
+          {children}
+        </Text>
+        <br />
       </div>
     ),
     [BLOCKS.HEADING_2]: (_node, children) => (
       <div>
-        <Text fontSize="4xl" fontWeight="bold" color="black">{children}</Text>
+        <Text fontSize="4xl" fontWeight="bold" color="black">
+          {children}
+        </Text>
       </div>
     ),
     [BLOCKS.HEADING_3]: (_node, children) => (
       <div>
-        <Text fontSize="3xl" fontWeight="bold" color="black">{children}</Text>
+        <Text fontSize="3xl" fontWeight="bold" color="black">
+          {children}
+        </Text>
       </div>
     ),
     [BLOCKS.PARAGRAPH]: (_node, children) => (
       <div>
         <Text>{children}</Text>
-        <br/>
+        <br />
       </div>
     ),
-  }
-}
+    [BLOCKS.EMBEDDED_ASSET]: (node, _) => {
+      const { contentType } = node.data.target.fields.file;
+      if (contentType.includes("image")) {
+        return (
+          <div>
+            <img
+              src={`https://${node.data.target.fields.file.url}`}
+              height={node.data.target.fields.file.details.image.height}
+              width={node.data.target.fields.file.details.image.width}
+              alt={node.data.target.fields.description}
+            />
+          </div>
+        );
+      } else {
+        // TODO: Support other contentTypes in the future, if necessary
+        throw TypeError(
+          `The following contentType has not been implemented: ${contentType}`
+        );
+      }
+    },
+    [BLOCKS.EMBEDDED_ENTRY]: (node, _) => {
+      return (
+        <div>
+          <ReactMarkdown
+            children={node.data.target.fields.table}
+            remarkPlugins={[gfm]}
+            components={{
+              table: ({ node, ...props }) => (
+                <table style={{ border: "1px solid #555" }} {...props} />
+              ),
+              tr: ({ node, ...props }) => (
+                <tr style={{ border: "1px solid #555" }} {...props} />
+              ),
+            }}
+          />
+        </div>
+      );
+    },
+  },
+};
 const AdmissionsContent: React.FC<OwnProps> = ({
   chapter,
   subchapter,
@@ -46,15 +93,15 @@ const AdmissionsContent: React.FC<OwnProps> = ({
   const router = useRouter();
   const paramsSlug = router.query.slug;
 
-  let slug: string; 
+  let slug: string;
   if (Array.isArray(paramsSlug)) {
-    slug = paramsSlug.join('-'); // Should not occur
-    throw TypeError(`Received the following array: [${paramsSlug.join(',')}]`);
+    slug = paramsSlug.join("-"); // Should not occur
+    throw TypeError(`Received the following array: [${paramsSlug.join(",")}]`);
   } else {
     slug = paramsSlug;
   }
 
-  const currPageNum = parseInt(slug.split('-')[1]);
+  const currPageNum = parseInt(slug.split("-")[1]);
 
   const contentRef = useRef(null);
   const firstUpdate = useRef(true);
@@ -81,7 +128,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
           accommodation options offered.
         </Text>
         <div className={`mb-5`}>
-          <Navbar contents={navItems} color="white"/>
+          <Navbar contents={navItems} color="white" />
         </div>
       </div>
       <div
@@ -104,9 +151,9 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                 <Button
                   onClick={() => {
                     router.push(
-                      `/admissions/${slug.split('-')[0].toLocaleLowerCase()}-${currPageNum < 10 ? "0" : ""}${
-                        currPageNum - 1
-                      }`
+                      `/admissions/${slug.split("-")[0].toLocaleLowerCase()}-${
+                        currPageNum < 10 ? "0" : ""
+                      }${currPageNum - 1}`
                     );
                   }}
                   label="Prev"
@@ -114,14 +161,20 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                 />
               </div>
             )}
-            {currPageNum < navItems[navItems.map(x => x.title).indexOf(chapter)].children.reduce((sum, subchapter) => subchapter.children.length + sum, 0) && (
+            {currPageNum <
+              navItems[
+                navItems.map((x) => x.title).indexOf(chapter)
+              ].children.reduce(
+                (sum, subchapter) => subchapter.children.length + sum,
+                0
+              ) && (
               <div className="ml-auto">
                 <Button
                   onClick={() => {
                     router.push(
-                      `/admissions/${slug.split('-')[0].toLocaleLowerCase()}-${currPageNum < 9 ? "0" : ""}${
-                        currPageNum + 1
-                      }`
+                      `/admissions/${slug.split("-")[0].toLocaleLowerCase()}-${
+                        currPageNum < 9 ? "0" : ""
+                      }${currPageNum + 1}`
                     );
                   }}
                   label="Next"

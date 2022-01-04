@@ -26,10 +26,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  let slug: string; 
+  let slug: string;
   if (Array.isArray(params.slug)) {
-    slug = params.slug.join('-'); // Should not occur
-    throw TypeError(`Received the following array: [${params.slug.join(',')}]`);
+    slug = params.slug.join("-"); // Should not occur
+    throw TypeError(`Received the following array: [${params.slug.join(",")}]`);
   } else {
     slug = params.slug;
   }
@@ -37,58 +37,73 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const doc = await getDocBySlugFromCMS(slug);
   const docs = await getAllDocsFromCMS();
 
-  const navItems: Content[] = [];
-  docs.forEach(doc => {
-    const { title, chapter, subchapter} = doc;
+  let navItems: Content[] = [];
+  docs.forEach((doc) => {
+    const { title, chapter, subchapter } = doc;
 
     const { slug } = doc;
 
     // Add missing chapter
-    if (navItems.filter(content => content.title == chapter).length == 0) {
-      let newChapter: Content = {
+    if (navItems.filter((content) => content.title == chapter).length == 0) {
+      const newChapter: Content = {
         title: chapter,
         path: "",
-        children: []
-      }
+        children: [],
+      };
 
       navItems.push(newChapter);
     }
 
-    // TODO: Not safe 
-    const currChapter = navItems.filter(currChapter => currChapter.title == chapter)[0];
+    // TODO: Not safe
+    const currChapter = navItems.filter(
+      (currChapter) => currChapter.title == chapter
+    )[0];
     const subchapterList = currChapter.children;
 
     // Add missing subchapter
-    if (subchapterList.filter(content => content.title == subchapter).length == 0) {
-      let newSubchapter: Content = {
+    if (
+      subchapterList.filter((content) => content.title == subchapter).length ==
+      0
+    ) {
+      const newSubchapter: Content = {
         title: subchapter,
         path: "",
-        children: []
-      }
+        children: [],
+      };
 
       subchapterList.push(newSubchapter);
     }
 
     // TODO: Not safe
-    const currSubchapter = subchapterList.filter(currSubchapter => currSubchapter.title == subchapter)[0];
+    const currSubchapter = subchapterList.filter(
+      (currSubchapter) => currSubchapter.title == subchapter
+    )[0];
     const contentList = currSubchapter.children;
 
-    if (contentList.filter(content => content.title == title).length == 0) {
+    if (contentList.filter((content) => content.title == title).length == 0) {
       const newContent: Content = {
-        title: title, 
-        path: slug, 
-        children: []
-      }
+        title: title,
+        path: slug,
+        children: [],
+      };
 
       contentList.push(newContent);
     }
 
-    currChapter.path = subchapterList.map(x => x.path).sort((a, b) => a.localeCompare(b))[0];
-    currSubchapter.path = contentList.map(x => x.path).sort((a, b) => a.localeCompare(b))[0];
-  })
+    currChapter.children = subchapterList.sort((a, b) =>
+      a.path.localeCompare(b.path)
+    );
+    currSubchapter.children = contentList.sort((a, b) =>
+      a.path.localeCompare(b.path)
+    );
 
-  // TODO: this form of casting seems bad also...
-  navItems.forEach(chapter => chapter.children.map(subchapter => subchapter.children.sort((a, b) => a.path.localeCompare(b.path))))
+    currChapter.path = currChapter.children[0].path;
+    currSubchapter.path = currSubchapter.children[0].path;
+  });
+
+  // Sorts chapter
+  navItems = navItems.sort((a, b) => a.path.localeCompare(b.path));
+
   return { props: { ...doc, navItems } };
 };
 
