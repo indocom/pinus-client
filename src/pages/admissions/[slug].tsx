@@ -100,7 +100,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   // Sorts chapter
-  navItems = navItems.sort((a, b) => a.path.localeCompare(b.path));
+  // TODO: THIS IS A VERY BAD SOLUTION SOMEONE PLEASE CHANGE THIS
+  navItems = navItems.sort((a, b) => b.path.localeCompare(a.path));
 
   return { props: { ...doc, navItems } };
 };
