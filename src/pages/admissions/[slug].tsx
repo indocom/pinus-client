@@ -34,7 +34,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const doc = await getDocBySlugFromCMS(slug);
   const docs = await getAllDocsFromCMS();
-
   let navItems: Content[] = [];
   docs.forEach((doc) => {
     const { title, chapter, subchapter } = doc;
@@ -100,8 +99,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   // Sorts chapter
-  // TODO: THIS IS A VERY BAD SOLUTION SOMEONE PLEASE CHANGE THIS
-  navItems = navItems.sort((a, b) => b.path.localeCompare(a.path));
+  const before = navItems.filter(
+    (content) => content.title == "Before Acceptance"
+  );
+  const after = navItems.filter(
+    (content) => content.title == "After Acceptance"
+  );
+  navItems = before.concat(after);
 
   return { props: { ...doc, navItems } };
 };

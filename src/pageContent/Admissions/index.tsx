@@ -52,38 +52,46 @@ const options = {
     ),
     [BLOCKS.UL_LIST]: (_node, children) => (
       <div>
-        <ul style={{
-          listStyleType: "disc"
-        }}>
-          {children.map((x, idx) =>
-          <li 
-          key={idx}
+        <ul
           style={{
-            display: 'inline', 
-            lineHeight: '1px',
-            padding: 0
-          }}>
-            {x}
-            </li>)}
+            listStyleType: "disc",
+          }}
+        >
+          {children.map((x, idx) => (
+            <li
+              key={idx}
+              style={{
+                display: "inline",
+                lineHeight: "1px",
+                padding: 0,
+              }}
+            >
+              {x}
+            </li>
+          ))}
         </ul>
       </div>
-    ),    
+    ),
     [BLOCKS.OL_LIST]: (_node, children) => (
       <div>
-        <ol style={{
-          listStyleType: "decimal", 
-          marginLeft: "1.5em"
-        }}>
-          {children.map((x, idx) =>
-          <li 
-          key={idx}
+        <ol
           style={{
-            display: 'inline', 
-            lineHeight: '1px',
-            padding: 0
-          }}>
-            {x}
-            </li>)}
+            listStyleType: "decimal",
+            marginLeft: "1.5em",
+          }}
+        >
+          {children.map((x, idx) => (
+            <li
+              key={idx}
+              style={{
+                display: "inline",
+                lineHeight: "1px",
+                padding: 0,
+              }}
+            >
+              {x}
+            </li>
+          ))}
         </ol>
       </div>
     ),
