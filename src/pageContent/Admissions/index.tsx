@@ -53,10 +53,9 @@ const options = {
     [BLOCKS.UL_LIST]: (_node, children) => (
       <div>
         <ul style={{
-          listStyleType: "disc", 
+          listStyleType: "disc"
         }}>
           {children.map((x, idx) =>
-          
           <li 
           key={idx}
           style={{
@@ -67,6 +66,25 @@ const options = {
             {x}
             </li>)}
         </ul>
+      </div>
+    ),    
+    [BLOCKS.OL_LIST]: (_node, children) => (
+      <div>
+        <ol style={{
+          listStyleType: "decimal", 
+          marginLeft: "1.5em"
+        }}>
+          {children.map((x, idx) =>
+          <li 
+          key={idx}
+          style={{
+            display: 'inline', 
+            lineHeight: '1px',
+            padding: 0
+          }}>
+            {x}
+            </li>)}
+        </ol>
       </div>
     ),
     [BLOCKS.EMBEDDED_ASSET]: (node, _) => {
