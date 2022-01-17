@@ -97,6 +97,7 @@ const Page: React.FC<OwnProps> = ({
     return <div></div>;
   }
 
+  //mapping from background-title to the image url (from contentful)
   const urlMap = new Map(data.map(image => [image.fields.title, image.fields.file.url]))
 
   const bgImageMapping = {
@@ -109,6 +110,7 @@ const Page: React.FC<OwnProps> = ({
   };
 
   bgImage = bgImageMapping[bgImage];
+  console.log(bgImage)
 
   const headers = navLinks.map((entry) => {
     return {
