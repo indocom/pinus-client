@@ -7,6 +7,26 @@ import { navLinks } from "./links";
 import { columns } from "./columns";
 import Image from "next/image";
 import Link from "next/link";
+import { createClient } from "contentful";
+
+export async function getImages() {
+  const client = createClient({
+    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
+  });
+
+  const res = await client.getEntries({ content_type: "backgroundImage" });
+  return res.items[0].fields.image
+
+  //or otherwise, we can set to this:
+  // const res = await client.getEntry('7go8gzIJEprZpnbP8xIO5l')
+  // return res.fields.image
+  // as the contentful entry id of the background images is present
+}
+
+interface Entry {
+  [key: string]: any;
+}
 
 interface OwnProps {
   title: string;
@@ -64,18 +84,31 @@ const Page: React.FC<OwnProps> = ({
     </div>
   );
 
+  React.useEffect(() => {
+    async function getData() {
+      const base = await getImages();
+      setData(base);
+    }
+    getData();
+  }, []);
+
+  const [data, setData] = React.useState<Array<Entry>>();
+  if (!data) {
+    return <div></div>;
+  }
+
+  const urlMap = new Map(data.map(image => [image.fields.title, image.fields.file.url]))
+
   const bgImageMapping = {
-    home: "/assets/backgrounds/home.jpg",
-    about: "/assets/backgrounds/about.jpg",
-    admissions: "/assets/backgrounds/admissions.jpg",
-    events: "/assets/backgrounds/events.jpg",
-    contact: "/assets/backgrounds/contact.jpg",
+    home: urlMap.get("home-background"),
+    about: urlMap.get("about-background"),
+    admissions: urlMap.get("admissions-background"),
+    events: urlMap.get("events-background"),
+    contact: urlMap.get("contact-background"),
     aksaraBox: "/assets/backgrounds/aksaraBox.png",
   };
 
   bgImage = bgImageMapping[bgImage];
-
-  console.log(bgImage);
 
   const headers = navLinks.map((entry) => {
     return {
@@ -84,7 +117,6 @@ const Page: React.FC<OwnProps> = ({
     };
   });
   const homeLink = "/";
-  console.log(bgImage);
   return (
     <div className={`flex flex-col items-center overflow-hidden`}>
       <Head>
@@ -132,7 +164,6 @@ const Page: React.FC<OwnProps> = ({
               {title}
             </Text>
           }
-          // bgImage="/assets/backgrounds/contact.jpg"
           bgImage={bgImage}
           subHeader={
             renderSubcontent ? (
