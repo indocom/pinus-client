@@ -16,12 +16,7 @@ export async function getImages() {
   });
 
   const res = await client.getEntries({ content_type: "backgroundImage" });
-  return res.items[0].fields.image
-
-  //or otherwise, we can set to this:
-  // const res = await client.getEntry('7go8gzIJEprZpnbP8xIO5l')
-  // return res.fields.image
-  // as the contentful entry id of the background images is present
+  return res.items[0].fields.image;
 }
 
 interface Entry {
@@ -98,7 +93,9 @@ const Page: React.FC<OwnProps> = ({
   }
 
   //mapping from background-title to the image url (from contentful)
-  const urlMap = new Map(data.map(image => [image.fields.title, image.fields.file.url]))
+  const urlMap = new Map(
+    data.map((image) => [image.fields.title, image.fields.file.url])
+  );
 
   const bgImageMapping = {
     home: urlMap.get("home-background"),
@@ -110,7 +107,6 @@ const Page: React.FC<OwnProps> = ({
   };
 
   bgImage = bgImageMapping[bgImage];
-  console.log(bgImage)
 
   const headers = navLinks.map((entry) => {
     return {
