@@ -11347,10 +11347,10 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
-pinus-ui-library@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/pinus-ui-library/-/pinus-ui-library-0.2.4.tgz#981875c45e92e0da3197195bdcd947c0b94e1068"
-  integrity sha512-7X18+ZDThVkvGs4apbz9hqmoHv08yxcNeXH9oAqsTXM4j1siRwDdme53AquBESq5WfRgK1IeC/U+j8aIABAXyw==
+pinus-ui-library@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/pinus-ui-library/-/pinus-ui-library-0.3.0.tgz#4acdd5aff0901c677d068fa07558fe45684deaf2"
+  integrity sha512-RotXFMQZ0mOUK7DyozQdX8aE2kvTJ+izAfy6MWPQDr1qbEV+ZvXhjgGX+ICB3D4Dh7MOOs9IB3NJiUjsw8me7A==
   dependencies:
     react-feather "^2.0.9"
     react-responsive-carousel "^3.2.21"

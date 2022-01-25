@@ -9,17 +9,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "contentful";
 
+interface BackgroundImage {
+  image: Array<HTMLImageElement>;
+}
+
 export async function getImages() {
   const client = createClient({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
   });
 
-  const res = await client.getEntries({ content_type: "backgroundImage" });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const res = await client.getEntries<BackgroundImage>({
+    content_type: "backgroundImage",
+  });
+  console.log(res);
   return res.items[0].fields.image;
 }
 
 interface Entry {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
