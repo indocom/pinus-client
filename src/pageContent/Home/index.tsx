@@ -103,7 +103,7 @@ const HomeContent: React.FC = () => {
             </div>
             <div>
               <Button
-                onClick={() => router.push("/admissions/before/01")}
+                onClick={() => router.push("/admissions/before-01")}
                 label="Find Out More"
                 variant="primary"
               />
@@ -120,7 +120,7 @@ const HomeContent: React.FC = () => {
             </div>
             <div>
               <Button
-                onClick={() => router.push("/admissions/after/01")}
+                onClick={() => router.push("/admissions/after-01")}
                 label="Find Out More"
                 variant="primary"
               />
