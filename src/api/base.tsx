@@ -10,4 +10,6 @@ const api = create({
   timeout: 10000,
 });
 
+// Note: this is used as API for Redux, check the commit on 29/1/2022 to see how to create an API
+
 export default api;
