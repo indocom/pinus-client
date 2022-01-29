@@ -11,8 +11,6 @@ const wrongCredentialErrors = ["auth/user-not-found", "auth/wrong-password"];
 const errorMessages = {
   wrongCredentials:
     "Your email or password is incorrect. Please verify and try again.",
-  general:
-    "We had a problem logging you in. Please try again in a few minutes.",
 };
 
 function isString(s: unknown): boolean {
@@ -56,7 +54,7 @@ const LoginContent: React.FC = () => {
     if (wrongCredentialErrors.includes(err.code)) {
       setErrorMessage(errorMessages.wrongCredentials);
     } else {
-      setErrorMessage(errorMessages.general);
+      setErrorMessage(err.message);
     }
   };
 
