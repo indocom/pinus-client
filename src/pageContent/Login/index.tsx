@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 import { Input } from "pinus-ui-library";
 import { FirebaseError, handleFirebasePromise } from "src/firebase";
-import { isString } from "src/utils";
 
 import * as S from "./style";
 
