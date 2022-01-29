@@ -37,10 +37,62 @@ const options = {
         </Text>
       </div>
     ),
+    [BLOCKS.HEADING_4]: (_node, children) => (
+      <div>
+        <Text fontSize="2xl" fontWeight="bold" color="black">
+          {children}
+        </Text>
+      </div>
+    ),
     [BLOCKS.PARAGRAPH]: (_node, children) => (
       <div>
         <Text>{children}</Text>
         <br />
+      </div>
+    ),
+    [BLOCKS.UL_LIST]: (_node, children) => (
+      <div>
+        <ul
+          style={{
+            listStyleType: "disc",
+          }}
+        >
+          {children.map((x, idx) => (
+            <li
+              key={idx}
+              style={{
+                display: "inline",
+                lineHeight: "1px",
+                padding: 0,
+              }}
+            >
+              {x}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ),
+    [BLOCKS.OL_LIST]: (_node, children) => (
+      <div>
+        <ol
+          style={{
+            listStyleType: "decimal",
+            marginLeft: "1.5em",
+          }}
+        >
+          {children.map((x, idx) => (
+            <li
+              key={idx}
+              style={{
+                display: "inline",
+                lineHeight: "1px",
+                padding: 0,
+              }}
+            >
+              {x}
+            </li>
+          ))}
+        </ol>
       </div>
     ),
     [BLOCKS.EMBEDDED_ASSET]: (node, _) => {

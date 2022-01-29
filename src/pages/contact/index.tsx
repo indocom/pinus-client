@@ -33,7 +33,7 @@ const ContactUs: NextPage = () => {
                 href="https://www.facebook.com/PerhimpunanIndonesiaNUS/"
                 key="facebook-icon"
               >
-                <a target="_blank">
+                <a target="_blank" style={{ color: "black" }}>
                   <Facebook size={40} />
                 </a>
               </Link>
@@ -41,7 +41,7 @@ const ContactUs: NextPage = () => {
                 href="https://www.instagram.com/pinusonline"
                 key="instagram-icon"
               >
-                <a target="_blank">
+                <a target="_blank" style={{ color: "black" }}>
                   <Instagram size={40} />
                 </a>
               </Link>

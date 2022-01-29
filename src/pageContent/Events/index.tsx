@@ -83,7 +83,7 @@ const EventsContent: NextPage = () => {
     return {
       id: data.name,
       data: data,
-      options: optionsArray[index],
+      options: optionsArray[index % optionsArray.length],
     };
   });
   return <div className={S.EventsWrapper}>{sections.map(renderSection)}</div>;

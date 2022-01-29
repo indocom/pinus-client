@@ -30,8 +30,8 @@ export const columns: Column[] = [
   {
     title: "Admissions",
     pages: [
-      { title: "Before Acceptance", link: "/admissions/before/01" },
-      { title: "After Acceptance", link: "/admissions/after/01" },
+      { title: "Before Acceptance", link: "/admissions/before-01" },
+      { title: "After Acceptance", link: "/admissions/after-01" },
     ],
   },
   {
