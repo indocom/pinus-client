@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useFirebase } from "react-redux-firebase";
 import { useRouter } from "next/router";
 
-// import Input from "src/components/Input";
 import { Input } from "pinus-ui-library";
 import { FirebaseError, handleFirebasePromise } from "src/firebase";
 import { isString } from "src/utils";
@@ -47,7 +46,7 @@ const LoginContent: React.FC = () => {
       return handleLoginError(err);
     }
 
-    router.push(referrer);
+    await router.push(referrer);
   };
 
   const handleLoginError = (err: FirebaseError) => {
@@ -102,7 +101,7 @@ const LoginContent: React.FC = () => {
           </form>
         </div>
 
-        {/* Commented until Signup is live */}
+        {/* TODO: Commented until Signup is live */}
         {/* <div className={S.Join}>
           <p className={`text-center`}>
             New to PINUS?{" "}

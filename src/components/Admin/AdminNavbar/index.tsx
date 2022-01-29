@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { FirebaseReducer, useFirebase } from "react-redux-firebase";
 import { withAuth } from "src/redux/util";
+import React from "react";
 
 interface Props {
   auth: FirebaseReducer.AuthState;
@@ -39,7 +40,7 @@ const AdminNavbar: React.FC<Props> = ({ auth }) => {
               </p>
             </a>
           </Link>
-          <div className={`h-full w-0 border-l-2 border-gray-600`}></div>
+          <div className={`h-full w-0 border-l-2 border-gray-600`} />
           <p>Logged in as {name}</p>
         </div>
         <div>

@@ -23,7 +23,7 @@ export async function getImages() {
   const res = await client.getEntries<BackgroundImage>({
     content_type: "backgroundImage",
   });
-  console.log(res);
+
   return res.items[0].fields.image;
 }
 
