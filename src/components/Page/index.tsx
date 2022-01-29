@@ -98,7 +98,7 @@ const Page: React.FC<OwnProps> = ({
 
   const [data, setData] = React.useState<Array<Entry>>();
   if (!data) {
-    return <div></div>;
+    return <div />;
   }
 
   //mapping from background-title to the image url (from contentful)

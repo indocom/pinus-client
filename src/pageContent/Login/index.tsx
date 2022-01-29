@@ -15,6 +15,10 @@ const errorMessages = {
     "We had a problem logging you in. Please try again in a few minutes.",
 };
 
+function isString(s: unknown): boolean {
+  return typeof s === "string" || s instanceof String;
+}
+
 const LoginContent: React.FC = () => {
   const router = useRouter();
   const firebase = useFirebase();
