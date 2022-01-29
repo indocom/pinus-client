@@ -92,3 +92,5 @@ To learn more about the stack and libraries used, take a look at the following r
 - [Storybook Documentation](https://storybook.js.org/docs)
 - [Redux Tutorials](https://redux.js.org/tutorials/index)
 - [React-Redux-Firebase Authentication Documentation](http://react-redux-firebase.com/docs/auth.html)
+
+Licensed under the [MIT License](LICENSE.md)
