@@ -7,7 +7,11 @@ import {
 } from "next";
 import AdmissionsContent from "src/pageContent/Admissions";
 import Page from "src/components/Page";
-import { DocMeta, getAllDocsFromCMS, getDocBySlugFromCMS } from "src/lib/ssg";
+import {
+  getAllDocsFromCMS,
+  getDocBySlugFromCMS,
+} from "src/utils/contentful/admissions";
+import { ContentfulDocMeta } from "src/utils/contentful/types";
 import { Content } from "pinus-ui-library";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -110,7 +114,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { props: { ...doc, navItems } };
 };
 
-const Admissions: NextPage = (props: InferGetStaticPropsType<DocMeta>) => {
+const Admissions: NextPage = (
+  props: InferGetStaticPropsType<ContentfulDocMeta>
+) => {
   return (
     <Page
       bgImage="admissions"

@@ -19,6 +19,7 @@
     "axios": "^0.25.0",
     "babel-polyfill": "^6.26.0",
     "contentful": "^9.1.6",
+    "contentful-management": "^7.51.3",
     "draft-js": "^0.11.7",
     "firebase": "^8.9.1",
     "firebase-tools": "^10.0.1",

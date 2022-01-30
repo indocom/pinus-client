@@ -4,12 +4,12 @@ import { Text, Button, Navbar, Content } from "pinus-ui-library";
 
 import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { DocMeta } from "src/lib/ssg";
+import { ContentfulDocMeta } from "src/utils/contentful/types";
 
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 
-interface OwnProps extends DocMeta {
+interface OwnProps extends ContentfulDocMeta {
   navItems: Content[];
 }
 
