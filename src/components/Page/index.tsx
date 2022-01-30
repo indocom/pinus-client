@@ -85,7 +85,6 @@ const Page: React.FC<OwnProps> = ({
   const urlMap = new Map(
     data.map((image) => [image.fields.title, image.fields.file.url])
   );
-  console.log(data);
 
   const bgImageMapping = {
     home: urlMap.get("home-background"),
