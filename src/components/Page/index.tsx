@@ -7,21 +7,10 @@ import { navLinks } from "./links";
 import { columns } from "./columns";
 import Image from "next/image";
 import Link from "next/link";
-import { createClient } from "contentful";
 
-export async function getImages() {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-  });
-
-  const res = await client.getEntries({ content_type: "backgroundImage" });
-  return res.items[0].fields.image;
-}
-
-interface Entry {
-  [key: string]: any;
-}
+import { ContentfulImage } from "src/utils/contentful/types";
+import { getImages } from "src/utils/contentful/images";
+import { Entry } from "contentful";
 
 interface OwnProps {
   title: string;
@@ -87,9 +76,9 @@ const Page: React.FC<OwnProps> = ({
     getData();
   }, []);
 
-  const [data, setData] = React.useState<Array<Entry>>();
+  const [data, setData] = React.useState<Array<Entry<ContentfulImage>>>();
   if (!data) {
-    return <div></div>;
+    return <div />;
   }
 
   //mapping from background-title to the image url (from contentful)

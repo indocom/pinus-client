@@ -9,9 +9,7 @@ import { initFirebase } from "src/firebase";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import EnsureAuthLoaded from "src/components/Auth/EnsureAuthLoaded";
 
-import { isOnProduction } from "src/utils";
-
-const onProduction = isOnProduction();
+const onProduction: boolean = process.env.ON_PRODUCTION == "true";
 
 const rrfProps = {
   firebase: initFirebase(onProduction),

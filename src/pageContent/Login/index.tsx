@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { useFirebase } from "react-redux-firebase";
 import { useRouter } from "next/router";
 
-// import Input from "src/components/Input";
 import { Input } from "pinus-ui-library";
 import { FirebaseError, handleFirebasePromise } from "src/firebase";
-import { isString } from "src/utils";
 
 import * as S from "./style";
 
@@ -13,9 +11,11 @@ const wrongCredentialErrors = ["auth/user-not-found", "auth/wrong-password"];
 const errorMessages = {
   wrongCredentials:
     "Your email or password is incorrect. Please verify and try again.",
-  general:
-    "We had a problem logging you in. Please try again in a few minutes.",
 };
+
+function isString(s: unknown): boolean {
+  return typeof s === "string" || s instanceof String;
+}
 
 const LoginContent: React.FC = () => {
   const router = useRouter();
@@ -47,14 +47,14 @@ const LoginContent: React.FC = () => {
       return handleLoginError(err);
     }
 
-    router.push(referrer);
+    await router.push(referrer);
   };
 
   const handleLoginError = (err: FirebaseError) => {
     if (wrongCredentialErrors.includes(err.code)) {
       setErrorMessage(errorMessages.wrongCredentials);
     } else {
-      setErrorMessage(errorMessages.general);
+      setErrorMessage(err.message);
     }
   };
 
@@ -102,7 +102,7 @@ const LoginContent: React.FC = () => {
           </form>
         </div>
 
-        {/* Commented until Signup is live */}
+        {/* TODO: Commented until Signup is live */}
         {/* <div className={S.Join}>
           <p className={`text-center`}>
             New to PINUS?{" "}
