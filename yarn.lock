@@ -11023,10 +11023,10 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
-pinus-ui-library@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/pinus-ui-library/-/pinus-ui-library-0.3.1.tgz#460fdb6c0a96d4fc05d76a7bc838abe20662124f"
-  integrity sha512-HTvIYyVYSvQkEcgvIgjePnKUOFfbyJr6bdJ4ltSf4sdxDsQu3UU6w2U8JxYzQc7XL6cX04kPAVazJ+aDkUvTFw==
+pinus-ui-library@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/pinus-ui-library/-/pinus-ui-library-0.3.3.tgz#b055bd1dde90d8b5d529c5071e8e5ef373113e95"
+  integrity sha512-o1y5biW37W2d6MPTIfKle5sBlvej1SQnD8nIJf0VfxobCBeB2mz2dUhAFxMPin+p77H531mQ6GDW8R7sMZEDeA==
   dependencies:
     "@rollup/plugin-typescript" "^8.3.0"
     react-feather "^2.0.9"
