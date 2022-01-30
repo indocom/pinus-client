@@ -2,13 +2,9 @@ import React from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 
-import {
-  SectionInfo,
-  StripData,
-  getItems,
-  EventData,
-  optionsArray,
-} from "./data";
+import { SectionInfo, StripData, optionsArray, EventData } from "./data";
+
+import { getItems } from "src/utils/contentful/events";
 
 import * as S from "./style";
 

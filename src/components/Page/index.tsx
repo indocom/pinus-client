@@ -7,30 +7,10 @@ import { navLinks } from "./links";
 import { columns } from "./columns";
 import Image from "next/image";
 import Link from "next/link";
-import { createClient } from "contentful";
 
-interface BackgroundImage {
-  image: Array<HTMLImageElement>;
-}
-
-export async function getImages() {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-  });
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const res = await client.getEntries<BackgroundImage>({
-    content_type: "backgroundImage",
-  });
-
-  return res.items[0].fields.image;
-}
-
-interface Entry {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}
+import { ContentfulImage } from "src/utils/contentful/types";
+import { getImages } from "src/utils/contentful/images";
+import { Entry } from "contentful";
 
 interface OwnProps {
   title: string;
@@ -96,7 +76,7 @@ const Page: React.FC<OwnProps> = ({
     getData();
   }, []);
 
-  const [data, setData] = React.useState<Array<Entry>>();
+  const [data, setData] = React.useState<Array<Entry<ContentfulImage>>>();
   if (!data) {
     return <div />;
   }
@@ -105,6 +85,7 @@ const Page: React.FC<OwnProps> = ({
   const urlMap = new Map(
     data.map((image) => [image.fields.title, image.fields.file.url])
   );
+  console.log(data);
 
   const bgImageMapping = {
     home: urlMap.get("home-background"),
