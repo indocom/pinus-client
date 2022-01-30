@@ -23,7 +23,7 @@ export async function getImages() {
   const res = await client.getEntries<BackgroundImage>({
     content_type: "backgroundImage",
   });
-  console.log(res);
+
   return res.items[0].fields.image;
 }
 
@@ -98,7 +98,7 @@ const Page: React.FC<OwnProps> = ({
 
   const [data, setData] = React.useState<Array<Entry>>();
   if (!data) {
-    return <div></div>;
+    return <div />;
   }
 
   //mapping from background-title to the image url (from contentful)
