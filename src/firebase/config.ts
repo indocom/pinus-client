@@ -1,5 +1,5 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 
 const config = {
   // Production
@@ -17,6 +17,7 @@ export function initFirebase(onProduction: boolean): firebase.app.App {
 
   return firebase.app();
 }
+
 
 function initProductionFirebase() {
   firebase.initializeApp({
