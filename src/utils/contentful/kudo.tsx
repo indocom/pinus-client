@@ -28,3 +28,20 @@ export async function createPerson(personName: string): Promise<Entry> {
     })
     .then((entry) => entry.publish());
 }
+
+export async function getPersons(): Promise<string[]> {
+  const client = createClient({
+    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
+  });
+
+  return client
+    .getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID)
+    .then((space) => space.getEnvironment("master"))
+    .then((env) =>
+      env.getEntries({
+        content_type: "person",
+        select: "fields.name",
+      })
+    )
+    .then((entry) => entry.items.map((x) => x.fields.name["en-US"]));
+}
