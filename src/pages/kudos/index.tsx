@@ -1,7 +1,6 @@
 import React from "react";
 import { NextPage } from "next";
 import Page from "src/components/Page";
-import EventsContent from "src/pageContent/Events";
 
 const Kudos: NextPage = () => {
   return (
@@ -11,7 +10,7 @@ const Kudos: NextPage = () => {
       subBanner
       description="Drop your kudos down below !"
     >
-      
+    Kudos UI to  write  
     </Page>
   );
 };

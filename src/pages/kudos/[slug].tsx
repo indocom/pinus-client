@@ -23,10 +23,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const name = params.slug;
-  console.log(name);
-  console.log("hello");
   const contents = await getPeopleKudos(name);
-  console.log(contents);
+  
   return {
     props: {
       contents
@@ -38,7 +36,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const KudosPerson : NextPage = (props) => {
   const router = useRouter();
   const { slug } = router.query;
-  console.log(props);
   return (
     <Page
       bgImage=""
