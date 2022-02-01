@@ -25,3 +25,15 @@ export interface ContentfulDocMeta {
   slug?: string;
   post?: Document;
 }
+export interface ContentfulKudoBoard{
+  name: string,
+  people: Entry<ContentfulPerson>[]
+}
+export interface ContentfulPerson{
+  name: string,
+  content: Entry<ContentfulKudos>[]
+}
+export interface ContentfulKudos{
+  text: string;
+  writer: string;
+}
