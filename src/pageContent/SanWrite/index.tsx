@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { getPersons, createContent } from "src/utils/contentful/kudo";
+import { getPersons, createAndLink } from "src/utils/contentful/kudo";
 
 import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
 
@@ -27,7 +27,7 @@ const SanWriteContent: React.FC = () => {
 
   async function handleSubmit() {
     if (recipient && writer && content) {
-      await createContent(content, recipient, writer);
+      await createAndLink(writer, recipient, content);
       setMessage("Message successfully posted");
     } else {
       setMessage("All fields must be filled in");
