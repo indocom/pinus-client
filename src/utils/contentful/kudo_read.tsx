@@ -22,23 +22,17 @@ export async function getPeopleKudos(person):Promise<ContentfulKudos[]> {
 
   const changeSlugToName = (slug) => {
     let str = slug.replace(/-/g ," ");
-    console.log("KWKWK");
-    console.log(str);
     var splitStr = str.toLowerCase().split(' ');
     for (var i = 0; i < splitStr.length; i++) {
         splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
     }
     return splitStr.join(' '); 
   }
-  console.log("Hello Panda");
-  console.log(changeSlugToName(person));
-  console.log("Hello Pinda");
   const res = await client.getEntries<ContentfulPerson>({
     content_type: "person",
     'fields.name': changeSlugToName(person),
   });
   
-  console.log(res);
   const contents = res.items[0].fields.content;
   return contents.map(x => x.fields);
   

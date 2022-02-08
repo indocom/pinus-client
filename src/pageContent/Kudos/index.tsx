@@ -8,9 +8,14 @@ const KudosContent = (props) => {
     const Kudos = props.kudos.contents;
     return (
       <>
-      <div>
-        {Kudos.map(kudo => <ContentCard hyperlink="" title={kudo.text} description={kudo.writer}/>)}
+      <div className={`container mx-auto flex`}>  
+        {Kudos.map(kudo =>
+          <div className={`flex-1 min-w-0 m-10`}>
+              <ContentCard hyperlink="" title={kudo.text} description={kudo.writer}/>
+          </div>
+          )} 
       </div>
+      
       </>
     );
   };
