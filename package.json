@@ -34,6 +34,7 @@
     "react-draft-wysiwyg": "^1.14.6",
     "react-facebook-share-link": "^1.0.4",
     "react-feather": "^2.0.9",
+    "react-helmet-async": "^1.2.2",
     "react-linkedin-share-link": "^1.0.2",
     "react-markdown": "^8.0.0",
     "react-redux": "^7.2.2",
