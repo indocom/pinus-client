@@ -5071,14 +5071,25 @@ contentful-sdk-core@^6.10.4:
     p-throttle "^4.1.1"
     qs "^6.9.4"
 
-contentful@^9.1.6:
-  version "9.1.6"
-  resolved "https://registry.yarnpkg.com/contentful/-/contentful-9.1.6.tgz#1e6ef5988299db6b09dd2edf2395a472afa4830b"
-  integrity sha512-+myeUt442cLqGoifQRZycL5iwFkD/VA2hkS5AuvGoFrfr7B2NpW+xVt1XIuZb3HOJC9oPlGY8y0ey8A80Ld57Q==
+contentful-sdk-core@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-7.0.1.tgz#a38e10d6742e383076f1cb031a5e43b364cecba6"
+  integrity sha512-3m3RTmQHEnlOtx6f9PvkKgrv5Qpzjo8X+NysBXshCYK8OEG/vNbsfsdOaiURAxcVMQ/9vM14Og+fc+aMx79Lsg==
+  dependencies:
+    fast-copy "^2.1.0"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
+    p-throttle "^4.1.1"
+    qs "^6.9.4"
+
+contentful@^9.1.8:
+  version "9.1.8"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-9.1.8.tgz#10ebe979c364266bd03445134e11950417f6d46f"
+  integrity sha512-ktH1pGqSPRP2gUMwvQWEBGDbuIqwUEJ3Gc3tJZzkGOmWSuaL8D6FRorJ31ZlNDA+RzAju1Mjg94Q1ie1JfvqWg==
   dependencies:
     axios "^0.24.0"
     contentful-resolve-response "^1.3.0"
-    contentful-sdk-core "^6.10.4"
+    contentful-sdk-core "^7.0.1"
     fast-copy "^2.1.0"
     json-stringify-safe "^5.0.1"
 
@@ -11747,7 +11758,7 @@ react-feather@^2.0.9:
   dependencies:
     prop-types "^15.7.2"
 
-react-helmet-async@^1.0.7:
+react-helmet-async@^1.0.7, react-helmet-async@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-helmet-async/-/react-helmet-async-1.2.2.tgz#38d58d32ebffbc01ba42b5ad9142f85722492389"
   integrity sha512-XgSQezeCbLfCxdZhDA3T/g27XZKnOYyOkruopTLSJj8RvFZwdXnM4djnfYaiBSDzOidDgTo1jcEozoRu/+P9UQ==
