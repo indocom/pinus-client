@@ -24,7 +24,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const name = params.slug;
   const contents = await getPeopleKudos(name);
-  
+  if(contents === undefined) {
+    return { props:{}};
+  }
   return {
     props: {
       contents
@@ -44,7 +46,7 @@ const KudosPerson : NextPage = (props) => {
       description={`Hello ${slug}, kudos for you are down below !`}
     >
       <div>
-        <KudosContent kudos = {props}/>
+        <KudosContent kudos = {props} person= {slug}/>
       </div>
     </Page>
       

@@ -32,8 +32,10 @@ export async function getPeopleKudos(person):Promise<ContentfulKudos[]> {
     content_type: "person",
     'fields.name': changeSlugToName(person),
   });
-  
   const contents = res.items[0].fields.content;
+  if(contents[0].fields === undefined) {
+    return;
+  }
   return contents.map(x => x.fields);
   
 }
