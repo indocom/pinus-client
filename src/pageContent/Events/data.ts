@@ -1,6 +1,8 @@
+import { Document } from "@contentful/rich-text-types";
+
 export interface EventData {
   name: string;
-  description: string;
+  description: Document;
   url: string;
   imageSrc: string;
 }

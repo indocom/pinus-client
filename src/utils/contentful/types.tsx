@@ -12,11 +12,11 @@ export interface ContentfulEvent {
   name: string;
   url: string;
   imageSrc: string;
-  eventDescription: string;
+  description: Document;
   eventPicture: Entry<ContentfulImage>;
 }
 
-export interface ContentfulDocMeta {
+export interface ContentfulDocAdmissionMeta {
   title: string;
   chapter: string;
   subchapter: string;

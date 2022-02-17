@@ -11,7 +11,7 @@ import {
   getAllDocsFromCMS,
   getDocBySlugFromCMS,
 } from "src/utils/contentful/admissions";
-import { ContentfulDocMeta } from "src/utils/contentful/types";
+import { ContentfulDocAdmissionMeta } from "src/utils/contentful/types";
 import { Content } from "pinus-ui-library";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -115,7 +115,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const Admissions: NextPage = (
-  props: InferGetStaticPropsType<ContentfulDocMeta>
+  props: InferGetStaticPropsType<ContentfulDocAdmissionMeta>
 ) => {
   return (
     <Page
