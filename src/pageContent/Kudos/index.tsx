@@ -1,29 +1,51 @@
 import React from "react";
-import { Content, ContentCard, Text} from "pinus-ui-library";
+import { Content, Text } from "pinus-ui-library";
+import ContentCard from "./ContentCard";
+import styles from "./styles.module.css";
 
+interface Kudo {
+  text: string;
+  writer: string;
+}
+
+function reorder(original: Kudo[]) {
+  const ans = [[], [], []];
+  const lengths = [0, 0, 0];
+  for (let i = 0; i < original.length; i++) {
+    const minimum = Math.min(...lengths);
+    const which_col = lengths.indexOf(minimum);
+    lengths[which_col] = lengths[which_col] + original[i].text.length;
+    ans[which_col] = ans[which_col].concat(original[i]);
+  }
+  return ans;
+}
 
 const KudosContent = (props) => {
-    const Kudos = props.kudos.contents;
-    const hasKudos = Kudos !== undefined;
-    return (<>
-      {hasKudos && 
-        <div className={`container mx-auto flex flex-wrap justify-evenly mt-4 gap-4`}>  
-          {Kudos.map(kudo =>
-            <div className={`flex-1 min-w-0`}>
-              <ContentCard hyperlink="" title={kudo.text} description={kudo.writer}/>
+  const Kudos: Kudo[] = props.kudos.contents;
+  const hasKudos = Kudos !== undefined;
+  console.log(reorder(Kudos));
+  const Kudos_reordered = reorder(Kudos);
+  return (
+    <>
+      {hasKudos && (
+        <div className={styles.container}>
+          {Kudos_reordered.map((column) => (
+            <div className={styles.column}>
+              {column.map((kudo) => (
+                <div className={styles.kudo}>
+                  <ContentCard description={kudo.text} from={kudo.writer} />
+                </div>
+              ))}
             </div>
-          )}
+          ))}
         </div>
-      }
-      {
-        !hasKudos && 
+      )}
+      {!hasKudos && (
         <div className={`container text-center`}>
-          <Text>
-            Be the first to give Kudos to {props.person}
-          </Text>
+          <Text>Be the first to give Kudos to {props.person}</Text>
         </div>
-      } 
-      </>
-    );
-  };
-  export default KudosContent;
+      )}
+    </>
+  );
+};
+export default KudosContent;

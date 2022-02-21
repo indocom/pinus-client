@@ -10,7 +10,7 @@ const Kudos: NextPage = () => {
       subBanner
       description="Drop your kudos down below !"
     >
-    Kudos UI to  write  
+      Kudos UI to write
     </Page>
   );
 };
