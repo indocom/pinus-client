@@ -26,7 +26,7 @@
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "logger": "0.0.1",
-    "next": "^12.0.9",
+    "next": "^12.1.0",
     "next-redux-wrapper": "^7.0.1",
     "pinus-ui-library": "^0.3.3",
     "react": "^17.0.2",
