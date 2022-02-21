@@ -69,6 +69,11 @@ const SanWriteContent: React.FC = () => {
         onChange={(event) => setWriter(event.target.value)}
       />
       <p>&nbsp;</p>
+      <Text fontSize="xl"> Picture (optional) </Text>
+      <form action="/api/images" method="post">
+        <input type="file" />
+      </form>
+      <p>&nbsp;</p>
       <Button onClick={handleSubmit} label="Submit" variant="secondary" />
       <Text color="red">{message}</Text>
     </div>
