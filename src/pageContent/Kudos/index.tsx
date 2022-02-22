@@ -1,14 +1,10 @@
 import React from "react";
-import { Content, Text } from "pinus-ui-library";
+import { Text } from "pinus-ui-library";
 import ContentCard from "./ContentCard";
 import styles from "./styles.module.css";
+import { LocalKudo } from "src/utils/contentful/types";
 
-interface Kudo {
-  text: string;
-  writer: string;
-}
-
-function reorder(original: Kudo[]) {
+function reorder(original: LocalKudo[]): LocalKudo[][] {
   const ans = [[], [], []];
   const lengths = [0, 0, 0];
   for (let i = 0; i < original.length; i++) {
@@ -21,7 +17,7 @@ function reorder(original: Kudo[]) {
 }
 
 const KudosContent = (props) => {
-  const Kudos: Kudo[] = props.kudos.contents;
+  const Kudos: LocalKudo[] = props.kudos.contents;
   const hasKudos = Kudos !== undefined;
   console.log(reorder(Kudos));
   const Kudos_reordered = reorder(Kudos);
@@ -31,11 +27,16 @@ const KudosContent = (props) => {
         <div className={styles.container}>
           {Kudos_reordered.map((column) => (
             <div className={styles.column}>
-              {column.map((kudo) => (
-                <div className={styles.kudo}>
-                  <ContentCard description={kudo.text} from={kudo.writer} />
-                </div>
-              ))}
+              {column.map(
+                (kudo) => {
+                  console.log(kudo);
+                  return (
+                  <div className={styles.kudo}>
+                    <ContentCard description={kudo.text} from={kudo.writer} image={kudo.imageUrl}/>
+                  </div>
+                )
+              }
+              )}
             </div>
           ))}
         </div>

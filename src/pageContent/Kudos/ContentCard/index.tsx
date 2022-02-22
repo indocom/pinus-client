@@ -31,9 +31,9 @@ const ContentCard = ({
 }: ContentCardProps) => {
   return (
     <div className={styles.card}>
-      {/* <div className={styles.imageCard}>
+      <div className={styles.imageCard}>
         {image ? <img className={"imgcard"} src={image} alt={imgAlt} /> : <></>}
-      </div> */}
+      </div>
       <div className={styles.description}>{description}</div>
       <p>&nbsp;</p>
       <div className={styles.from}>from {from}</div>
