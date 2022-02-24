@@ -1,4 +1,4 @@
-import { Entry } from "contentful";
+import { Entry, Asset } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
 export interface ContentfulImage {
@@ -24,4 +24,23 @@ export interface ContentfulDocAdmissionMeta {
   content?: string;
   slug?: string;
   post?: Document;
+}
+export interface ContentfulKudoBoard {
+  name: string;
+  people: Entry<ContentfulPerson>[];
+}
+export interface ContentfulPerson {
+  name: string;
+  content: Entry<ContentfulKudo>[];
+}
+export interface ContentfulKudo {
+  text: string;
+  writer: string;
+  image: Asset;
+}
+export interface LocalKudo {
+  text: string;
+  writer: string;
+  image: Asset;
+  imageUrl: string;
 }
