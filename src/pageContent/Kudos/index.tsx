@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text } from "pinus-ui-library";
 import ContentCard from "./ContentCard";
 import styles from "./styles.module.css";
 import { LocalKudo } from "src/utils/contentful/types";
+import SanWrite from "src/pages/sanWrite";
+import SanWriteContent from "../SanWrite";
 
 function reorder(original: LocalKudo[]): LocalKudo[][] {
   // LocalKudo divided into 3 roughly equal columns
@@ -39,13 +41,28 @@ function reorder(original: LocalKudo[]): LocalKudo[][] {
   }
   return ans;
 }
+const ModalWindow = ({isShown, setIsShown, kudos, setKudos, slug})=>{
 
+  const handleClick = ()=>{
+    setIsShown(!isShown);
+  }
+  return (
+    <div className={styles.modal}>
+      <div className={styles.modalContent}>
+        <button className="close" onClick={handleClick}> X </button>
+          <SanWriteContent isShown={isShown} setIsShown={setIsShown} kudos={kudos} setKudos={setKudos} slug={slug}/>
+      </div>
+    </div>
+  )
+}
 const KudosContent = (props) => {
+  
   const Kudos: LocalKudo[] = props.kudos.contents;
   const hasKudos = Kudos !== undefined;
-
+  const[data, setKudos] = useState(Kudos);
+  const [isShown, setIsShown] = useState(false);
   const Kudos_reordered = hasKudos ? reorder(Kudos) : null;
-
+  const slug = props.person;
   let name: string = props.person as string;
   name = name
     .split("-")
@@ -53,9 +70,16 @@ const KudosContent = (props) => {
       return word[0].toUpperCase() + word.substring(1);
     })
     .join(" ");
+  
 
   return (
     <>
+      <div>
+        <div>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={()=> {setIsShown(!isShown);}}>Wish to {name} </button>
+        </div>
+        {isShown ? <ModalWindow isShown={isShown} setIsShown={setIsShown} kudos={data} setKudos={setKudos} slug={name} /> : null}
+      </div>
       {hasKudos && (
         <div className={styles.container}>
           {Kudos_reordered.map((column) => (
@@ -87,6 +111,12 @@ const KudosContent = (props) => {
             }
             from="admin"
           />
+          <div>
+            <div className="btn" onClick={()=> {setIsShown(!isShown)}}>
+              <button>Wish to {name} </button>
+            </div>
+            {isShown ? <ModalWindow isShown={isShown} setIsShown={setIsShown} kudos={data} setKudos={setKudos} slug={slug} /> : null}
+          </div>
         </div>
       )}
     </>

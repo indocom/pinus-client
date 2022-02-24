@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { getPersons, createAndLink } from "src/utils/contentful/kudo";
 
 import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
+import { getPeopleKudos } from "src/utils/contentful/kudo_read";
 
-const SanWriteContent: React.FC = () => {
+const SanWriteContent = ({isShown, setIsShown, kudos, setKudos, slug}) => {
   const [persons, setPersons] = useState<Array<string>>();
 
   const [recipient, setRecipient] = useState<string>("");
@@ -32,6 +33,13 @@ const SanWriteContent: React.FC = () => {
     if (recipient && writer && content && image) {
       await createAndLink(writer, recipient, content, image);
       setMessage("Message successfully posted");
+      setIsShown(false);
+      const newData = await getPeopleKudos(slug);
+      console.log("Kudos Before");
+      console.log(newData);
+      setKudos(newData);
+      console.log("changed kudos");
+      console.log(kudos);
     } else {
       setMessage("All fields must be filled in");
     }
