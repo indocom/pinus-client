@@ -9,7 +9,7 @@ export const navLinks: NavLink[] = [
   { title: "Admissions", slug: "admissions" },
   { title: "Events", slug: "events" },
   { title: "Contact Us", slug: "contact" },
-  { title: "Write for our seniors", slug: "sanWrite" },
+  { title: "SAN", slug: "sanWrite" },
 ];
 
 // pages that would be rendered alternatively

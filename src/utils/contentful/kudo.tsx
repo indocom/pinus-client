@@ -10,13 +10,12 @@ const generateRandomString = (length = 6) => {
 const getSpace = async () => {
   return createClient({
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
-  })
-    .getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
+  }).getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
 };
 
 const getEnvironment = async () => {
-  return getSpace().then(space => space.getEnvironment("master"));
-}
+  return getSpace().then((space) => space.getEnvironment("master"));
+};
 
 async function createImage(file: File): Promise<Asset> {
   if (file == null) {
@@ -62,24 +61,23 @@ async function linkImageToContent(image: Asset, content: Entry) {
 async function createContent(content: string, writerName: string, file: File) {
   const [imageAsset, contentEntry] = await Promise.all([
     createImage(file),
-    getEnvironment()
-    .then((env) => {
-     const entryId = generateRandomString(22);
-     return env.createEntryWithId(
-       "content", // content type ID. Check contentful on the type's ID
-       entryId,
-       {
-         fields: {
-           text: {
-             [LOCALE]: content,
-           },
-           writer: {
-             [LOCALE]: writerName,
-           },
-         },
-       }
-     );
-   })
+    getEnvironment().then((env) => {
+      const entryId = generateRandomString(22);
+      return env.createEntryWithId(
+        "content", // content type ID. Check contentful on the type's ID
+        entryId,
+        {
+          fields: {
+            text: {
+              [LOCALE]: content,
+            },
+            writer: {
+              [LOCALE]: writerName,
+            },
+          },
+        }
+      );
+    }),
   ]);
 
   if (imageAsset == null) {
@@ -130,15 +128,13 @@ async function linkContentToRecipient(contentEntry: Entry, recipientEntry: Entry
 export async function createAndLink(
   writerName: string,
   recipientName: string,
-  content: string, 
+  content: string,
   image: File
 ) : Promise<Entry> {
   const [contentEntry, recipientEntry] = await Promise.all([
     createContent(content, writerName, image),
     getRecipient(recipientName),
   ]);
-
-  console.log("Am here");
 
   return linkContentToRecipient(contentEntry, recipientEntry)
   .then(asset => asset.publish())
@@ -160,6 +156,5 @@ export async function getPersons(): Promise<string[]> {
 }
 
 export async function getImage(assetId: string): Promise<Asset> {
-  return getEnvironment()
-    .then(env => env.getAsset(assetId));
+  return getEnvironment().then((env) => env.getAsset(assetId));
 }
