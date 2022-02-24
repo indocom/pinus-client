@@ -7,13 +7,16 @@ import { getPeopleKudos } from "src/utils/contentful/kudo_read";
 
 const SanWriteContent = ({isShown, setIsShown, kudos, setKudos, slug}) => {
   const [persons, setPersons] = useState<Array<string>>();
-
+  
+  // User inputs
   const [recipient, setRecipient] = useState<string>("");
   const [writer, setWriter] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [image, setImage] = useState<File>();
 
+  // Internal states
   const [message, setMessage] = useState<string>("");
+  const [isDisabled, setDisabled] = useState<boolean>(false);
 
   React.useEffect(() => {
     async function getData() {
@@ -30,19 +33,15 @@ const SanWriteContent = ({isShown, setIsShown, kudos, setKudos, slug}) => {
   };
 
   async function handleSubmit() {
-    if (recipient && writer && content && image) {
-      await createAndLink(writer, recipient, content, image);
-      setMessage("Message successfully posted");
-      setIsShown(false);
-      const newData = await getPeopleKudos(slug);
-      console.log("Kudos Before");
-      console.log(newData);
-      setKudos(newData);
-      console.log("changed kudos");
-      console.log(kudos);
+    setDisabled(true);
+    setMessage("");
+    if (recipient && writer && content) {
+      let asset = await createAndLink(writer, recipient, content, image);
+      setMessage(asset == null ? "Message posting failed. Please report this to Simon Julian Lauw" : "Message successfully posted");
     } else {
       setMessage("All fields must be filled in");
     }
+    setDisabled(false);
   }
 
   return (
@@ -110,7 +109,7 @@ const SanWriteContent = ({isShown, setIsShown, kudos, setKudos, slug}) => {
         />
       </form>
       <p>&nbsp;</p>
-      <Button onClick={handleSubmit} label="Submit" variant="secondary" />
+      <Button onClick={handleSubmit} label="Submit" variant="secondary" disabled={isDisabled}/>
       <Text color="red">{message}</Text>
     </div>
   );

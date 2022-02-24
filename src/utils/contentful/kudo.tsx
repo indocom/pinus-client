@@ -7,60 +7,55 @@ const generateRandomString = (length = 6) => {
   return Math.random().toString(20).substring(0, length);
 };
 
-const getSpace = () => {
+const getSpace = async () => {
   return createClient({
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
   }).getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
 };
 
-const getEnvironment = () => {
+const getEnvironment = async () => {
   return getSpace().then((space) => space.getEnvironment("master"));
 };
 
-function createImage(file: File): Promise<Asset> {
+async function createImage(file: File): Promise<Asset> {
   if (file == null) {
-    return new Promise(null);
+    return new Promise<Asset>((resolved) => resolved(null));
   }
 
-  return getEnvironment()
-    .then(async (env) =>
-      env.createAssetFromFiles({
-        fields: {
-          title: {
-            [LOCALE]: file.name,
-          },
-          description: {
-            [LOCALE]: null,
-          },
-          file: {
-            [LOCALE]: {
-              file: await file.arrayBuffer(),
-              contentType: "image",
-              fileName: file.name,
-            },
-          },
-        },
-      })
-    )
-    .then((asset) => asset.processForAllLocales())
-    .then((asset) => asset.publish())
-    .catch((err) => {
-      console.error(err);
-      return new Promise(null);
-    });
+  return getEnvironment().then(async env => env.createAssetFromFiles({
+    fields: {
+      title: {
+        [LOCALE]: file.name
+      }, 
+      description: {
+        [LOCALE]: null
+      }, 
+      file: {
+        [LOCALE]: {
+          file: await file.arrayBuffer(),
+          contentType: "image", 
+          fileName: file.name
+        }
+      }
+    }
+  }))
+  .then((asset) => asset.processForAllLocales())
+  .then((asset) => asset.publish())
+  .catch(err => {
+    console.error(err);
+    return new Promise<Asset>((resolved) => resolved(null));
+  });
 }
 
-function linkImageToContent(image: Asset, content: Entry) {
-  content.fields.image = {
-    [LOCALE]: {
-      sys: {
-        type: "Link",
-        linkType: "Asset",
-        id: image.sys.id,
-      },
-    },
-  };
-  return content.update().then((entry) => entry.publish());
+async function linkImageToContent(image: Asset, content: Entry) {
+  content.fields.image = { [LOCALE]: {
+    sys: {
+      type: "Link", 
+      linkType: "Asset", 
+      id: image.sys.id
+    }
+  }};
+  return content.update();
 }
 
 async function createContent(content: string, writerName: string, file: File) {
@@ -86,14 +81,13 @@ async function createContent(content: string, writerName: string, file: File) {
   ]);
 
   if (imageAsset == null) {
-    return contentEntry;
+    return contentEntry.publish();
   }
 
-  linkImageToContent(imageAsset, contentEntry);
-  return contentEntry;
+  return linkImageToContent(imageAsset, contentEntry).then(asset => asset.publish());
 }
 
-function getRecipient(recipientName: string) {
+async function getRecipient(recipientName: string) {
   return getEnvironment()
     .then((env) =>
       env.getEntries({
@@ -115,10 +109,11 @@ function getRecipient(recipientName: string) {
     });
 }
 
-function linkContentToRecipient(contentEntry: Entry, recipientEntry: Entry) {
-  if (recipientEntry.fields.content === undefined) {
+async function linkContentToRecipient(contentEntry: Entry, recipientEntry: Entry) {
+  if (recipientEntry.fields.content == null) {
     recipientEntry.fields.content = { [LOCALE]: [] };
   }
+
   recipientEntry.fields.content[LOCALE].push({
     sys: {
       type: "Link",
@@ -135,14 +130,18 @@ export async function createAndLink(
   recipientName: string,
   content: string,
   image: File
-) {
+) : Promise<Entry> {
   const [contentEntry, recipientEntry] = await Promise.all([
     createContent(content, writerName, image),
     getRecipient(recipientName),
   ]);
 
-  await contentEntry.publish();
-  await linkContentToRecipient(contentEntry, recipientEntry);
+  return linkContentToRecipient(contentEntry, recipientEntry)
+  .then(asset => asset.publish())
+  .catch(err => {
+    console.error(err);
+    return null;
+  });
 }
 
 export async function getPersons(): Promise<string[]> {
