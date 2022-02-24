@@ -1,4 +1,4 @@
-import { createClient} from "contentful";
+import { createClient } from "contentful";
 import {
   ContentfulKudoBoard,
   ContentfulPerson,
@@ -42,16 +42,16 @@ export async function getPeopleKudos(person): Promise<LocalKudo[]> {
     return;
   }
 
-  return await Promise.all(contents
-  .map((x) => x.fields)
-  .map(
-    async (kudo) => {
-      return {
-        text: kudo.text, 
-        writer: kudo.writer, 
-        image: kudo.image ?? null,
-        imageUrl: kudo.image?.fields.file.url ?? null
-      };
-    })
-  );  
+  return await Promise.all(
+    contents
+      .map((x) => x.fields)
+      .map(async (kudo) => {
+        return {
+          text: kudo.text,
+          writer: kudo.writer,
+          image: kudo.image ?? null,
+          imageUrl: kudo.image?.fields.file.url ?? null,
+        };
+      })
+  );
 }

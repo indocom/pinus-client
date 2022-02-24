@@ -6,7 +6,6 @@ import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
 
 const SanWriteContent: React.FC = () => {
   const [persons, setPersons] = useState<Array<string>>();
-  
 
   const [recipient, setRecipient] = useState<string>("");
   const [writer, setWriter] = useState<string>("");
@@ -75,24 +74,32 @@ const SanWriteContent: React.FC = () => {
       <p>&nbsp;</p>
       <Text fontSize="xl"> Picture (optional) </Text>
       <form action="/api/images" method="post">
-        <input type="file" accept="image/*" onChange={(event) => {
-          const files = event.target.files;
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(event) => {
+            const files = event.target.files;
 
-          if (files.length !== 1) {
-            setImage(null);
-            setMessage(files.length < 1 ? "Did you not upload anything??" : "Did you upload more than one??");
-            return;
-          }
+            if (files.length !== 1) {
+              setImage(null);
+              setMessage(
+                files.length < 1
+                  ? "Did you not upload anything??"
+                  : "Did you upload more than one??"
+              );
+              return;
+            }
 
-          const file = files[0];
-          if (file.type.split("/")[0] !== "image") {
-            setImage(null);
-            setMessage("Please upload only pictures");
-            return;
-          }
+            const file = files[0];
+            if (file.type.split("/")[0] !== "image") {
+              setImage(null);
+              setMessage("Please upload only pictures");
+              return;
+            }
 
-          setImage(file);
-        }}/>
+            setImage(file);
+          }}
+        />
       </form>
       <p>&nbsp;</p>
       <Button onClick={handleSubmit} label="Submit" variant="secondary" />

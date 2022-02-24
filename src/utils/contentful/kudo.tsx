@@ -10,76 +10,79 @@ const generateRandomString = (length = 6) => {
 const getSpace = () => {
   return createClient({
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
-  })
-    .getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
+  }).getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
 };
 
 const getEnvironment = () => {
-  return getSpace().then(space => space.getEnvironment("master"));
-}
+  return getSpace().then((space) => space.getEnvironment("master"));
+};
 
 function createImage(file: File): Promise<Asset> {
   if (file == null) {
     return new Promise(null);
   }
 
-  return getEnvironment().then(async env => env.createAssetFromFiles({
-    fields: {
-      title: {
-        [LOCALE]: file.name
-      }, 
-      description: {
-        [LOCALE]: null
-      }, 
-      file: {
-        [LOCALE]: {
-          file: await file.arrayBuffer(),
-          contentType: "image", 
-          fileName: file.name
-        }
-      }
-    }
-  }))
-  .then((asset) => asset.processForAllLocales())
-  .then((asset) => asset.publish())
-  .catch(err => {
-    console.error(err);
-    return new Promise(null);
-  });
+  return getEnvironment()
+    .then(async (env) =>
+      env.createAssetFromFiles({
+        fields: {
+          title: {
+            [LOCALE]: file.name,
+          },
+          description: {
+            [LOCALE]: null,
+          },
+          file: {
+            [LOCALE]: {
+              file: await file.arrayBuffer(),
+              contentType: "image",
+              fileName: file.name,
+            },
+          },
+        },
+      })
+    )
+    .then((asset) => asset.processForAllLocales())
+    .then((asset) => asset.publish())
+    .catch((err) => {
+      console.error(err);
+      return new Promise(null);
+    });
 }
 
 function linkImageToContent(image: Asset, content: Entry) {
-  content.fields.image = { [LOCALE]: {
-    sys: {
-      type: "Link", 
-      linkType: "Asset", 
-      id: image.sys.id
-    }
-  }};
+  content.fields.image = {
+    [LOCALE]: {
+      sys: {
+        type: "Link",
+        linkType: "Asset",
+        id: image.sys.id,
+      },
+    },
+  };
   return content.update().then((entry) => entry.publish());
 }
 
 async function createContent(content: string, writerName: string, file: File) {
   const [imageAsset, contentEntry] = await Promise.all([
     createImage(file),
-    getEnvironment()
-    .then((env) => {
-     const entryId = generateRandomString(22);
-     return env.createEntryWithId(
-       "content", // content type ID. Check contentful on the type's ID
-       entryId,
-       {
-         fields: {
-           text: {
-             [LOCALE]: content,
-           },
-           writer: {
-             [LOCALE]: writerName,
-           },
-         },
-       }
-     );
-   })
+    getEnvironment().then((env) => {
+      const entryId = generateRandomString(22);
+      return env.createEntryWithId(
+        "content", // content type ID. Check contentful on the type's ID
+        entryId,
+        {
+          fields: {
+            text: {
+              [LOCALE]: content,
+            },
+            writer: {
+              [LOCALE]: writerName,
+            },
+          },
+        }
+      );
+    }),
   ]);
 
   if (imageAsset == null) {
@@ -130,7 +133,7 @@ function linkContentToRecipient(contentEntry: Entry, recipientEntry: Entry) {
 export async function createAndLink(
   writerName: string,
   recipientName: string,
-  content: string, 
+  content: string,
   image: File
 ) {
   const [contentEntry, recipientEntry] = await Promise.all([
@@ -154,6 +157,5 @@ export async function getPersons(): Promise<string[]> {
 }
 
 export async function getImage(assetId: string): Promise<Asset> {
-  return getEnvironment()
-    .then(env => env.getAsset(assetId));
+  return getEnvironment().then((env) => env.getAsset(assetId));
 }
