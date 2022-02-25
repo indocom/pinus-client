@@ -38,19 +38,21 @@ export const Seniors = (props) => {
 
   return (
     <>
-      <div className={styles.container}>
-        {testData.map((data) => {
-          return (
-            <div className={styles.columnSenior}>
-              <div className={styles.kudo}>
-                <SeniorCard
-                  name={data.name}
-                  seniorUrl={data.seniorUrl}
-                ></SeniorCard>
+      <div className={styles.page}>
+        <div className={styles.container}>
+          {testData.map((data) => {
+            return (
+              <div className={styles.columnSenior}>
+                <div className={styles.kudo}>
+                  <SeniorCard
+                    name={data.name}
+                    seniorUrl={data.seniorUrl}
+                  ></SeniorCard>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </>
   );
