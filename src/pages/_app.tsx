@@ -8,6 +8,7 @@ import { createWrapper } from "next-redux-wrapper";
 import { initFirebase } from "src/firebase";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import EnsureAuthLoaded from "src/components/Auth/EnsureAuthLoaded";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 export function isOnProduction(): boolean {
   return process.env.NODE_ENV === "production";
@@ -30,13 +31,24 @@ class ClientApp extends App {
     const { Component, pageProps }: AppProps = this.props;
 
     return (
-      <Provider store={store}>
-        <ReactReduxFirebaseProvider {...rrfProps}>
-          <EnsureAuthLoaded>
-            <Component {...pageProps} />
-          </EnsureAuthLoaded>
-        </ReactReduxFirebaseProvider>
-      </Provider>
+      <HelmetProvider>
+        <div className="App">
+          <Helmet>
+            <title>Perhimpunan Indonesia NUS | PINUS</title>
+            <meta
+              name="description"
+              content="Fostering relationships among Indonesians in NUS, building bridges between Indonesians and NUS."
+            />
+          </Helmet>
+          <Provider store={store}>
+            <ReactReduxFirebaseProvider {...rrfProps}>
+              <EnsureAuthLoaded>
+                <Component {...pageProps} />
+              </EnsureAuthLoaded>
+            </ReactReduxFirebaseProvider>
+          </Provider>
+        </div>
+      </HelmetProvider>
     );
   }
 }

@@ -4,8 +4,10 @@ import Image from "next/image";
 
 import { SectionInfo, StripData, optionsArray, EventData } from "./data";
 
-import { getItems } from "src/utils/contentful/events";
-
+import { getEventItems } from "src/utils/contentful/events";
+import { options as ContentfulOptions } from "../Admissions/index";
+import { Text, Button, Navbar, Content } from "pinus-ui-library";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import * as S from "./style";
 
 const renderStrip = (s: StripData): React.ReactFragment => {
@@ -37,7 +39,10 @@ const renderSection = (s: SectionInfo): React.ReactFragment => {
     <div id={id} key={`events-${id}`} className={S.EventSection(options.flip)}>
       <div className={S.TextWrapper}>
         <p className={S.EventName}>{data.name}</p>
-        <p className={S.EventDesc}>{data.description}</p>
+        <div>
+          {" "}
+          {documentToReactComponents(data.description, ContentfulOptions)}
+        </div>
       </div>
       <div className={S.ImageStripWrapper}>
         <div className={`${S.ImageWrapper}`}>
@@ -55,7 +60,7 @@ interface Entry {
 const EventsContent: NextPage = () => {
   React.useEffect(() => {
     async function getData() {
-      const res = await getItems();
+      const res = await getEventItems();
       setData(res);
     }
     getData();
@@ -68,7 +73,7 @@ const EventsContent: NextPage = () => {
   const newData: Array<EventData> = data.map((data) => {
     return {
       name: data.fields.name,
-      description: data.fields.eventDescription,
+      description: data.fields.description,
       url: data.fields.url,
       imageSrc: "http:" + data.fields.eventPicture.fields.file.url,
     };

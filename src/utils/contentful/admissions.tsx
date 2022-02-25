@@ -1,5 +1,5 @@
 import { createClient, Entry } from "contentful";
-import { ContentfulDocMeta } from "src/utils/contentful/types";
+import { ContentfulDocAdmissionMeta } from "src/utils/contentful/types";
 
 export async function getDocSlugsFromCMS(): Promise<string[]> {
   const client = createClient({
@@ -21,7 +21,7 @@ export async function getDocSlugsFromCMS(): Promise<string[]> {
 
 export async function getDocsBySlugsFromCMS(
   slug: string | string[]
-): Promise<ContentfulDocMeta[]> {
+): Promise<ContentfulDocAdmissionMeta[]> {
   const client = createClient({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
@@ -33,7 +33,7 @@ export async function getDocsBySlugsFromCMS(
 
   // Less than ideal solution, since it will match with before-01, etc
   // However, this would save the entries fetch time to 1 API call
-  const res = await client.getEntries<ContentfulDocMeta>({
+  const res = await client.getEntries<ContentfulDocAdmissionMeta>({
     content_type: "admissions",
     "fields.slug[in]": slug,
   });
@@ -45,13 +45,13 @@ export async function getDocsBySlugsFromCMS(
 
 export async function getDocBySlugFromCMS(
   slug: string
-): Promise<ContentfulDocMeta> {
+): Promise<ContentfulDocAdmissionMeta> {
   const client = createClient({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
   });
 
-  const res = await client.getEntries<ContentfulDocMeta>({
+  const res = await client.getEntries<ContentfulDocAdmissionMeta>({
     content_type: "admissions",
     "fields.slug[match]": slug,
   });
@@ -70,7 +70,9 @@ export async function getDocBySlugFromCMS(
 }
 
 // combination of GetDocSlugs and GetDocBySlug
-export async function getAllDocsFromCMS(): Promise<ContentfulDocMeta[]> {
+export async function getAllDocsFromCMS(): Promise<
+  ContentfulDocAdmissionMeta[]
+> {
   console.group(`Within getAllDocsFromCMS, fetching all docs`);
 
   const slugs = await getDocSlugsFromCMS();
