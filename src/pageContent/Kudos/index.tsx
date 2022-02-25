@@ -101,10 +101,12 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
   return (
     <div className={styles.modal} id="modalBackground">
       <div className={styles.modalContent}>
-        <button className="close" onClick={handleClick}>
-          {" "}
-          X{" "}
-        </button>
+          <button className={[styles.wishButton, styles.close].join(' ')} onClick={handleClick}>
+            {" "}
+            X{" "}
+          </button>
+        
+        
         <SanWriteContent
           setIsShown={setIsShown}
           setSubmit={setSubmit}
@@ -191,7 +193,18 @@ const KudosContent = (props) => {
         </div>
       )}
       {!hasKudos && (
-        <div className={styles.container}>
+        <div>
+          <div className="text-center">
+            <button
+              className={styles.wishButton}
+              onClick={() => {
+                setIsShown(!isShown);
+              }}
+            >
+              Write to {name}{" "}
+            </button>
+          </div>
+          <div className={styles.container}>
           <ContentCard
             description={
               name +
@@ -202,14 +215,7 @@ const KudosContent = (props) => {
             from="admin"
           />
           <div>
-            <div
-              className="btn"
-              onClick={() => {
-                setIsShown(!isShown);
-              }}
-            >
-              <button>Wish to {name} </button>
-            </div>
+          
             {isShown ? (
               <ModalWindow
                 isShown={isShown}
@@ -220,6 +226,8 @@ const KudosContent = (props) => {
             ) : null}
           </div>
         </div>
+        </div>
+        
       )}
     </>
   );

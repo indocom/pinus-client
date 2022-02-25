@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { getPersons, createAndLink } from "src/utils/contentful/kudo";
 
-import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
+import { Dropdown, Text, Button, Input, TextArea} from "pinus-ui-library";
 
 const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   // User inputs
@@ -10,7 +10,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   const [writer, setWriter] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [image, setImage] = useState<File>();
-
+  const [preview, setPreview] = React.useState(null);
   // Internal states
   const [message, setMessage] = useState<string>("");
   const [isDisabled, setDisabled] = useState<boolean>(false);
@@ -19,6 +19,21 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
     label: string;
     value: string;
   };
+  function previewFile(file) {
+    const reader = new FileReader();
+    console.log(file);
+    reader.addEventListener(
+      "load",
+      function () {
+        setPreview(reader.result);
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
 
   async function handleSubmit() {
     setDisabled(true);
@@ -59,6 +74,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
       />
       <p>&nbsp;</p>
       <Text fontSize="xl"> Picture (optional) </Text>
+      <img src={preview}/>
       <form action="/api/images" method="post">
         <input
           type="file"
@@ -68,6 +84,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
 
             if (files.length !== 1) {
               setImage(null);
+              setPreview(null);
               setMessage(
                 files.length < 1
                   ? "Did you not upload anything??"
@@ -82,8 +99,9 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
               setMessage("Please upload only pictures");
               return;
             }
-
+            setMessage("");
             setImage(file);
+            previewFile(file);
           }}
         />
       </form>
