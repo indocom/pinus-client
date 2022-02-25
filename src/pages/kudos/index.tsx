@@ -1,19 +1,18 @@
 import React from "react";
-import {GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Page from "src/components/Page";
 import { getPeopleSlugsFromKudoboard } from "src/utils/contentful/kudo_read";
-import {Seniors} from "src/pageContent/Kudos";
-
+import { Seniors } from "src/pageContent/Kudos";
 
 const Kudos: NextPage = () => {
   return (
     <Page
-      bgImage=""
-      title="Kudos"
+      bgImage="admissions"
+      title="Senior Appreciation Night"
       subBanner
-      description="Drop your kudos down below !"
+      description="Send your well wishes for our graduating batch!"
     >
-    <Seniors />
+      <Seniors />
     </Page>
   );
 };

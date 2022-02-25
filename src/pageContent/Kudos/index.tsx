@@ -8,19 +8,19 @@ import { setRevalidateHeaders } from "next/dist/server/send-payload";
 import { LocalKudo } from "src/utils/contentful/types";
 
 function nameToURL(name: string) {
-  const url: string = ("/kudos/" + name.toLowerCase().replaceAll(" ", "-"));
+  const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
   return url;
 }
 
 export const Seniors = (props) => {
   React.useEffect(() => {
     async function getNames() {
-      const names: string[]= await getPeopleSlugsFromKudoboard();
-      names.sort()
+      const names: string[] = await getPeopleSlugsFromKudoboard();
+      names.sort();
       setData(names);
     }
     getNames();
-  }, [])
+  }, []);
 
   const [data, setData] = React.useState<Array<string>>();
   if (!data) {
@@ -30,27 +30,29 @@ export const Seniors = (props) => {
   const testData: Array<SeniorProps> = data.map((x) => {
     return {
       name: x,
-      seniorUrl: nameToURL(x)
-    }
+      seniorUrl: nameToURL(x),
+    };
   });
 
   return (
     <>
-    <div className={styles.container}>
-      {testData.map(data => {
-              return (
-                <div className={styles.columnSenior}> 
-                  <div className={styles.kudo}>
-                    <SeniorCard name = {data.name} seniorUrl = {data.seniorUrl}></SeniorCard>
-                  </div>
-                </div>
-              );
-          })}
-    </div>
+      <div className={styles.container}>
+        {testData.map((data) => {
+          return (
+            <div className={styles.columnSenior}>
+              <div className={styles.kudo}>
+                <SeniorCard
+                  name={data.name}
+                  seniorUrl={data.seniorUrl}
+                ></SeniorCard>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };
-
 
 function reorder(original: LocalKudo[]): LocalKudo[][] {
   // LocalKudo divided into 3 roughly equal columns
