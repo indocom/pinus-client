@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import { getPersons, createAndLink } from "src/utils/contentful/kudo";
 
 import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
-import { getPeopleKudos } from "src/utils/contentful/kudo_read";
 
-const SanWriteContent = ({isShown, setIsShown, kudos, setKudos, slug}) => {
+const SanWriteContent= ({ setIsShown, setSubmit}) => {
   const [persons, setPersons] = useState<Array<string>>();
   
   // User inputs
@@ -21,8 +20,7 @@ const SanWriteContent = ({isShown, setIsShown, kudos, setKudos, slug}) => {
   React.useEffect(() => {
     async function getData() {
       const res = await getPersons();
-
-      setPersons(res);
+      setPersons(res)
     }
     getData();
   }, []);
@@ -38,10 +36,13 @@ const SanWriteContent = ({isShown, setIsShown, kudos, setKudos, slug}) => {
     if (recipient && writer && content) {
       let asset = await createAndLink(writer, recipient, content, image);
       setMessage(asset == null ? "Message posting failed. Please report this to Simon Julian Lauw" : "Message successfully posted");
+      setSubmit(true);
+      setTimeout(()=>setIsShown(false), 1000);
     } else {
       setMessage("All fields must be filled in");
     }
     setDisabled(false);
+    
   }
 
   return (

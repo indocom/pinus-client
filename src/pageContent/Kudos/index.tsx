@@ -3,8 +3,8 @@ import { Text } from "pinus-ui-library";
 import ContentCard from "./ContentCard";
 import styles from "./styles.module.css";
 import { LocalKudo } from "src/utils/contentful/types";
-import SanWrite from "src/pages/sanWrite";
 import SanWriteContent from "../SanWrite";
+import { getPeopleKudos } from "src/utils/contentful/kudo_read";
 
 function reorder(original: LocalKudo[]): LocalKudo[][] {
   // LocalKudo divided into 3 roughly equal columns
@@ -41,7 +41,7 @@ function reorder(original: LocalKudo[]): LocalKudo[][] {
   }
   return ans;
 }
-const ModalWindow = ({isShown, setIsShown, kudos, setKudos, slug})=>{
+const ModalWindow = ({isShown, setIsShown, slug, setSubmit})=>{
 
   const handleClick = ()=>{
     setIsShown(!isShown);
@@ -50,7 +50,7 @@ const ModalWindow = ({isShown, setIsShown, kudos, setKudos, slug})=>{
     <div className={styles.modal}>
       <div className={styles.modalContent}>
         <button className="close" onClick={handleClick}> X </button>
-          <SanWriteContent isShown={isShown} setIsShown={setIsShown} kudos={kudos} setKudos={setKudos} slug={slug}/>
+          <SanWriteContent setIsShown={setIsShown} setSubmit={setSubmit}/>
       </div>
     </div>
   )
@@ -59,9 +59,10 @@ const KudosContent = (props) => {
   
   const Kudos: LocalKudo[] = props.kudos.contents;
   const hasKudos = Kudos !== undefined;
-  const[data, setKudos] = useState(Kudos);
+  const[kudos, setKudos] = useState(Kudos);
   const [isShown, setIsShown] = useState(false);
-  const Kudos_reordered = hasKudos ? reorder(Kudos) : null;
+  const [isSubmitted, setSubmit] = useState(false);
+  const Kudos_reordered = hasKudos ? reorder(kudos) : null;
   const slug = props.person;
   let name: string = props.person as string;
   name = name
@@ -70,22 +71,32 @@ const KudosContent = (props) => {
       return word[0].toUpperCase() + word.substring(1);
     })
     .join(" ");
-  
+    React.useEffect(()=>{
+      
+      async function getData() {
+        const newData = await getPeopleKudos(slug);
+        setKudos(newData);
+      }
+      if(isSubmitted){
+        getData();
+        setSubmit(false);
+      }
+    }, [isSubmitted]);
 
   return (
     <>
-      <div>
-        <div>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={()=> {setIsShown(!isShown);}}>Wish to {name} </button>
-        </div>
-        {isShown ? <ModalWindow isShown={isShown} setIsShown={setIsShown} kudos={data} setKudos={setKudos} slug={name} /> : null}
+      <div>  
+        {isShown ? <ModalWindow isShown={isShown} setIsShown={setIsShown}  slug={name} setSubmit={setSubmit} /> : null}
       </div>
       {hasKudos && (
-        <div className={styles.container}>
+        <div className={styles.page}>
+          <div className="text-center">
+            <button className={styles.wishButton} onClick={()=> {setIsShown(!isShown);}}>Wish to {name} </button>
+          </div>
+          <div className={styles.container}>
           {Kudos_reordered.map((column) => (
             <div className={styles.column}>
               {column.map((kudo) => {
-                console.log(kudo);
                 return (
                   <div className={styles.kudo}>
                     <ContentCard
@@ -98,6 +109,8 @@ const KudosContent = (props) => {
               })}
             </div>
           ))}
+        </div>
+          
         </div>
       )}
       {!hasKudos && (
@@ -115,7 +128,7 @@ const KudosContent = (props) => {
             <div className="btn" onClick={()=> {setIsShown(!isShown)}}>
               <button>Wish to {name} </button>
             </div>
-            {isShown ? <ModalWindow isShown={isShown} setIsShown={setIsShown} kudos={data} setKudos={setKudos} slug={slug} /> : null}
+            {isShown ? <ModalWindow isShown={isShown} setIsShown={setIsShown}  slug={slug} setSubmit={setSubmit}/> : null}
           </div>
         </div>
       )}
