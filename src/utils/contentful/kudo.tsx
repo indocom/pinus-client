@@ -101,12 +101,17 @@ async function getRecipient(recipientName: string) {
         content_type: "person",
       })
     )
-    .then((entries) =>
-      entries.items.filter(
-        (entry) => entry.fields.name[LOCALE] === recipientName
+    .then((entries) =>{
+      
+      return entries.items.filter(
+        (entry) => {
+
+          return entry.fields.name[LOCALE].toLowerCase() === recipientName.toLowerCase();
+        }
       )
-    )
+    })
     .then((entries) => {
+      console.log(entries);
       if (entries.length !== 1) {
         throw new Error(
           `There exists more than one match to ${recipientName} which is impossible. Aborting..`

@@ -119,8 +119,8 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
 
 const KudosContent = (props) => {
   const Kudos: LocalKudo[] = props.kudos.contents;
-  const hasKudos = Kudos !== undefined;
-  const [kudos, setKudos] = useState(Kudos);
+  const[hasKudos, setHasKudos] = useState(Kudos!== undefined);
+  const [kudos, setKudos] = useState(Kudos !== undefined ? Kudos : null);
   const [isShown, setIsShown] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
   const Kudos_reordered = hasKudos ? reorder(kudos) : null;
@@ -142,6 +142,13 @@ const KudosContent = (props) => {
       setSubmit(false);
     }
   }, [isSubmitted]);
+  React.useEffect(()=>{
+    if(kudos === null) {
+      setHasKudos(false);
+    } else {
+      setHasKudos(true);
+    }
+  }, [kudos]);
 
   document.onclick = function (e) {
     if ((e.target as HTMLElement).id == "modalBackground") {
