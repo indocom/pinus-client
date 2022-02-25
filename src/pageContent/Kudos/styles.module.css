@@ -14,6 +14,14 @@
     padding: 5px;
 }
 
+.containerSenior {
+    display: flex;
+}
+
+.columnSenior {
+    width: 100%;
+}
+
 .column {
     width: calc(100% / 3);
     padding: 5px;

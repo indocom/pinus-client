@@ -16,6 +16,7 @@ export const Seniors = (props) => {
   React.useEffect(() => {
     async function getNames() {
       const names: string[]= await getPeopleSlugsFromKudoboard();
+      names.sort()
       setData(names);
     }
     getNames();
@@ -35,17 +36,17 @@ export const Seniors = (props) => {
 
   return (
     <>
+    <div className={styles.container}>
       {testData.map(data => {
-        console.log(data);
-        return (
-          <div>
-              <div className={styles.kudo}>
-                <SeniorCard name = {data.name} seniorUrl = {data.seniorUrl}></SeniorCard>
-              </div>
-          </div>
-
-        );
-      })}
+              return (
+                <div className={styles.columnSenior}> 
+                  <div className={styles.kudo}>
+                    <SeniorCard name = {data.name} seniorUrl = {data.seniorUrl}></SeniorCard>
+                  </div>
+                </div>
+              );
+          })}
+    </div>
     </>
   );
 };

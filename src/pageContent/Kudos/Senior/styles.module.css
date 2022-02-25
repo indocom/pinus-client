@@ -13,7 +13,7 @@
 
 .name {
     font-family: "randon-grotesque, museo-sans, Helvetica Neue, Helvetica, Arial, sans-serif" !important;
-    font-size: large;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -21,6 +21,7 @@
     cursor: pointer;
     text-align: center;
     color: #0000EE;
+    font-size: 20px;
 }
 
 .description {

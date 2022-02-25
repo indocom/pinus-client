@@ -10,9 +10,8 @@ export interface SeniorProps {
 const SeniorCard= ({name, seniorUrl}: SeniorProps) => {
     return (
         <div className={styles.card}>
-            <div className={styles.name}>Hello my name is {name} </div>
-            <Link href={seniorUrl}><div className={styles.link}>Click Here</div></Link>
-            <div className={styles.description}>Lorem ipsum :)</div>
+            <div className={styles.name}>{name} </div>
+            <Link href={seniorUrl}><div className={styles.link}>Send your Kudos!</div></Link>
         </div>
         
     );
