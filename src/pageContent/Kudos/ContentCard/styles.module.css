@@ -10,6 +10,8 @@
     box-shadow: 7px 7px 7px grey;
 
     padding: 25px;
+
+    white-space: pre-line;
 }
 
 .description {
