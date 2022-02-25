@@ -41,12 +41,13 @@ function reorder(original: LocalKudo[]): LocalKudo[][] {
   }
   return ans;
 }
+
 const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
   const handleClick = () => {
     setIsShown(!isShown);
   };
   return (
-    <div className={styles.modal}>
+    <div className={styles.modal} id="modalBackground">
       <div className={styles.modalContent}>
         <button className="close" onClick={handleClick}>
           {" "}
@@ -61,6 +62,7 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
     </div>
   );
 };
+
 const KudosContent = (props) => {
   const Kudos: LocalKudo[] = props.kudos.contents;
   const hasKudos = Kudos !== undefined;
@@ -86,6 +88,12 @@ const KudosContent = (props) => {
       setSubmit(false);
     }
   }, [isSubmitted]);
+
+  document.onclick = function (e) {
+    if ((e.target as HTMLElement).id == "modalBackground") {
+      setIsShown(false);
+    }
+  };
 
   return (
     <>
