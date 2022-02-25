@@ -4,11 +4,9 @@ import { getPersons, createAndLink } from "src/utils/contentful/kudo";
 
 import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
 
-const SanWriteContent= ({ setIsShown, setSubmit}) => {
-  const [persons, setPersons] = useState<Array<string>>();
-  
+const SanWriteContent= ({ setIsShown, setSubmit, name}) => {
   // User inputs
-  const [recipient, setRecipient] = useState<string>("");
+  const recipient = name;
   const [writer, setWriter] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [image, setImage] = useState<File>();
@@ -16,14 +14,6 @@ const SanWriteContent= ({ setIsShown, setSubmit}) => {
   // Internal states
   const [message, setMessage] = useState<string>("");
   const [isDisabled, setDisabled] = useState<boolean>(false);
-
-  React.useEffect(() => {
-    async function getData() {
-      const res = await getPersons();
-      setPersons(res)
-    }
-    getData();
-  }, []);
 
   type entry = {
     label: string;
@@ -48,23 +38,8 @@ const SanWriteContent= ({ setIsShown, setSubmit}) => {
   return (
     <div className={`flex flex-col items-center w-95vw`}>
       <p>&nbsp;</p>
-      <Text fontSize="xl"> Recipient </Text>
-      <Dropdown
-        onChange={(option: entry) => {
-          option && setRecipient(option.label);
-        }}
-        isMulti={false}
-        options={
-          persons &&
-          persons.map((entry) => {
-            return {
-              label: entry,
-              value: entry,
-            };
-          })
-        }
-        placeholder="Recipient"
-      />
+      <Text fontSize="xl"> Put your wishes for {recipient} </Text>
+      
       <p>&nbsp;</p>
       <Text fontSize="xl"> Your message </Text>
       <TextArea

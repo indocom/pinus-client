@@ -50,7 +50,7 @@ const ModalWindow = ({isShown, setIsShown, slug, setSubmit})=>{
     <div className={styles.modal}>
       <div className={styles.modalContent}>
         <button className="close" onClick={handleClick}> X </button>
-          <SanWriteContent setIsShown={setIsShown} setSubmit={setSubmit}/>
+          <SanWriteContent setIsShown={setIsShown} setSubmit={setSubmit} name={slug}/>
       </div>
     </div>
   )
