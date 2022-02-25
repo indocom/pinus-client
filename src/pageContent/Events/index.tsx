@@ -39,7 +39,10 @@ const renderSection = (s: SectionInfo): React.ReactFragment => {
     <div id={id} key={`events-${id}`} className={S.EventSection(options.flip)}>
       <div className={S.TextWrapper}>
         <p className={S.EventName}>{data.name}</p>
-        <div> {documentToReactComponents(data.description, ContentfulOptions)}</div>
+        <div>
+          {" "}
+          {documentToReactComponents(data.description, ContentfulOptions)}
+        </div>
       </div>
       <div className={S.ImageStripWrapper}>
         <div className={`${S.ImageWrapper}`}>

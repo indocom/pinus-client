@@ -4,7 +4,7 @@ import { getPersons, createAndLink } from "src/utils/contentful/kudo";
 
 import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
 
-const SanWriteContent= ({ setIsShown, setSubmit, name}) => {
+const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   // User inputs
   const recipient = name;
   const [writer, setWriter] = useState<string>("");
@@ -24,22 +24,25 @@ const SanWriteContent= ({ setIsShown, setSubmit, name}) => {
     setDisabled(true);
     setMessage("");
     if (recipient && writer && content) {
-      let asset = await createAndLink(writer, recipient, content, image);
-      setMessage(asset == null ? "Message posting failed. Please report this to Simon Julian Lauw" : "Message successfully posted");
+      const asset = await createAndLink(writer, recipient, content, image);
+      setMessage(
+        asset == null
+          ? "Message posting failed. Please report this to Simon Julian Lauw"
+          : "Message successfully posted"
+      );
       setSubmit(true);
-      setTimeout(()=>setIsShown(false), 1000);
+      setTimeout(() => setIsShown(false), 1000);
     } else {
       setMessage("All fields must be filled in");
     }
     setDisabled(false);
-    
   }
 
   return (
     <div className={`flex flex-col items-center w-95vw`}>
       <p>&nbsp;</p>
-      <Text fontSize="xl"> Put your wishes for {recipient} </Text>
-      
+      <Text fontSize="xl"> Write your wishes for {recipient} </Text>
+
       <p>&nbsp;</p>
       <Text fontSize="xl"> Your message </Text>
       <TextArea
@@ -85,7 +88,12 @@ const SanWriteContent= ({ setIsShown, setSubmit, name}) => {
         />
       </form>
       <p>&nbsp;</p>
-      <Button onClick={handleSubmit} label="Submit" variant="secondary" disabled={isDisabled}/>
+      <Button
+        onClick={handleSubmit}
+        label="Submit"
+        variant="secondary"
+        disabled={isDisabled}
+      />
       <Text color="red">{message}</Text>
     </div>
   );

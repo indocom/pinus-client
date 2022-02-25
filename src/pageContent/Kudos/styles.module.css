@@ -1,13 +1,14 @@
 .page {
-  background-image: url("../../../public/assets/images/kudo-background.jpg");
-}
-
-.container {
-
+    background-image: url("../../../public/assets/images/kudo-background.jpg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.container {
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
