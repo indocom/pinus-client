@@ -22,39 +22,44 @@ async function createImage(file: File): Promise<Asset> {
     return new Promise<Asset>((resolved) => resolved(null));
   }
 
-  return getEnvironment().then(async env => env.createAssetFromFiles({
-    fields: {
-      title: {
-        [LOCALE]: file.name
-      }, 
-      description: {
-        [LOCALE]: null
-      }, 
-      file: {
-        [LOCALE]: {
-          file: await file.arrayBuffer(),
-          contentType: "image", 
-          fileName: file.name
-        }
-      }
-    }
-  }))
-  .then((asset) => asset.processForAllLocales())
-  .then((asset) => asset.publish())
-  .catch(err => {
-    console.error(err);
-    return new Promise<Asset>((resolved) => resolved(null));
-  });
+  return getEnvironment()
+    .then(async (env) =>
+      env.createAssetFromFiles({
+        fields: {
+          title: {
+            [LOCALE]: file.name,
+          },
+          description: {
+            [LOCALE]: null,
+          },
+          file: {
+            [LOCALE]: {
+              file: await file.arrayBuffer(),
+              contentType: "image",
+              fileName: file.name,
+            },
+          },
+        },
+      })
+    )
+    .then((asset) => asset.processForAllLocales())
+    .then((asset) => asset.publish())
+    .catch((err) => {
+      console.error(err);
+      return new Promise<Asset>((resolved) => resolved(null));
+    });
 }
 
 async function linkImageToContent(image: Asset, content: Entry) {
-  content.fields.image = { [LOCALE]: {
-    sys: {
-      type: "Link", 
-      linkType: "Asset", 
-      id: image.sys.id
-    }
-  }};
+  content.fields.image = {
+    [LOCALE]: {
+      sys: {
+        type: "Link",
+        linkType: "Asset",
+        id: image.sys.id,
+      },
+    },
+  };
   return content.update();
 }
 
@@ -84,7 +89,9 @@ async function createContent(content: string, writerName: string, file: File) {
     return contentEntry.publish();
   }
 
-  return linkImageToContent(imageAsset, contentEntry).then(asset => asset.publish());
+  return linkImageToContent(imageAsset, contentEntry).then((asset) =>
+    asset.publish()
+  );
 }
 
 async function getRecipient(recipientName: string) {
@@ -109,7 +116,10 @@ async function getRecipient(recipientName: string) {
     });
 }
 
-async function linkContentToRecipient(contentEntry: Entry, recipientEntry: Entry) {
+async function linkContentToRecipient(
+  contentEntry: Entry,
+  recipientEntry: Entry
+) {
   if (recipientEntry.fields.content == null) {
     recipientEntry.fields.content = { [LOCALE]: [] };
   }
@@ -130,18 +140,18 @@ export async function createAndLink(
   recipientName: string,
   content: string,
   image: File
-) : Promise<Entry> {
+): Promise<Entry> {
   const [contentEntry, recipientEntry] = await Promise.all([
     createContent(content, writerName, image),
     getRecipient(recipientName),
   ]);
 
   return linkContentToRecipient(contentEntry, recipientEntry)
-  .then(asset => asset.publish())
-  .catch(err => {
-    console.error(err);
-    return null;
-  });
+    .then((asset) => asset.publish())
+    .catch((err) => {
+      console.error(err);
+      return null;
+    });
 }
 
 export async function getPersons(): Promise<string[]> {

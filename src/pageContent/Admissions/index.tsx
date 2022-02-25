@@ -4,16 +4,16 @@ import { Text, Button, Navbar, Content } from "pinus-ui-library";
 
 import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { ContentfulDocMeta } from "src/utils/contentful/types";
+import { ContentfulDocAdmissionMeta } from "src/utils/contentful/types";
 
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 
-interface OwnProps extends ContentfulDocMeta {
+interface OwnProps extends ContentfulDocAdmissionMeta {
   navItems: Content[];
 }
 
-const options = {
+export const options = {
   renderNode: {
     [BLOCKS.HEADING_1]: (_node, children) => (
       <div>

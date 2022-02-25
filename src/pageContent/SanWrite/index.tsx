@@ -4,12 +4,9 @@ import { getPersons, createAndLink } from "src/utils/contentful/kudo";
 
 import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
 
-const SanWriteContent: React.FC = () => {
-  // Fetched data from contentful
-  const [persons, setPersons] = useState<Array<string>>();
-  
+const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   // User inputs
-  const [recipient, setRecipient] = useState<string>("");
+  const recipient = name;
   const [writer, setWriter] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [image, setImage] = useState<File>();
@@ -17,15 +14,6 @@ const SanWriteContent: React.FC = () => {
   // Internal states
   const [message, setMessage] = useState<string>("");
   const [isDisabled, setDisabled] = useState<boolean>(false);
-
-  React.useEffect(() => {
-    async function getData() {
-      const res = await getPersons();
-
-      setPersons(res);
-    }
-    getData();
-  }, []);
 
   type entry = {
     label: string;
@@ -36,8 +24,14 @@ const SanWriteContent: React.FC = () => {
     setDisabled(true);
     setMessage("");
     if (recipient && writer && content) {
-      let asset = await createAndLink(writer, recipient, content, image);
-      setMessage(asset == null ? "Message posting failed. Please report this to Simon Julian Lauw" : "Message successfully posted");
+      const asset = await createAndLink(writer, recipient, content, image);
+      setMessage(
+        asset == null
+          ? "Message posting failed. Please report this to Simon Julian Lauw"
+          : "Message successfully posted"
+      );
+      setSubmit(true);
+      setTimeout(() => setIsShown(false), 1000);
     } else {
       setMessage("All fields must be filled in");
     }
@@ -47,23 +41,8 @@ const SanWriteContent: React.FC = () => {
   return (
     <div className={`flex flex-col items-center w-95vw`}>
       <p>&nbsp;</p>
-      <Text fontSize="xl"> Recipient </Text>
-      <Dropdown
-        onChange={(option: entry) => {
-          option && setRecipient(option.label);
-        }}
-        isMulti={false}
-        options={
-          persons &&
-          persons.map((entry) => {
-            return {
-              label: entry,
-              value: entry,
-            };
-          })
-        }
-        placeholder="Recipient"
-      />
+      <Text fontSize="xl"> Write your wishes for {recipient} </Text>
+
       <p>&nbsp;</p>
       <Text fontSize="xl"> Your message </Text>
       <TextArea
@@ -109,7 +88,12 @@ const SanWriteContent: React.FC = () => {
         />
       </form>
       <p>&nbsp;</p>
-      <Button onClick={handleSubmit} label="Submit" variant="secondary" disabled={isDisabled}/>
+      <Button
+        onClick={handleSubmit}
+        label="Submit"
+        variant="secondary"
+        disabled={isDisabled}
+      />
       <Text color="red">{message}</Text>
     </div>
   );
