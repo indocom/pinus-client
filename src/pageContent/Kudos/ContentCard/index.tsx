@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import { Text } from "pinus-ui-library";
 
 export interface ContentCardProps {
   /**
@@ -31,12 +32,19 @@ const ContentCard = ({
 }: ContentCardProps) => {
   return (
     <div className={styles.card}>
-      {/* <div className={styles.imageCard}>
-        {image ? <img className={"imgcard"} src={image} alt={imgAlt} /> : <></>}
-      </div> */}
-      <div className={styles.description}>{description}</div>
+      {image && (
+        <div>
+          <img className={styles.imgcard} src={image} alt={imgAlt} />
+          <p>&nbsp;</p>
+          <hr />
+          <p>&nbsp;</p>
+        </div>
+      )}
+      <Text> {description} </Text>
       <p>&nbsp;</p>
-      <div className={styles.from}>from {from}</div>
+      <div className={styles.from}>
+        <Text color="gray"> from {from} </Text>
+      </div>
     </div>
   );
 };

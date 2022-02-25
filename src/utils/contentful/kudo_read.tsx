@@ -1,9 +1,8 @@
-import { createClient, Entry } from "contentful";
+import { createClient } from "contentful";
 import {
-  ContentfulDocMeta,
   ContentfulKudoBoard,
-  ContentfulKudos,
   ContentfulPerson,
+  LocalKudo,
 } from "src/utils/contentful/types";
 
 export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
@@ -19,7 +18,7 @@ export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
   return people.map((x) => x.fields.name);
 }
 
-export async function getPeopleKudos(person): Promise<ContentfulKudos[]> {
+export async function getPeopleKudos(person): Promise<LocalKudo[]> {
   const client = createClient({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
@@ -42,5 +41,17 @@ export async function getPeopleKudos(person): Promise<ContentfulKudos[]> {
   if (contents[0].fields === undefined) {
     return;
   }
-  return contents.map((x) => x.fields);
+
+  return await Promise.all(
+    contents
+      .map((x) => x.fields)
+      .map(async (kudo) => {
+        return {
+          text: kudo.text,
+          writer: kudo.writer,
+          image: kudo.image ?? null,
+          imageUrl: kudo.image?.fields.file.url ?? null,
+        };
+      })
+  );
 }

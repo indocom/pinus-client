@@ -6,9 +6,12 @@ import { Dropdown, Text, Button, Input, TextArea } from "pinus-ui-library";
 
 const SanWriteContent: React.FC = () => {
   const [persons, setPersons] = useState<Array<string>>();
+
   const [recipient, setRecipient] = useState<string>("");
   const [writer, setWriter] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [image, setImage] = useState<File>();
+
   const [message, setMessage] = useState<string>("");
 
   React.useEffect(() => {
@@ -26,8 +29,8 @@ const SanWriteContent: React.FC = () => {
   };
 
   async function handleSubmit() {
-    if (recipient && writer && content) {
-      await createAndLink(writer, recipient, content);
+    if (recipient && writer && content && image) {
+      await createAndLink(writer, recipient, content, image);
       setMessage("Message successfully posted");
     } else {
       setMessage("All fields must be filled in");
@@ -71,7 +74,32 @@ const SanWriteContent: React.FC = () => {
       <p>&nbsp;</p>
       <Text fontSize="xl"> Picture (optional) </Text>
       <form action="/api/images" method="post">
-        <input type="file" />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(event) => {
+            const files = event.target.files;
+
+            if (files.length !== 1) {
+              setImage(null);
+              setMessage(
+                files.length < 1
+                  ? "Did you not upload anything??"
+                  : "Did you upload more than one??"
+              );
+              return;
+            }
+
+            const file = files[0];
+            if (file.type.split("/")[0] !== "image") {
+              setImage(null);
+              setMessage("Please upload only pictures");
+              return;
+            }
+
+            setImage(file);
+          }}
+        />
       </form>
       <p>&nbsp;</p>
       <Button onClick={handleSubmit} label="Submit" variant="secondary" />
