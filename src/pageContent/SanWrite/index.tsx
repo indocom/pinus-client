@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { createAndLink } from "src/utils/contentful/kudo";
+import { createContentAndLink } from "src/utils/contentful/kudo";
 
 import { Text, Button, Input, TextArea } from "pinus-ui-library";
 
@@ -35,7 +35,12 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
     setDisabled(true);
     setMessage("");
     if (recipient && writer && content) {
-      const asset = await createAndLink(writer, recipient, content, image);
+      const asset = await createContentAndLink(
+        writer,
+        recipient,
+        content,
+        image
+      );
       setMessage(
         asset == null
           ? "Message posting failed. Please report this to Simon Julian Lauw"

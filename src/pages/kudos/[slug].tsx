@@ -5,7 +5,7 @@ import Page from "src/components/Page";
 import {
   getPeopleKudos,
   getPeopleSlugsFromKudoboard,
-} from "src/utils/contentful/kudo_read";
+} from "src/utils/contentful/kudo";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const docs = await getPeopleSlugsFromKudoboard();

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+
+import { Dropdown } from "pinus-ui-library";
 import ContentCard from "./ContentCard";
 import styles from "./styles.module.css";
-import { getPeopleSlugsFromKudoboard } from "src/utils/contentful/kudo_read";
 import SeniorCard, { SeniorProps } from "./SeniorCard";
+
+import {
+  getPeopleSlugsFromKudoboard,
+  getPeopleKudos,
+} from "src/utils/contentful/kudo";
 import { LocalKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
-import { getPeopleKudos } from "src/utils/contentful/kudo_read";
-import { Dropdown } from "pinus-ui-library";
 
 function convertNameToUrl(name: string): string {
   const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
