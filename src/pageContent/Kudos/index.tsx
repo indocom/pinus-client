@@ -119,7 +119,7 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
 
 const KudosContent = (props) => {
   const Kudos: LocalKudo[] = props.kudos.contents;
-  const[hasKudos, setHasKudos] = useState(Kudos!== undefined);
+  const [hasKudos, setHasKudos] = useState(Kudos !== undefined);
   const [kudos, setKudos] = useState(Kudos !== undefined ? Kudos : null);
   const [isShown, setIsShown] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
@@ -142,8 +142,8 @@ const KudosContent = (props) => {
       setSubmit(false);
     }
   }, [isSubmitted]);
-  React.useEffect(()=>{
-    if(kudos === null) {
+  React.useEffect(() => {
+    if (kudos === null) {
       setHasKudos(false);
     } else {
       setHasKudos(true);
@@ -200,7 +200,7 @@ const KudosContent = (props) => {
         </div>
       )}
       {!hasKudos && (
-        <div>
+        <div className={styles.page}>
           <div className="text-center">
             <button
               className={styles.wishButton}
