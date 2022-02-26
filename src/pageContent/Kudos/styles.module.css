@@ -28,14 +28,24 @@
     justify-content: space-between;
 }
 
+.containerSenior {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  padding: 30px 2% 30px 1%;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction:row;
+}
+
 .containerSmol {
-    min-height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    padding: 30px 3% 30px 1%;
-    flex-wrap: wrap;
-    justify-content:stretch;
-    flex: 1;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  padding: 30px 3% 30px 1%;
+  flex-wrap: wrap;
+  justify-content:stretch;
+  flex: 1;
 }
 
 .kudo {

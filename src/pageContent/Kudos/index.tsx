@@ -73,7 +73,7 @@ export const Seniors = (props) => {
             onChange={handleOptionsChange}
           />
         </div>
-        <div className={styles.container}>
+        <div className={styles.containerSenior}>
           {convertSlugToSeniorProp.map((data) => {
             return (
               <div className={styles.columnSenior}>
