@@ -75,7 +75,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
       />
       <p>&nbsp;</p>
       <Text fontSize="xl"> Picture (optional) </Text>
-      <img src={preview} />
+      <img src={preview} alt={preview} />
       <form action="/api/images" method="post">
         <input
           type="file"

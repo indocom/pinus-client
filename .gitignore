@@ -40,3 +40,5 @@ ui-debug.log*
 # IDE related
 .idea
 .vscode
+
+yarn.lock
