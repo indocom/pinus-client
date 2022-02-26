@@ -2,43 +2,78 @@ import React, { useState } from "react";
 import ContentCard from "./ContentCard";
 import styles from "./styles.module.css";
 import { getPeopleSlugsFromKudoboard } from "src/utils/contentful/kudo_read";
-import SeniorCard, { SeniorProps } from "./Senior";
+import SeniorCard, { SeniorProps } from "./SeniorCard";
 import { LocalKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
 import { getPeopleKudos } from "src/utils/contentful/kudo_read";
+import { Dropdown } from "pinus-ui-library";
 
-function nameToURL(name: string) {
+function convertNameToUrl(name: string): string {
   const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
   return url;
 }
 
 export const Seniors = (props) => {
+  const [originalData, setOriginalData] = React.useState<Array<string>>();
+  const [filteredData, setFilteredData] = React.useState<Array<string>>();
+
   React.useEffect(() => {
     async function getNames() {
       const names: string[] = await getPeopleSlugsFromKudoboard();
       names.sort();
-      setData(names);
+      setOriginalData(names);
+      setFilteredData(names);
     }
     getNames();
   }, []);
 
-  const [data, setData] = React.useState<Array<string>>();
-  if (!data) {
+  if (!originalData || !filteredData) {
     return <div></div>;
   }
 
-  const testData: Array<SeniorProps> = data.map((x) => {
+  const convertSlugToSeniorProp: Array<SeniorProps> = filteredData.map((x) => {
     return {
       name: x,
-      seniorUrl: nameToURL(x),
+      seniorUrl: convertNameToUrl(x),
+    };
+  });
+
+  interface ValueType {
+    value: string;
+    label: string;
+  }
+
+  const handleOptionsChange = (value: ValueType, _) => {
+    try {
+      const labelChosen = value.label;
+      const newFilteredData = originalData.filter((seniorName: string) =>
+        seniorName.includes(labelChosen)
+      );
+      setFilteredData(newFilteredData);
+    } catch (err) {
+      console.debug(err);
+    }
+  };
+
+  const options = originalData.map((seniorName: string) => {
+    return {
+      value: seniorName,
+      label: seniorName,
     };
   });
 
   return (
     <>
       <div className={styles.page}>
+        <div className={styles.dropdown}>
+          <Dropdown
+            options={options}
+            isMulti={false}
+            onChange={handleOptionsChange}
+          />
+        </div>
         <div className={styles.container}>
-          {testData.map((data) => {
+          {convertSlugToSeniorProp.map((data) => {
             return (
               <div className={styles.columnSenior}>
                 <div className={styles.kudo}>
@@ -117,7 +152,7 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
   );
 };
 
-const KudosContent = (props) => {
+export const KudosContent = (props) => {
   const Kudos: LocalKudo[] = props.kudos.contents;
   const [hasKudos, setHasKudos] = useState(Kudos !== undefined);
   const [kudos, setKudos] = useState(Kudos !== undefined ? Kudos : null);
@@ -237,4 +272,3 @@ const KudosContent = (props) => {
     </>
   );
 };
-export default KudosContent;

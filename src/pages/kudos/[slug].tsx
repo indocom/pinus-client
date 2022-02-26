@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import KudosContent from "src/pageContent/Kudos";
+import { KudosContent } from "src/pageContent/Kudos";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Page from "src/components/Page";
 import {

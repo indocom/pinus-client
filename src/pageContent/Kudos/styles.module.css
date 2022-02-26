@@ -121,3 +121,7 @@
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+.dropdown {
+  padding: 30px 3% 30px 3%;
+}

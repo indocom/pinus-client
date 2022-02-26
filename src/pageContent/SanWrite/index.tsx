@@ -17,7 +17,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
 
   function previewFile(file) {
     const reader = new FileReader();
-    console.log(file);
+    console.debug(file);
     reader.addEventListener(
       "load",
       function () {
