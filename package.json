@@ -16,7 +16,7 @@
     "@contentful/rich-text-react-renderer": "^15.10.0",
     "@reduxjs/toolkit": "^1.5.1",
     "apisauce": "^2.1.1",
-    "axios": "^0.25.0",
+    "axios": "^0.26.0",
     "babel-polyfill": "^6.26.0",
     "contentful": "^9.1.6",
     "contentful-management": "^7.51.3",
