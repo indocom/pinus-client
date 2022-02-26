@@ -70,7 +70,9 @@ export async function getDocBySlugFromCMS(
 }
 
 // combination of GetDocSlugs and GetDocBySlug
-export async function getAllDocsFromCMS(): Promise<ContentfulDocAdmissionMeta[]> {
+export async function getAllDocsFromCMS(): Promise<
+  ContentfulDocAdmissionMeta[]
+> {
   console.group(`Within getAllDocsFromCMS, fetching all docs`);
 
   const slugs = await getDocSlugsFromCMS();

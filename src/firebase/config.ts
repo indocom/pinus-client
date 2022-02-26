@@ -18,7 +18,6 @@ export function initFirebase(onProduction: boolean): firebase.app.App {
   return firebase.app();
 }
 
-
 function initProductionFirebase() {
   firebase.initializeApp({
     apiKey: config.apiKey,

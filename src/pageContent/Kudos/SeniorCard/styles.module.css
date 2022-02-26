@@ -1,0 +1,29 @@
+.card {
+    background-color: white;
+    width: 300px;
+    height: 150px;
+    border: solid 1px;
+
+    border: 1px;
+    border-radius: 1rem;
+    box-shadow: 7px 7px 7px grey;
+
+    padding: 25px;
+}
+
+.name {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.link {
+    margin-top: 15px;
+    cursor: pointer;
+    text-align: center;
+    color: #0000EE;
+}
+
+.description {
+    text-align: center;
+    color: gray;
+}

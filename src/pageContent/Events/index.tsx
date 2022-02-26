@@ -6,7 +6,6 @@ import { SectionInfo, StripData, optionsArray, EventData } from "./data";
 
 import { getEventItems } from "src/utils/contentful/events";
 import { options as ContentfulOptions } from "../Admissions/index";
-import { Text, Button, Navbar, Content } from "pinus-ui-library";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import * as S from "./style";
 
@@ -39,7 +38,10 @@ const renderSection = (s: SectionInfo): React.ReactFragment => {
     <div id={id} key={`events-${id}`} className={S.EventSection(options.flip)}>
       <div className={S.TextWrapper}>
         <p className={S.EventName}>{data.name}</p>
-        <div> {documentToReactComponents(data.description, ContentfulOptions)}</div>
+        <div>
+          {" "}
+          {documentToReactComponents(data.description, ContentfulOptions)}
+        </div>
       </div>
       <div className={S.ImageStripWrapper}>
         <div className={`${S.ImageWrapper}`}>
