@@ -11,6 +11,7 @@
   background-color: rgb(13, 159, 226);
   color:white;
   width:5%;
+  min-width:0px !important;
   height:10%;
   box-shadow: none;
 }
@@ -27,8 +28,22 @@
     justify-content: space-between;
 }
 
+.containerSmol {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    padding: 30px 3% 30px 1%;
+    flex-wrap: wrap;
+    justify-content:stretch;
+    flex: 1;
+}
+
 .kudo {
     padding: 5px;
+}
+.kudoSmol {
+  padding: 5px;
+  flex-basis: 100%;
 }
 
 .containerSenior {
@@ -74,9 +89,11 @@
     padding: 15px 20px;
     color: #c3c0c0;
     width:55%;
+    min-width:300px
   }
 .wishButton {
   width:70%;
+  min-width:300px;
   margin-top:1%;
   align-items: center;
   appearance: none;

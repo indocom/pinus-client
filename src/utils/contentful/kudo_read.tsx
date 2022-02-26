@@ -38,7 +38,7 @@ export async function getPeopleKudos(person): Promise<LocalKudo[]> {
     "fields.name": changeSlugToName(person),
   });
   const contents = res?.items[0].fields?.content;
-  if(contents === undefined) {
+  if (contents === undefined) {
     return;
   }
   if (contents[0].fields === undefined) {

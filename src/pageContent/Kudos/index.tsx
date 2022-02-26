@@ -7,6 +7,7 @@ import { LocalKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
 import { getPeopleKudos } from "src/utils/contentful/kudo_read";
 import { Dropdown } from "pinus-ui-library";
+import $ from "jquery";
 
 function convertNameToUrl(name: string): string {
   const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
@@ -158,6 +159,7 @@ export const KudosContent = (props) => {
   const [kudos, setKudos] = useState(Kudos !== undefined ? Kudos : null);
   const [isShown, setIsShown] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
+  const [pageWidth, setPageWidth] = useState($(window).width());
   const Kudos_reordered = hasKudos ? reorder(kudos) : null;
   const slug = props.person;
   let name: string = props.person as string;
@@ -191,6 +193,13 @@ export const KudosContent = (props) => {
     }
   };
 
+  if (typeof window !== "undefined") {
+    window.addEventListener("resize", function (event) {
+      setPageWidth(this.document.body.clientWidth);
+      console.log(pageWidth);
+    });
+  }
+
   return (
     <>
       <div>
@@ -215,23 +224,39 @@ export const KudosContent = (props) => {
               Write to {name}{" "}
             </button>
           </div>
-          <div className={styles.container}>
-            {Kudos_reordered.map((column) => (
-              <div className={styles.column}>
-                {column.map((kudo) => {
-                  return (
-                    <div className={styles.kudo}>
-                      <ContentCard
-                        description={kudo.text}
-                        from={kudo.writer}
-                        image={kudo.imageUrl}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
+          {pageWidth < 750 ? (
+            <div className={styles.containerSmol}>
+              {kudos.map((kudo) => {
+                return (
+                  <div className={styles.kudoSmol}>
+                    <ContentCard
+                      description={kudo.text}
+                      from={kudo.writer}
+                      image={kudo.imageUrl}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className={styles.container}>
+              {Kudos_reordered.map((column) => (
+                <div className={styles.column}>
+                  {column.map((kudo) => {
+                    return (
+                      <div className={styles.kudo}>
+                        <ContentCard
+                          description={kudo.text}
+                          from={kudo.writer}
+                          image={kudo.imageUrl}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
       {!hasKudos && (
