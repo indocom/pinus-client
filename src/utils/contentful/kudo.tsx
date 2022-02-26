@@ -101,14 +101,13 @@ async function getRecipient(recipientName: string) {
         content_type: "person",
       })
     )
-    .then((entries) =>{
-      
-      return entries.items.filter(
-        (entry) => {
-
-          return entry.fields.name[LOCALE].toLowerCase() === recipientName.toLowerCase();
-        }
-      )
+    .then((entries) => {
+      return entries.items.filter((entry) => {
+        return (
+          entry.fields.name[LOCALE].toLowerCase() ===
+          recipientName.toLowerCase()
+        );
+      });
     })
     .then((entries) => {
       console.log(entries);

@@ -6,7 +6,6 @@ import { SectionInfo, StripData, optionsArray, EventData } from "./data";
 
 import { getEventItems } from "src/utils/contentful/events";
 import { options as ContentfulOptions } from "../Admissions/index";
-import { Text, Button, Navbar, Content } from "pinus-ui-library";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import * as S from "./style";
 

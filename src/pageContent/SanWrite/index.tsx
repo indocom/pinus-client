@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { getPersons, createAndLink } from "src/utils/contentful/kudo";
+import { createAndLink } from "src/utils/contentful/kudo";
 
-import { Dropdown, Text, Button, Input, TextArea} from "pinus-ui-library";
+import { Text, Button, Input, TextArea } from "pinus-ui-library";
 
 const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   // User inputs
@@ -15,10 +15,6 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   const [message, setMessage] = useState<string>("");
   const [isDisabled, setDisabled] = useState<boolean>(false);
 
-  type entry = {
-    label: string;
-    value: string;
-  };
   function previewFile(file) {
     const reader = new FileReader();
     console.log(file);
@@ -74,7 +70,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
       />
       <p>&nbsp;</p>
       <Text fontSize="xl"> Picture (optional) </Text>
-      <img src={preview}/>
+      <img src={preview} />
       <form action="/api/images" method="post">
         <input
           type="file"
