@@ -7,14 +7,13 @@ import { LocalKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
 import { getPeopleKudos } from "src/utils/contentful/kudo_read";
 import { Dropdown } from "pinus-ui-library";
-import $ from "jquery";
 
 function convertNameToUrl(name: string): string {
   const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
   return url;
 }
 
-export const Seniors = (props) => {
+export const Seniors = (_) => {
   const [originalData, setOriginalData] = React.useState<Array<string>>();
   const [filteredData, setFilteredData] = React.useState<Array<string>>();
 
@@ -44,15 +43,36 @@ export const Seniors = (props) => {
     label: string;
   }
 
-  const handleOptionsChange = (value: ValueType, _) => {
+  interface ActionMeta {
+    action: string;
+    name?: string;
+    option?: unknown;
+    removedValues?: readonly ValueType[];
+  }
+
+  const handleOptionsChange = (value: ValueType, actionMeta: ActionMeta) => {
     try {
+      const action = actionMeta.action;
+      switch (action) {
+        case "clear": {
+          setFilteredData(originalData);
+          break;
+        }
+        default: {
+          handleFilteredData();
+          break;
+        }
+      }
+    } catch (err) {
+      console.debug(err);
+    }
+
+    function handleFilteredData(): void {
       const labelChosen = value.label;
       const newFilteredData = originalData.filter((seniorName: string) =>
         seniorName.includes(labelChosen)
       );
       setFilteredData(newFilteredData);
-    } catch (err) {
-      console.debug(err);
     }
   };
 
@@ -159,7 +179,7 @@ export const KudosContent = (props) => {
   const [kudos, setKudos] = useState(Kudos !== undefined ? Kudos : null);
   const [isShown, setIsShown] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
-  const [pageWidth, setPageWidth] = useState($(window).width());
+  const [pageWidth, setPageWidth] = useState(window.innerWidth);
   const Kudos_reordered = hasKudos ? reorder(kudos) : null;
   const slug = props.person;
   let name: string = props.person as string;
@@ -194,7 +214,7 @@ export const KudosContent = (props) => {
   };
 
   if (typeof window !== "undefined") {
-    window.addEventListener("resize", function (event) {
+    window.addEventListener("resize", function (_) {
       setPageWidth(this.document.body.clientWidth);
       console.log(pageWidth);
     });
