@@ -6,6 +6,7 @@
     background-attachment: fixed;
     min-height: 100vh;
     min-width: 100vw;
+    z-index: 3;
 }
 .wishButton.close{
   background-color: rgb(13, 159, 226);

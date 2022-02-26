@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Text } from "pinus-ui-library";
+import React, { useState } from "react";
 import ContentCard from "./ContentCard";
 import styles from "./styles.module.css";
 import { getPeopleSlugsFromKudoboard } from "src/utils/contentful/kudo_read";
 import SeniorCard, { SeniorProps } from "./Senior";
-import { setRevalidateHeaders } from "next/dist/server/send-payload";
 import { LocalKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
 import { getPeopleKudos } from "src/utils/contentful/kudo_read";
@@ -101,12 +99,14 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
   return (
     <div className={styles.modal} id="modalBackground">
       <div className={styles.modalContent}>
-          <button className={[styles.wishButton, styles.close].join(' ')} onClick={handleClick}>
-            {" "}
-            X{" "}
-          </button>
-        
-        
+        <button
+          className={[styles.wishButton, styles.close].join(" ")}
+          onClick={handleClick}
+        >
+          {" "}
+          X{" "}
+        </button>
+
         <SanWriteContent
           setIsShown={setIsShown}
           setSubmit={setSubmit}
@@ -205,29 +205,27 @@ const KudosContent = (props) => {
             </button>
           </div>
           <div className={styles.container}>
-          <ContentCard
-            description={
-              name +
-              " has not gotten any well wishes. Be the first to send your well wishes to " +
-              name +
-              "!"
-            }
-            from="admin"
-          />
-          <div>
-          
-            {isShown ? (
-              <ModalWindow
-                isShown={isShown}
-                setIsShown={setIsShown}
-                slug={slug}
-                setSubmit={setSubmit}
-              />
-            ) : null}
+            <ContentCard
+              description={
+                name +
+                " has not gotten any well wishes. Be the first to send your well wishes to " +
+                name +
+                "!"
+              }
+              from="admin"
+            />
+            <div>
+              {isShown ? (
+                <ModalWindow
+                  isShown={isShown}
+                  setIsShown={setIsShown}
+                  slug={slug}
+                  setSubmit={setSubmit}
+                />
+              ) : null}
+            </div>
           </div>
         </div>
-        </div>
-        
       )}
     </>
   );
