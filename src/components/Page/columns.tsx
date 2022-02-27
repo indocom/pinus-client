@@ -25,6 +25,7 @@ export const columns: Column[] = [
       { title: "POPI", link: "/events#popi" },
       { title: "Misi Kami Peduli", link: "/events#mkp" },
       { title: "NUANSA", link: "/events#nuansa" },
+      { title: "PINUS Playbook", link: "/events" },
     ],
   },
   {

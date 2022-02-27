@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-
 import { Dropdown } from "pinus-ui-library";
-import ContentCard from "./ContentCard";
-import styles from "./styles.module.css";
-import SeniorCard, { SeniorProps } from "./SeniorCard";
-
 import {
   getPeopleSlugsFromKudoboard,
   getPeopleKudos,
 } from "src/utils/contentful/kudo";
+import ContentCard from "../../components/Kudos/ContentCard";
+import styles from "./styles.module.css";
+import SeniorCard, { SeniorProps } from "../../components/Kudos/SeniorCard";
 import { LocalKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
 
