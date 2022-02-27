@@ -1,4 +1,3 @@
-import { Entry } from "contentful";
 import { ContentfulEvent } from "./types";
 import { getContentfulReader } from "./utils";
 
