@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ContentCard from "./ContentCard";
+import ContentCard from "../../components/Kudos/ContentCard";
 import styles from "./styles.module.css";
 import { getPeopleSlugsFromKudoboard } from "src/utils/contentful/kudo_read";
-import SeniorCard, { SeniorProps } from "./SeniorCard";
+import SeniorCard, { SeniorProps } from "../../components/Kudos/SeniorCard";
 import { LocalKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
 import { getPeopleKudos } from "src/utils/contentful/kudo_read";
