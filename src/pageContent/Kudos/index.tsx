@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { Dropdown } from "pinus-ui-library";
+import {
+  getPeopleSlugsFromKudoboard,
+  getPeopleKudos,
+} from "src/utils/contentful/kudo";
 import ContentCard from "../../components/Kudos/ContentCard";
 import styles from "./styles.module.css";
-import { getPeopleSlugsFromKudoboard } from "src/utils/contentful/kudo_read";
 import SeniorCard, { SeniorProps } from "../../components/Kudos/SeniorCard";
 import { LocalKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
-import { getPeopleKudos } from "src/utils/contentful/kudo_read";
-import { Dropdown } from "pinus-ui-library";
 
 function convertNameToUrl(name: string): string {
   const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
@@ -216,7 +218,6 @@ export const KudosContent = (props) => {
   if (typeof window !== "undefined") {
     window.addEventListener("resize", function (_) {
       setPageWidth(this.document.body.clientWidth);
-      console.log(pageWidth);
     });
   }
 

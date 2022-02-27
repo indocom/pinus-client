@@ -8,6 +8,7 @@ import { getEventItems } from "src/utils/contentful/events";
 import { options as ContentfulOptions } from "../Admissions/index";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import * as S from "./style";
+import { ContentfulEvent } from "src/utils/contentful/types";
 
 const renderStrip = (s: StripData): React.ReactFragment => {
   const [colStart, colSpan] = s.col;
@@ -52,10 +53,7 @@ const renderSection = (s: SectionInfo): React.ReactFragment => {
     </div>
   );
 };
-interface Entry {
-  // eslint-disable-next-line
-  [key: string]: any;
-}
+
 const EventsContent: NextPage = () => {
   React.useEffect(() => {
     async function getData() {
@@ -64,17 +62,17 @@ const EventsContent: NextPage = () => {
     }
     getData();
   }, []);
-  const [data, setData] = React.useState<Array<Entry>>();
+  const [data, setData] = React.useState<Array<ContentfulEvent>>();
   if (!data) {
     return <div></div>;
   }
 
   const newData: Array<EventData> = data.map((data) => {
     return {
-      name: data.fields.name,
-      description: data.fields.description,
-      url: data.fields.url,
-      imageSrc: "http:" + data.fields.eventPicture.fields.file.url,
+      name: data.name,
+      description: data.description,
+      url: data.url,
+      imageSrc: "http:" + data.eventPicture.fields.file.url,
     };
   });
   let index = -1;

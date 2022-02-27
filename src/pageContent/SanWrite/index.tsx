@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { createAndLink } from "src/utils/contentful/kudo";
+import { createContentAndLink } from "src/utils/contentful/kudo";
 
 import { Text, Button, Input, TextArea } from "pinus-ui-library";
 
@@ -13,7 +13,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   const [preview, setPreview] = React.useState(null);
   // Internal states
   const [message, setMessage] = useState<string>("");
-  const [isDisabled, setDisabled] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   function previewFile(file) {
     const reader = new FileReader();
@@ -32,10 +32,15 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   }
 
   async function handleSubmit() {
-    setDisabled(true);
+    setLoading(true);
     setMessage("");
     if (recipient && writer && content) {
-      const asset = await createAndLink(writer, recipient, content, image);
+      const asset = await createContentAndLink(
+        writer,
+        recipient,
+        content,
+        image
+      );
       setMessage(
         asset == null
           ? "Message posting failed. Please report this to Simon Julian Lauw"
@@ -46,7 +51,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
     } else {
       setMessage("All fields must be filled in");
     }
-    setDisabled(false);
+    setLoading(false);
   }
 
   return (
@@ -106,7 +111,9 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
         onClick={handleSubmit}
         label="Submit"
         variant="secondary"
-        disabled={isDisabled}
+        loadingLabel="Submitting..."
+        isLoading={isLoading}
+        fontSize="xl"
       />
       <Text color="red">{message}</Text>
     </div>
