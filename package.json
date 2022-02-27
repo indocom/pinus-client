@@ -21,7 +21,7 @@
     "logger": "0.0.1",
     "next": "^12.1.0",
     "next-redux-wrapper": "^7.0.1",
-    "pinus-ui-library": "^0.3.5",
+    "pinus-ui-library": "^0.3.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-feather": "^2.0.9",
