@@ -218,7 +218,6 @@ export const KudosContent = (props) => {
   if (typeof window !== "undefined") {
     window.addEventListener("resize", function (_) {
       setPageWidth(this.document.body.clientWidth);
-      console.log(pageWidth);
     });
   }
 
