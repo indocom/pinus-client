@@ -13,7 +13,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   const [preview, setPreview] = React.useState(null);
   // Internal states
   const [message, setMessage] = useState<string>("");
-  const [isDisabled, setDisabled] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   function previewFile(file) {
     const reader = new FileReader();
@@ -32,7 +32,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   }
 
   async function handleSubmit() {
-    setDisabled(true);
+    setLoading(true);
     setMessage("");
     if (recipient && writer && content) {
       const asset = await createContentAndLink(
@@ -51,7 +51,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
     } else {
       setMessage("All fields must be filled in");
     }
-    setDisabled(false);
+    setLoading(false);
   }
 
   return (
@@ -111,6 +111,8 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
         onClick={handleSubmit}
         label="Submit"
         variant="secondary"
+        loadingLabel="Submitting..."
+        isLoading={isLoading}
         fontSize="xl"
       />
       <Text color="red">{message}</Text>
