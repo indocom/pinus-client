@@ -20,6 +20,7 @@ const HomeContent: React.FC = () => {
           onClick={() => router.push("/about")}
           label="Find Out More"
           variant="secondary"
+          fontSize="lg"
         />
       </div>
     </div>
@@ -64,6 +65,7 @@ const HomeContent: React.FC = () => {
                 onClick={() => router.push("/events")}
                 label="Find Out More"
                 variant="secondary"
+                fontSize="lg"
               />
             </div>
           </div>
@@ -106,6 +108,7 @@ const HomeContent: React.FC = () => {
                 onClick={() => router.push("/admissions/before-01")}
                 label="Find Out More"
                 variant="primary"
+                fontSize="lg"
               />
             </div>
           </div>
@@ -123,6 +126,7 @@ const HomeContent: React.FC = () => {
                 onClick={() => router.push("/admissions/after-01")}
                 label="Find Out More"
                 variant="primary"
+                fontSize="lg"
               />
             </div>
           </div>

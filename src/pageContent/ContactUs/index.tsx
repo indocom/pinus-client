@@ -84,7 +84,7 @@ const ContactUsContent: React.FC = () => {
             {content === "" && (
               <Text color="red"> This is a required field </Text>
             )}
-            <Button onClick={handleSubmit} label="Submit" variant="secondary" />
+            <Button onClick={handleSubmit} label="Submit" variant="secondary" fontSize="lg"/>
           </div>
         </div>
       </div>

@@ -111,7 +111,7 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
         onClick={handleSubmit}
         label="Submit"
         variant="secondary"
-        disabled={isDisabled}
+        fontSize="xl"
       />
       <Text color="red">{message}</Text>
     </div>

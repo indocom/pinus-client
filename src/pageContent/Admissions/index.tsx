@@ -210,6 +210,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                   }}
                   label="Prev"
                   variant="secondary"
+                  fontSize="lg"
                 />
               </div>
             )}
@@ -231,6 +232,7 @@ const AdmissionsContent: React.FC<OwnProps> = ({
                   }}
                   label="Next"
                   variant="secondary"
+                  fontSize="lg"
                 />
               </div>
             )}
