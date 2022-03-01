@@ -1,11 +1,9 @@
-import { createClient, Entry } from "contentful";
+import { Entry } from "contentful";
 import { ContentfulImage } from "src/utils/contentful/types";
+import { getContentfulReader } from "./utils";
 
 export async function getImages() {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-  });
+  const client = getContentfulReader();
 
   interface BackgroundImage {
     image: Array<Entry<ContentfulImage>>;
@@ -15,5 +13,5 @@ export async function getImages() {
     content_type: "backgroundImage",
   });
 
-  return res.items[0].fields.image;
+  return res.items[0].fields.image.map((item) => item.fields);
 }

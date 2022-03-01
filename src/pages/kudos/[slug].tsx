@@ -1,11 +1,19 @@
 import { useRouter } from "next/router";
+<<<<<<< HEAD
 import KudosContent from "src/pageContent/Kudos";
+=======
+import { KudosContent } from "src/pageContent/Kudos";
+>>>>>>> 7cdc558b9c23f253f406f2d2fb3c10d52231ff0f
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Page from "src/components/Page";
 import {
   getPeopleKudos,
   getPeopleSlugsFromKudoboard,
+<<<<<<< HEAD
 } from "src/utils/contentful/kudo_read";
+=======
+} from "src/utils/contentful/kudo";
+>>>>>>> 7cdc558b9c23f253f406f2d2fb3c10d52231ff0f
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const docs = await getPeopleSlugsFromKudoboard();

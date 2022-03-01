@@ -1,11 +1,8 @@
-import { createClient, Entry } from "contentful";
 import { ContentfulDocAdmissionMeta } from "src/utils/contentful/types";
+import { getContentfulReader } from "./utils";
 
 export async function getDocSlugsFromCMS(): Promise<string[]> {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-  });
+  const client = getContentfulReader();
 
   interface Retrieved {
     slug: string;
@@ -16,16 +13,13 @@ export async function getDocSlugsFromCMS(): Promise<string[]> {
     select: "fields.slug",
   });
 
-  return res.items.map((x: Entry<Retrieved>) => x.fields.slug);
+  return res.items.map((x) => x.fields.slug);
 }
 
-export async function getDocsBySlugsFromCMS(
+async function getDocsBySlugsFromCMS(
   slug: string | string[]
 ): Promise<ContentfulDocAdmissionMeta[]> {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-  });
+  const client = getContentfulReader();
 
   if (Array.isArray(slug)) {
     slug = slug.join(",");
@@ -46,10 +40,7 @@ export async function getDocsBySlugsFromCMS(
 export async function getDocBySlugFromCMS(
   slug: string
 ): Promise<ContentfulDocAdmissionMeta> {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-  });
+  const client = getContentfulReader();
 
   const res = await client.getEntries<ContentfulDocAdmissionMeta>({
     content_type: "admissions",
@@ -70,7 +61,9 @@ export async function getDocBySlugFromCMS(
 }
 
 // combination of GetDocSlugs and GetDocBySlug
-export async function getAllDocsFromCMS(): Promise<ContentfulDocAdmissionMeta[]> {
+export async function getAllDocsFromCMS(): Promise<
+  ContentfulDocAdmissionMeta[]
+> {
   console.group(`Within getAllDocsFromCMS, fetching all docs`);
 
   const slugs = await getDocSlugsFromCMS();

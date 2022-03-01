@@ -10,7 +10,6 @@ import Link from "next/link";
 
 import { ContentfulImage } from "src/utils/contentful/types";
 import { getImages } from "src/utils/contentful/images";
-import { Entry } from "contentful";
 
 interface OwnProps {
   title: string;
@@ -76,15 +75,13 @@ const Page: React.FC<OwnProps> = ({
     getData();
   }, []);
 
-  const [data, setData] = React.useState<Array<Entry<ContentfulImage>>>();
+  const [data, setData] = React.useState<Array<ContentfulImage>>();
   if (!data) {
     return <div />;
   }
 
   //mapping from background-title to the image url (from contentful)
-  const urlMap = new Map(
-    data.map((image) => [image.fields.title, image.fields.file.url])
-  );
+  const urlMap = new Map(data.map((image) => [image.title, image.file.url]));
 
   const bgImageMapping = {
     home: urlMap.get("home-background"),
@@ -107,6 +104,7 @@ const Page: React.FC<OwnProps> = ({
   return (
     <div className={`flex flex-col items-center overflow-hidden`}>
       <Head>
+        <meta lang="en" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={description} />

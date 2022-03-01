@@ -1,28 +1,23 @@
-import { Asset, createClient, Entry } from "contentful-management";
+import { Asset, Entry } from "contentful-management";
+import {
+  LOCALE,
+  generateRandomString,
+  getContentfulReader,
+  getContentfulWriter,
+} from "src/utils/contentful/utils";
 
-// Several helper fns
-const LOCALE = "en-US";
+import {
+  ContentfulKudoBoard,
+  ContentfulPerson,
+  ClientKudo,
+} from "src/utils/contentful/types";
 
-const generateRandomString = (length = 6) => {
-  return Math.random().toString(20).substring(0, length);
-};
-
-const getSpace = () => {
-  return createClient({
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
-  }).getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
-};
-
-const getEnvironment = () => {
-  return getSpace().then((space) => space.getEnvironment("master"));
-};
-
-function createImage(file: File): Promise<Asset> {
+async function createImage(file: File): Promise<Asset> {
   if (file == null) {
-    return new Promise(null);
+    return new Promise<Asset>((resolved) => resolved(null));
   }
 
-  return getEnvironment()
+  return getContentfulWriter()
     .then(async (env) =>
       env.createAssetFromFiles({
         fields: {
@@ -46,11 +41,11 @@ function createImage(file: File): Promise<Asset> {
     .then((asset) => asset.publish())
     .catch((err) => {
       console.error(err);
-      return new Promise(null);
+      return new Promise<Asset>((resolved) => resolved(null));
     });
 }
 
-function linkImageToContent(image: Asset, content: Entry) {
+async function linkImageToContent(image: Asset, content: Entry) {
   content.fields.image = {
     [LOCALE]: {
       sys: {
@@ -60,13 +55,13 @@ function linkImageToContent(image: Asset, content: Entry) {
       },
     },
   };
-  return content.update().then((entry) => entry.publish());
+  return content.update();
 }
 
 async function createContent(content: string, writerName: string, file: File) {
   const [imageAsset, contentEntry] = await Promise.all([
     createImage(file),
-    getEnvironment().then((env) => {
+    getContentfulWriter().then((env) => {
       const entryId = generateRandomString(22);
       return env.createEntryWithId(
         "content", // content type ID. Check contentful on the type's ID
@@ -86,39 +81,22 @@ async function createContent(content: string, writerName: string, file: File) {
   ]);
 
   if (imageAsset == null) {
-    return contentEntry;
+    return contentEntry.publish();
   }
 
-  linkImageToContent(imageAsset, contentEntry);
-  return contentEntry;
+  return linkImageToContent(imageAsset, contentEntry).then((asset) =>
+    asset.publish()
+  );
 }
 
-function getRecipient(recipientName: string) {
-  return getEnvironment()
-    .then((env) =>
-      env.getEntries({
-        content_type: "person",
-      })
-    )
-    .then((entries) =>
-      entries.items.filter(
-        (entry) => entry.fields.name[LOCALE] === recipientName
-      )
-    )
-    .then((entries) => {
-      if (entries.length !== 1) {
-        throw new Error(
-          `There exists more than one match to ${recipientName} which is impossible. Aborting..`
-        );
-      }
-      return entries[0];
-    });
-}
-
-function linkContentToRecipient(contentEntry: Entry, recipientEntry: Entry) {
-  if (recipientEntry.fields.content === undefined) {
+async function linkContentToRecipient(
+  contentEntry: Entry,
+  recipientEntry: Entry
+) {
+  if (recipientEntry.fields.content == null) {
     recipientEntry.fields.content = { [LOCALE]: [] };
   }
+
   recipientEntry.fields.content[LOCALE].push({
     sys: {
       type: "Link",
@@ -130,32 +108,92 @@ function linkContentToRecipient(contentEntry: Entry, recipientEntry: Entry) {
   return recipientEntry.update().then((entry) => entry.publish());
 }
 
-export async function createAndLink(
+export async function createContentAndLink(
   writerName: string,
   recipientName: string,
   content: string,
   image: File
-) {
+): Promise<Entry> {
   const [contentEntry, recipientEntry] = await Promise.all([
     createContent(content, writerName, image),
     getRecipient(recipientName),
   ]);
 
-  await contentEntry.publish();
-  await linkContentToRecipient(contentEntry, recipientEntry);
+  return linkContentToRecipient(contentEntry, recipientEntry)
+    .then((asset) => asset.publish())
+    .catch((err) => {
+      console.error(err);
+      return null;
+    });
 }
 
-export async function getPersons(): Promise<string[]> {
-  return getEnvironment()
+export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
+  const client = getContentfulReader();
+
+  const res = await client.getEntries<ContentfulKudoBoard>({
+    content_type: "kudoboard",
+  });
+  const people = res.items[0].fields.people;
+  return people.map((x) => x.fields.name);
+}
+
+export async function getPeopleKudos(
+  person: string | string[]
+): Promise<ClientKudo[]> {
+  const client = getContentfulReader();
+
+  const changeSlugToName = (slug) => {
+    const str = slug.replace(/-/g, " ");
+    const splitStr = str.toLowerCase().split(" ");
+    for (let i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(" ");
+  };
+  const res = await client.getEntries<ContentfulPerson>({
+    content_type: "person",
+    "fields.name": changeSlugToName(person),
+  });
+  const contents = res?.items[0].fields?.content;
+  if (contents === undefined) {
+    return;
+  }
+  if (contents[0].fields === undefined) {
+    return;
+  }
+
+  return contents
+    .map((x) => x.fields)
+    .map((kudo) => {
+      return {
+        text: kudo.text,
+        writer: kudo.writer,
+        image: kudo.image ?? null,
+        imageUrl: kudo.image?.fields.file.url ?? null,
+      };
+    });
+}
+
+// Implemented this way to fetch less data
+async function getRecipient(recipientName: string) {
+  return getContentfulWriter()
     .then((env) =>
       env.getEntries({
         content_type: "person",
-        select: "fields.name",
+        "fields.name[match]": recipientName,
       })
     )
-    .then((entry) => entry.items.map((x) => x.fields.name[LOCALE]));
-}
-
-export async function getImage(assetId: string): Promise<Asset> {
-  return getEnvironment().then((env) => env.getAsset(assetId));
+    .then((entries) => entries.items)
+    .then((entries) => {
+      return entries;
+    })
+    .then((entries) => {
+      if (entries.length !== 1) {
+        throw new Error(
+          `There exists more / less than one match to ${recipientName} which is impossible. Aborting..`
+        );
+      }
+      return entries[0];
+    });
 }

@@ -1,4 +1,4 @@
-.container {
+.page {
     background-image: url("../../../public/assets/images/kudo-background.jpg");
     background-position: top;
     background-repeat: no-repeat;
@@ -6,15 +6,156 @@
     background-attachment: fixed;
     min-height: 100vh;
     min-width: 100vw;
+}
+.wishButton.close{
+  background-color: rgb(13, 159, 226);
+  color:white;
+  width:5%;
+  min-width:0px !important;
+  height:10%;
+  box-shadow: none;
+}
+.wishButton.close:hover{
+  background-color: red;
+  color:white;
+}
+.container {
+    min-height: 100vh;
+    min-width: 100vw;
     display: flex;
     padding: 30px 2% 30px 1%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.containerSenior {
+  min-height: 50vh;
+  min-width: 100vw;
+  display: flex;
+  padding: 30px 2% 30px 1%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction:row;
+}
+
+.containerSmol {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  padding: 30px 3% 30px 1%;
+  flex-wrap: wrap;
+  justify-content:stretch;
+  flex: 1;
 }
 
 .kudo {
     padding: 5px;
 }
+.kudoSmol {
+  padding: 5px;
+  flex-basis: 100%;
+}
+
+.containerSenior {
+    display: flex;
+}
+
+.columnSenior {
+    width: 300px;
+    margin: 0px 20px;
+}
+
+.columnSenior:hover {
+  transform: scale(1.1);
+  transition: transform 0.1s;
+  transition-timing-function: ease-out;
+}
 
 .column {
     width: calc(100% / 3);
     padding: 5px;
+}
+.modal {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em 1em;
+    z-index: 999999;
+    box-sizing: border-box;
+  }
+.modalContent {
+    z-index: 2;
+    position: relative;
+    margin: 0 auto;
+    background-color: #f9fffe;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100%;
+    padding: 15px 20px;
+    color: #c3c0c0;
+    width:55%;
+    min-width:300px
+  }
+.wishButton {
+  width:70%;
+  min-width:300px;
+  margin-top:1%;
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.wishButton:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.wishButton:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.wishButton:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.dropdown {
+  padding: 30px 3% 30px 3%;
 }

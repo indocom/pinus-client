@@ -72,11 +72,7 @@ const LoginContent: React.FC = () => {
         <p className={S.Heading}>Login to PINUS</p>
         {errorMessage && renderErrorMessage()}
         <div className={S.FormDiv}>
-          <form
-            className={S.Form}
-            onSubmit={handleSubmit}
-            aria-label="login-form"
-          >
+          <form className={S.Form} onSubmit={handleSubmit}>
             <Input
               type="text"
               name="email"
@@ -94,24 +90,12 @@ const LoginContent: React.FC = () => {
             <button
               className={S.Submit}
               type="submit"
-              aria-label="login-button"
               disabled={isIncomplete()}
             >
               Login
             </button>
           </form>
         </div>
-
-        {/* TODO: Commented until Signup is live */}
-        {/* <div className={S.Join}>
-          <p className={`text-center`}>
-            New to PINUS?{" "}
-            <Link href="/signup">
-              <a className={S.Link}>Join us</a>
-            </Link>
-            !
-          </p>
-        </div> */}
       </div>
     </div>
   );
