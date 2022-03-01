@@ -9,7 +9,7 @@ import {
 import {
   ContentfulKudoBoard,
   ContentfulPerson,
-  LocalKudo,
+  ClientKudo,
 } from "src/utils/contentful/types";
 
 async function createImage(file: File): Promise<Asset> {
@@ -139,7 +139,7 @@ export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
 
 export async function getPeopleKudos(
   person: string | string[]
-): Promise<LocalKudo[]> {
+): Promise<ClientKudo[]> {
   const client = getContentfulReader();
 
   const changeSlugToName = (slug) => {

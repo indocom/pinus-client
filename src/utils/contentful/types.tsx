@@ -38,9 +38,6 @@ export interface ContentfulKudo {
   writer: string;
   image: Asset;
 }
-export interface LocalKudo {
-  text: string;
-  writer: string;
-  image: Asset;
+export interface ClientKudo extends ContentfulKudo {
   imageUrl: string;
 }

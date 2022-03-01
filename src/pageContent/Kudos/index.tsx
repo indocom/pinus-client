@@ -7,7 +7,7 @@ import {
 import ContentCard from "../../components/Kudos/ContentCard";
 import styles from "./styles.module.css";
 import SeniorCard, { SeniorProps } from "../../components/Kudos/SeniorCard";
-import { LocalKudo } from "src/utils/contentful/types";
+import { ClientKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
 
 function convertNameToUrl(name: string): string {
@@ -114,7 +114,7 @@ export const Seniors = (_) => {
   );
 };
 
-function reorder(original: LocalKudo[]): LocalKudo[][] {
+function reorder(original: ClientKudo[]): ClientKudo[][] {
   // LocalKudo divided into 3 roughly equal columns
   const ans = [[], [], []];
 
@@ -176,7 +176,7 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
 };
 
 export const KudosContent = (props) => {
-  const Kudos: LocalKudo[] = props.kudos.contents;
+  const Kudos: ClientKudo[] = props.kudos.contents;
   const [hasKudos, setHasKudos] = useState(Kudos !== undefined);
   const [kudos, setKudos] = useState(Kudos !== undefined ? Kudos : null);
   const [isShown, setIsShown] = useState(false);
