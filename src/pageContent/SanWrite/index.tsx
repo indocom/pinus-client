@@ -4,7 +4,7 @@ import { createContentAndLink } from "src/utils/contentful/kudo";
 
 import { Text, Button, Input, TextArea } from "pinus-ui-library";
 
-const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
+const SanWriteContent = ({ setIsShown, setSubmit, name, isLoading, setLoading}) => {
   // User inputs
   const recipient = name;
   const [writer, setWriter] = useState<string>("");
@@ -13,7 +13,6 @@ const SanWriteContent = ({ setIsShown, setSubmit, name }) => {
   const [preview, setPreview] = React.useState(null);
   // Internal states
   const [message, setMessage] = useState<string>("");
-  const [isLoading, setLoading] = useState<boolean>(false);
 
   function previewFile(file) {
     const reader = new FileReader();
