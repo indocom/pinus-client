@@ -131,17 +131,22 @@ function reorder(original: ClientKudo[]): ClientKudo[][] {
         ? 0
         : original[i].image.fields.file.details.image.width;
     const weighted_height =
-      original[i].image === null ? 0 : (height / width) * 12;
+      original[i].image === null
+        ? 0
+        : width > 340
+        ? (height / width) * 12 + 3
+        : (height / 340) * 12 + 3;
 
     // Find which column is minimum
     const minimum = Math.min(...lengths);
     const which_col = lengths.indexOf(minimum);
 
     // Updating the length estimates
+    const text_height_est = Math.floor(original[i].text.length / 57.5);
     lengths[which_col] =
       lengths[which_col] +
-      Math.floor(original[i].text.length / 60) +
-      5 +
+      (text_height_est === 1 ? 2 : text_height_est) +
+      6 +
       weighted_height;
 
     // Putting the new LocalKudo into the correct column
