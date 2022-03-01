@@ -9,6 +9,7 @@ import styles from "./styles.module.css";
 import SeniorCard, { SeniorProps } from "../../components/Kudos/SeniorCard";
 import { ClientKudo } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
+import { ActionMeta, ValueType } from "src/utils/dropdown/types";
 
 function convertNameToUrl(name: string): string {
   const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
@@ -39,18 +40,6 @@ export const Seniors = (_) => {
       seniorUrl: convertNameToUrl(x),
     };
   });
-
-  interface ValueType {
-    value: string;
-    label: string;
-  }
-
-  interface ActionMeta {
-    action: string;
-    name?: string;
-    option?: unknown;
-    removedValues?: readonly ValueType[];
-  }
 
   const handleOptionsChange = (value: ValueType, actionMeta: ActionMeta) => {
     try {
@@ -121,6 +110,7 @@ function reorder(original: ClientKudo[]): ClientKudo[][] {
   // Current estimate of column length
   const lengths = [0, 0, 0];
 
+  const maxCardWidth = 340;
   for (let i = 0; i < original.length; i++) {
     const height =
       original[i].image === null
@@ -133,9 +123,9 @@ function reorder(original: ClientKudo[]): ClientKudo[][] {
     const weighted_height =
       original[i].image === null
         ? 0
-        : width > 340
+        : width > maxCardWidth
         ? (height / width) * 12 + 3
-        : (height / 340) * 12 + 3;
+        : (height / maxCardWidth) * 12 + 3;
 
     // Find which column is minimum
     const minimum = Math.min(...lengths);
