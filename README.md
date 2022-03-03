@@ -33,6 +33,10 @@ yarn run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see the result.
 
+### UI Components:
+
+`pinus-client` heavily relies on `pinus-ui-library` which contains most of React UI components to be used for any `pinus tech` projects. The development of the UI is easier on `pinus-ui-library` repo as it contains `storybook` and `chromatic` CI/CD. 
+
 ### Sidenote: Emulating Authentication
 
 If you are developing on private routes, you will need to emulate Firebase Authentication
@@ -59,15 +63,7 @@ The minimum fields that you need to fill in are the "Display Name", "Email", and
 
 ## Available Scripts
 
-For easier component development, you can run Storybook:
-
-```bash
-yarn run storybook // currently broken
-```
-
-Open [http://localhost:6006](http://localhost:6006) for the Storybook hub.
-
-To lint relevant files:
+To lint relevant files (or you can activate `prettier` if you are using `WebStorm` or `vscode` which will lint the code on the fly):
 
 ```bash
 yarn run lint
@@ -89,7 +85,6 @@ To learn more about the stack and libraries used, take a look at the following r
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 - [React Documentation](https://reactjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Storybook Documentation](https://storybook.js.org/docs)
 - [Redux Tutorials](https://redux.js.org/tutorials/index)
 - [React-Redux-Firebase Authentication Documentation](http://react-redux-firebase.com/docs/auth.html)
 
