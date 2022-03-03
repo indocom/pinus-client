@@ -145,16 +145,18 @@ function reorder(original: ClientKudo[]): ClientKudo[][] {
   return ans;
 }
 
-const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
-  const handleClick = () => {
-    setIsShown(!isShown);
+const ModalWindow = ({ isShown, setIsShown, slug, setSubmit, isLoading, setLoading }) => {
+  const handleCloseButtonClick = () => {
+    if(!isLoading) {
+      setIsShown(!isShown);
+    }
   };
   return (
     <div className={styles.modal} id="modalBackground">
       <div className={styles.modalContent}>
         <button
           className={[styles.wishButton, styles.close].join(" ")}
-          onClick={handleClick}
+          onClick={handleCloseButtonClick}
         >
           {" "}
           X{" "}
@@ -164,6 +166,8 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit }) => {
           setIsShown={setIsShown}
           setSubmit={setSubmit}
           name={slug}
+          isLoading={isLoading}
+          setLoading={setLoading}
         />
       </div>
     </div>
@@ -177,6 +181,7 @@ export const KudosContent = (props) => {
   const [isShown, setIsShown] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const Kudos_reordered = hasKudos ? reorder(kudos) : null;
   const slug = props.person;
   let name: string = props.person as string;
@@ -205,13 +210,13 @@ export const KudosContent = (props) => {
   }, [kudos]);
 
   document.onclick = function (e) {
-    if ((e.target as HTMLElement).id == "modalBackground") {
+    if ((e.target as HTMLElement).id == "modalBackground" && !isLoading) {
       setIsShown(false);
     }
   };
 
   if (typeof window !== "undefined") {
-    window.addEventListener("resize", function (_) {
+    window.addEventListener("resize", function () {
       setPageWidth(this.document.body.clientWidth);
     });
   }
@@ -225,6 +230,8 @@ export const KudosContent = (props) => {
             setIsShown={setIsShown}
             slug={name}
             setSubmit={setSubmit}
+            isLoading={isLoading}
+            setLoading={setLoading}
           />
         ) : null}
       </div>
@@ -304,6 +311,8 @@ export const KudosContent = (props) => {
                   setIsShown={setIsShown}
                   slug={slug}
                   setSubmit={setSubmit}
+                  isLoading={isLoading}
+                  setLoading={setLoading}
                 />
               ) : null}
             </div>
