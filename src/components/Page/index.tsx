@@ -161,7 +161,7 @@ const Page: React.FC<OwnProps> = ({
           }
         />
       ) : null}
-      <div className={`min-h-screen w-full`}>{children}</div>
+      <div className={`min-h-fit w-full`}>{children}</div>
       <Footer links={columns} rightSide={contactFooter} />
     </div>
   );

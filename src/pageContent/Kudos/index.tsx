@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dropdown } from "pinus-ui-library";
 import {
   getPeopleSlugsFromKudoboard,
@@ -145,9 +145,16 @@ function reorder(original: ClientKudo[]): ClientKudo[][] {
   return ans;
 }
 
-const ModalWindow = ({ isShown, setIsShown, slug, setSubmit, isLoading, setLoading }) => {
+const ModalWindow = ({
+  isShown,
+  setIsShown,
+  slug,
+  setSubmit,
+  isLoading,
+  setLoading,
+}) => {
   const handleCloseButtonClick = () => {
-    if(!isLoading) {
+    if (!isLoading) {
       setIsShown(!isShown);
     }
   };
@@ -175,14 +182,12 @@ const ModalWindow = ({ isShown, setIsShown, slug, setSubmit, isLoading, setLoadi
 };
 
 export const KudosContent = (props) => {
-  const Kudos: ClientKudo[] = props.kudos.contents;
-  const [hasKudos, setHasKudos] = useState(Kudos !== undefined);
-  const [kudos, setKudos] = useState(Kudos !== undefined ? Kudos : null);
+  const [kudos, setKudos] = useState<ClientKudo[]>([]);
+  const [hasKudos, setHasKudos] = useState(kudos.length > 0);
   const [isShown, setIsShown] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
   const [isLoading, setLoading] = useState<boolean>(false);
-  const Kudos_reordered = hasKudos ? reorder(kudos) : null;
   const slug = props.person;
   let name: string = props.person as string;
   name = name
@@ -191,7 +196,17 @@ export const KudosContent = (props) => {
       return word[0].toUpperCase() + word.substring(1);
     })
     .join(" ");
-  React.useEffect(() => {
+
+  useEffect(() => {
+    async function getKudos() {
+      const contents: ClientKudo[] = await getPeopleKudos(name);
+      setKudos(contents);
+    }
+
+    getKudos();
+  }, []);
+
+  useEffect(() => {
     async function getData() {
       const newData = await getPeopleKudos(slug);
       setKudos(newData);
@@ -201,7 +216,8 @@ export const KudosContent = (props) => {
       setSubmit(false);
     }
   }, [isSubmitted]);
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (kudos === null) {
       setHasKudos(false);
     } else {
@@ -237,7 +253,7 @@ export const KudosContent = (props) => {
       </div>
       {hasKudos && (
         <div className={styles.page}>
-          <div className="text-center">
+          <div className={`text-center pt-12 sm:pt-10`}>
             <button
               className={styles.wishButton}
               onClick={() => {
@@ -263,7 +279,7 @@ export const KudosContent = (props) => {
             </div>
           ) : (
             <div className={styles.container}>
-              {Kudos_reordered.map((column) => (
+              {reorder(kudos).map((column) => (
                 <div className={styles.column}>
                   {column.map((kudo) => {
                     return (

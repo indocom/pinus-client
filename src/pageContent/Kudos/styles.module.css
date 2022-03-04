@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    min-height: 100vh;
+    min-height: 0vh;
     min-width: 100vw;
 }
 .wishButton.close{
@@ -20,7 +20,7 @@
   color:white;
 }
 .container {
-    min-height: 100vh;
+    min-height: 20vh;
     min-width: 100vw;
     display: flex;
     padding: 30px 2% 30px 1%;
@@ -108,10 +108,10 @@
     width:55%;
     min-width:300px
   }
+
 .wishButton {
   width:70%;
   min-width:300px;
-  margin-top:1%;
   align-items: center;
   appearance: none;
   background-color: #FCFCFD;

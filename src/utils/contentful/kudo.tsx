@@ -155,6 +155,7 @@ export async function getPeopleKudos(
     content_type: "person",
     "fields.name": changeSlugToName(person),
   });
+  console.log(res);
   const contents = res?.items[0].fields?.content;
   if (contents === undefined) {
     return;

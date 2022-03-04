@@ -2,10 +2,8 @@ import { useRouter } from "next/router";
 import { KudosContent } from "src/pageContent/Kudos";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Page from "src/components/Page";
-import {
-  getPeopleKudos,
-  getPeopleSlugsFromKudoboard,
-} from "src/utils/contentful/kudo";
+import { getPeopleSlugsFromKudoboard } from "src/utils/contentful/kudo";
+import React from "react";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const docs = await getPeopleSlugsFromKudoboard();
@@ -24,23 +22,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const name = params.slug;
-  const contents = await getPeopleKudos(name);
-  if (contents === undefined) {
-    return { props: {} };
-  }
-  return {
-    props: {
-      contents,
-    },
-  };
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: {} };
 };
 
-const KudosPerson: NextPage = (props) => {
+const KudosPerson: NextPage = () => {
   const router = useRouter();
   const { slug } = router.query;
   let name: string = slug as string;
+
   name = name
     .split("-")
     .map((word) => {
@@ -56,7 +46,7 @@ const KudosPerson: NextPage = (props) => {
       description={`Hello ${name}, here are our well wishes for you! Hope you enjoyed your journey in NUS!`}
     >
       <div>
-        <KudosContent kudos={props} person={slug} />
+        <KudosContent person={slug} />
       </div>
     </Page>
   );
