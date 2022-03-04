@@ -129,7 +129,6 @@ export async function createContentAndLink(
 
 export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
   const client = getContentfulReader();
-
   const res = await client.getEntries<ContentfulKudoBoard>({
     content_type: "kudoboard",
   });
