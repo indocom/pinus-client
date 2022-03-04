@@ -155,7 +155,9 @@ export async function getPeopleKudos(
     content_type: "person",
     "fields.name": changeSlugToName(person),
   });
-  const contents = res?.items[0].fields?.content;
+  let contents = res?.items[0].fields?.content;
+  contents = contents.filter((x) => "fields" in x); // Remove any dangling pointer that only contains links
+
   if (contents === undefined) {
     return;
   }
