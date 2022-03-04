@@ -104,6 +104,9 @@ export const Seniors = (_) => {
 };
 
 function reorder(original: ClientKudo[]): ClientKudo[][] {
+  if (original == undefined) {
+    return [];
+  }
   // LocalKudo divided into 3 roughly equal columns
   const ans = [[], [], []];
 
@@ -183,7 +186,7 @@ const ModalWindow = ({
 
 export const KudosContent = (props) => {
   const [kudos, setKudos] = useState<ClientKudo[]>([]);
-  const [hasKudos, setHasKudos] = useState(kudos.length > 0);
+  const [hasKudos, setHasKudos] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
@@ -201,6 +204,10 @@ export const KudosContent = (props) => {
     async function getKudos() {
       const contents: ClientKudo[] = await getPeopleKudos(name);
       setKudos(contents);
+
+      if (contents !== undefined && contents !== null && contents.length > 0) {
+        setHasKudos(true);
+      }
     }
 
     getKudos();
@@ -218,7 +225,7 @@ export const KudosContent = (props) => {
   }, [isSubmitted]);
 
   useEffect(() => {
-    if (kudos === null) {
+    if (kudos === null || kudos === undefined) {
       setHasKudos(false);
     } else {
       setHasKudos(true);
@@ -300,7 +307,7 @@ export const KudosContent = (props) => {
       )}
       {!hasKudos && (
         <div className={styles.page}>
-          <div className="text-center">
+          <div className={`text-center pt-12 sm:pt-10`}>
             <button
               className={styles.wishButton}
               onClick={() => {
