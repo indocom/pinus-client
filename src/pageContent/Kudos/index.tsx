@@ -196,7 +196,7 @@ export const KudosContent = (props) => {
   const [hasKudos, setHasKudos] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
-  const [pageWidth, setPageWidth] = useState(window.innerWidth);
+  const [pageWidth, setPageWidth] = useState(0);
   const [isLoading, setLoading] = useState<boolean>(false);
   const slug = props.person;
   let name: string = props.person as string;
@@ -246,6 +246,10 @@ export const KudosContent = (props) => {
   };
 
   if (typeof window !== "undefined") {
+    const firstRendering = pageWidth === 0;
+    if (firstRendering) {
+      setPageWidth(window.innerHeight);
+    }
     window.addEventListener("resize", function () {
       setPageWidth(this.document.body.clientWidth);
     });
