@@ -40,7 +40,7 @@ const KudosPerson: NextPage = () => {
 
   return (
     <Page
-      bgImage="admissions"
+      bgImageUrl="admissions"
       title={"Happy Graduation, " + name}
       subBanner
       description={`Hello ${name}, here are our well wishes for you! Hope you enjoyed your journey in NUS!`}

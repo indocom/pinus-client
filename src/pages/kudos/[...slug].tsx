@@ -5,7 +5,7 @@ import { Text } from "pinus-ui-library";
 const KudosNotFound: NextPage = () => {
   return (
     <Page
-      bgImage=""
+      bgImageUrl=""
       title="Kudos"
       subBanner
       description={`There is no-one here`}
