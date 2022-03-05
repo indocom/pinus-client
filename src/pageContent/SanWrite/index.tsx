@@ -4,7 +4,13 @@ import { createContentAndLink } from "src/utils/contentful/kudo";
 
 import { Text, Button, Input, TextArea } from "pinus-ui-library";
 
-const SanWriteContent = ({ setIsShown, setSubmit, name, isLoading, setLoading}) => {
+const SanWriteContent = ({
+  setIsShown,
+  setSubmit,
+  name,
+  isLoading,
+  setLoading,
+}) => {
   // User inputs
   const recipient = name;
   const [writer, setWriter] = useState<string>("");
