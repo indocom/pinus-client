@@ -1,4 +1,5 @@
 import { Asset, Entry } from "contentful-management";
+import { Entry as GenericEntry } from "contentful";
 import {
   LOCALE,
   generateRandomString,
@@ -134,6 +135,17 @@ export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
   });
   const people = res.items[0].fields.people;
   return people.map((x) => x.fields.name);
+}
+
+export async function getPeopleFromKudoboard(): Promise<
+  GenericEntry<ContentfulPerson>[]
+> {
+  const client = getContentfulReader();
+  const res = await client.getEntries<ContentfulKudoBoard>({
+    content_type: "kudoboard",
+  });
+  const people = res.items[0].fields.people;
+  return people;
 }
 
 export async function getPeopleKudos(

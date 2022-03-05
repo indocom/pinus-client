@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Dropdown } from "pinus-ui-library";
 import {
-  getPeopleSlugsFromKudoboard,
   getPeopleKudos,
+  getPeopleFromKudoboard,
 } from "src/utils/contentful/kudo";
 import ContentCard from "../../components/Kudos/ContentCard";
 import styles from "./styles.module.css";
 import SeniorCard, { SeniorProps } from "../../components/Kudos/SeniorCard";
-import { ClientKudo } from "src/utils/contentful/types";
+import { ClientKudo, ContentfulPerson } from "src/utils/contentful/types";
 import SanWriteContent from "../SanWrite";
 import { ActionMeta, ValueType } from "src/utils/dropdown/types";
+import { Entry } from "contentful";
 
 function convertNameToUrl(name: string): string {
   const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
@@ -17,15 +18,17 @@ function convertNameToUrl(name: string): string {
 }
 
 export const Seniors = (_) => {
-  const [originalData, setOriginalData] = React.useState<Array<string>>();
-  const [filteredData, setFilteredData] = React.useState<Array<string>>();
+  const [originalData, setOriginalData] =
+    React.useState<Entry<ContentfulPerson>[]>();
+  const [filteredData, setFilteredData] =
+    React.useState<Entry<ContentfulPerson>[]>();
 
   React.useEffect(() => {
     async function getNames() {
-      const names: string[] = await getPeopleSlugsFromKudoboard();
-      names.sort();
-      setOriginalData(names);
-      setFilteredData(names);
+      const people = await getPeopleFromKudoboard();
+      people.sort((a, b) => (a.fields.name > b.fields.name ? 1 : -1));
+      setOriginalData(people);
+      setFilteredData(people);
     }
     getNames();
   }, []);
@@ -34,12 +37,14 @@ export const Seniors = (_) => {
     return <div></div>;
   }
 
-  const convertSlugToSeniorProp: Array<SeniorProps> = filteredData.map((x) => {
-    return {
-      name: x,
-      seniorUrl: convertNameToUrl(x),
-    };
-  });
+  const convertPeopleToSeniorProp: Array<SeniorProps> = filteredData.map(
+    (x) => ({
+      name: x.fields.name,
+      faculty: x.fields.faculty,
+      seniorUrl: convertNameToUrl(x.fields.name),
+      gradYear: x.fields.gradYear,
+    })
+  );
 
   const handleOptionsChange = (value: ValueType, actionMeta: ActionMeta) => {
     try {
@@ -60,17 +65,17 @@ export const Seniors = (_) => {
 
     function handleFilteredData(): void {
       const labelChosen = value.label;
-      const newFilteredData = originalData.filter((seniorName: string) =>
-        seniorName.includes(labelChosen)
+      const newFilteredData = originalData.filter((senior) =>
+        senior.fields.name.includes(labelChosen)
       );
       setFilteredData(newFilteredData);
     }
   };
 
-  const options = originalData.map((seniorName: string) => {
+  const options = originalData.map((senior) => {
     return {
-      value: seniorName,
-      label: seniorName,
+      value: senior.fields.name,
+      label: senior.fields.name,
     };
   });
 
@@ -85,13 +90,15 @@ export const Seniors = (_) => {
           />
         </div>
         <div className={styles.containerSenior}>
-          {convertSlugToSeniorProp.map((data) => {
+          {convertPeopleToSeniorProp.map((data) => {
             return (
               <div className={styles.columnSenior}>
                 <div className={styles.kudo}>
                   <SeniorCard
                     name={data.name}
+                    faculty={data.faculty}
                     seniorUrl={data.seniorUrl}
+                    gradYear={data.gradYear}
                   ></SeniorCard>
                 </div>
               </div>

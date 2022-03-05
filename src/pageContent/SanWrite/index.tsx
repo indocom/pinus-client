@@ -52,7 +52,7 @@ const SanWriteContent = ({
           : "Message successfully posted"
       );
       setSubmit(true);
-      setTimeout(() => setIsShown(false), 1000);
+      setTimeout(() => setIsShown(false), 2000);
     } else {
       setMessage("All fields must be filled in");
     }
