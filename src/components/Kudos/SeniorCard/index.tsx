@@ -10,7 +10,6 @@ export interface SeniorProps {
 }
 
 const SeniorCard = ({ name, faculty, seniorUrl, gradYear }: SeniorProps) => {
-  console.log(faculty);
   return (
     <button onClick={() => (location.href = seniorUrl)}>
       <div className={styles.card}>
