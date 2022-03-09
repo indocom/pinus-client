@@ -31,7 +31,9 @@ export interface ContentfulKudoBoard {
 }
 export interface ContentfulPerson {
   name: string;
+  faculty: string[];
   content: Entry<ContentfulKudo>[];
+  gradYear: string;
 }
 export interface ContentfulKudo {
   text: string;

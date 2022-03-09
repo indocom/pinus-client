@@ -1,15 +1,38 @@
 import React from "react";
-import { NextPage } from "next";
+import { InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
 import { Instagram, Facebook } from "react-feather";
 
 import Page from "src/components/Page";
 import ContactUsContent from "src/pageContent/ContactUs";
+import { Asset } from "contentful";
+import { getImage } from "src/utils/contentful/images";
 
-const ContactUs: NextPage = () => {
+export async function getStaticProps() {
+  const backgroundImage = await getImage("contact");
+
+  if (!backgroundImage) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      backgroundImage,
+    },
+    revalidate: 60, // seconds
+  };
+}
+
+const ContactUs: NextPage = ({
+  backgroundImage,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const image = backgroundImage as Asset;
+  const url = image.fields.file.url;
   return (
     <Page
-      bgImage="contact"
+      bgImageUrl={url}
       title="Contact Us"
       description=""
       subBanner

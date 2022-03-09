@@ -13,6 +13,8 @@ import {
 } from "src/utils/contentful/admissions";
 import { ContentfulDocAdmissionMeta } from "src/utils/contentful/types";
 import { Content } from "pinus-ui-library";
+import { getImage } from "src/utils/contentful/images";
+import { Asset } from "contentful";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const docs = await getAllDocsFromCMS();
@@ -111,15 +113,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
   navItems = before.concat(after);
 
-  return { props: { ...doc, navItems } };
+  const backgroundImage = await getImage("admissions");
+
+  if (!backgroundImage) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return { props: { ...doc, navItems, backgroundImage }, revalidate: 60 };
 };
 
 const Admissions: NextPage = (
   props: InferGetStaticPropsType<ContentfulDocAdmissionMeta>
 ) => {
+  const image = (props as { backgroundImage: Asset }).backgroundImage;
+  const url = image.fields.file.url;
   return (
     <Page
-      bgImage="admissions"
+      bgImageUrl={url}
       title="Admissions"
       description="You are our utmost priority - we have compiled essential information to help ease your NUS journey!"
       subBanner

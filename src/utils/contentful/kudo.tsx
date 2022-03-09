@@ -1,4 +1,5 @@
 import { Asset, Entry } from "contentful-management";
+import { Entry as GenericEntry } from "contentful";
 import {
   LOCALE,
   generateRandomString,
@@ -129,12 +130,22 @@ export async function createContentAndLink(
 
 export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
   const client = getContentfulReader();
-
   const res = await client.getEntries<ContentfulKudoBoard>({
     content_type: "kudoboard",
   });
   const people = res.items[0].fields.people;
   return people.map((x) => x.fields.name);
+}
+
+export async function getPeopleFromKudoboard(): Promise<
+  GenericEntry<ContentfulPerson>[]
+> {
+  const client = getContentfulReader();
+  const res = await client.getEntries<ContentfulKudoBoard>({
+    content_type: "kudoboard",
+  });
+  const people = res.items[0].fields.people;
+  return people;
 }
 
 export async function getPeopleKudos(
@@ -155,7 +166,9 @@ export async function getPeopleKudos(
     content_type: "person",
     "fields.name": changeSlugToName(person),
   });
-  const contents = res?.items[0].fields?.content;
+  let contents = res?.items[0].fields?.content;
+  contents = contents.filter((x) => "fields" in x); // Remove any dangling pointer that only contains links
+
   if (contents === undefined) {
     return;
   }

@@ -8,25 +8,23 @@ import { columns } from "./columns";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ContentfulImage } from "src/utils/contentful/types";
-import { getImages } from "src/utils/contentful/images";
-
 interface OwnProps {
   title: string;
   description: string;
-  bgImage?: string;
+  bgImageUrl?: string;
   subBanner?: boolean;
   renderSubcontent?: () => React.ReactNode;
   children: React.ReactNode;
   router: Router;
   renderBanner?: boolean;
   renderNavbar?: boolean;
+  // image: ContentfulImage;
 }
 
 const Page: React.FC<OwnProps> = ({
   title,
   description,
-  bgImage,
+  bgImageUrl,
   renderSubcontent,
   children,
   router,
@@ -66,33 +64,6 @@ const Page: React.FC<OwnProps> = ({
       </div>
     </div>
   );
-
-  React.useEffect(() => {
-    async function getData() {
-      const base = await getImages();
-      setData(base);
-    }
-    getData();
-  }, []);
-
-  const [data, setData] = React.useState<Array<ContentfulImage>>();
-  if (!data) {
-    return <div />;
-  }
-
-  //mapping from background-title to the image url (from contentful)
-  const urlMap = new Map(data.map((image) => [image.title, image.file.url]));
-
-  const bgImageMapping = {
-    home: urlMap.get("home-background"),
-    about: urlMap.get("about-background"),
-    admissions: urlMap.get("admissions-background"),
-    events: urlMap.get("events-background"),
-    contact: urlMap.get("contact-background"),
-    aksaraBox: "/assets/backgrounds/aksaraBox.png",
-  };
-
-  bgImage = bgImageMapping[bgImage];
 
   const headers = navLinks.map((entry) => {
     return {
@@ -149,7 +120,7 @@ const Page: React.FC<OwnProps> = ({
               {title}
             </Text>
           }
-          bgImage={bgImage}
+          bgImage={bgImageUrl}
           subHeader={
             renderSubcontent ? (
               renderSubcontent()
@@ -161,7 +132,7 @@ const Page: React.FC<OwnProps> = ({
           }
         />
       ) : null}
-      <div className={`min-h-screen w-full`}>{children}</div>
+      <div className={`min-h-fit w-full`}>{children}</div>
       <Footer links={columns} rightSide={contactFooter} />
     </div>
   );
