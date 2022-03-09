@@ -128,21 +128,31 @@ export async function createContentAndLink(
     });
 }
 
-export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
+export async function getYearfromKudoboard(): Promise<string[]> {
   const client = getContentfulReader();
   const res = await client.getEntries<ContentfulKudoBoard>({
     content_type: "kudoboard",
   });
-  const people = res.items[0].fields.people;
+  const years = res.items.map(board => board.fields.year.toString());
+  return years;
+}
+export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
+  const client = getContentfulReader();
+  
+  const res = await client.getEntries<ContentfulKudoBoard>({
+    content_type: "kudoboard",
+  });
+  const people = res.items.flatMap(board => board.fields.people);
   return people.map((x) => x.fields.name);
 }
 
-export async function getPeopleFromKudoboard(): Promise<
+export async function getPeopleFromKudoboard(year:number): Promise<
   GenericEntry<ContentfulPerson>[]
 > {
   const client = getContentfulReader();
   const res = await client.getEntries<ContentfulKudoBoard>({
     content_type: "kudoboard",
+    'fields.year': year,
   });
   const people = res.items[0].fields.people;
   return people;
