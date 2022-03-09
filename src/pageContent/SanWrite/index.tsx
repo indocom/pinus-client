@@ -81,7 +81,11 @@ const SanWriteContent = ({
       <p>&nbsp;</p>
       <Text fontSize="xl"> Picture (optional) </Text>
       <img src={preview} alt={preview} />
-      <form action="/api/images" method="post">
+      <form
+        action="/api/images"
+        method="post"
+        className={`mx-5 w-3/4 lg-min:w-1/3 xl-min:w-1/4`}
+      >
         <input
           type="file"
           accept="image/*"
