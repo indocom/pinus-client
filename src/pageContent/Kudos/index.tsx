@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { Dropdown } from "pinus-ui-library";
 import {
   getPeopleKudos,
-  getPeopleFromKudoboard,
+  getPeopleFromKudoboardByYear,
 } from "src/utils/contentful/kudo";
 import ContentCard from "../../components/Kudos/ContentCard";
 import styles from "./styles.module.css";
@@ -17,9 +17,11 @@ function convertNameToUrl(name: string, year: number): string {
     "/san/" + year + "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
   return url;
 }
+
 interface SeniorsYearProp {
   year: number;
 }
+
 export const Seniors: FC<SeniorsYearProp> = ({ year }) => {
   const [originalData, setOriginalData] =
     React.useState<Entry<ContentfulPerson>[]>();
@@ -28,11 +30,12 @@ export const Seniors: FC<SeniorsYearProp> = ({ year }) => {
 
   React.useEffect(() => {
     async function getNames() {
-      const people = await getPeopleFromKudoboard(year);
+      const people = await getPeopleFromKudoboardByYear(year);
       people.sort((a, b) => (a.fields.name > b.fields.name ? 1 : -1));
       setOriginalData(people);
       setFilteredData(people);
     }
+
     getNames();
   }, []);
 
@@ -101,7 +104,7 @@ export const Seniors: FC<SeniorsYearProp> = ({ year }) => {
                     faculty={data.faculty}
                     seniorUrl={data.seniorUrl}
                     gradYear={data.gradYear}
-                  ></SeniorCard>
+                  />
                 </div>
               </div>
             );
@@ -219,6 +222,14 @@ export const KudosContent = (props) => {
       }
     }
 
+    if (typeof window !== "undefined") {
+      setPageWidth(window.innerWidth);
+
+      window.addEventListener("resize", function () {
+        setPageWidth(this.document.body.clientWidth);
+      });
+    }
+
     getKudos();
   }, []);
 
@@ -227,6 +238,7 @@ export const KudosContent = (props) => {
       const newData = await getPeopleKudos(slug);
       setKudos(newData);
     }
+
     if (isSubmitted) {
       getData();
       setSubmit(false);
@@ -247,16 +259,6 @@ export const KudosContent = (props) => {
         setIsShown(false);
       }
     };
-  }
-
-  if (typeof window !== "undefined") {
-    const firstRendering = pageWidth === 0;
-    if (firstRendering) {
-      setPageWidth(window.innerHeight);
-    }
-    window.addEventListener("resize", function () {
-      setPageWidth(this.document.body.clientWidth);
-    });
   }
 
   return (
@@ -285,7 +287,7 @@ export const KudosContent = (props) => {
               Write to {name}{" "}
             </button>
           </div>
-          {pageWidth < 750 ? (
+          {pageWidth < 850 ? (
             <div className={styles.containerSmol}>
               {kudos.map((kudo) => {
                 return (

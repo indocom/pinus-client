@@ -8,7 +8,6 @@ import {
 } from "next";
 import Page from "src/components/Page";
 import {
-  getPeopleFromKudoboard,
   getPeopleSlugsFromKudoboard,
   getYearfromKudoboard,
 } from "src/utils/contentful/kudo";
@@ -37,7 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   console.debug(`Generated static paths: ${JSON.stringify(paths)}`);
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 

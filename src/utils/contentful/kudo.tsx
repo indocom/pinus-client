@@ -1,17 +1,8 @@
 import { Asset, Entry } from "contentful-management";
 import { Entry as GenericEntry } from "contentful";
-import {
-  LOCALE,
-  generateRandomString,
-  getContentfulReader,
-  getContentfulWriter,
-} from "src/utils/contentful/utils";
+import { generateRandomString, getContentfulReader, getContentfulWriter, LOCALE } from "src/utils/contentful/utils";
 
-import {
-  ContentfulKudoBoard,
-  ContentfulPerson,
-  ClientKudo,
-} from "src/utils/contentful/types";
+import { ClientKudo, ContentfulKudoBoard, ContentfulPerson } from "src/utils/contentful/types";
 
 async function createImage(file: File): Promise<Asset> {
   if (file == null) {
@@ -149,16 +140,16 @@ export async function getPeopleSlugsFromKudoboard(
   return people.map((x) => x.fields.name);
 }
 
-export async function getPeopleFromKudoboard(
+export async function getPeopleFromKudoboardByYear(
   year: number
 ): Promise<GenericEntry<ContentfulPerson>[]> {
   const client = getContentfulReader();
   const res = await client.getEntries<ContentfulKudoBoard>({
     content_type: "kudoboard",
+    select: "fields",
     "fields.year": year,
   });
-  const people = res.items[0].fields.people;
-  return people;
+  return res.items[0].fields.people;
 }
 
 export async function getPeopleKudos(
@@ -180,7 +171,7 @@ export async function getPeopleKudos(
     "fields.name": changeSlugToName(person),
   });
   let contents = res?.items[0].fields?.content;
-  contents = contents.filter((x) => "fields" in x); // Remove any dangling pointer that only contains links
+  contents = contents?.filter((x) => "fields" in x); // Remove any dangling pointer that only contains links
 
   if (contents === undefined) {
     return;

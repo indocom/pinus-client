@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "build-tailwind": "postcss ./styles/base.css -o src/index.css",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "build-and-start": "next build && next start"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.10.0",
