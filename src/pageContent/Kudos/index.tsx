@@ -13,13 +13,13 @@ import { ActionMeta, ValueType } from "src/utils/dropdown/types";
 import { Entry } from "contentful";
 
 function convertNameToUrl(name: string): string {
-  const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
+  const url: string = "/san/kudos/" + name.toLowerCase().replaceAll(" ", "-");
   return url;
 }
 interface SeniorsYearProp {
   year: number;
 }
-export const Seniors: FC<SeniorsYearProp> = ({year}) => {
+export const Seniors: FC<SeniorsYearProp> = ({ year }) => {
   const [originalData, setOriginalData] =
     React.useState<Entry<ContentfulPerson>[]>();
   const [filteredData, setFilteredData] =
@@ -240,11 +240,13 @@ export const KudosContent = (props) => {
     }
   }, [kudos]);
 
-  document.onclick = function (e) {
-    if ((e.target as HTMLElement).id == "modalBackground" && !isLoading) {
-      setIsShown(false);
-    }
-  };
+  if (typeof window !== "undefined") {
+    document.onclick = function (e) {
+      if ((e.target as HTMLElement).id == "modalBackground" && !isLoading) {
+        setIsShown(false);
+      }
+    };
+  }
 
   if (typeof window !== "undefined") {
     const firstRendering = pageWidth === 0;

@@ -5,24 +5,23 @@ import { Seniors } from "src/pageContent/Kudos";
 import { getImage } from "src/utils/contentful/images";
 import { Asset } from "contentful";
 import { useRouter } from "next/router";
-import { getPeopleSlugsFromKudoboard, getYearfromKudoboard } from "src/utils/contentful/kudo";
+import { getYearfromKudoboard } from "src/utils/contentful/kudo";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const docs = await getYearfromKudoboard();
-    const paths = docs.map((year) => {
-      
-      return {
-        params: { year },
-      };
-    });
-  
-    console.debug(`Generated static paths: ${JSON.stringify(paths)}`);
+  const docs = await getYearfromKudoboard();
+  const paths = docs.map((year) => {
     return {
-      paths,
-      fallback: false,
+      params: { year },
     };
+  });
+
+  console.debug(`Generated static paths: ${JSON.stringify(paths)}`);
+  return {
+    paths,
+    fallback: false,
   };
-  
+};
+
 export async function getStaticProps() {
   const backgroundImage = await getImage("admissions");
 
@@ -50,15 +49,13 @@ const Kudos: NextPage = ({
   return (
     <Page
       bgImageUrl={url}
-      title={ "Senior Appreciation Night " + year}
+      title={"Senior Appreciation Night " + year}
       subBanner
       description="Send your well wishes for our graduating batch!"
     >
-      <Seniors year={year}/>
+      <Seniors year={year} />
     </Page>
   );
 };
 
 export default Kudos;
-
-
