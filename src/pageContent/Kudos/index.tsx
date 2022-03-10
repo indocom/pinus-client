@@ -12,8 +12,8 @@ import SanWriteContent from "../SanWrite";
 import { ActionMeta, ValueType } from "src/utils/dropdown/types";
 import { Entry } from "contentful";
 
-function convertNameToUrl(name: string): string {
-  const url: string = "/san/kudos/" + name.toLowerCase().replaceAll(" ", "-");
+function convertNameToUrl(name: string, year:number): string {
+  const url: string = "/san/" + year + "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
   return url;
 }
 interface SeniorsYearProp {
@@ -42,7 +42,7 @@ export const Seniors: FC<SeniorsYearProp> = ({ year }) => {
     (x) => ({
       name: x.fields.name,
       faculty: x.fields.faculty,
-      seniorUrl: convertNameToUrl(x.fields.name),
+      seniorUrl: convertNameToUrl(x.fields.name, year),
       gradYear: x.fields.gradYear,
     })
   );

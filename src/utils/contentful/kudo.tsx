@@ -136,11 +136,12 @@ export async function getYearfromKudoboard(): Promise<string[]> {
   const years = res.items.map((board) => board.fields.year.toString());
   return years;
 }
-export async function getPeopleSlugsFromKudoboard(): Promise<string[]> {
+export async function getPeopleSlugsFromKudoboard(year:number): Promise<string[]> {
   const client = getContentfulReader();
 
   const res = await client.getEntries<ContentfulKudoBoard>({
     content_type: "kudoboard",
+    'fields.year':year,
   });
   const people = res.items.flatMap((board) => board.fields.people);
   return people.map((x) => x.fields.name);
