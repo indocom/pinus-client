@@ -7,7 +7,11 @@ import {
   NextPage,
 } from "next";
 import Page from "src/components/Page";
-import { getPeopleFromKudoboard, getPeopleSlugsFromKudoboard, getYearfromKudoboard } from "src/utils/contentful/kudo";
+import {
+  getPeopleFromKudoboard,
+  getPeopleSlugsFromKudoboard,
+  getYearfromKudoboard,
+} from "src/utils/contentful/kudo";
 import React from "react";
 import { getImage } from "src/utils/contentful/images";
 import { Asset } from "contentful";
@@ -16,17 +20,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getYearfromKudoboard();
   const year_slug = [];
   for (let i = 0; i < data.length; i++) {
-    let item = data[i];
+    const item = data[i];
     const people = await getPeopleSlugsFromKudoboard(parseInt(item));
-    year_slug.push(people.map(person => [parseInt(item), person]));
-  } 
-  const flattenedYearSlug = year_slug.flatMap(x=>x);
+    year_slug.push(people.map((person) => [parseInt(item), person]));
+  }
+  const flattenedYearSlug = year_slug.flatMap((x) => x);
   const paths = flattenedYearSlug.map((tuple) => {
-    const year:string = tuple[0].toString();
-    const name:string = tuple[1];
+    const year: string = tuple[0].toString();
+    const name: string = tuple[1];
     const slug = name.toLowerCase().replace(/ /g, "-");
     return {
-      params: {slug, year},
+      params: { slug, year },
     };
   });
 
