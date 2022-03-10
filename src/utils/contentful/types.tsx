@@ -28,6 +28,7 @@ export interface ContentfulDocAdmissionMeta {
 export interface ContentfulKudoBoard {
   name: string;
   people: Entry<ContentfulPerson>[];
+  year: number;
 }
 export interface ContentfulPerson {
   name: string;

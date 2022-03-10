@@ -1,10 +1,28 @@
 import React from "react";
-import { InferGetStaticPropsType, NextPage } from "next";
+import { GetStaticPaths, InferGetStaticPropsType, NextPage } from "next";
 import Page from "src/components/Page";
 import { Seniors } from "src/pageContent/Kudos";
 import { getImage } from "src/utils/contentful/images";
 import { Asset } from "contentful";
+import { useRouter } from "next/router";
+import { getPeopleSlugsFromKudoboard, getYearfromKudoboard } from "src/utils/contentful/kudo";
 
+export const getStaticPaths: GetStaticPaths = async () => {
+    const docs = await getYearfromKudoboard();
+    const paths = docs.map((year) => {
+      
+      return {
+        params: { year },
+      };
+    });
+  
+    console.debug(`Generated static paths: ${JSON.stringify(paths)}`);
+    return {
+      paths,
+      fallback: false,
+    };
+  };
+  
 export async function getStaticProps() {
   const backgroundImage = await getImage("admissions");
 
@@ -27,16 +45,20 @@ const Kudos: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const image = backgroundImage as Asset;
   const url = image.fields.file.url;
+  const router = useRouter();
+  const year = parseInt(router.query.year as string);
   return (
     <Page
       bgImageUrl={url}
-      title="Senior Appreciation Night"
+      title={ "Senior Appreciation Night " + year}
       subBanner
       description="Send your well wishes for our graduating batch!"
     >
-      <Seniors />
+      <Seniors year={year}/>
     </Page>
   );
 };
 
 export default Kudos;
+
+

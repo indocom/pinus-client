@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Dropdown } from "pinus-ui-library";
 import {
   getPeopleKudos,
@@ -16,8 +16,10 @@ function convertNameToUrl(name: string): string {
   const url: string = "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
   return url;
 }
-
-export const Seniors = (_) => {
+interface SeniorsYearProp {
+  year: number;
+}
+export const Seniors: FC<SeniorsYearProp> = ({year}) => {
   const [originalData, setOriginalData] =
     React.useState<Entry<ContentfulPerson>[]>();
   const [filteredData, setFilteredData] =
@@ -25,7 +27,7 @@ export const Seniors = (_) => {
 
   React.useEffect(() => {
     async function getNames() {
-      const people = await getPeopleFromKudoboard();
+      const people = await getPeopleFromKudoboard(year);
       people.sort((a, b) => (a.fields.name > b.fields.name ? 1 : -1));
       setOriginalData(people);
       setFilteredData(people);
@@ -36,7 +38,6 @@ export const Seniors = (_) => {
   if (!originalData || !filteredData) {
     return <div></div>;
   }
-
   const convertPeopleToSeniorProp: Array<SeniorProps> = filteredData.map(
     (x) => ({
       name: x.fields.name,
