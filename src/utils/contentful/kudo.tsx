@@ -1,8 +1,17 @@
 import { Asset, Entry } from "contentful-management";
 import { Entry as GenericEntry } from "contentful";
-import { generateRandomString, getContentfulReader, getContentfulWriter, LOCALE } from "src/utils/contentful/utils";
+import {
+  generateRandomString,
+  getContentfulReader,
+  getContentfulWriter,
+  LOCALE,
+} from "src/utils/contentful/utils";
 
-import { ClientKudo, ContentfulKudoBoard, ContentfulPerson } from "src/utils/contentful/types";
+import {
+  ClientKudo,
+  ContentfulKudoBoard,
+  ContentfulPerson,
+} from "src/utils/contentful/types";
 
 async function createImage(file: File): Promise<Asset> {
   if (file == null) {
@@ -137,7 +146,9 @@ export async function getPeopleSlugsFromKudoboard(
     "fields.year": year,
   });
   const people = res.items.flatMap((board) => board.fields.people);
-  return people.map((x) => x.fields.name);
+  return people
+    .filter((x) => x) // Remove undefined
+    .map((x) => x.fields.name);
 }
 
 export async function getPeopleFromKudoboardByYear(

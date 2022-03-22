@@ -1,6 +1,5 @@
-import App from "next/app";
 import "tailwindcss/tailwind.css";
-
+import Script from "next/script";
 import { Provider } from "react-redux";
 import store from "../redux/configureStore";
 import { createWrapper } from "next-redux-wrapper";
@@ -9,6 +8,9 @@ import { initFirebase } from "src/firebase";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import EnsureAuthLoaded from "src/components/Auth/EnsureAuthLoaded";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { GTM_ID, pageview } from "lib/gtm";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export function isOnProduction(): boolean {
   return process.env.NODE_ENV === "production";
@@ -26,11 +28,30 @@ interface AppProps {
 }
 
 // default component from Next JS
-class ClientApp extends App {
-  render() {
-    const { Component, pageProps }: AppProps = this.props;
+function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  useEffect(() => {
+    router.events.on("routeChangeComplete", pageview);
+    return () => {
+      router.events.off("routeChangeComplete", pageview);
+    };
+  }, [router.events]);
 
-    return (
+  return (
+    <>
+      {/* Google Tag Manager - Global base code */}
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer', '${GTM_ID}');
+          `,
+        }}
+      />
       <HelmetProvider>
         <div className="App">
           <Helmet>
@@ -49,11 +70,11 @@ class ClientApp extends App {
           </Provider>
         </div>
       </HelmetProvider>
-    );
-  }
+    </>
+  );
 }
 
 const makeStore = () => store;
 const wrapper = createWrapper(makeStore);
 
-export default wrapper.withRedux(ClientApp);
+export default wrapper.withRedux(App);
