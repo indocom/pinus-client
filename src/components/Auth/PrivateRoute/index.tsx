@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { isEmpty } from "react-redux-firebase";
 
-const PrivateRoute: React.FC = ({ children }) => {
+const PrivateRoute: React.FC = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

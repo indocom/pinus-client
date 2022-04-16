@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { isLoaded } from "react-redux-firebase";
-import React from "react";
+import React, { ReactNode } from "react";
 
-const EnsureAuthLoaded: React.FC = ({ children }) => {
+const EnsureAuthLoaded: React.FC = ({ children }: { children: ReactNode }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const auth = useSelector((state: any) => state.firebase.auth);
 
