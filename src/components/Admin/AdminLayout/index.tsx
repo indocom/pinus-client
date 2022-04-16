@@ -1,7 +1,7 @@
 import AdminNavbar from "../AdminNavbar";
-import React from "react";
+import React, { ReactNode } from "react";
 
-const AdminLayout: React.FC = ({ children }) => {
+const AdminLayout: React.FC = ({ children }: { children: ReactNode }) => {
   return (
     <div className={`min-h-screen flex flex-col bg-gray-50`}>
       <AdminNavbar />
