@@ -6,10 +6,10 @@ export interface SeniorProps {
   name: string;
   faculty: string[];
   seniorUrl: string;
-  gradYear: string;
+  gradYear: string; // Currently, this field is not used, but it's a convenient field to have
 }
 
-const SeniorCard = ({ name, faculty, seniorUrl, gradYear }: SeniorProps) => {
+const SeniorCard = ({ name, faculty, seniorUrl }: Partial<SeniorProps>) => {
   return (
     <button onClick={() => (location.href = seniorUrl)}>
       <div className={styles.card}>
@@ -18,9 +18,6 @@ const SeniorCard = ({ name, faculty, seniorUrl, gradYear }: SeniorProps) => {
             {name}
           </Text>
           <Text fontSize="lg">{faculty.join(", ")}</Text>
-          <Text fontSize="sm" fontWeight="bold">
-            {gradYear}
-          </Text>
         </div>
         <div className={styles.link}>
           <Text> Send your well wishes! </Text>
