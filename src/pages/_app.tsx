@@ -41,6 +41,7 @@ function App({ Component, pageProps }: AppProps) {
     <>
       {/* Google Tag Manager - Global base code */}
       <Script
+        id="google-analytics-script"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
