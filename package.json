@@ -44,7 +44,7 @@
     "autoprefixer": "^10.4.2",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.2.2",
-    "eslint": "^8.10.0",
+    "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
