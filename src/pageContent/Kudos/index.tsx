@@ -31,7 +31,7 @@ export const Seniors: FC<SeniorsYearProp> = ({ year }) => {
   React.useEffect(() => {
     async function getNames() {
       const people = await getPeopleFromKudoboardByYear(year);
-      if(people != undefined) {
+      if (people != undefined) {
         people.sort((a, b) => (a.fields.name > b.fields.name ? 1 : -1));
         setOriginalData(people);
         setFilteredData(people);
