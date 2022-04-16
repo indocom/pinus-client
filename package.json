@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "build-tailwind": "postcss ./styles/base.css -o src/index.css",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "next lint",
     "build-and-start": "next build && next start"
   },
   "dependencies": {
@@ -45,6 +45,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.2.2",
     "eslint": "^8.13.0",
+    "eslint-config-next": "^12.1.5",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
