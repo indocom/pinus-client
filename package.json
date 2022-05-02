@@ -15,7 +15,7 @@
     "@contentful/rich-text-react-renderer": "^15.10.0",
     "@reduxjs/toolkit": "^1.7.2",
     "@types/gtag.js": "^0.0.10",
-    "axios": "^0.26.0",
+    "axios": "^0.27.2",
     "contentful": "^9.1.12",
     "contentful-management": "^9.0.0",
     "firebase": "^9.6.7",
