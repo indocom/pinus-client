@@ -10,21 +10,17 @@ export const generateRandomString = (length = 6) => {
 };
 
 export const getContentfulWriter = async () => {
-  const client = createClientWrite({
+  return createClientWrite({
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
   })
     .getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID)
     .then((space) => space.getEnvironment(environment));
-
-  return client;
 };
 
 export const getContentfulReader = () => {
-  const client = createClientRead({
+  return createClientRead({
     space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
     environment: environment,
   });
-
-  return client;
 };
