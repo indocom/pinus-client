@@ -66,18 +66,31 @@ const SanWriteContent = ({
 
       <p>&nbsp;</p>
       <Text fontSize="xl"> Your message </Text>
-      <TextArea
-        value={content || ""}
-        placeholder="Your message"
-        onChange={(event) => setContent(event.target.value)}
-      />
+      <div style={{
+          opacity: 0,
+          pointerEvents: isLoading ? "none" : "initial",
+          display:"contents"
+        }}>
+          <TextArea
+            value={content || ""}
+            placeholder="Your message"
+            onChange={(event) => setContent(event.target.value)}
+          />
+      </div>
+      
       <p>&nbsp;</p>
       <Text fontSize="xl"> Your name </Text>
-      <Input
-        value={writer || ""}
-        placeholder="Your name"
-        onChange={(event) => setWriter(event.target.value)}
-      />
+      <div style={{
+          opacity: isLoading ? 0.1 : 1,
+          pointerEvents: isLoading ? "none" : "initial",
+          display:"contents"}}>
+        <Input
+          value={writer || ""}
+          placeholder="Your name"
+          onChange={(event) => setWriter(event.target.value)}
+        />
+      </div>
+      
       <p>&nbsp;</p>
       <Text fontSize="xl"> Picture (optional) </Text>
       <img src={preview} alt={preview} />
