@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import { Dropdown } from "pinus-ui-library";
 import {
-  getPeopleKudos,
   getPeopleFromKudoboardByYear,
+  getPeopleKudos,
 } from "src/utils/contentful/kudo";
 import ContentCard from "../../components/Kudos/ContentCard";
 import styles from "./styles.module.css";
@@ -13,9 +13,7 @@ import { ActionMeta, ValueType } from "src/utils/dropdown/types";
 import { Entry } from "contentful";
 
 function convertNameToUrl(name: string, year: number): string {
-  const url: string =
-    "/san/" + year + "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
-  return url;
+  return "/san/" + year + "/kudos/" + name.toLowerCase().replaceAll(" ", "-");
 }
 
 interface SeniorsYearProp {
@@ -165,7 +163,7 @@ function reorder(original: ClientKudo[]): ClientKudo[][] {
 const ModalWindow = ({
   isShown,
   setIsShown,
-  slug,
+  name,
   setSubmit,
   isLoading,
   setLoading,
@@ -189,7 +187,7 @@ const ModalWindow = ({
         <SanWriteContent
           setIsShown={setIsShown}
           setSubmit={setSubmit}
-          name={slug}
+          name={name}
           isLoading={isLoading}
           setLoading={setLoading}
         />
@@ -206,8 +204,7 @@ export const KudosContent = (props) => {
   const [pageWidth, setPageWidth] = useState(0);
   const [isLoading, setLoading] = useState<boolean>(false);
   const slug = props.person;
-  let name: string = props.person as string;
-  name = name
+  const name: string = props.person
     .split("-")
     .map((word) => {
       return word[0].toUpperCase() + word.substring(1);
@@ -270,7 +267,7 @@ export const KudosContent = (props) => {
           <ModalWindow
             isShown={isShown}
             setIsShown={setIsShown}
-            slug={name}
+            name={name}
             setSubmit={setSubmit}
             isLoading={isLoading}
             setLoading={setLoading}
@@ -351,7 +348,7 @@ export const KudosContent = (props) => {
                 <ModalWindow
                   isShown={isShown}
                   setIsShown={setIsShown}
-                  slug={slug}
+                  name={name}
                   setSubmit={setSubmit}
                   isLoading={isLoading}
                   setLoading={setLoading}

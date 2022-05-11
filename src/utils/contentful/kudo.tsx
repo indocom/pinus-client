@@ -218,7 +218,7 @@ async function getRecipient(recipientName: string) {
     })
     .then((entries) => {
       if (entries.length !== 1) {
-        throw new Error(
+        return Promise.reject(
           `There exists more / less than one match to ${recipientName} which is impossible. Aborting..`
         );
       }
