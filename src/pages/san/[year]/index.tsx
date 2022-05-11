@@ -49,7 +49,7 @@ const Kudos: NextPage = ({
   return (
     <Page
       bgImageUrl={url}
-      title={"Senior Appreciation Night " + year}
+      title={"Board of Gratitude to Graduates of " + year}
       subBanner
       description="Send your well wishes for our graduating batch!"
     >

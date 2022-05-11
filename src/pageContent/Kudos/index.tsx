@@ -248,7 +248,7 @@ export const KudosContent = (props) => {
   }, [isSubmitted]);
 
   useEffect(() => {
-    if (kudos === null || kudos === undefined) {
+    if (kudos === null || kudos === undefined || kudos.length === 0) {
       setHasKudos(false);
     } else {
       setHasKudos(true);
