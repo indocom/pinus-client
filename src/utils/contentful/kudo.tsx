@@ -5,6 +5,7 @@ import {
   getContentfulReader,
   getContentfulWriter,
   LOCALE,
+  PREVIEW_HOST_NO_CACHE,
 } from "src/utils/contentful/utils";
 
 import {
@@ -166,7 +167,7 @@ export async function getPeopleFromKudoboardByYear(
 export async function getPeopleKudos(
   person: string | string[]
 ): Promise<ClientKudo[]> {
-  const client = getContentfulReader();
+  const client = getContentfulReader(PREVIEW_HOST_NO_CACHE);
 
   const changeSlugToName = (slug) => {
     const str = slug.replace(/-/g, " ");

@@ -67,17 +67,21 @@ const SanWriteContent = ({
       <p>&nbsp;</p>
       <Text fontSize="xl"> Your message </Text>
       <TextArea
-            value={content || ""}
-            placeholder="Your message"
-            onChange={(event) => setContent(event.target.value)}
-            disabled={isLoading}/>
-      
+        value={content || ""}
+        placeholder="Your message"
+        onChange={(event) => setContent(event.target.value)}
+        disabled={isLoading}
+      />
+
       <p>&nbsp;</p>
       <Text fontSize="xl"> Your name </Text>
-      <div style={{
+      <div
+        style={{
           opacity: isLoading ? 0.1 : 1,
           pointerEvents: isLoading ? "none" : "initial",
-          display:"contents"}}>
+          display: "contents",
+        }}
+      >
         <Input
           value={writer || ""}
           placeholder="Your name"
@@ -85,7 +89,7 @@ const SanWriteContent = ({
           disabled={isLoading}
         />
       </div>
-      
+
       <p>&nbsp;</p>
       <Text fontSize="xl"> Picture (optional) </Text>
       <img src={preview} alt={preview} />
