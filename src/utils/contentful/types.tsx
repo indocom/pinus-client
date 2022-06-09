@@ -44,3 +44,10 @@ export interface ContentfulKudo {
 export interface ClientKudo extends ContentfulKudo {
   imageUrl: string;
 }
+
+export interface ContentfulDocCcaMeta {
+  title: string;
+  chapter: string;
+  slug?: string;
+  post?: Document;
+}

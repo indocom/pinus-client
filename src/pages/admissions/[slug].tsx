@@ -23,8 +23,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return { params: { slug } };
   });
 
-  console.debug(`Generated static paths: ${JSON.stringify(paths)}`);
-
   return {
     paths,
     fallback: "blocking",
@@ -38,7 +36,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const slug = params.slug;
 
-  const doc = await getDocBySlugFromCMS(slug);
+  const doc = await getDocBySlugFromCMS(slug, "admissions");
   const docs = await getAllDocsFromCMS();
   let navItems: Content[] = [];
   docs.forEach((doc) => {

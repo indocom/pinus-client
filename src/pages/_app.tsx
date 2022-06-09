@@ -7,7 +7,6 @@ import { createWrapper } from "next-redux-wrapper";
 import { initFirebase } from "src/firebase";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import EnsureAuthLoaded from "src/components/Auth/EnsureAuthLoaded";
-import { Helmet, HelmetProvider } from "react-helmet-async";
 import { GTM_ID, pageview } from "lib/gtm";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -53,24 +52,15 @@ function App({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-      <HelmetProvider>
-        <div className="App">
-          <Helmet>
-            <title>Perhimpunan Indonesia NUS | PINUS</title>
-            <meta
-              name="description"
-              content="Fostering relationships among Indonesians in NUS, building bridges between Indonesians and NUS."
-            />
-          </Helmet>
-          <Provider store={store}>
-            <ReactReduxFirebaseProvider {...rrfProps}>
-              <EnsureAuthLoaded>
-                <Component {...pageProps} />
-              </EnsureAuthLoaded>
-            </ReactReduxFirebaseProvider>
-          </Provider>
-        </div>
-      </HelmetProvider>
+      <div className="App">
+        <Provider store={store}>
+          <ReactReduxFirebaseProvider {...rrfProps}>
+            <EnsureAuthLoaded>
+              <Component {...pageProps} />
+            </EnsureAuthLoaded>
+          </ReactReduxFirebaseProvider>
+        </Provider>
+      </div>
     </>
   );
 }

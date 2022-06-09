@@ -9,6 +9,7 @@ const currentYear = new Date().getFullYear();
 export const navLinks: NavLink[] = [
   { title: "About", slug: "about" },
   { title: "Admissions", slug: "admissions" },
+  { title: "CCA", slug: "cca" },
   { title: "Events", slug: "events" },
   { title: "Contact Us", slug: "contact" },
   { title: "SAN", slug: `san/${currentYear}` },

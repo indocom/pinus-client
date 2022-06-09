@@ -1,4 +1,4 @@
-import { ContentfulDocAdmissionMeta } from "src/utils/contentful/types";
+import {ContentfulDocAdmissionMeta, ContentfulDocCcaMeta} from "src/utils/contentful/types";
 import { getContentfulReader } from "./utils";
 
 export async function getDocSlugsFromCMS(): Promise<string[]> {
@@ -38,12 +38,13 @@ async function getDocsBySlugsFromCMS(
 }
 
 export async function getDocBySlugFromCMS(
-  slug: string
+  slug: string,
+  content_type: string
 ): Promise<ContentfulDocAdmissionMeta> {
   const client = getContentfulReader();
 
   const res = await client.getEntries<ContentfulDocAdmissionMeta>({
-    content_type: "admissions",
+    content_type: content_type,
     "fields.slug[match]": slug,
   });
 
@@ -74,4 +75,14 @@ export async function getAllDocsFromCMS(): Promise<
   console.groupEnd();
 
   return docs;
+}
+
+export async function getAllCcaDocsFromCMS(): Promise<ContentfulDocCcaMeta[]> {
+  const client = getContentfulReader();
+
+  const res = await client.getEntries<ContentfulDocCcaMeta>({
+    content_type: "cca",
+  });
+
+  return res.items.map((x) => x.fields);
 }
