@@ -25,7 +25,7 @@
     "next-redux-wrapper": "^7.0.1",
     "pinus-ui-library": "^0.3.7",
     "react": "^18.0.0",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.2.0",
     "react-feather": "^2.0.9",
     "react-markdown": "^8.0.0",
     "react-redux": "^7.2.2",
