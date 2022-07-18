@@ -52,7 +52,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "postcss": "^8.4.7",
-    "postcss-loader": "^6.2.1",
+    "postcss-loader": "^7.0.1",
     "prettier": "^2.2.1",
     "react-is": "^17.0.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
