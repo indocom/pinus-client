@@ -6,6 +6,7 @@ import { getImage } from "src/utils/contentful/images";
 import { Asset } from "contentful";
 import { useRouter } from "next/router";
 import { getYearfromKudoboard } from "src/utils/contentful/kudo";
+import { Text } from "pinus-ui-library";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const docs = await getYearfromKudoboard();
@@ -51,7 +52,13 @@ const Kudos: NextPage = ({
       bgImageUrl={url}
       title={"Board of Gratitude to Graduates of " + year}
       subBanner
-      description="Send your well wishes for our graduating batch!"
+      description="Not Used"
+      renderSubcontent={() => (
+        <Text fontSize="xl" color="black">
+          Send your well wishes for our graduating batch and grab your yearbook{" "}
+          <a href={"https://pdfhost.io/v/3M9NFmiQz_2021_Yearbook"}>here</a>!
+        </Text>
+      )}
     >
       <Seniors year={year} />
     </Page>
