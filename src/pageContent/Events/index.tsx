@@ -64,7 +64,7 @@ const EventsContent: NextPage = () => {
   }, []);
   const [data, setData] = React.useState<Array<ContentfulEvent>>();
   if (!data) {
-    return <div/>;
+    return <div />;
   }
 
   const newData: Array<EventData> = data.map((data) => {

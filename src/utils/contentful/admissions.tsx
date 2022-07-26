@@ -1,4 +1,7 @@
-import {ContentfulDocAdmissionMeta, ContentfulDocCcaMeta} from "src/utils/contentful/types";
+import {
+  ContentfulDocAdmissionMeta,
+  ContentfulDocCcaMeta,
+} from "src/utils/contentful/types";
 import { getContentfulReader } from "./utils";
 
 export async function getDocSlugsFromCMS(): Promise<string[]> {

@@ -30,10 +30,10 @@ const CcaContent: React.FC<OwnProps> = ({ chapter, navItems, post }) => {
           List of CCAs and Clubs
         </Text>
         <Text color="white">
-          Compilation of CCAs across different categories, along
-          with contacts of seniors for each CCA who will help and guide you. You
-          can freely drop them a message and ask any queries about the CCA or
-          get them to share their experiences.
+          Compilation of CCAs across different categories, along with contacts
+          of seniors for each CCA who will help and guide you. You can freely
+          drop them a message and ask any queries about the CCA or get them to
+          share their experiences.
         </Text>
         <div className={`mb-5`}>
           <Navbar contents={navItems} color="white" />

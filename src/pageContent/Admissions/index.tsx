@@ -119,7 +119,6 @@ export const options = {
       return (
         <div>
           <ReactMarkdown
-            children={node.data.target.fields.table}
             remarkPlugins={[gfm]}
             components={{
               table: ({ node, ...props }) => (
@@ -129,7 +128,9 @@ export const options = {
                 <tr style={{ border: "1px solid #555" }} {...props} />
               ),
             }}
-          />
+          >
+            {node.data.target.fields.table}
+          </ReactMarkdown>
         </div>
       );
     },
