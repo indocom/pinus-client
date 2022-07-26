@@ -3,7 +3,7 @@ module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
+      use: ["@svgr/webpack"],
     });
 
     return config;
@@ -11,9 +11,9 @@ module.exports = {
   typescript: {
     // Dangerously allow production builds to successfully complete even if
     // your project has type errors. Only used because Vercel keeps throwing errors for type mismatch.
-    ignoreBuildErrors: true
+    ignoreBuildErrors: true,
   },
   images: {
-    domains: ["images.ctfassets.net"]
-  }
+    domains: ["images.ctfassets.net"],
+  },
 };

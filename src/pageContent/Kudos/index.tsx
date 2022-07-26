@@ -95,9 +95,9 @@ export const Seniors: FC<SeniorsYearProp> = ({ year }) => {
           />
         </div>
         <div className={styles.containerSenior}>
-          {convertPeopleToSeniorProp.map((data) => {
+          {convertPeopleToSeniorProp.map((data, index) => {
             return (
-              <div className={styles.columnSenior}>
+              <div className={styles.columnSenior} key={index}>
                 <div className={styles.kudo}>
                   <SeniorCard
                     name={data.name}
@@ -288,9 +288,9 @@ export const KudosContent = (props) => {
           </div>
           {pageWidth < 850 ? (
             <div className={styles.containerSmol}>
-              {kudos.map((kudo) => {
+              {kudos.map((kudo, index) => {
                 return (
-                  <div className={styles.kudoSmol}>
+                  <div className={styles.kudoSmol} key={index}>
                     <ContentCard
                       description={kudo.text}
                       from={kudo.writer}
@@ -302,11 +302,11 @@ export const KudosContent = (props) => {
             </div>
           ) : (
             <div className={styles.container}>
-              {reorder(kudos).map((column) => (
-                <div className={styles.column}>
-                  {column.map((kudo) => {
+              {reorder(kudos).map((column, index) => (
+                <div className={styles.column} key={index}>
+                  {column.map((kudo, index) => {
                     return (
-                      <div className={styles.kudo}>
+                      <div className={styles.kudo} key={kudo.writer + index}>
                         <ContentCard
                           description={kudo.text}
                           from={kudo.writer}
