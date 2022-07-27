@@ -1,3 +1,5 @@
+import { CURRENT_YEAR } from "../header/links";
+
 type Page = {
   title: string;
   link: string;
@@ -33,6 +35,13 @@ export const columns: Column[] = [
     pages: [
       { title: "Before Acceptance", link: "/admissions/before-01" },
       { title: "After Acceptance", link: "/admissions/after-01" },
+    ],
+  },
+  {
+    title: "SAN",
+    pages: [
+      { title: "Board of Gratitude", link: `/san/${CURRENT_YEAR}` },
+      { title: "Yearbook", link: "/yearbook" },
     ],
   },
   {

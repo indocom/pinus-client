@@ -3,8 +3,8 @@ import Head from "next/head";
 import { withRouter } from "next/router";
 import type { Router } from "next/router";
 import { Header, Text, Banner, Footer } from "pinus-ui-library";
-import { navLinks } from "./links";
-import { columns } from "./columns";
+import { navLinks } from "../../data/header/links";
+import { columns } from "../../data/footer/columns";
 import Image from "next/image";
 import Link from "next/link";
 

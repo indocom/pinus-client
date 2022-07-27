@@ -4,7 +4,7 @@ export interface NavLink {
   alt?: boolean;
 }
 
-const currentYear = new Date().getFullYear();
+export const CURRENT_YEAR = new Date().getFullYear();
 
 export const navLinks: NavLink[] = [
   { title: "About", slug: "about" },
@@ -12,7 +12,8 @@ export const navLinks: NavLink[] = [
   { title: "CCA", slug: "cca" },
   { title: "Events", slug: "events" },
   { title: "Contact Us", slug: "contact" },
-  { title: "SAN", slug: `san/${currentYear}` },
+  { title: "SAN", slug: `san/${CURRENT_YEAR}` },
+  { title: "Yearbook", slug: `yearbook` },
 ];
 
 // pages that would be rendered alternatively

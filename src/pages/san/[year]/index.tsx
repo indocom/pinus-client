@@ -7,6 +7,7 @@ import { Asset } from "contentful";
 import { useRouter } from "next/router";
 import { getYearfromKudoboard } from "src/utils/contentful/kudo";
 import { Text } from "pinus-ui-library";
+import { yearbooks } from "../../../data/yearbook/data";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const docs = await getYearfromKudoboard();
@@ -56,7 +57,7 @@ const Kudos: NextPage = ({
       renderSubcontent={() => (
         <Text fontSize="xl" color="black">
           Send your well wishes for our graduating batch and grab your yearbook{" "}
-          <a href={"https://pdfhost.io/v/3M9NFmiQz_2021_Yearbook"}>here</a>!
+          <a href={yearbooks[year]}>here</a>!
         </Text>
       )}
     >

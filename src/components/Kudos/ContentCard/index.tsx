@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Text } from "pinus-ui-library";
+import { GenericCard } from "../GenericCard";
 
 export interface ContentCardProps {
   /**
@@ -11,7 +12,7 @@ export interface ContentCardProps {
   /**
    * From who
    */
-  from: string;
+  from?: string;
 
   /**
    * Url to image
@@ -31,7 +32,7 @@ const ContentCard = ({
   from,
 }: ContentCardProps) => {
   return (
-    <div className={styles.card}>
+    <GenericCard>
       {image && (
         <div>
           <img className={styles.imgcard} src={image} alt={imgAlt} />
@@ -42,10 +43,12 @@ const ContentCard = ({
       )}
       <Text> {description} </Text>
       <p>&nbsp;</p>
-      <div className={styles.from}>
-        <Text color="gray"> from {from} </Text>
-      </div>
-    </div>
+      {from && (
+        <div className={styles.from}>
+          <Text color="gray"> from {from} </Text>
+        </div>
+      )}
+    </GenericCard>
   );
 };
 

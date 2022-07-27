@@ -8,7 +8,7 @@ import ContentCard from "../../components/Kudos/ContentCard";
 import styles from "./styles.module.css";
 import SeniorCard, { SeniorProps } from "../../components/Kudos/SeniorCard";
 import { ClientKudo, ContentfulPerson } from "src/utils/contentful/types";
-import SanWriteContent from "../SanWrite";
+import SanWriteContent from "./SanWrite";
 import { ActionMeta, ValueType } from "src/utils/dropdown/types";
 import { Entry } from "contentful";
 
