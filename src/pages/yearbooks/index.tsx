@@ -3,7 +3,7 @@ import { InferGetStaticPropsType, NextPage } from "next";
 import { getImage } from "../../utils/contentful/images";
 import { Asset } from "contentful";
 import Page from "../../components/Page";
-import { YearbookContent } from "../../pageContent/Yearbook";
+import { YearbookContent } from "../../pageContent/Yearbooks";
 
 export async function getStaticProps() {
   const backgroundImage = await getImage("admissions");
@@ -22,7 +22,7 @@ export async function getStaticProps() {
   };
 }
 
-const Yearbook: NextPage = ({
+const Yearbooks: NextPage = ({
   backgroundImage,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const image = backgroundImage as Asset;
@@ -30,7 +30,7 @@ const Yearbook: NextPage = ({
   return (
     <Page
       bgImageUrl={url}
-      title={"Yearbook Archive"}
+      title={"Yearbooks Archive"}
       subBanner
       description="A collection of PINUSians memories"
     >
@@ -39,4 +39,4 @@ const Yearbook: NextPage = ({
   );
 };
 
-export default Yearbook;
+export default Yearbooks;

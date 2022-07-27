@@ -41,7 +41,7 @@ export const columns: Column[] = [
     title: "SAN",
     pages: [
       { title: "Board of Gratitude", link: `/san/${CURRENT_YEAR}` },
-      { title: "Yearbook", link: "/yearbook" },
+      { title: "Yearbook", link: "/yearbooks" },
     ],
   },
   {

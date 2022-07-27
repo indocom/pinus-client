@@ -13,7 +13,7 @@ export const navLinks: NavLink[] = [
   { title: "Events", slug: "events" },
   { title: "Contact Us", slug: "contact" },
   { title: "SAN", slug: `san/${CURRENT_YEAR}` },
-  { title: "Yearbook", slug: `yearbook` },
+  { title: "Yearbooks", slug: `yearbooks` },
 ];
 
 // pages that would be rendered alternatively
