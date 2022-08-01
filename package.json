@@ -24,7 +24,7 @@
     "next": "^12.1.0",
     "next-redux-wrapper": "^7.0.1",
     "pinus-ui-library": "^0.3.7",
-    "react": "^18.1.0",
+    "react": "^17.0.2",
     "react-dom": "^18.1.0",
     "react-feather": "^2.0.9",
     "react-markdown": "^8.0.0",
