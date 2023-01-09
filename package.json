@@ -19,7 +19,7 @@
     "contentful": "^9.1.12",
     "contentful-management": "^9.0.0",
     "firebase": "^9.6.7",
-    "firebase-tools": "^10.2.1",
+    "firebase-tools": "^11.20.0",
     "logger": "0.0.1",
     "next": "^12.1.0",
     "next-redux-wrapper": "^7.0.1",
